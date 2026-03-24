@@ -44,12 +44,11 @@ export default function ResultPage() {
     }
   })
 
-  const scoredResults = results.filter((r) => !r.isSkipped)
   const correctCount = results.filter((r) => r.isCorrect).length
   const skippedCount = results.filter((r) => r.isSkipped).length
-  const wrongCount = scoredResults.length - correctCount
+  const wrongCount = results.length - correctCount  // 건너뛴 문제 포함
   const scorePercent =
-    scoredResults.length > 0 ? Math.round((correctCount / scoredResults.length) * 100) : 0
+    results.length > 0 ? Math.round((correctCount / results.length) * 100) : 0
 
   // DB 저장 (한 번만)
   useEffect(() => {
@@ -79,13 +78,13 @@ export default function ResultPage() {
 
   const filtered = results.filter((r) => {
     if (tab === 'correct') return r.isCorrect
-    if (tab === 'wrong') return !r.isCorrect && !r.isSkipped
+    if (tab === 'wrong') return !r.isCorrect
     if (tab === 'skipped') return r.isSkipped
     return true
   })
 
   function handleRetryWrong() {
-    const wrongQuestions = results.filter((r) => !r.isCorrect && !r.isSkipped).map((r) => r.question)
+    const wrongQuestions = results.filter((r) => !r.isCorrect).map((r) => r.question)
     if (wrongQuestions.length === 0) return
     startQuiz(wrongQuestions)
     navigate('/quiz')
@@ -120,16 +119,13 @@ export default function ResultPage() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* 점수 카드 */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <ResultChart correct={correctCount} total={scoredResults.length} />
+          <ResultChart correct={correctCount} total={results.length} />
           <div className="w-full sm:w-auto text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-800">
-              {correctCount} / {scoredResults.length} 정답
+              {correctCount} / {results.length} 정답
             </h1>
             <p className="text-gray-500 text-sm mt-1">
               정답률 {scorePercent}%
-              {skippedCount > 0 && (
-                <span className="ml-2 text-gray-400">(건너뛴 문제 {skippedCount}개 제외)</span>
-              )}
             </p>
             <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:flex-wrap">
               <button

@@ -50,6 +50,7 @@ export default function QuizPage() {
   const unansweredSkipped = skippedIds.filter((id) => !checkedIds.includes(id))
 
   const isLastQuestion = currentIndex === questions.length - 1
+  const isSkipped = skippedIds.includes(currentId)
 
   function handleNext() {
     if (currentIndex < questions.length - 1) {
@@ -129,8 +130,8 @@ export default function QuizPage() {
               </button>
 
               <div className="flex gap-2 flex-1 sm:flex-none justify-end">
-                {/* 건너뛰기 — 채점 전에만 */}
-                {!isChecked && (
+                {/* 건너뛰기 — 채점 전, 마지막 문제 건너뜀 상태 제외 */}
+                {!isChecked && !(isLastQuestion && isSkipped) && (
                   <button
                     onClick={handleSkip}
                     className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
@@ -139,8 +140,8 @@ export default function QuizPage() {
                   </button>
                 )}
 
-                {/* 정답 확인 — 채점 전, 답변 선택 시 활성화 */}
-                {!isChecked && (
+                {/* 정답 확인 — 채점 전, 답변 선택 시 활성화, 마지막 문제 건너뜀 상태 제외 */}
+                {!isChecked && !(isLastQuestion && isSkipped) && (
                   <button
                     onClick={handleCheck}
                     disabled={!selectedAnswer}
@@ -150,8 +151,8 @@ export default function QuizPage() {
                   </button>
                 )}
 
-                {/* 결과 보기 — 마지막 문제 채점 완료 시 */}
-                {isChecked && isLastQuestion && (
+                {/* 결과 보기 — 마지막 문제 채점 완료 또는 건너뜀 */}
+                {isLastQuestion && (isChecked || isSkipped) && (
                   <button
                     onClick={handleFinishClick}
                     className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
