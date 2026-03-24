@@ -52,6 +52,7 @@ export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<
       .insert({
         user_id: payload.userId,
         categories: payload.categories,
+        selected_types: payload.selectedTypes,
         total_questions: payload.totalQuestions,
         correct_count: payload.correctCount,
         score_percent: payload.scorePercent,
@@ -69,6 +70,7 @@ export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<
           quiz_session_id: session.id,
           question_id: a.questionId,
           quiz_id: a.quizId,
+          question_type: a.questionType,
           user_answer: a.userAnswer,
           is_correct: a.isCorrect,
         }))

@@ -1,7 +1,7 @@
 interface ChoiceButtonProps {
   choice: string
   index: number
-  state: 'idle' | 'correct' | 'wrong' | 'unselected-correct'
+  state: 'idle' | 'selected' | 'correct' | 'wrong' | 'unselected-correct'
   onClick: () => void
   disabled: boolean
 }
@@ -12,7 +12,10 @@ export default function ChoiceButton({ choice, index, state, onClick, disabled }
   let containerStyle = 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/40'
   let labelStyle = 'bg-gray-100 text-gray-600'
 
-  if (state === 'correct') {
+  if (state === 'selected') {
+    containerStyle = 'border-blue-400 bg-blue-50'
+    labelStyle = 'bg-blue-500 text-white'
+  } else if (state === 'correct') {
     containerStyle = 'border-green-400 bg-green-50'
     labelStyle = 'bg-green-500 text-white'
   } else if (state === 'wrong') {

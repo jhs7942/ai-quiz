@@ -1,36 +1,24 @@
-import { useState } from 'react'
 import type { Question } from '../../types'
 import ChoiceButton from './ChoiceButton'
 import FeedbackPanel from './FeedbackPanel'
 
 interface QuizCardProps {
   question: Question
-  submitted: boolean
-  userAnswer: string | undefined
-  onSubmit: (answer: string) => void
+  selectedAnswer: string | undefined  // 현재 선택/입력한 답변 (채점 전)
+  isChecked: boolean                  // 정답 확인 완료 여부
+  isCorrect: boolean | undefined      // isChecked일 때만 유효
+  onSelect: (answer: string) => void  // 답변 선택 또는 입력
   onReport: () => void
 }
 
-export default function QuizCard({ question, submitted, userAnswer, onSubmit, onReport }: QuizCardProps) {
-  const [inputValue, setInputValue] = useState('')
-  const [selfCorrect, setSelfCorrect] = useState<boolean | null>(null)
-  const [showAnswer, setShowAnswer] = useState(false)
-
-  const isCorrect =
-    question.type === 'multiple_choice'
-      ? userAnswer === question.answer
-      : selfCorrect === true
-
-  function handleShortAnswerSubmit() {
-    if (!inputValue.trim()) return
-    setShowAnswer(true)
-  }
-
-  function handleSelfGrade(correct: boolean) {
-    setSelfCorrect(correct)
-    onSubmit(correct ? '__correct__' : '__wrong__')
-  }
-
+export default function QuizCard({
+  question,
+  selectedAnswer,
+  isChecked,
+  isCorrect,
+  onSelect,
+  onReport,
+}: QuizCardProps) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative">
       {/* 신고 버튼 */}
@@ -50,10 +38,14 @@ export default function QuizCard({ question, submitted, userAnswer, onSubmit, on
       {question.type === 'multiple_choice' && (
         <div className="space-y-2">
           {question.choices.map((choice, i) => {
-            let state: 'idle' | 'correct' | 'wrong' | 'unselected-correct' = 'idle'
-            if (submitted) {
+            let state: 'idle' | 'selected' | 'correct' | 'wrong' | 'unselected-correct' = 'idle'
+            if (isChecked) {
               if (choice === question.answer) state = 'unselected-correct'
-              if (choice === userAnswer) state = userAnswer === question.answer ? 'correct' : 'wrong'
+              if (choice === selectedAnswer) {
+                state = selectedAnswer === question.answer ? 'correct' : 'wrong'
+              }
+            } else if (choice === selectedAnswer) {
+              state = 'selected'
             }
             return (
               <ChoiceButton
@@ -61,8 +53,8 @@ export default function QuizCard({ question, submitted, userAnswer, onSubmit, on
                 choice={choice}
                 index={i}
                 state={state}
-                onClick={() => !submitted && onSubmit(choice)}
-                disabled={submitted}
+                onClick={() => onSelect(choice)}
+                disabled={false}  // 채점 후에도 클릭 가능 (답변 수정용)
               />
             )
           })}
@@ -72,56 +64,25 @@ export default function QuizCard({ question, submitted, userAnswer, onSubmit, on
       {/* 주관식 */}
       {question.type === 'short_answer' && (
         <div>
-          {!showAnswer ? (
-            <div className="flex gap-2">
-              <input
-                type="text"
-                className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-400"
-                placeholder="답을 입력하세요"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleShortAnswerSubmit()}
-              />
-              <button
-                onClick={handleShortAnswerSubmit}
-                disabled={!inputValue.trim()}
-                className="px-5 py-2.5 bg-blue-600 text-white text-sm rounded-xl disabled:opacity-40 hover:bg-blue-700 transition-colors"
-              >
-                제출
-              </button>
-            </div>
-          ) : (
-            <div>
-              <div className="bg-gray-50 rounded-xl p-4 mb-3">
-                <p className="text-xs text-gray-500 mb-1">정답</p>
-                <p className="text-sm font-semibold text-gray-800">{question.answer}</p>
-              </div>
-              {!submitted && (
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">맞았나요?</p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleSelfGrade(true)}
-                      className="flex-1 py-2 rounded-xl border border-green-400 text-green-700 bg-green-50 text-sm font-medium hover:bg-green-100 transition-colors"
-                    >
-                      ✓ 맞음
-                    </button>
-                    <button
-                      onClick={() => handleSelfGrade(false)}
-                      className="flex-1 py-2 rounded-xl border border-red-400 text-red-700 bg-red-50 text-sm font-medium hover:bg-red-100 transition-colors"
-                    >
-                      ✗ 틀림
-                    </button>
-                  </div>
-                </div>
-              )}
+          <input
+            type="text"
+            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-400 disabled:bg-gray-50 disabled:text-gray-500"
+            placeholder="답을 입력하세요"
+            value={selectedAnswer ?? ''}
+            onChange={(e) => onSelect(e.target.value)}
+            disabled={isChecked}
+          />
+          {isChecked && (
+            <div className="mt-3 bg-gray-50 rounded-xl p-3">
+              <p className="text-xs text-gray-500 mb-1">정답</p>
+              <p className="text-sm font-semibold text-gray-800">{question.answer}</p>
             </div>
           )}
         </div>
       )}
 
-      {/* 피드백 패널 */}
-      {submitted && (
+      {/* 피드백 패널 — 정답 확인 후에만 표시 */}
+      {isChecked && isCorrect !== undefined && (
         <FeedbackPanel
           isCorrect={isCorrect}
           correctAnswer={question.answer}

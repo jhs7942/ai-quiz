@@ -5,6 +5,7 @@ import ProgressBar from '../components/quiz/ProgressBar'
 import QuizCard from '../components/quiz/QuizCard'
 import QuestionNavigator from '../components/quiz/QuestionNavigator'
 import FeedbackModal from '../components/common/FeedbackModal'
+import Modal from '../components/common/Modal'
 import Toast from '../components/common/Toast'
 import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
@@ -15,16 +16,20 @@ export default function QuizPage() {
   const {
     questions,
     currentIndex,
-    answers,
-    answeredIds,
+    selectedAnswers,
+    scoredAnswers,
+    checkedIds,
     skippedIds,
-    submitAnswer,
+    selectAnswer,
+    checkAnswer,
     skipQuestion,
     goToQuestion,
   } = useQuizStore()
 
   const [feedbackTarget, setFeedbackTarget] = useState<{ questionIndex: number } | null>(null)
   const [toast, setToast] = useState('')
+  const [showExitConfirm, setShowExitConfirm] = useState(false)
+  const [showUnansweredPopup, setShowUnansweredPopup] = useState(false)
 
   if (questions.length === 0) {
     navigate('/')
@@ -32,12 +37,19 @@ export default function QuizPage() {
   }
 
   const currentQuestion = questions[currentIndex]
-  const isAnswered = answeredIds.includes(currentQuestion.id)
-  const answeredCount = answeredIds.length
+  const currentId = currentQuestion.id
+  const isChecked = checkedIds.includes(currentId)
+  const selectedAnswer = selectedAnswers[currentId]
+  const scored = scoredAnswers[currentId]
+  const isCorrect = scored?.isCorrect
 
-  // 퀴즈 ID는 문제의 출처 파일을 알 수 없어서 'unknown'으로 처리
-  // 실제로는 quizStore에서 quizId를 관리해야 하지만 현재는 단순화
-  const quizId = 'quiz'
+  const quizId = currentQuestion.quizId ?? 'quiz'
+  const checkedCount = checkedIds.length
+
+  // 미풀이 문제: 건너뛰었고 채점도 안 된 문제
+  const unansweredSkipped = skippedIds.filter((id) => !checkedIds.includes(id))
+
+  const isLastQuestion = currentIndex === questions.length - 1
 
   function handleNext() {
     if (currentIndex < questions.length - 1) {
@@ -52,16 +64,26 @@ export default function QuizPage() {
   }
 
   function handleSkip() {
-    skipQuestion(currentQuestion.id)
+    skipQuestion(currentId)
   }
 
-  function handleFinish() {
-    navigate('/result')
+  function handleCheck() {
+    checkAnswer(currentId)
   }
 
-  const isLastQuestion = currentIndex === questions.length - 1
-  const allAnswered = answeredIds.length + skippedIds.length >= questions.length
-  const canFinish = answeredIds.length > 0
+  function handleFinishClick() {
+    if (unansweredSkipped.length > 0) {
+      setShowUnansweredPopup(true)
+    } else {
+      navigate('/result')
+    }
+  }
+
+  function handleGoToFirstUnanswered() {
+    setShowUnansweredPopup(false)
+    const firstUnansweredIndex = questions.findIndex((q) => unansweredSkipped.includes(q.id))
+    if (firstUnansweredIndex !== -1) goToQuestion(firstUnansweredIndex)
+  }
 
   return (
     <div className="min-h-screen bg-[#F8F6F1]">
@@ -70,10 +92,10 @@ export default function QuizPage() {
         {/* 상단 진행 정보 */}
         <div className="flex items-center gap-4 mb-4 sm:mb-6">
           <div className="flex-1">
-            <ProgressBar current={answeredCount} total={questions.length} />
+            <ProgressBar current={checkedCount} total={questions.length} />
           </div>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => setShowExitConfirm(true)}
             className="text-sm text-gray-500 hover:text-gray-700 shrink-0 min-h-[44px] px-2"
           >
             나가기
@@ -83,16 +105,16 @@ export default function QuizPage() {
         <div className="flex gap-6">
           {/* 메인 퀴즈 영역 */}
           <div className="flex-1 min-w-0">
-            {/* 문제 번호 */}
             <p className="text-xs text-gray-500 mb-3">
               {currentIndex + 1} / {questions.length}
             </p>
 
             <QuizCard
               question={currentQuestion}
-              submitted={isAnswered}
-              userAnswer={answers[currentQuestion.id]}
-              onSubmit={(answer) => submitAnswer(currentQuestion.id, answer)}
+              selectedAnswer={selectedAnswer}
+              isChecked={isChecked}
+              isCorrect={isCorrect}
+              onSelect={(answer) => selectAnswer(currentId, answer)}
               onReport={() => setFeedbackTarget({ questionIndex: currentIndex })}
             />
 
@@ -107,7 +129,8 @@ export default function QuizPage() {
               </button>
 
               <div className="flex gap-2 flex-1 sm:flex-none justify-end">
-                {!isAnswered && (
+                {/* 건너뛰기 — 채점 전에만 */}
+                {!isChecked && (
                   <button
                     onClick={handleSkip}
                     className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
@@ -116,18 +139,32 @@ export default function QuizPage() {
                   </button>
                 )}
 
-                {isLastQuestion && canFinish ? (
+                {/* 정답 확인 — 채점 전, 답변 선택 시 활성화 */}
+                {!isChecked && (
                   <button
-                    onClick={handleFinish}
+                    onClick={handleCheck}
+                    disabled={!selectedAnswer}
+                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                  >
+                    정답 확인
+                  </button>
+                )}
+
+                {/* 결과 보기 — 마지막 문제 채점 완료 시 */}
+                {isChecked && isLastQuestion && (
+                  <button
+                    onClick={handleFinishClick}
                     className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >
                     결과 보기 →
                   </button>
-                ) : (
+                )}
+
+                {/* 다음 — 채점 완료 후, 마지막 문제 제외 */}
+                {isChecked && !isLastQuestion && (
                   <button
                     onClick={handleNext}
-                    disabled={currentIndex >= questions.length - 1}
-                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >
                     다음 →
                   </button>
@@ -140,24 +177,13 @@ export default function QuizPage() {
               <QuestionNavigator
                 total={questions.length}
                 currentIndex={currentIndex}
-                answeredIds={answeredIds}
+                answeredIds={checkedIds}
                 skippedIds={skippedIds}
                 questionIds={questions.map((q) => q.id)}
                 onNavigate={goToQuestion}
                 compact
               />
             </div>
-
-            {allAnswered && (
-              <div className="mt-4 text-center">
-                <button
-                  onClick={handleFinish}
-                  className="w-full sm:w-auto px-8 py-3 min-h-[44px] bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  결과 보기 →
-                </button>
-              </div>
-            )}
           </div>
 
           {/* 문제 번호 네비게이터 (데스크톱) */}
@@ -165,7 +191,7 @@ export default function QuizPage() {
             <QuestionNavigator
               total={questions.length}
               currentIndex={currentIndex}
-              answeredIds={answeredIds}
+              answeredIds={checkedIds}
               skippedIds={skippedIds}
               questionIds={questions.map((q) => q.id)}
               onNavigate={goToQuestion}
@@ -173,6 +199,52 @@ export default function QuizPage() {
           </div>
         </div>
       </div>
+
+      {/* 나가기 확인 팝업 */}
+      {showExitConfirm && (
+        <Modal onClose={() => setShowExitConfirm(false)}>
+          <h2 className="text-base font-bold text-gray-800 mb-2">퀴즈를 나가시겠습니까?</h2>
+          <p className="text-sm text-gray-500 mb-5">진행 상황이 사라집니다.</p>
+          <div className="flex gap-2 justify-end">
+            <button
+              onClick={() => setShowExitConfirm(false)}
+              className="px-4 py-2 rounded-full text-sm border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors"
+            >
+              계속 풀기
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="px-4 py-2 rounded-full text-sm bg-red-500 text-white hover:bg-red-600 transition-colors"
+            >
+              나가기
+            </button>
+          </div>
+        </Modal>
+      )}
+
+      {/* 미풀이 문제 팝업 */}
+      {showUnansweredPopup && (
+        <Modal onClose={() => setShowUnansweredPopup(false)}>
+          <h2 className="text-base font-bold text-gray-800 mb-2">아직 풀지 않은 문제가 있어요</h2>
+          <p className="text-sm text-gray-500 mb-5">
+            건너뛴 문제 {unansweredSkipped.length}개가 남아있습니다.
+          </p>
+          <div className="flex gap-2 justify-end">
+            <button
+              onClick={handleGoToFirstUnanswered}
+              className="px-4 py-2 rounded-full text-sm border border-blue-300 text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors"
+            >
+              문제 풀러 가기
+            </button>
+            <button
+              onClick={() => { setShowUnansweredPopup(false); navigate('/result') }}
+              className="px-4 py-2 rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            >
+              제출
+            </button>
+          </div>
+        </Modal>
+      )}
 
       {/* 신고 모달 */}
       {feedbackTarget !== null && userId && (
@@ -188,7 +260,6 @@ export default function QuizPage() {
         />
       )}
 
-      {/* 토스트 */}
       {toast && <Toast message={toast} onClose={() => setToast('')} />}
     </div>
   )

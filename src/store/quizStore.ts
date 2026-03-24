@@ -4,15 +4,16 @@ import type { Question, QuizSettings, QuizStore } from '../types'
 
 export const useQuizStore = create<QuizStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       selectedCategories: [],
       questionCount: 10,
       difficulty: 'all',
       shuffle: false,
       questions: [],
       currentIndex: 0,
-      answers: {},
-      answeredIds: [],
+      selectedAnswers: {},
+      scoredAnswers: {},
+      checkedIds: [],
       skippedIds: [],
       startedAt: null,
 
@@ -29,20 +30,60 @@ export const useQuizStore = create<QuizStore>()(
         set({
           questions,
           currentIndex: 0,
-          answers: {},
-          answeredIds: [],
+          selectedAnswers: {},
+          scoredAnswers: {},
+          checkedIds: [],
           skippedIds: [],
           startedAt: new Date().toISOString(),
         }),
 
-      submitAnswer: (questionId, answer) =>
+      // 답변 선택만 (채점 X) — 선택 변경 시 기존 채점 결과 초기화
+      selectAnswer: (questionId, answer) =>
+        set((state) => {
+          const { [questionId]: _s, ...restScored } = state.scoredAnswers
+          return {
+            selectedAnswers: { ...state.selectedAnswers, [questionId]: answer },
+            scoredAnswers: restScored,
+            checkedIds: state.checkedIds.filter((id) => id !== questionId),
+          }
+        }),
+
+      // 정답 확인 (채점 실행)
+      checkAnswer: (questionId) => {
+        const { questions, selectedAnswers } = get()
+        const question = questions.find((q) => q.id === questionId)
+        const userAnswer = selectedAnswers[questionId]
+        if (!question || !userAnswer) return
+
+        let isCorrect = false
+        if (question.type === 'multiple_choice') {
+          isCorrect = userAnswer === question.answer
+        } else {
+          // 주관식: 사용자 입력이 answer에 포함되면 정답 (대소문자 무시)
+          isCorrect = question.answer.toLowerCase().includes(userAnswer.trim().toLowerCase())
+        }
+
         set((state) => ({
-          answers: { ...state.answers, [questionId]: answer },
-          answeredIds: state.answeredIds.includes(questionId)
-            ? state.answeredIds
-            : [...state.answeredIds, questionId],
+          scoredAnswers: {
+            ...state.scoredAnswers,
+            [questionId]: { answer: userAnswer, isCorrect },
+          },
+          checkedIds: state.checkedIds.includes(questionId)
+            ? state.checkedIds
+            : [...state.checkedIds, questionId],
           skippedIds: state.skippedIds.filter((id) => id !== questionId),
-        })),
+        }))
+      },
+
+      // 채점 초기화 (이전 문제로 돌아가 답변 수정 시)
+      clearAnswer: (questionId) =>
+        set((state) => {
+          const { [questionId]: _s, ...restScored } = state.scoredAnswers
+          return {
+            scoredAnswers: restScored,
+            checkedIds: state.checkedIds.filter((id) => id !== questionId),
+          }
+        }),
 
       skipQuestion: (questionId) =>
         set((state) => ({
@@ -62,8 +103,9 @@ export const useQuizStore = create<QuizStore>()(
           shuffle: false,
           questions: [],
           currentIndex: 0,
-          answers: {},
-          answeredIds: [],
+          selectedAnswers: {},
+          scoredAnswers: {},
+          checkedIds: [],
           skippedIds: [],
           startedAt: null,
         }),

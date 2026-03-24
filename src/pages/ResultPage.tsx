@@ -8,12 +8,22 @@ import ResultChart from '../components/result/ResultChart'
 import ReviewCard from '../components/result/ReviewCard'
 import Toast from '../components/common/Toast'
 
-type Tab = 'all' | 'correct' | 'wrong'
+type Tab = 'all' | 'correct' | 'wrong' | 'skipped'
 
 export default function ResultPage() {
   const { userId } = useSession('/result')
   const navigate = useNavigate()
-  const { questions, answers, selectedCategories, difficulty, shuffle, startedAt, startQuiz, resetQuiz } = useQuizStore()
+  const {
+    questions,
+    scoredAnswers,
+    skippedIds,
+    selectedCategories,
+    difficulty,
+    shuffle,
+    startedAt,
+    startQuiz,
+    resetQuiz,
+  } = useQuizStore()
   const [tab, setTab] = useState<Tab>('all')
   const [toast, setToast] = useState('')
   const [saved, setSaved] = useState(false)
@@ -24,22 +34,32 @@ export default function ResultPage() {
   }
 
   const results = questions.map((q) => {
-    const userAnswer = answers[q.id]
-    const isCorrect =
-      userAnswer === '__correct__' || (userAnswer !== undefined && userAnswer !== '__wrong__' && userAnswer === q.answer)
-    return { question: q, userAnswer, isCorrect }
+    const scored = scoredAnswers[q.id]
+    const isSkipped = skippedIds.includes(q.id) && !scored
+    return {
+      question: q,
+      userAnswer: scored?.answer,
+      isCorrect: scored?.isCorrect ?? false,
+      isSkipped,
+    }
   })
 
+  const scoredResults = results.filter((r) => !r.isSkipped)
   const correctCount = results.filter((r) => r.isCorrect).length
-  const scorePercent = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0
+  const skippedCount = results.filter((r) => r.isSkipped).length
+  const wrongCount = scoredResults.length - correctCount
+  const scorePercent =
+    scoredResults.length > 0 ? Math.round((correctCount / scoredResults.length) * 100) : 0
 
   // DB 저장 (한 번만)
   useEffect(() => {
     if (saved || !userId || !startedAt) return
     setSaved(true)
+    const selectedTypes = [...new Set(questions.map((q) => q.type))]
     saveQuizSession({
       userId,
       categories: selectedCategories,
+      selectedTypes,
       totalQuestions: questions.length,
       correctCount,
       scorePercent,
@@ -49,7 +69,8 @@ export default function ResultPage() {
         .filter((r) => r.userAnswer !== undefined)
         .map((r) => ({
           questionId: r.question.id,
-          quizId: 'quiz',
+          quizId: r.question.quizId ?? 'quiz',
+          questionType: r.question.type,
           userAnswer: r.userAnswer!,
           isCorrect: r.isCorrect,
         })),
@@ -58,12 +79,13 @@ export default function ResultPage() {
 
   const filtered = results.filter((r) => {
     if (tab === 'correct') return r.isCorrect
-    if (tab === 'wrong') return !r.isCorrect
+    if (tab === 'wrong') return !r.isCorrect && !r.isSkipped
+    if (tab === 'skipped') return r.isSkipped
     return true
   })
 
   function handleRetryWrong() {
-    const wrongQuestions = results.filter((r) => !r.isCorrect).map((r) => r.question)
+    const wrongQuestions = results.filter((r) => !r.isCorrect && !r.isSkipped).map((r) => r.question)
     if (wrongQuestions.length === 0) return
     startQuiz(wrongQuestions)
     navigate('/quiz')
@@ -76,10 +98,20 @@ export default function ResultPage() {
   }
 
   function handleCopyResult() {
-    const text = `AI Quiz 결과: ${correctCount}/${questions.length} (${scorePercent}%)\n${
-      results.map((r, i) => `${i + 1}. ${r.isCorrect ? '✓' : '✗'} ${r.question.question.slice(0, 30)}...`).join('\n')
-    }`
+    const text = `AI Quiz 결과: ${correctCount}/${scoredResults.length} (${scorePercent}%)\n${results
+      .map((r, i) => {
+        const status = r.isSkipped ? '↷' : r.isCorrect ? '✓' : '✗'
+        return `${i + 1}. ${status} ${r.question.question.slice(0, 30)}...`
+      })
+      .join('\n')}`
     navigator.clipboard.writeText(text).then(() => setToast('결과가 클립보드에 복사되었습니다.'))
+  }
+
+  const TAB_LABELS: Record<Tab, string> = {
+    all: `전체 (${results.length})`,
+    correct: `맞은 (${correctCount})`,
+    wrong: `틀린 (${wrongCount})`,
+    skipped: `건너뛴 (${skippedCount})`,
   }
 
   return (
@@ -88,16 +120,21 @@ export default function ResultPage() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* 점수 카드 */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <ResultChart correct={correctCount} total={questions.length} />
+          <ResultChart correct={correctCount} total={scoredResults.length} />
           <div className="w-full sm:w-auto text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-800">
-              {correctCount} / {questions.length} 정답
+              {correctCount} / {scoredResults.length} 정답
             </h1>
-            <p className="text-gray-500 text-sm mt-1">정답률 {scorePercent}%</p>
+            <p className="text-gray-500 text-sm mt-1">
+              정답률 {scorePercent}%
+              {skippedCount > 0 && (
+                <span className="ml-2 text-gray-400">(건너뛴 문제 {skippedCount}개 제외)</span>
+              )}
+            </p>
             <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:flex-wrap">
               <button
                 onClick={handleRetryWrong}
-                disabled={correctCount === questions.length}
+                disabled={wrongCount === 0}
                 className="w-full sm:w-auto px-4 py-2 min-h-[44px] rounded-full text-sm border border-red-300 text-red-600 bg-red-50 hover:bg-red-100 disabled:opacity-40 transition-colors"
               >
                 오답만 다시 풀기
@@ -125,8 +162,8 @@ export default function ResultPage() {
         </div>
 
         {/* 탭 */}
-        <div className="flex gap-2 mb-4">
-          {(['all', 'correct', 'wrong'] as Tab[]).map((t) => (
+        <div className="flex gap-2 mb-4 flex-wrap">
+          {(['all', 'correct', 'wrong', 'skipped'] as Tab[]).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -136,19 +173,20 @@ export default function ResultPage() {
                   : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
               }`}
             >
-              {t === 'all' ? `전체 (${results.length})` : t === 'correct' ? `맞은 (${correctCount})` : `틀린 (${questions.length - correctCount})`}
+              {TAB_LABELS[t]}
             </button>
           ))}
         </div>
 
         {/* 문제 리뷰 */}
         <div className="space-y-3">
-          {filtered.map(({ question, userAnswer, isCorrect }) => (
+          {filtered.map(({ question, userAnswer, isCorrect, isSkipped }) => (
             <ReviewCard
               key={question.id}
               question={question}
               userAnswer={userAnswer}
               isCorrect={isCorrect}
+              isSkipped={isSkipped}
             />
           ))}
         </div>

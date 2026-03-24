@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ai-quiz</title>
+    <title>AI Quiz</title>
+    <script>
+      // SPA GitHub Pages: 404.html에서 저장한 경로로 이동
+      var redirect = sessionStorage.getItem('spa_redirect')
+      if (redirect) {
+        sessionStorage.removeItem('spa_redirect')
+        window.history.replaceState(null, '', '/ai-quiz' + redirect)
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
