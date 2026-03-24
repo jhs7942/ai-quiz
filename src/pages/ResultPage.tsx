@@ -87,36 +87,36 @@ export default function ResultPage() {
       <Header />
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* 점수 카드 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6 flex flex-col sm:flex-row items-center gap-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           <ResultChart correct={correctCount} total={questions.length} />
-          <div>
+          <div className="w-full sm:w-auto text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-800">
               {correctCount} / {questions.length} 정답
             </h1>
             <p className="text-gray-500 text-sm mt-1">정답률 {scorePercent}%</p>
-            <div className="flex gap-2 mt-4 flex-wrap">
+            <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:flex-wrap">
               <button
                 onClick={handleRetryWrong}
                 disabled={correctCount === questions.length}
-                className="px-4 py-2 rounded-full text-sm border border-red-300 text-red-600 bg-red-50 hover:bg-red-100 disabled:opacity-40 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 min-h-[44px] rounded-full text-sm border border-red-300 text-red-600 bg-red-50 hover:bg-red-100 disabled:opacity-40 transition-colors"
               >
                 오답만 다시 풀기
               </button>
               <button
                 onClick={handleRetryShuffle}
-                className="px-4 py-2 rounded-full text-sm border border-blue-300 text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 min-h-[44px] rounded-full text-sm border border-blue-300 text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors"
               >
                 같은 문제 다시 풀기
               </button>
               <button
                 onClick={() => { resetQuiz(); navigate('/') }}
-                className="px-4 py-2 rounded-full text-sm border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 min-h-[44px] rounded-full text-sm border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition-colors"
               >
                 새 퀴즈 생성
               </button>
               <button
                 onClick={handleCopyResult}
-                className="px-4 py-2 rounded-full text-sm border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-4 py-2 min-h-[44px] rounded-full text-sm border border-gray-200 text-gray-600 bg-white hover:bg-gray-50 transition-colors"
               >
                 📋 결과 복사
               </button>
@@ -130,13 +130,13 @@ export default function ResultPage() {
             <button
               key={t}
               onClick={() => setTab(t)}
-              className={`px-4 py-1.5 rounded-full text-sm border transition-all ${
+              className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 min-h-[44px] rounded-full text-xs sm:text-sm border transition-all ${
                 tab === t
                   ? 'bg-blue-600 text-white border-blue-600'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
               }`}
             >
-              {t === 'all' ? `전체 (${results.length})` : t === 'correct' ? `맞은 문제 (${correctCount})` : `틀린 문제 (${questions.length - correctCount})`}
+              {t === 'all' ? `전체 (${results.length})` : t === 'correct' ? `맞은 (${correctCount})` : `틀린 (${questions.length - correctCount})`}
             </button>
           ))}
         </div>

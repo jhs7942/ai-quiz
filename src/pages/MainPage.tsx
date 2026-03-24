@@ -72,7 +72,7 @@ export default function MainPage() {
           isOpen={drawerOpen}
           onClose={() => setDrawerOpen(false)}
         />
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 sm:p-5 lg:p-6">
           {loading ? (
             <div className="flex items-center justify-center h-64 text-gray-400">
               카테고리를 불러오는 중...
@@ -80,11 +80,14 @@ export default function MainPage() {
           ) : selectedCats.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-64 text-gray-400 gap-4">
               <span className="text-5xl">📚</span>
-              <p className="text-base font-medium">좌측에서 퀴즈 카테고리를 선택하세요</p>
+              <p className="text-base font-medium">
+                <span className="lg:hidden">☰ 메뉴에서 퀴즈 카테고리를 선택하세요</span>
+                <span className="hidden lg:inline">좌측에서 퀴즈 카테고리를 선택하세요</span>
+              </p>
               <p className="text-sm">여러 카테고리를 동시에 선택할 수 있습니다</p>
             </div>
           ) : (
-            <div className="max-w-xl">
+            <div className="w-full max-w-xl">
               <QuizSettingsPanel
                 settings={{ questionCount, difficulty, shuffle }}
                 maxQuestions={estimatedMax}

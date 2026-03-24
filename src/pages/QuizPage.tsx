@@ -66,15 +66,15 @@ export default function QuizPage() {
   return (
     <div className="min-h-screen bg-[#F8F6F1]">
       <Header />
-      <div className="max-w-5xl mx-auto px-4 py-6">
+      <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {/* 상단 진행 정보 */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-4 mb-4 sm:mb-6">
           <div className="flex-1">
             <ProgressBar current={answeredCount} total={questions.length} />
           </div>
           <button
             onClick={() => navigate('/')}
-            className="text-sm text-gray-500 hover:text-gray-700 shrink-0"
+            className="text-sm text-gray-500 hover:text-gray-700 shrink-0 min-h-[44px] px-2"
           >
             나가기
           </button>
@@ -82,7 +82,7 @@ export default function QuizPage() {
 
         <div className="flex gap-6">
           {/* 메인 퀴즈 영역 */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             {/* 문제 번호 */}
             <p className="text-xs text-gray-500 mb-3">
               {currentIndex + 1} / {questions.length}
@@ -97,20 +97,20 @@ export default function QuizPage() {
             />
 
             {/* 하단 네비게이션 */}
-            <div className="flex justify-between mt-4 gap-3">
+            <div className="flex justify-between mt-4 gap-2 sm:gap-3">
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="px-5 py-2.5 rounded-full text-sm border border-gray-200 bg-white text-gray-600 disabled:opacity-40 hover:border-gray-300 transition-colors"
+                className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 disabled:opacity-40 hover:border-gray-300 transition-colors"
               >
                 ← 이전
               </button>
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-1 sm:flex-none justify-end">
                 {!isAnswered && (
                   <button
                     onClick={handleSkip}
-                    className="px-5 py-2.5 rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
+                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
                   >
                     건너뛰기
                   </button>
@@ -119,7 +119,7 @@ export default function QuizPage() {
                 {isLastQuestion && canFinish ? (
                   <button
                     onClick={handleFinish}
-                    className="px-5 py-2.5 rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >
                     결과 보기 →
                   </button>
@@ -127,7 +127,7 @@ export default function QuizPage() {
                   <button
                     onClick={handleNext}
                     disabled={currentIndex >= questions.length - 1}
-                    className="px-5 py-2.5 rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
                   >
                     다음 →
                   </button>
@@ -135,11 +135,24 @@ export default function QuizPage() {
               </div>
             </div>
 
+            {/* 문제 번호 네비게이터 (모바일·태블릿) */}
+            <div className="mt-4 lg:hidden">
+              <QuestionNavigator
+                total={questions.length}
+                currentIndex={currentIndex}
+                answeredIds={answeredIds}
+                skippedIds={skippedIds}
+                questionIds={questions.map((q) => q.id)}
+                onNavigate={goToQuestion}
+                compact
+              />
+            </div>
+
             {allAnswered && (
               <div className="mt-4 text-center">
                 <button
                   onClick={handleFinish}
-                  className="px-8 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
+                  className="w-full sm:w-auto px-8 py-3 min-h-[44px] bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors"
                 >
                   결과 보기 →
                 </button>

@@ -16,7 +16,7 @@ export default function ReviewCard({ question, userAnswer, isCorrect }: ReviewCa
 
   return (
     <div
-      className={`p-4 rounded-xl border ${
+      className={`p-3 sm:p-4 rounded-xl border ${
         isCorrect ? 'border-green-200 bg-green-50/50' : 'border-red-200 bg-red-50/50'
       }`}
     >

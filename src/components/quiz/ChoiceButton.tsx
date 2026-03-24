@@ -27,7 +27,7 @@ export default function ChoiceButton({ choice, index, state, onClick, disabled }
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`w-full flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 disabled:cursor-default ${containerStyle}`}
+      className={`w-full flex items-center gap-3 p-4 min-h-[44px] rounded-xl border text-left transition-all duration-200 disabled:cursor-default ${containerStyle}`}
     >
       <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${labelStyle}`}>
         {LABELS[index]}
