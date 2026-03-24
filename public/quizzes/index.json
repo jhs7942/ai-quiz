@@ -5,7 +5,7 @@
     "description": "인공지능, 머신러닝, 딥러닝 핵심 개념",
     "icon": "🤖",
     "file": "ai-ml-dl-basics.json",
-    "questionCount": 47
+    "questionCount": 347
   },
   {
     "id": "activation-loss",
@@ -82,9 +82,17 @@
   {
     "id": "multimodal",
     "title": "멀티모달 & 파운데이션 모델",
-    "description": "CLIP, 지식 증류, 멀티모달 학습",
+    "description": "CLIP, 지식 증류, 파운데이션 모델, LLM",
     "icon": "🌐",
     "file": "multimodal.json",
-    "questionCount": 13
+    "questionCount": 313
+  },
+  {
+    "id": "numpy-pandas",
+    "title": "파이썬 넘파이/판다스",
+    "description": "NumPy 배열, Pandas DataFrame, 데이터 조작 코드",
+    "icon": "🐍",
+    "file": "numpy-pandas.json",
+    "questionCount": 160
   }
 ]
