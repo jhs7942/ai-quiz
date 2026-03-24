@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 인공지능(AI), 머신러닝(ML), 딥러닝(DL)의 포함 관계로 올바른 것은?",
+    "choices": ["AI ⊃ ML ⊃ DL", "ML ⊃ AI ⊃ DL", "DL ⊃ ML ⊃ AI", "AI ⊃ DL ⊃ ML"],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "AI는 인간 지능을 모방하는 기술 전체를 의미하며, ML은 데이터를 학습하는 방법론, DL은 다층 신경망을 사용하는 ML의 하위 분야입니다."
+  },
+  {
+    "id": 2,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "데이터를 분석 전에 여러 각도에서 관찰하고 이해하는 과정을 무엇이라 합니까?",
+    "answer": "탐색적 데이터 분석(EDA)",
+    "explanation": "EDA(Exploratory Data Analysis)는 시각화, 통계 요약 등을 통해 데이터의 특성과 패턴을 파악하는 과정입니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "지도 학습(Supervised Learning)의 특징으로 올바른 것은?",
+    "choices": ["레이블(정답)이 있는 데이터로 학습", "레이블 없이 패턴을 스스로 찾음", "보상 신호를 통해 행동을 학습", "사람의 피드백으로 선호도를 학습"],
+    "answer": "레이블(정답)이 있는 데이터로 학습",
+    "explanation": "지도 학습은 입력(X)과 정답 레이블(y)이 쌍으로 이루어진 학습 데이터를 사용합니다. 비지도 학습은 레이블 없이, 강화 학습은 보상 신호로 학습합니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "과적합(Overfitting)을 방지하는 기법이 아닌 것은?",
+    "choices": ["드롭아웃(Dropout)", "배치 정규화(Batch Normalization)", "학습률 증가", "데이터 증강(Data Augmentation)"],
+    "answer": "학습률 증가",
+    "explanation": "학습률을 무작정 높이면 손실이 발산하거나 최솟값을 지나칠 수 있어 과적합 방지와 무관합니다. 드롭아웃, 배치 정규화, 데이터 증강은 모두 과적합을 줄이는 대표적인 기법입니다."
+  },
+  {
+    "id": 5,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델이 훈련 데이터에는 잘 맞지만 새로운 데이터에는 성능이 낮은 현상을 무엇이라 합니까?",
+    "answer": "과적합(Overfitting)",
+    "explanation": "과적합은 모델이 훈련 데이터의 노이즈까지 학습하여 일반화 성능이 떨어지는 현상입니다. 반대로 훈련 데이터조차 제대로 학습하지 못하면 과소적합(Underfitting)이라 합니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 비지도 학습(Unsupervised Learning)에 해당하는 알고리즘은?",
+    "choices": ["K-평균 군집화(K-Means)", "서포트 벡터 머신(SVM)", "랜덤 포레스트(Random Forest)", "로지스틱 회귀(Logistic Regression)"],
+    "answer": "K-평균 군집화(K-Means)",
+    "explanation": "K-Means는 레이블 없이 데이터를 K개의 클러스터로 나누는 비지도 학습 알고리즘입니다. SVM, Random Forest, Logistic Regression은 모두 지도 학습 알고리즘입니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "다음 손실 함수 중 이진 분류에 가장 적합한 것은?",
+    "choices": ["Binary Cross-Entropy", "Mean Squared Error(MSE)", "Mean Absolute Error(MAE)", "Hinge Loss"],
+    "answer": "Binary Cross-Entropy",
+    "explanation": "Binary Cross-Entropy는 이진 분류에서 확률 출력과 실제 레이블(0 또는 1) 간의 차이를 측정하는 손실 함수입니다. MSE/MAE는 주로 회귀에, Hinge Loss는 SVM에 사용됩니다."
+  },
+  {
+    "id": 8,
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "분류 모델의 성능을 평가할 때 정밀도(Precision)와 재현율(Recall)의 조화평균을 나타내는 지표는?",
+    "answer": "F1 Score",
+    "explanation": "F1 Score = 2 × (Precision × Recall) / (Precision + Recall)로 정의됩니다. 두 지표 중 하나가 낮으면 F1 Score도 낮아지므로, 불균형 데이터셋 평가에 특히 유용합니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "강화 학습(Reinforcement Learning)에서 에이전트가 행동을 선택하는 기준이 되는 것은?",
+    "choices": ["보상(Reward)", "레이블(Label)", "클러스터(Cluster)", "손실 함수(Loss Function)"],
+    "answer": "보상(Reward)",
+    "explanation": "강화 학습에서 에이전트는 환경과 상호작용하면서 보상을 최대화하는 방향으로 정책(Policy)을 학습합니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전이 학습(Transfer Learning)의 핵심 아이디어는?",
+    "choices": [
+      "사전 학습된 모델의 가중치를 새 태스크에 활용",
+      "여러 모델의 예측을 평균 내어 성능 향상",
+      "데이터를 합성하여 학습 데이터 양을 늘림",
+      "모델을 더 작은 모델로 압축하여 배포"
+    ],
+    "answer": "사전 학습된 모델의 가중치를 새 태스크에 활용",
+    "explanation": "전이 학습은 ImageNet 등 대규모 데이터로 사전 학습된 모델을 새로운 태스크에 맞게 Fine-tuning하는 방법입니다. 데이터가 적을 때 특히 효과적입니다."
+  }
+]

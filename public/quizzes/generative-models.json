@@ -1,0 +1,324 @@
+[
+  {
+    "id": 36,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "생성자와 판별자가 서로 적대적으로 경쟁하며 학습하여 사실적인 이미지를 생성하는 모델은?",
+    "choices": [
+      "RNN",
+      "GAN (생성적 적대 신경망)",
+      "ResNet",
+      "VGGNet"
+    ],
+    "answer": "GAN (생성적 적대 신경망)",
+    "explanation": "GAN은 가짜를 만드는 생성자와 이를 구별하는 판별자의 경쟁을 통해 정교한 이미지를 생성합니다."
+  },
+  {
+    "id": 37,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "노이즈를 단계적으로 추가했다가 이를 다시 제거하는 과정을 학습하여 고품질 이미지를 생성하는 최근의 주류 모델은?",
+    "choices": [
+      "GAN",
+      "Diffusion Model",
+      "LSTM",
+      "AlexNet"
+    ],
+    "answer": "Diffusion Model",
+    "explanation": "디퓨전 모델은 GAN보다 학습이 안정적이며 다양하고 높은 품질의 샘플을 생성할 수 있어 최신 이미지 생성 AI의 핵심이 되었습니다."
+  },
+  {
+    "id": 38,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Diffusion 연산을 픽셀 공간이 아닌 압축된 공간에서 수행하여 속도와 효율성을 높인 모델은?",
+    "choices": [
+      "ViT",
+      "LDM (Latent Diffusion Model)",
+      "SNN",
+      "CNN"
+    ],
+    "answer": "LDM (Latent Diffusion Model)",
+    "explanation": "LDM은 고해상도 이미지를 잠재 공간(Latent Space)으로 압축하여 계산량을 대폭 줄이면서도 품질을 유지합니다."
+  },
+  {
+    "id": 39,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LDM 구조에 CLIP 텍스트 인코더를 결합하여 텍스트-이미지 생성을 대중화시킨 오픈소스 모델은?",
+    "choices": [
+      "DALL-E",
+      "Stable Diffusion",
+      "Midjourney",
+      "GAN"
+    ],
+    "answer": "Stable Diffusion",
+    "explanation": "스테이블 디퓨전은 오픈소스로 공개되어 누구나 소비자용 GPU에서 텍스트로 이미지를 생성할 수 있게 생태계를 확장했습니다."
+  },
+  {
+    "id": 42,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "지식 증류를 적용하여 초고속으로 이미지를 생성할 수 있게 설계된 경량 Stable Diffusion 모델은?",
+    "choices": [
+      "LDM",
+      "SANA",
+      "GAN",
+      "ViT"
+    ],
+    "answer": "SANA",
+    "explanation": "SANA는 모델 경량화 기술을 통해 기존 모델 대비 생성 속도를 10배 이상 향상시킨 최신 생성 모델입니다."
+  },
+  {
+    "id": 91,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "GAN 학습 시 발생하는 고질적인 문제 중 하나로, 생성자가 유사한 샘플만 만드는 현상은?",
+    "choices": [
+      "Dying ReLU",
+      "Mode Collapse",
+      "Vanishing Gradient",
+      "Catastrophic Forgetting"
+    ],
+    "answer": "Mode Collapse",
+    "explanation": "모드 붕괴(Mode Collapse)는 생성자가 판별자를 속이기 쉬운 특정 데이터만 반복 생성하는 현상입니다."
+  },
+  {
+    "id": 92,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Diffusion Model에서 데이터에 가우시안 노이즈를 단계적으로 추가하는 과정은?",
+    "choices": [
+      "순방향 (Forward Process)",
+      "역방향 (Reverse Process)",
+      "합성곱 과정",
+      "풀링 과정"
+    ],
+    "answer": "순방향 (Forward Process)",
+    "explanation": "순방향 과정은 깨끗한 데이터에 노이즈를 섞는 과정이며, 모델은 이를 복원하는 역과정을 학습합니다."
+  },
+  {
+    "id": 93,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "잠재 공간(Latent Space)에서 확산 과정을 수행할 때의 이점은?",
+    "choices": [
+      "이미지 해상도가 낮아짐",
+      "연산량 대폭 절감 및 속도 향상",
+      "정답 데이터가 필요 없음",
+      "모드 붕괴를 유발함"
+    ],
+    "answer": "연산량 대폭 절감 및 속도 향상",
+    "explanation": "픽셀 단위가 아닌 압축된 공간에서 작업하므로 연산 효율이 매우 높습니다."
+  },
+  {
+    "id": 94,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Stable Diffusion에서 텍스트 조건을 입력받기 위해 사용하는 핵심 컴포넌트는?",
+    "choices": [
+      "VGG 인코더",
+      "CLIP 텍스트 인코더",
+      "ResNet 백본",
+      "Softmax 출력층"
+    ],
+    "answer": "CLIP 텍스트 인코더",
+    "explanation": "CLIP은 텍스트 프롬프트를 이해하여 이미지 생성 과정을 가이드합니다."
+  },
+  {
+    "id": 95,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "SANA 모델이 기존 모델 대비 가지는 주요 강점은?",
+    "choices": [
+      "가장 많은 파라미터를 가짐",
+      "초고속 경량 이미지 생성",
+      "훈련 시간이 가장 김",
+      "텍스트를 입력받지 못함"
+    ],
+    "answer": "초고속 경량 이미지 생성",
+    "explanation": "SANA는 지식 증류 기술 등을 적용해 모바일 기기에서도 실행 가능할 정도로 속도를 개선했습니다."
+  },
+  {
+    "id": 130,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "GAN의 학습이 어려운 이유로 '생성자-판별자 균형' 외에 언급된 것은?",
+    "choices": [
+      "학습 데이터가 부족하기 때문",
+      "학습의 불안정성 (Mode Collapse)",
+      "연산 자원이 전혀 필요 없기 때문",
+      "활성화 함수가 없기 때문"
+    ],
+    "answer": "학습의 불안정성 (Mode Collapse)",
+    "explanation": "GAN은 생성자와 판별자의 학습 균형을 맞추기 어렵고, 특정 샘플만 반복 생성하는 모드 붕괴 문제가 자주 발생합니다."
+  },
+  {
+    "id": 131,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Diffusion Model의 '역방향(Reverse Process)' 과정에서 모델이 학습하는 것은?",
+    "choices": [
+      "데이터에 노이즈를 추가하는 방법",
+      "노이즈에서 원본을 복원(제거)하는 과정",
+      "판별자를 속이는 방법",
+      "텍스트를 숫자로 변환하는 방법"
+    ],
+    "answer": "노이즈에서 원본을 복원(제거)하는 과정",
+    "explanation": "역방향 과정은 노이즈로부터 점진적으로 원본 데이터를 복원해내는 과정을 학습하여 이미지를 생성합니다."
+  },
+  {
+    "id": 132,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LDM(Latent Diffusion Model)이 연산량을 대폭 절감할 수 있는 이유는?",
+    "choices": [
+      "픽셀 공간이 아닌 잠재 공간에서 확산을 수행하기 때문",
+      "텍스트 인코더를 사용하지 않기 때문",
+      "판별자를 제거했기 때문",
+      "데이터 증강을 하지 않기 때문"
+    ],
+    "answer": "픽셀 공간이 아닌 잠재 공간에서 확산을 수행하기 때문",
+    "explanation": "LDM은 이미지를 압축한 잠재 공간에서 연산을 수행하여 고해상도 이미지 처리 속도를 수십 배 높였습니다."
+  },
+  {
+    "id": 133,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Stable Diffusion이 이미지 생성 AI 대중화를 이끈 결정적 요인은?",
+    "choices": [
+      "유료 서비스로만 제공되었기 때문",
+      "오픈소스로 공개되어 생태계가 풍부해졌기 때문",
+      "가장 많은 파라미터를 가졌기 때문",
+      "추론 속도가 가장 느리기 때문"
+    ],
+    "answer": "오픈소스로 공개되어 생태계가 풍부해졌기 때문",
+    "explanation": "Stable Diffusion은 오픈소스로 공개되어 전 세계 커뮤니티가 기술을 발전시키고 대중화되는 계기가 되었습니다."
+  },
+  {
+    "id": 150,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "SANA 모델이 지식 증류를 통해 얻은 구체적인 성과는?",
+    "choices": [
+      "기존 대비 생성 속도 10배 이상 향상",
+      "최고 품질의 완벽한 이미지 생성",
+      "데이터 증강 생략 가능",
+      "텍스트 입력 없이 생성 가능"
+    ],
+    "answer": "기존 대비 생성 속도 10배 이상 향상",
+    "explanation": "SANA는 지식 증류를 통해 모델을 경량화하여 기존 대비 10배 이상의 초고속 생성을 달성했습니다."
+  },
+  {
+    "id": 198,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Diffusion Model의 역방향(Reverse) 과정에서 모델이 수행하는 핵심 작업은?",
+    "choices": [
+      "원본에 노이즈 추가",
+      "노이즈에서 원본 복원 학습",
+      "이미지 회전 증강",
+      "판별자와의 경쟁"
+    ],
+    "answer": "노이즈에서 원본 복원 학습",
+    "explanation": "디퓨전 모델은 노이즈가 섞인 데이터에서 단계적으로 노이즈를 제거하여 깨끗한 이미지를 생성하는 법을 배웁니다."
+  },
+  {
+    "id": 199,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LDM(Latent Diffusion Model)이 픽셀 공간이 아닌 잠재 공간에서 연산하는 이유는?",
+    "choices": [
+      "고품질을 포기하기 위해",
+      "연산량 대폭 절감 및 속도 개선",
+      "데이터 증강 방해",
+      "보상 설계를 쉽게 하기 위해"
+    ],
+    "answer": "연산량 대폭 절감 및 속도 개선",
+    "explanation": "LDM은 이미지를 압축한 잠재 공간에서 확산 과정을 수행하여 학습과 추론 속도를 수십 배 높였습니다."
+  },
+  {
+    "id": 233,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "생성 모델 중 노이즈를 단계적으로 제거하며 고품질 이미지를 생성하는 모델은?",
+    "choices": [
+      "GAN",
+      "Diffusion 모델",
+      "PCA",
+      "Linear Regression"
+    ],
+    "answer": "Diffusion 모델",
+    "explanation": "Diffusion 모델은 GAN보다 학습이 안정적이며 모드 붕괴 문제가 거의 없습니다."
+  },
+  {
+    "id": 274,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "GAN과 비교했을 때 Diffusion 모델이 가지는 기술적 특징은?",
+    "choices": [
+      "생성자와 판별자의 경쟁",
+      "단계적 노이즈 제거 과정 학습",
+      "매우 빠른 생성 속도",
+      "학습의 불안정성"
+    ],
+    "answer": "단계적 노이즈 제거 과정 학습",
+    "explanation": "Diffusion 모델은 노이즈를 단계적으로 복원하는 과정을 학습하여 GAN보다 안정적으로 고품질 이미지를 만듭니다."
+  },
+  {
+    "id": 350,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "생성 모델 중 GAN과 Diffusion의 가장 큰 차이점은?",
+    "choices": [
+      "GAN은 무조건 흑백만 만든다",
+      "Diffusion은 단계적인 노이즈 제거를 학습한다",
+      "GAN은 학습이 매우 안정적이다",
+      "Diffusion은 모드 붕괴 문제가 매우 심하다"
+    ],
+    "answer": "Diffusion은 단계적인 노이즈 제거를 학습한다",
+    "explanation": "Diffusion 모델은 GAN의 경쟁 방식과 달리 노이즈를 단계적으로 복원하는 과정을 학습합니다."
+  },
+  {
+    "id": 386,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "생성 모델 중 생성자(Generator)와 판별자(Discriminator)가 서로 경쟁하며 발전하는 모델은?",
+    "choices": [
+      "Diffusion",
+      "GAN",
+      "RNN",
+      "CLIP"
+    ],
+    "answer": "GAN",
+    "explanation": "GAN은 두 모델의 적대적인 경쟁을 통해 실제와 유사한 데이터를 생성해 나갑니다. [24]"
+  },
+  {
+    "id": 387,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "노이즈를 단계적으로 추가했다가 다시 이를 복원하는 과정을 학습하는 최신 생성 모델은?",
+    "choices": [
+      "CNN",
+      "GAN",
+      "Diffusion 모델",
+      "K-Means"
+    ],
+    "answer": "Diffusion 모델",
+    "explanation": "Diffusion 모델은 단계적인 노이즈 제거 과정을 통해 고품질의 이미지를 생성합니다. [24]"
+  },
+  {
+    "id": 389,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "텍스트를 입력하면 이미지를 생성하는 기술(Text-to-Image)의 대표적인 응용 모델은?",
+    "choices": [
+      "Stable Diffusion",
+      "StandardScaler",
+      "Linear Probing",
+      "K-Fold"
+    ],
+    "answer": "Stable Diffusion",
+    "explanation": "Stable Diffusion은 텍스트 조건에 따라 이미지를 생성하는 대표적인 확산 기반 모델입니다. [25]"
+  }
+]

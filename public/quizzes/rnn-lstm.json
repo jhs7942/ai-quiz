@@ -1,0 +1,422 @@
+[
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN이 시퀀스 데이터 학습 시 이전 타임스텝의 정보를 현재로 전달하기 위해 유지하는 상태는?",
+    "choices": [
+      "Cell State",
+      "Hidden State (은닉 상태)",
+      "Input Gate",
+      "Forget Gate"
+    ],
+    "answer": "Hidden State (은닉 상태)",
+    "explanation": "RNN은 은닉 상태라는 일종의 '기억' 저장소를 통해 과거의 정보를 현재 연산에 반영하여 연속적인 데이터를 처리합니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM에서 불필요한 과거 정보를 얼마나 버릴지 결정하는 게이트는 무엇입니까?",
+    "choices": [
+      "Input gate",
+      "Output gate",
+      "Forget gate",
+      "Update gate"
+    ],
+    "answer": "Forget gate",
+    "explanation": "삭제 게이트(Forget gate)는 시그모이드 함수를 통해 과거의 정보를 망각할지 유지할지를 결정하여 장기 의존성 문제를 관리합니다."
+  },
+  {
+    "id": 26,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "기존의 RNN과 비교하여 LSTM이 추가로 갖는, 장기 기억을 보존하기 위한 경로는?",
+    "choices": [
+      "Hidden State",
+      "Cell State",
+      "Bias",
+      "Activation"
+    ],
+    "answer": "Cell State",
+    "explanation": "LSTM은 셀 상태(Cell State)라는 별도의 경로를 통해 그래디언트가 잘 흐르게 하여 먼 과거의 정보도 잘 보존합니다."
+  },
+  {
+    "id": 45,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN 기반 인코더-디코더 구조로 가변 길이 입력을 가변 길이 출력으로 바꾸는(기계 번역 등) 구조는?",
+    "choices": [
+      "ViT",
+      "Seq2Seq",
+      "CNN",
+      "MLP"
+    ],
+    "answer": "Seq2Seq",
+    "explanation": "Sequence-to-Sequence 구조는 문장을 입력받아 문장을 출력하는 번역 등의 작업에 최적화된 RNN의 확장 구조입니다."
+  },
+  {
+    "id": 58,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN/LSTM 기반의 Seq2Seq 모델이 가진 '병렬화 불가' 한계를 극복하고 등장한 모델 계열은?",
+    "choices": [
+      "CNN 계열",
+      "Transformer 계열",
+      "Perceptron 계열",
+      "ANN 계열"
+    ],
+    "answer": "Transformer 계열",
+    "explanation": "Transformer는 RNN의 장기 의존성 및 병렬화 문제를 Attention Mechanism으로 해결하며 진화했습니다."
+  },
+  {
+    "id": 79,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN에서 시퀀스의 모든 타임스텝이 공유하는 요소는?",
+    "choices": [
+      "입력 데이터",
+      "가중치 (Weight)",
+      "학습률",
+      "정답 레이블"
+    ],
+    "answer": "가중치 (Weight)",
+    "explanation": "RNN은 모든 타임스텝에서 가중치를 공유하여 파라미터를 효율적으로 관리합니다."
+  },
+  {
+    "id": 80,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM의 입력 게이트(Input gate)가 수행하는 역할은?",
+    "choices": [
+      "과거 정보를 얼마나 버릴지 결정",
+      "현재 정보를 얼마나 기억할지 결정",
+      "다음 은닉 상태로 얼마나 보낼지 결정",
+      "기울기를 0으로 초기화"
+    ],
+    "answer": "현재 정보를 얼마나 기억할지 결정",
+    "explanation": "입력 게이트는 현재 입력된 정보 중 중요도를 판단하여 셀 상태에 반영할 양을 결정합니다."
+  },
+  {
+    "id": 118,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN이 가진 근본적인 한계로 인해 병렬 처리가 어려운 이유는?",
+    "choices": [
+      "가중치를 모든 타임스텝에서 공유하기 때문",
+      "순차적으로 처리해야 하는 구조적 특성 때문",
+      "활성화 함수로 tanh를 사용하기 때문",
+      "손실 함수 계산이 복잡하기 때문"
+    ],
+    "answer": "순차적으로 처리해야 하는 구조적 특성 때문",
+    "explanation": "RNN은 이전 상태값이 다음 연산의 입력으로 들어가야 하므로 병렬화가 불가능하고 학습이 느립니다."
+  },
+  {
+    "id": 119,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM에서 '후보값'을 계산할 때 사용되는 활성화 함수는?",
+    "choices": [
+      "Sigmoid",
+      "Softmax",
+      "tanh",
+      "ReLU"
+    ],
+    "answer": "tanh",
+    "explanation": "LSTM의 후보값(candidate value)은 tanh 함수를 거쳐 (-1, 1) 사이의 값으로 계산됩니다."
+  },
+  {
+    "id": 145,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM의 세 가지 게이트(Forget, Input, Output)에서 공통적으로 사용하는 활성화 함수는?",
+    "choices": [
+      "ReLU",
+      "Sigmoid",
+      "tanh",
+      "Softmax"
+    ],
+    "answer": "Sigmoid",
+    "explanation": "LSTM의 게이트들은 정보의 흐름을 조절하기 위해 (0, 1) 사이 값을 출력하는 시그모이드 함수를 공통적으로 사용합니다."
+  },
+  {
+    "id": 162,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Seq2Seq 모델의 특징 중 가변적인 입력을 가변적인 출력으로 처리하는 대표적인 사례는?",
+    "choices": [
+      "이미지 분류",
+      "기계 번역",
+      "단순 선형 회귀",
+      "데이터 증강"
+    ],
+    "answer": "기계 번역",
+    "explanation": "Seq2Seq는 RNN/LSTM 기반의 인코더-디코더 구조를 사용하여 기계 번역과 같은 가변 입출력 작업을 처리합니다."
+  },
+  {
+    "id": 163,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "현재 LLM의 토대가 된 Transformer는 어떤 메커니즘을 사용하여 진화했습니까?",
+    "choices": [
+      "합성곱 메커니즘",
+      "어텐션(Attention) 메커니즘",
+      "랜덤 포레스트 메커니즘",
+      "역전파 생략 메커니즘"
+    ],
+    "answer": "어텐션(Attention) 메커니즘",
+    "explanation": "RNN의 장기 의존성 한계를 극복하기 위해 어텐션 메커니즘을 도입한 Transformer가 현재 LLM의 기반이 되었습니다."
+  },
+  {
+    "id": 189,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN이 연속 데이터 처리를 위해 유지하는 '기억'을 의미하는 값은?",
+    "choices": [
+      "가중치 텐서",
+      "Hidden State(은닉 상태)",
+      "학습률 스케줄",
+      "라벨 벡터"
+    ],
+    "answer": "Hidden State(은닉 상태)",
+    "explanation": "RNN은 이전 타임스텝의 정보를 현재 입력과 함께 처리하여 '은닉 상태'에 기억을 저장합니다."
+  },
+  {
+    "id": 190,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM의 Forget gate가 수행하는 역할은 무엇입니까?",
+    "choices": [
+      "새 정보를 무조건 기억",
+      "과거 셀 상태 정보를 얼마나 버릴지 결정",
+      "출력층 뉴런 비활성화",
+      "데이터 증강 수행"
+    ],
+    "answer": "과거 셀 상태 정보를 얼마나 버릴지 결정",
+    "explanation": "삭제 게이트(Forget gate)는 시그모이드를 사용하여 과거의 정보 중 어떤 것을 잊을지 정밀 제어합니다."
+  },
+  {
+    "id": 226,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "시계열이나 텍스트처럼 순서가 중요한 데이터를 처리하기에 가장 적합한 모델은?",
+    "choices": [
+      "기본 퍼셉트론",
+      "CNN",
+      "RNN",
+      "K-Means"
+    ],
+    "answer": "RNN",
+    "explanation": "RNN은 과거의 정보를 현재 데이터와 함께 처리하는 순환 구조를 가집니다."
+  },
+  {
+    "id": 227,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "기존 RNN의 단기 기억 한계(장기의존성 문제)를 해결하기 위해 설계된 모델은?",
+    "choices": [
+      "MLP",
+      "AlexNet",
+      "LSTM",
+      "VGGNet"
+    ],
+    "answer": "LSTM",
+    "explanation": "LSTM은 셀 상태(Cell State)와 게이트 구조를 통해 중요한 정보를 오래 기억합니다."
+  },
+  {
+    "id": 228,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM에서 과거의 기억 중 어떤 정보를 삭제할지 결정하는 게이트는?",
+    "choices": [
+      "입력 게이트",
+      "망각 게이트(Forget Gate)",
+      "출력 게이트",
+      "업데이트 게이트"
+    ],
+    "answer": "망각 게이트(Forget Gate)",
+    "explanation": "망각 게이트는 불필요한 과거 정보를 버리고 셀 상태를 정돈하는 역할을 합니다."
+  },
+  {
+    "id": 263,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "순환 신경망(RNN)이 과거의 긴 정보를 기억하지 못하는 고질적인 문제는?",
+    "choices": [
+      "다중공선성 문제",
+      "장기의존성 문제",
+      "XOR 문제",
+      "차원의 저주"
+    ],
+    "answer": "장기의존성 문제",
+    "explanation": "RNN은 층이 길어질수록 앞쪽의 정보를 잊어버리는 장기의존성 문제를 가지고 있습니다."
+  },
+  {
+    "id": 264,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM에서 장기 기억 정보를 손실 없이 끝까지 전달하는 통로의 이름은?",
+    "choices": [
+      "Hidden State",
+      "Cell State",
+      "Forget Gate",
+      "Input Gate"
+    ],
+    "answer": "Cell State",
+    "explanation": "Cell State는 복잡한 비선형 연산 없이 정보가 흐르도록 설계되어 장기 기억 보존에 핵심 역할을 합니다."
+  },
+  {
+    "id": 277,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "가변 길이의 입력을 받아 가변 길이의 출력을 내는 LSTM 기반의 인코더-디코더 구조는?",
+    "choices": [
+      "Seq2Seq",
+      "CNN",
+      "PCA",
+      "MLP"
+    ],
+    "answer": "Seq2Seq",
+    "explanation": "Seq2Seq는 입력 정보를 압축하는 인코더와 출력하는 디코더를 나눠 가변적인 데이터를 처리합니다."
+  },
+  {
+    "id": 324,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "순서가 정보 전달에 치명적인 데이터(예: 문장, 날씨)를 부르는 용어는?",
+    "choices": [
+      "정형 데이터",
+      "이미지 데이터",
+      "순차적 데이터(Sequential Data)",
+      "무작위 데이터"
+    ],
+    "answer": "순차적 데이터(Sequential Data)",
+    "explanation": "순차적 데이터는 순서가 바뀌면 의미가 달라지는 텍스트, 음성, 시계열 등을 의미합니다."
+  },
+  {
+    "id": 325,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM 게이트 중 새로운 정보를 얼마나 기억할지 결정하는 게이트는?",
+    "choices": [
+      "망각 게이트",
+      "입력 게이트(Input Gate)",
+      "출력 게이트",
+      "중심 게이트"
+    ],
+    "answer": "입력 게이트(Input Gate)",
+    "explanation": "입력 게이트는 현재 시점의 정보 중 어떤 것을 장기 기억(셀 상태)에 저장할지 결정합니다."
+  },
+  {
+    "id": 363,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "RNN의 은닉층에서 사용되는 tanh 활성화 함수의 출력 범위는 어떻게 됩니까?",
+    "choices": [
+      "0에서 1 사이",
+      "-1에서 1 사이",
+      "0에서 무한대 사이",
+      "전체 실수 범위"
+    ],
+    "answer": "-1에서 1 사이",
+    "explanation": "tanh 함수는 입력값을 -1과 1 사이의 값으로 압축시켜 0을 중심으로 대칭을 이룹니다. [9, 11]"
+  },
+  {
+    "id": 379,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "순차적 데이터를 학습할 때 과거의 정보가 현재와 미래의 결과에 영향을 주는 성질을 무엇이라 합니까?",
+    "choices": [
+      "장기의존성(Long-term dependency)",
+      "다중공선성",
+      "차원의 저주",
+      "가중치 공유"
+    ],
+    "answer": "장기의존성(Long-term dependency)",
+    "explanation": "과거의 정보가 순차적으로 이어지며 현재 데이터 해석에 영향을 미치는 특징을 장기의존성이라 합니다. [18]"
+  },
+  {
+    "id": 380,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "RNN에서 하나의 셀(Cell)을 모든 타임스텝에서 반복 재사용하여 얻는 가장 큰 이점은?",
+    "choices": [
+      "이미지 크기 감소",
+      "압도적인 모델 효율성(가중치 공유)",
+      "데이터 증강 효과",
+      "이상치 자동 제거"
+    ],
+    "answer": "압도적인 모델 효율성(가중치 공유)",
+    "explanation": "문장이 아무리 길어도 학습할 가중치 세트가 하나이므로 모델이 매우 가볍고 효율적입니다. [19]"
+  },
+  {
+    "id": 381,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM 게이트들이 정보를 통과시킬지 차단할지를 결정하기 위해 사용하는 활성화 함수는?",
+    "choices": [
+      "ReLU",
+      "tanh",
+      "시그모이드(Sigmoid)",
+      "Linear"
+    ],
+    "answer": "시그모이드(Sigmoid)",
+    "explanation": "시그모이드는 0~1 사이의 값을 출력하여 정보의 흐름을 조절하는 스위치 역할을 하기에 적합합니다. [20]"
+  },
+  {
+    "id": 382,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM 구조에서 불필요한 과거 기억을 제거하는 역할을 담당하는 게이트는?",
+    "choices": [
+      "망각 게이트(Forget Gate)",
+      "입력 게이트",
+      "출력 게이트",
+      "업데이트 게이트"
+    ],
+    "answer": "망각 게이트(Forget Gate)",
+    "explanation": "망각 게이트는 현재 상황에서 필요 없는 장기 기억을 선별하여 지워주는 역할을 합니다. [21]"
+  },
+  {
+    "id": 383,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM 구조에서 새로운 정보 중 어떤 것을 장기 기억(셀 상태)에 저장할지 결정하는 게이트는?",
+    "choices": [
+      "망각 게이트",
+      "입력 게이트(Input Gate)",
+      "출력 게이트",
+      "인코더 게이트"
+    ],
+    "answer": "입력 게이트(Input Gate)",
+    "explanation": "입력 게이트는 현재 시점의 새로운 정보 중 중요한 것을 골라 장기 기억을 업데이트합니다. [21]"
+  },
+  {
+    "id": 384,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "LSTM 셀 내부에서 '내용과 방향'을 표현하는 정보 생성 단계에서 주로 쓰이는 함수는?",
+    "choices": [
+      "Sigmoid",
+      "tanh",
+      "ReLU",
+      "Softmax"
+    ],
+    "answer": "tanh",
+    "explanation": "내용과 방향을 담은 후보 정보를 만들 때는 -1에서 1 사이를 출력하는 tanh가 적합합니다. [21]"
+  },
+  {
+    "id": 385,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "입력을 받는 역할과 출력을 내는 역할을 나누어 기계 번역 등 가변 길이를 처리하는 LSTM 기반 구조는?",
+    "choices": [
+      "MLP",
+      "CNN",
+      "Seq2Seq",
+      "PCA"
+    ],
+    "answer": "Seq2Seq",
+    "explanation": "Seq2Seq는 인코더와 디코더를 나누어 가변적인 입력과 출력을 유연하게 처리합니다. [22, 23]"
+  }
+]

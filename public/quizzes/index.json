@@ -1,0 +1,90 @@
+[
+  {
+    "id": "ai-ml-dl-basics",
+    "title": "AI/ML/DL 기초",
+    "description": "인공지능, 머신러닝, 딥러닝 핵심 개념",
+    "icon": "🤖",
+    "file": "ai-ml-dl-basics.json",
+    "questionCount": 47
+  },
+  {
+    "id": "activation-loss",
+    "title": "활성화함수 & 손실함수",
+    "description": "ReLU, Sigmoid, MSE, Cross Entropy 등",
+    "icon": "⚡",
+    "file": "activation-loss.json",
+    "questionCount": 35
+  },
+  {
+    "id": "optimization",
+    "title": "최적화 & 규제",
+    "description": "Adam, SGD, Dropout, L1/L2, 과적합 방지",
+    "icon": "🎯",
+    "file": "optimization.json",
+    "questionCount": 61
+  },
+  {
+    "id": "data-preprocessing",
+    "title": "데이터 전처리 & EDA",
+    "description": "정규화, 인코딩, 시각화, 탐색적 데이터 분석",
+    "icon": "📊",
+    "file": "data-preprocessing.json",
+    "questionCount": 49
+  },
+  {
+    "id": "model-evaluation",
+    "title": "모델 평가",
+    "description": "Accuracy, F1, ROC/AUC, 교차 검증",
+    "icon": "📈",
+    "file": "model-evaluation.json",
+    "questionCount": 30
+  },
+  {
+    "id": "unsupervised-rl",
+    "title": "비지도학습 & 강화학습",
+    "description": "K-means, PCA, 군집화, 강화학습",
+    "icon": "🔍",
+    "file": "unsupervised-rl.json",
+    "questionCount": 35
+  },
+  {
+    "id": "cnn-image",
+    "title": "CNN & 이미지 모델",
+    "description": "합성곱, AlexNet, VGGNet, ResNet, ViT",
+    "icon": "🖼️",
+    "file": "cnn-image.json",
+    "questionCount": 60
+  },
+  {
+    "id": "rnn-lstm",
+    "title": "RNN & LSTM & Attention",
+    "description": "순환 신경망, LSTM, Seq2Seq, Transformer",
+    "icon": "🔄",
+    "file": "rnn-lstm.json",
+    "questionCount": 30
+  },
+  {
+    "id": "transfer-learning",
+    "title": "전이학습",
+    "description": "Fine-tuning, Linear Probing, 가중치 동결",
+    "icon": "🔀",
+    "file": "transfer-learning.json",
+    "questionCount": 17
+  },
+  {
+    "id": "generative-models",
+    "title": "생성 모델",
+    "description": "GAN, Diffusion, Stable Diffusion, LDM",
+    "icon": "🎨",
+    "file": "generative-models.json",
+    "questionCount": 23
+  },
+  {
+    "id": "multimodal",
+    "title": "멀티모달 & 파운데이션 모델",
+    "description": "CLIP, 지식 증류, 멀티모달 학습",
+    "icon": "🌐",
+    "file": "multimodal.json",
+    "questionCount": 13
+  }
+]

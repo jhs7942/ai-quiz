@@ -1,0 +1,240 @@
+[
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "3x3 작은 커널만을 반복 사용하도록 구조를 단순화하여 전이 학습의 베이스로 널리 쓰인 모델은?",
+    "choices": [
+      "VGGNet",
+      "GoogLeNet",
+      "ResNet",
+      "GAN"
+    ],
+    "answer": "VGGNet",
+    "explanation": "VGGNet은 구조가 매우 단순하고 직관적이어서 특징 추출을 위한 전이 학습 백본 모델로 오랜 기간 활용되었습니다."
+  },
+  {
+    "id": 27,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "사전 학습된 모델의 특징 추출 레이어는 고정하고 분류층만 새로 학습하는 전이 학습 기법은?",
+    "choices": [
+      "Fine-tuning",
+      "Weight Freezing (가중치 동결)",
+      "Data Augmentation",
+      "K-means"
+    ],
+    "answer": "Weight Freezing (가중치 동결)",
+    "explanation": "가중치 동결은 이미 학습된 풍부한 지식을 가진 레이어의 가중치를 고정하여 소규모 데이터에서도 빠르게 모델을 학습시키는 방법입니다."
+  },
+  {
+    "id": 28,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "사전 학습 가중치를 초기값으로 사용하여 전체 레이어를 낮은 학습률로 다시 학습하는 방식은?",
+    "choices": [
+      "Linear Probing",
+      "Fine-tuning (미세 조정)",
+      "Label Encoding",
+      "Clustering"
+    ],
+    "answer": "Fine-tuning (미세 조정)",
+    "explanation": "미세 조정은 새로운 도메인의 데이터에 맞춰 모델의 모든 가중치를 조금씩 업데이트하여 최적의 성능을 끌어내는 기법입니다."
+  },
+  {
+    "id": 81,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "가중치 동결(Weight Freezing)의 가장 큰 장점은?",
+    "choices": [
+      "최종 성능이 항상 가장 높음",
+      "매우 빠른 학습 속도",
+      "데이터 증강 필요 없음",
+      "분류층을 학습하지 않아도 됨"
+    ],
+    "answer": "매우 빠른 학습 속도",
+    "explanation": "사전 학습된 레이어를 고정하고 마지막 분류층만 학습하기 때문에 학습 시간이 매우 단축됩니다."
+  },
+  {
+    "id": 82,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Fine-tuning 중 기존 지식을 급격히 잊어버리는 현상을 무엇이라 합니까?",
+    "choices": [
+      "Mode Collapse",
+      "Catastrophic Forgetting",
+      "Underfitting",
+      "Dying ReLU"
+    ],
+    "answer": "Catastrophic Forgetting",
+    "explanation": "재학습 과정에서 이전의 지식을 파괴하는 것을 방지하기 위해 매우 낮은 학습률이 필요합니다."
+  },
+  {
+    "id": 98,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 전이 학습(Transfer Learning) 패러다임이 아닌 것은?",
+    "choices": [
+      "Weight Freezing",
+      "Fine-tuning",
+      "Linear Probing",
+      "K-means Clustering"
+    ],
+    "answer": "K-means Clustering",
+    "explanation": "K-means는 비지도 학습의 한 종류이며 전이 학습과는 무관합니다."
+  },
+  {
+    "id": 120,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Linear Probing 기법의 주된 용도는 무엇입니까?",
+    "choices": [
+      "모델의 모든 가중치를 무작위로 초기화하기 위함",
+      "사전 학습된 표현의 품질을 빠르게 평가하기 위함",
+      "데이터 증강 기법을 최적화하기 위함",
+      "비지도 학습을 지도 학습으로 전환하기 위함"
+    ],
+    "answer": "사전 학습된 표현의 품질을 빠르게 평가하기 위함",
+    "explanation": "Linear Probing은 백본을 동결하고 헤드만 교체하여 사전 학습된 모델의 성능을 측정하는 지표로 활용됩니다."
+  },
+  {
+    "id": 191,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전이 학습의 가중치 동결(Weight Freezing)이 유리한 상황은?",
+    "choices": [
+      "데이터가 매우 방대할 때",
+      "데이터가 소규모일 때 과적합 방지 목적",
+      "사전 학습 지식을 모두 지우고 싶을 때",
+      "모델 속도를 일부러 늦출 때"
+    ],
+    "answer": "데이터가 소규모일 때 과적합 방지 목적",
+    "explanation": "소규모 데이터셋에서는 기존 지식을 유지하기 위해 레이어를 고정하고 마지막 분류층만 학습하는 것이 유리합니다."
+  },
+  {
+    "id": 192,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전체 재학습(Fine-tuning)을 수행할 때 반드시 주의해야 할 위험 요소는?",
+    "choices": [
+      "학습 속도 과속",
+      "Catastrophic Forgetting(기존 지식 파괴)",
+      "데이터 증강 생략",
+      "원-핫 인코딩 부재"
+    ],
+    "answer": "Catastrophic Forgetting(기존 지식 파괴)",
+    "explanation": "전체 층을 학습할 때 학습률이 너무 높으면 사전 학습된 지식을 잃어버리는 위험이 있으므로 낮은 학습률이 필요합니다."
+  },
+  {
+    "id": 229,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "사전 학습된 모델의 지식을 빌려와 새로운 작업에 활용하는 학습 방식은?",
+    "choices": [
+      "강화 학습",
+      "비지도 학습",
+      "전이 학습(Transfer Learning)",
+      "처음부터 학습"
+    ],
+    "answer": "전이 학습(Transfer Learning)",
+    "explanation": "전이 학습은 거대한 데이터셋으로 이미 학습된 모델의 가중치를 활용하는 효율적인 방식입니다."
+  },
+  {
+    "id": 230,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전이 학습 중 사전 학습된 가중치를 미세하게 조정하여 성능을 극대화하는 기법은?",
+    "choices": [
+      "가중치 동결",
+      "Linear Probing",
+      "파인 튜닝(Fine-tuning)",
+      "PCA"
+    ],
+    "answer": "파인 튜닝(Fine-tuning)",
+    "explanation": "파인 튜닝은 전체 레이어를 낮은 학습률로 다시 학습시켜 도메인 차이를 극복합니다."
+  },
+  {
+    "id": 241,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전이 학습에서 사전 학습된 특징 추출부 가중치는 건드리지 않고 고정하는 작업은?",
+    "choices": [
+      "가중치 동결(Weight Freezing)",
+      "파인 튜닝",
+      "데이터 누수",
+      "경사하강법"
+    ],
+    "answer": "가중치 동결(Weight Freezing)",
+    "explanation": "가중치 동결은 기존의 범용적인 지식을 유지한 채 새로운 데이터에 적응시키기 위해 사용합니다."
+  },
+  {
+    "id": 256,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Linear Probing과 Fine-tuning 중 학습 속도가 훨씬 빠른 방식과 그 이유는?",
+    "choices": [
+      "Fine-tuning, 전체를 다 학습해서",
+      "Linear Probing, 분류층만 학습해서",
+      "Linear Probing, 특징 추출까지 다 해서",
+      "Fine-tuning, 가중치를 고정해서"
+    ],
+    "answer": "Linear Probing, 분류층만 학습해서",
+    "explanation": "Linear Probing은 특징 추출부를 동결하고 마지막 층만 학습하므로 전체 파라미터의 1% 미만만 업데이트하여 매우 빠릅니다."
+  },
+  {
+    "id": 326,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전이 학습(Transfer Learning)을 사용했을 때 얻을 수 있는 이점은?",
+    "choices": [
+      "데이터가 100만 장 이상 필요함",
+      "학습 시간과 비용 절약",
+      "모델의 크기가 항상 커짐",
+      "사전 학습 지식을 모두 삭제함"
+    ],
+    "answer": "학습 시간과 비용 절약",
+    "explanation": "이미 학습된 모델의 지식을 재사용하므로 처음부터 학습하는 것보다 시간과 자원이 훨씬 적게 듭니다."
+  },
+  {
+    "id": 374,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전이 학습에서 가중치를 빌려오는 기반이 되는 세계 최대 규모의 이미지 데이터베이스는?",
+    "choices": [
+      "ImageNet",
+      "Google Search",
+      "Wikipedia",
+      "Kaggle"
+    ],
+    "answer": "ImageNet",
+    "explanation": "ImageNet은 온갖 다양한 사물을 담은 방대한 규모의 데이터셋으로 전이 학습의 표준 백본입니다. [16]"
+  },
+  {
+    "id": 375,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전이 학습의 Linear Probing 방식에서 실제 가중치가 업데이트되는 파라미터 비중은?",
+    "choices": [
+      "0%",
+      "약 1% 미만(분류층만)",
+      "50%",
+      "100%"
+    ],
+    "answer": "약 1% 미만(분류층만)",
+    "explanation": "Linear Probing은 특징 추출부를 동결하고 새로 단 마지막 분류층만 학습하므로 매우 적은 부분만 업데이트됩니다. [17]"
+  },
+  {
+    "id": 376,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "전체 모델을 다시 학습시키는 Fine-tuning 시, 기존 지식을 훼손하지 않기 위해 학습률은 어떻게 설정합니까?",
+    "choices": [
+      "매우 크게 설정",
+      "상대적으로 매우 작게 설정",
+      "0으로 설정",
+      "설정하지 않음"
+    ],
+    "answer": "상대적으로 매우 작게 설정",
+    "explanation": "기존의 정교한 가중치를 파괴하지 않기 위해(Catastrophic Forgetting 방지) 아주 낮은 학습률을 사용합니다. [17]"
+  }
+]

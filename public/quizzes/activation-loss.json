@@ -1,0 +1,492 @@
+[
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이진 분류 문제의 출력층에서 주로 사용되며, 확률 해석이 가능하지만 기울기 소실 문제가 있는 활성화 함수는?",
+    "choices": [
+      "ReLU",
+      "Softmax",
+      "Sigmoid",
+      "LeakyReLU"
+    ],
+    "answer": "Sigmoid",
+    "explanation": "시그모이드 함수는 출력을 (0,1) 범위로 제한하여 확률로 해석하기 용이하지만, 값이 커지거나 작아질 때 기울기가 0에 수렴하는 기울기 소실 문제가 있습니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "딥러닝 은닉층에서 가장 널리 사용되며, 기울기 소실을 완화하고 학습 속도가 빠른 함수는?",
+    "choices": [
+      "Sigmoid",
+      "ReLU",
+      "tanh",
+      "MSE"
+    ],
+    "answer": "ReLU",
+    "explanation": "ReLU는 양수 영역에서 기울기가 1로 일정하여 깊은 망에서도 기울기 소실을 완화하며 연산이 단순해 학습이 매우 빠릅니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다중 분류 문제에서 각 클래스에 대한 확률 분포를 출력하기 위해 사용하는 함수는?",
+    "choices": [
+      "BCE",
+      "Softmax",
+      "MSE",
+      "L1 규제"
+    ],
+    "answer": "Softmax",
+    "explanation": "소프트맥스 함수는 모든 출력값의 합이 1이 되도록 정규화하여 다중 클래스 분류의 확률 분포를 제공합니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "회귀(Regression) 문제에서 예측값과 실제값의 차이의 제곱을 평균하여 계산하는 손실 함수는?",
+    "choices": [
+      "CCE",
+      "BCE",
+      "MSE",
+      "Softmax"
+    ],
+    "answer": "MSE",
+    "explanation": "평균 제곱 오차(MSE)는 예측값과 정답의 차이를 제곱하여 평균낸 값으로, 회귀 문제에서 직관적이고 미분이 가능하여 널리 쓰입니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다중 분류 손실 함수인 CCE(Categorical Cross Entropy)와 가장 잘 결합되는 활성화 함수는?",
+    "choices": [
+      "Sigmoid",
+      "ReLU",
+      "Softmax",
+      "tanh"
+    ],
+    "answer": "Softmax",
+    "explanation": "CCE는 각 클래스의 확률 분포를 비교하므로, 확률 분포를 출력하는 Softmax와 결합했을 때 최적의 성능을 냅니다."
+  },
+  {
+    "id": 53,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습 파이프라인에서 '손실 함수 계산' 직후에 이루어지는 단계는?",
+    "choices": [
+      "데이터 전처리",
+      "순전파",
+      "역전파",
+      "가중치 업데이트"
+    ],
+    "answer": "역전파",
+    "explanation": "학습 파이프라인은 '순전파 -> 손실 함수 계산 -> 역전파 -> 옵티마이저 -> 가중치 업데이트' 순서로 진행됩니다."
+  },
+  {
+    "id": 54,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "활성화 함수 중 tanh(쌍곡탄젠트) 함수의 출력 범위는 어떻게 됩니까?",
+    "choices": [
+      "(0, 1)",
+      "(-1, 1)",
+      "(0, 무한대)",
+      "(-무한대, 무한대)"
+    ],
+    "answer": "(-1, 1)",
+    "explanation": "tanh 활성화 함수의 출력 범위는 (-1, 1)이며, 주로 RNN의 은닉층에서 후보값을 계산할 때 사용됩니다."
+  },
+  {
+    "id": 55,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "ReLU의 단점인 'Dying ReLU' 현상을 해결하기 위해 등장한 활성화 함수는?",
+    "choices": [
+      "Sigmoid",
+      "Softmax",
+      "LeakyReLU",
+      "MSE"
+    ],
+    "answer": "LeakyReLU",
+    "explanation": "LeakyReLU는 x < 0인 영역에서도 작은 기울기를 주어 뉴런이 완전히 죽는 Dying ReLU 문제를 해결합니다."
+  },
+  {
+    "id": 102,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Sigmoid 활성화 함수의 주요 단점 중 하나인 '느린 학습'의 원인은?",
+    "choices": [
+      "기울기 소실 (Vanishing Gradient)",
+      "Dying ReLU",
+      "높은 연산 복잡도",
+      "출력값의 불연속성"
+    ],
+    "answer": "기울기 소실 (Vanishing Gradient)",
+    "explanation": "시그모이드 함수는 입력값이 커지거나 작아질수록 기울기가 0에 가까워지는 기울기 소실 문제로 인해 학습이 느려집니다."
+  },
+  {
+    "id": 103,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "tanh 활성화 함수가 Sigmoid보다 학습 안정성이 높은 이유는 무엇입니까?",
+    "choices": [
+      "범위가 (0,1)이기 때문",
+      "0 중심(Zero-centered)의 출력을 가지기 때문",
+      "기울기 소실이 전혀 없기 때문",
+      "비선형 문제를 해결할 수 없기 때문"
+    ],
+    "answer": "0 중심(Zero-centered)의 출력을 가지기 때문",
+    "explanation": "tanh는 출력이 0을 중심으로 형성되어 Sigmoid에 비해 학습이 더 안정적입니다."
+  },
+  {
+    "id": 104,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LeakyReLU에서 x < 0인 경우 출력값은 어떻게 결정됩니까?",
+    "choices": [
+      "항상 0",
+      "항상 x",
+      "알파(α)와 x의 곱",
+      "알파(α)와 x의 합"
+    ],
+    "answer": "알파(α)와 x의 곱",
+    "explanation": "LeakyReLU는 x < 0일 때 αx를 출력하여 Dying ReLU 문제를 해결합니다."
+  },
+  {
+    "id": 105,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "MSE(Mean Squared Error) 손실 함수의 특징 중 '단점'으로 언급된 것은?",
+    "choices": [
+      "미분이 불가능함",
+      "이상치(Outlier)에 민감함",
+      "확률적 해석이 가능함",
+      "이진 분류에 최적화됨"
+    ],
+    "answer": "이상치(Outlier)에 민감함",
+    "explanation": "MSE는 오차를 제곱하여 합산하므로 이상치가 있을 경우 손실값이 급격히 커져 민감하게 반응합니다."
+  },
+  {
+    "id": 146,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "손실 함수 중 회귀(Regression)가 아닌 분류(Classification) 문제에 쓰이는 것은?",
+    "choices": [
+      "MSE",
+      "CCE (Categorical Cross Entropy)",
+      "MAE",
+      "RMSE"
+    ],
+    "answer": "CCE (Categorical Cross Entropy)",
+    "explanation": "CCE는 다중 클래스 분류 문제의 오차를 계산할 때 사용되는 대표적인 손실 함수입니다."
+  },
+  {
+    "id": 153,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "시그모이드(Sigmoid) 활성화 함수의 주요 용도로 가장 적합한 것은?",
+    "choices": [
+      "다중 분류 출력층",
+      "이진 분류 출력층",
+      "이미지 특징 추출",
+      "회귀 손실 계산"
+    ],
+    "answer": "이진 분류 출력층",
+    "explanation": "시그모이드 함수는 (0,1)의 범위를 가지며 주로 이진 분류의 출력층이나 LSTM 게이트에서 사용됩니다."
+  },
+  {
+    "id": 154,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "tanh 활성화 함수가 시그모이드 함수와 비교하여 가지는 장점은 무엇입니까?",
+    "choices": [
+      "기울기 소실 완벽 해결",
+      "0 중심(Zero-centered)으로 인한 학습 안정",
+      "계산 속도가 훨씬 빠름",
+      "이상치에 민감하지 않음"
+    ],
+    "answer": "0 중심(Zero-centered)으로 인한 학습 안정",
+    "explanation": "tanh 함수는 (-1, 1)의 범위를 가지며, 0을 중심으로 하는 데이터 분포를 형성하여 시그모이드보다 학습이 안정적입니다."
+  },
+  {
+    "id": 156,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LeakyReLU 활성화 함수를 사용할 때 고려해야 할 단점은?",
+    "choices": [
+      "알파(α) 값의 튜닝 필요",
+      "기울기 소실 심화",
+      "확률 해석 불가",
+      "0 이하 값의 완전 무시"
+    ],
+    "answer": "알파(α) 값의 튜닝 필요",
+    "explanation": "LeakyReLU는 Dying ReLU를 해결하기 위해 음수 영역에서 작은 기울기 알파(α)를 사용하지만, 이를 적절히 튜닝해야 하는 번거로움이 있습니다."
+  },
+  {
+    "id": 157,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "소프트맥스(Softmax) 함수의 모든 출력 노드 값의 합은 얼마입니까?",
+    "choices": [
+      "0",
+      "0.5",
+      "1",
+      "무한대"
+    ],
+    "answer": "1",
+    "explanation": "소프트맥스 함수는 다중 분류 출력층에서 각 클래스에 속할 확률 분포를 출력하며, 그 총합은 항상 1이 됩니다."
+  },
+  {
+    "id": 158,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "평균 제곱 오차(MSE) 손실 함수의 주요 단점으로 언급된 것은?",
+    "choices": [
+      "미분이 불가능함",
+      "이상치에 민감함",
+      "확률적 해석이 필수임",
+      "이진 분류에만 사용 가능"
+    ],
+    "answer": "이상치에 민감함",
+    "explanation": "MSE는 오차를 제곱하여 합산하기 때문에 실제값과 차이가 큰 이상치에 매우 민감하게 반응합니다."
+  },
+  {
+    "id": 160,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다중 분류 손실 함수인 CCE(Categorical Cross Entropy)를 사용할 때 주의할 점은?",
+    "choices": [
+      "시그모이드와 결합 필수",
+      "클래스 불균형에 주의",
+      "기울기 소실 위험",
+      "이진 출력 전용"
+    ],
+    "answer": "클러스 불균형에 주의",
+    "explanation": "CCE는 소프트맥스와 결합하여 다중 분류에 최적이지만, 데이터셋의 클래스 불균형 문제에 민감할 수 있습니다."
+  },
+  {
+    "id": 218,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "현대 딥러닝에서 기울기 소실 문제를 완화하기 위해 가장 많이 쓰이는 활성화 함수는?",
+    "choices": [
+      "시그모이드",
+      "ReLU",
+      "Step 함수",
+      "Linear"
+    ],
+    "answer": "ReLU",
+    "explanation": "ReLU는 입력이 0보다 크면 그대로 출력하여 깊은 층에서도 학습이 잘 되게 돕습니다."
+  },
+  {
+    "id": 224,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "분류 모델의 출력층에서 모든 클래스 확률의 합이 1이 되도록 만드는 활성화 함수는?",
+    "choices": [
+      "ReLU",
+      "tanh",
+      "소프트맥스(Softmax)",
+      "시그모이드"
+    ],
+    "answer": "소프트맥스(Softmax)",
+    "explanation": "소프트맥스는 각 클래스에 속할 확률 분포를 제공하여 다중 분류에 사용됩니다."
+  },
+  {
+    "id": 235,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "교차 엔트로피(Cross Entropy)는 주로 어떤 종류의 문제에서 손실 함수로 쓰이나?",
+    "choices": [
+      "회귀 분석",
+      "분류(Classification)",
+      "군집화",
+      "차원 축소"
+    ],
+    "answer": "분류(Classification)",
+    "explanation": "교차 엔트로피는 확률 분포의 차이를 계산하여 분류 모델의 오차를 측정합니다."
+  },
+  {
+    "id": 238,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이진 분류(정답이 0 또는 1)에서 주로 사용하는 출력층 활성화 함수는?",
+    "choices": [
+      "시그모이드(Sigmoid)",
+      "ReLU",
+      "소프트맥스",
+      "Identity"
+    ],
+    "answer": "시그모이드(Sigmoid)",
+    "explanation": "시그모이드는 출력을 0과 1 사이의 확률값으로 만들어 이진 분류에 적합합니다."
+  },
+  {
+    "id": 249,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "회귀 분석 모델에서 실제값과 예측값의 차이를 제곱하여 평균을 낸 손실 함수는?",
+    "choices": [
+      "MSE(Mean Squared Error)",
+      "BCE",
+      "CCE",
+      "Accuracy"
+    ],
+    "answer": "MSE(Mean Squared Error)",
+    "explanation": "MSE는 예측이 틀린 정도를 숫자로 보여주며, 값이 작을수록 좋은 모델입니다."
+  },
+  {
+    "id": 255,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다중 클래스 분류 시 Softmax와 결합하여 최적의 성능을 발휘하는 손실 함수는?",
+    "choices": [
+      "MSE",
+      "BCE",
+      "CCE(Categorical Cross Entropy)",
+      "MAE"
+    ],
+    "answer": "CCE(Categorical Cross Entropy)",
+    "explanation": "CCE는 다중 분류의 확률 분포 차이를 계산하는 데 특화되어 Softmax 출력과 결합할 때 가장 효과적입니다."
+  },
+  {
+    "id": 260,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ReLU 사용 시 지속적인 음수 입력으로 인해 특정 뉴런의 가중치 업데이트가 멈추는 현상은?",
+    "choices": [
+      "기울기 소실",
+      "Dying ReLU",
+      "오버슈팅",
+      "데이터 누수"
+    ],
+    "answer": "Dying ReLU",
+    "explanation": "음수 입력에 대해 기울기가 항상 0이 되어 뉴런이 더 이상 학습되지 않는 현상을 Dying ReLU라고 합니다."
+  },
+  {
+    "id": 261,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "tanh 활성화 함수가 시그모이드와 비교했을 때 가지는 특징은?",
+    "choices": [
+      "0에서 1 사이 값을 가짐",
+      "-1에서 1 사이 값을 가짐",
+      "음수 입력 시 항상 0을 출력",
+      "연산 속도가 Sigmoid보다 느림"
+    ],
+    "answer": "-1에서 1 사이 값을 가짐",
+    "explanation": "tanh는 출력 범위가 -1~1이며 0을 중심으로 형성되어 시그모이드보다 학습이 상대적으로 안정적입니다."
+  },
+  {
+    "id": 315,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "입력 신호의 총합을 받아 전달할지 말지를 결정하는 '스위치' 역할의 함수는?",
+    "choices": [
+      "손실 함수",
+      "활성화 함수",
+      "비용 함수",
+      "회귀 함수"
+    ],
+    "answer": "활성화 함수",
+    "explanation": "활성화 함수는 입력 신호의 총합을 처리하여 해당 뉴런을 활성화할지 결정합니다."
+  },
+  {
+    "id": 316,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "시그모이드(Sigmoid) 함수를 통과한 결과값의 범위는?",
+    "choices": [
+      "-1에서 1 사이",
+      "0에서 1 사이",
+      "0에서 무한대 사이",
+      "전체 실수 범위"
+    ],
+    "answer": "0에서 1 사이",
+    "explanation": "시그모이드 함수는 모든 입력값을 0과 1 사이의 확률값으로 변환합니다."
+  },
+  {
+    "id": 317,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ReLU 활성화 함수 사용 시 입력값이 음수이면 출력값은 얼마입니까?",
+    "choices": [
+      "입력값 그대로",
+      "-1",
+      "0",
+      "0.5"
+    ],
+    "answer": "0",
+    "explanation": "ReLU는 입력이 0보다 작으면 무조건 0을 출력하는 특성을 가집니다."
+  },
+  {
+    "id": 329,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다중 분류 모델에서 소프트맥스(Softmax)와 짝을 이루는 손실 함수는?",
+    "choices": [
+      "MSE",
+      "BCE",
+      "CCE(Categorical Cross Entropy)",
+      "MAE"
+    ],
+    "answer": "CCE(Categorical Cross Entropy)",
+    "explanation": "CCE는 다중 분류에서 확률 분포의 차이를 계산하는 데 가장 적합한 손실 함수입니다."
+  },
+  {
+    "id": 361,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이진 분류 모델에서 정답과 예측값 사이의 확률적 차이를 계산하는 전용 손실 함수는?",
+    "choices": [
+      "MSE",
+      "BCE(Binary Cross Entropy)",
+      "CCE",
+      "Inertia"
+    ],
+    "answer": "BCE(Binary Cross Entropy)",
+    "explanation": "BCE는 이진 분류(0 또는 1) 문제에서 손실을 계산하기 위해 설계된 함수입니다. [9]"
+  },
+  {
+    "id": 364,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ReLU 사용 시 입력이 음수일 때 뉴런이 죽어버리는 현상을 해결하기 위해 등장한 함수는?",
+    "choices": [
+      "Sigmoid",
+      "tanh",
+      "LeakyReLU",
+      "Softmax"
+    ],
+    "answer": "LeakyReLU",
+    "explanation": "LeakyReLU는 음수 영역에 작은 기울기(α)를 주어 뉴런이 죽는(Dying ReLU) 현상을 방지합니다. [9]"
+  },
+  {
+    "id": 370,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "2012년 이미지 인식 대회에서 GPU 연산과 ReLU를 도입하여 딥러닝 혁명을 주도한 모델은?",
+    "choices": [
+      "VGGNet",
+      "AlexNet",
+      "ResNet",
+      "LeNet"
+    ],
+    "answer": "AlexNet",
+    "explanation": "AlexNet은 GPU 연산과 최신 기법들을 적극 도입하여 딥러닝 패러다임을 전환한 상징적 모델입니다. [1]"
+  },
+  {
+    "id": 397,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "퍼셉트론에서 입력값들의 가중합 결과가 임계값을 넘을 때만 1을 출력하게 하는 스위치 역할은?",
+    "choices": [
+      "가중합",
+      "활성화 함수",
+      "바이어스",
+      "입력 데이터"
+    ],
+    "answer": "활성화 함수",
+    "explanation": "활성화 함수는 입력 신호를 처리하여 해당 뉴런을 활성화할지 말지를 결정하는 최종 관문입니다. [30]"
+  }
+]

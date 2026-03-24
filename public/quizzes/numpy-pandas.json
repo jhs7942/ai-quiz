@@ -1,0 +1,94 @@
+[
+  {
+    "id": 101,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "NumPy 배열(ndarray)에서 차원의 수를 나타내는 속성은?",
+    "choices": ["ndim", "shape", "size", "dtype"],
+    "answer": "ndim",
+    "explanation": "ndim은 배열의 차원 수(스칼라=0, 벡터=1, 행렬=2, 텐서=3 이상)를 반환합니다. shape는 각 차원의 크기 튜플, size는 전체 원소 수, dtype은 데이터 타입입니다."
+  },
+  {
+    "id": 102,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "Pandas에서 1차원 레이블 기반 데이터 구조의 이름은?",
+    "answer": "Series",
+    "explanation": "Series는 인덱스를 가진 1차원 배열 구조입니다. 2차원 구조는 DataFrame이며, Series 여러 개를 열로 합친 것이 DataFrame입니다."
+  },
+  {
+    "id": 103,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Pandas DataFrame에서 특정 조건에 맞는 행을 선택할 때 사용하는 방법은?",
+    "choices": ["불리언 인덱싱(Boolean Indexing)", "iloc 슬라이싱", "concat 함수", "groupby 함수"],
+    "answer": "불리언 인덱싱(Boolean Indexing)",
+    "explanation": "df[df['컬럼'] > 값] 형태의 불리언 인덱싱으로 조건에 맞는 행을 필터링합니다. iloc는 정수 위치 기반 선택, concat은 데이터프레임 결합, groupby는 그룹 집계에 사용됩니다."
+  },
+  {
+    "id": 104,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 (3, 4) 형태의 배열을 (12,)으로 변환하는 함수는?",
+    "choices": ["reshape(-1)", "flatten()", "squeeze()", "transpose()"],
+    "answer": "reshape(-1)",
+    "explanation": "reshape(-1)은 나머지 차원을 자동 계산해 1차원으로 펼칩니다. flatten()도 동일한 결과를 내지만 항상 복사본을 반환합니다. squeeze()는 크기 1인 차원 제거, transpose()는 축 교환입니다."
+  },
+  {
+    "id": 105,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "Pandas에서 결측값(NaN)이 있는 행을 제거하는 메서드는?",
+    "answer": "dropna()",
+    "explanation": "dropna()는 NaN이 포함된 행(axis=0, 기본값) 또는 열(axis=1)을 제거합니다. NaN을 특정 값으로 대체하려면 fillna()를 사용합니다."
+  },
+  {
+    "id": 106,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 두 배열을 원소별(element-wise)로 곱하는 연산은?",
+    "choices": ["np.multiply() 또는 * 연산자", "np.dot()", "np.matmul()", "np.cross()"],
+    "answer": "np.multiply() 또는 * 연산자",
+    "explanation": "np.multiply()와 * 연산자는 원소별 곱셈입니다. np.dot()과 np.matmul()은 행렬 곱셈(내적)을 수행합니다."
+  },
+  {
+    "id": 107,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Pandas groupby().agg()에서 여러 집계 함수를 동시에 적용할 때 올바른 형태는?",
+    "choices": [
+      "df.groupby('A').agg({'B': ['mean', 'std']})",
+      "df.groupby('A').agg('B': 'mean', 'std')",
+      "df.groupby('A').agg(['mean', 'std'], on='B')",
+      "df.groupby('A', 'B').agg('mean', 'std')"
+    ],
+    "answer": "df.groupby('A').agg({'B': ['mean', 'std']})",
+    "explanation": "agg()에 딕셔너리를 전달할 때 키는 컬럼명, 값은 적용할 함수 또는 함수 리스트입니다. 이 방식으로 여러 컬럼에 각각 다른 집계 함수를 지정할 수 있습니다."
+  },
+  {
+    "id": 108,
+    "type": "short_answer",
+    "difficulty": "hard",
+    "question": "NumPy에서 배열의 특정 축(axis)을 따라 누적 합계를 계산하는 함수는?",
+    "answer": "np.cumsum()",
+    "explanation": "np.cumsum(a, axis=0)은 지정한 축 방향으로 누적 합계를 계산합니다. 예를 들어 [1,2,3]의 cumsum은 [1,3,6]입니다."
+  },
+  {
+    "id": 109,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Pandas에서 두 DataFrame을 공통 키 컬럼을 기준으로 합치는 함수는?",
+    "choices": ["pd.merge()", "pd.concat()", "df.append()", "df.join()"],
+    "answer": "pd.merge()",
+    "explanation": "pd.merge()는 SQL의 JOIN과 유사하게 공통 키를 기준으로 데이터프레임을 병합합니다. pd.concat()은 행/열 방향으로 단순 연결합니다."
+  },
+  {
+    "id": 110,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy 브로드캐스팅(Broadcasting)에서 (3, 1) 배열과 (1, 4) 배열을 더한 결과의 shape는?",
+    "choices": ["(3, 4)", "(3, 1)", "(1, 4)", "오류 발생"],
+    "answer": "(3, 4)",
+    "explanation": "브로드캐스팅 규칙에 따라 (3, 1) + (1, 4)는 각 차원이 확장되어 (3, 4) 결과를 생성합니다. 차원 크기가 1이면 다른 배열의 크기로 확장됩니다."
+  }
+]

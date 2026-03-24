@@ -1,0 +1,422 @@
+[
+  {
+    "id": 33,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "데이터를 K개로 나누어 돌아가며 검증에 참여시켜 모델의 신뢰도를 높이는 검증 기법은?",
+    "choices": [
+      "Simple Split",
+      "K-Fold 교차 검증",
+      "Zero-shot",
+      "One-shot"
+    ],
+    "answer": "K-Fold 교차 검증",
+    "explanation": "K-Fold 교차 검증은 모든 데이터를 학습과 검증에 모두 사용하여 소규모 데이터셋에서 특히 유용합니다."
+  },
+  {
+    "id": 83,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "단순 선형 회귀 평가 시 주로 사용하는 지표는?",
+    "choices": [
+      "정확도 (Accuracy)",
+      "결정 계수 (R²)",
+      "F1-Score",
+      "재현율 (Recall)"
+    ],
+    "answer": "결정 계수 (R²)",
+    "explanation": "회귀 모델의 성능을 평가할 때는 결정 계수나 MSE 등을 활용합니다."
+  },
+  {
+    "id": 84,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "분류 지표 중 실제 정답 중 모델이 맞힌 비율을 의미하는 것은?",
+    "choices": [
+      "정밀도 (Precision)",
+      "재현율 (Recall)",
+      "정확도 (Accuracy)",
+      "오차"
+    ],
+    "answer": "재현율 (Recall)",
+    "explanation": "재현율은 실제 True인 것 중 모델이 True라고 예측한 비율을 측정합니다."
+  },
+  {
+    "id": 121,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "회귀 모델 평가 시 '결정 계수(R²)'가 나타내는 의미는?",
+    "choices": [
+      "모델이 데이터를 얼마나 잘 설명하는지에 대한 비율",
+      "예측값과 실제값의 절대적인 오차 평균",
+      "모델이 분류를 정확히 수행할 확률",
+      "데이터 전처리 완료 여부"
+    ],
+    "answer": "모델이 데이터를 얼마나 잘 설명하는지에 대한 비율",
+    "explanation": "결정 계수는 회귀 모델의 설명력을 나타내는 지표로 1에 가까울수록 성능이 좋습니다."
+  },
+  {
+    "id": 122,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "분류 지표 중 '재현율(Recall)'을 중요하게 고려해야 하는 상황은?",
+    "choices": [
+      "스팸 메일을 완벽하게 걸러내야 할 때",
+      "암 환자를 한 명도 놓치지 말아야 할 때",
+      "전체 데이터의 절반만 예측해도 될 때",
+      "라벨 인코딩을 수행할 때"
+    ],
+    "answer": "암 환자를 한 명도 놓치지 말아야 할 때",
+    "explanation": "재현율은 실제 정답 중 모델이 맞힌 비율로, 놓치면 치명적인 경우(예: 암 진단)에 매우 중요합니다."
+  },
+  {
+    "id": 196,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "K-Fold 교차 검증을 사용할 때 얻을 수 있는 신뢰도는 어떤 조건에서 특히 유용합니까?",
+    "choices": [
+      "데이터가 무한히 많을 때",
+      "소규모 데이터셋에서 신뢰도를 높일 때",
+      "학습 속도가 중요할 때",
+      "라벨이 없을 때"
+    ],
+    "answer": "소규모 데이터셋에서 신뢰도를 높일 때",
+    "explanation": "모든 데이터를 학습과 검증에 모두 활용하는 K-Fold 방식은 데이터가 적은 상황에서 평가의 신뢰도를 보강해줍니다."
+  },
+  {
+    "id": 208,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "암 진단과 같은 불균형 데이터에서 단순히 맞춘 개수만 세기 때문에 신뢰하기 어려운 지표는?",
+    "choices": [
+      "정확도(Accuracy)",
+      "재현율(Recall)",
+      "정밀도(Precision)",
+      "F1-Score"
+    ],
+    "answer": "정확도(Accuracy)",
+    "explanation": "불균형 데이터에서는 모두 '정상'이라고만 해도 정확도가 높게 나올 수 있어 이 지표만으로는 위험합니다."
+  },
+  {
+    "id": 239,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "머신러닝의 성능 평가 지표 중 정밀도(Precision)와 재현율(Recall)의 조화 평균은?",
+    "choices": [
+      "정확도",
+      "R-Squared",
+      "F1-Score",
+      "MAE"
+    ],
+    "answer": "F1-Score",
+    "explanation": "F1-Score는 두 지표를 균형 있게 반영하여 불균형 데이터 평가에 좋습니다."
+  },
+  {
+    "id": 245,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델의 일반화 성능을 높이기 위해 데이터를 K개로 나눠 반복 검증하는 방법은?",
+    "choices": [
+      "순전파",
+      "K-Fold 교차 검증",
+      "데이터 증강",
+      "파인 튜닝"
+    ],
+    "answer": "K-Fold 교차 검증",
+    "explanation": "교차 검증은 모든 데이터를 검증에 사용하여 신뢰도 높은 성능 측정을 가능하게 합니다."
+  },
+  {
+    "id": 251,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "혼동 행렬(Confusion Matrix)에서 실제 Positive인 것을 모델이 Negative로 잘못 예측한 경우는?",
+    "choices": [
+      "True Positive(TP)",
+      "True Negative(TN)",
+      "False Positive(FP)",
+      "False Negative(FN)"
+    ],
+    "answer": "False Negative(FN)",
+    "explanation": "FN은 모델이 실제 정답(Positive)을 놓치고 부정(Negative)으로 잘못 판단한 사례를 의미합니다."
+  },
+  {
+    "id": 252,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 회귀 모델에서 오차를 측정하기 위해 실제값과 예측값의 차이를 단순히 절대값으로 평균 낸 지표는?",
+    "choices": [
+      "MSE",
+      "MAE",
+      "BCE",
+      "F1-Score"
+    ],
+    "answer": "MAE",
+    "explanation": "MAE(Mean Absolute Error)는 오차의 절대값을 평균 내어 직관적인 오차 크기를 보여주는 지표입니다."
+  },
+  {
+    "id": 289,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "교차 검증(K-Fold)에서 데이터를 나누는 각각의 덩어리를 부르는 명칭은?",
+    "choices": [
+      "배치(Batch)",
+      "에포크(Epoch)",
+      "폴드(Fold)",
+      "커널(Kernel)"
+    ],
+    "answer": "폴드(Fold)",
+    "explanation": "데이터를 K개로 나눴을 때 각 조각을 폴드(Fold)라고 하며, 돌아가면서 검증에 사용합니다."
+  },
+  {
+    "id": 290,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "테스트 데이터의 정보가 학습 과정에 포함되어 모델 성능이 왜곡되는 현상은?",
+    "choices": [
+      "데이터 누수(Data Leakage)",
+      "오버슈팅",
+      "망의 퇴화",
+      "기울기 소실"
+    ],
+    "answer": "데이터 누수(Data Leakage)",
+    "explanation": "데이터 누수는 평가에 쓰여야 할 정보가 학습에 미리 흘러 들어가 성능이 좋게 착각하게 만드는 문제입니다."
+  },
+  {
+    "id": 297,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "혼동 행렬에서 실제 Negative인 것을 Negative로 정확히 예측한 경우는?",
+    "choices": [
+      "True Positive(TP)",
+      "True Negative(TN)",
+      "False Positive(FP)",
+      "False Negative(FN)"
+    ],
+    "answer": "True Negative(TN)",
+    "explanation": "TN은 실제 부정인 대상을 모델이 맞게 부정으로 판단한 정답 케이스입니다."
+  },
+  {
+    "id": 298,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "혼동 행렬에서 실제 Positive인 것을 Positive로 정확히 예측한 경우는?",
+    "choices": [
+      "True Positive(TP)",
+      "True Negative(TN)",
+      "False Positive(FP)",
+      "False Negative(FN)"
+    ],
+    "answer": "True Positive(TP)",
+    "explanation": "TP는 우리가 찾으려는 대상을 정확하게 맞힌 가장 대표적인 정답 케이스입니다."
+  },
+  {
+    "id": 299,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델이 '암'이라고 예측한 환자 중 실제 암 환자의 비율을 의미하는 지표는?",
+    "choices": [
+      "정확도",
+      "재현율",
+      "정밀도(Precision)",
+      "상관계수"
+    ],
+    "answer": "정밀도(Precision)",
+    "explanation": "정밀도는 모델의 예측이 얼마나 정교하고 믿을만한지를 나타내는 지표입니다."
+  },
+  {
+    "id": 300,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "실제 암 환자들 중에서 모델이 빠뜨리지 않고 암이라고 진단해낸 비율은?",
+    "choices": [
+      "정확도",
+      "재현율(Recall)",
+      "정밀도",
+      "F1-Score"
+    ],
+    "answer": "재현율(Recall)",
+    "explanation": "재현율은 모델이 찾아야 할 대상을 얼마나 빠짐없이 잘 찾아냈는지를 나타냅니다."
+  },
+  {
+    "id": 308,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "분류 모델 성능 지표 중 '전체 예측 중 맞은 예측의 개수'를 의미하는 것은?",
+    "choices": [
+      "정밀도",
+      "정확도(Accuracy)",
+      "재현율",
+      "F1-Score"
+    ],
+    "answer": "정확도(Accuracy)",
+    "explanation": "정확도는 가장 직관적인 지표로, 전체 샘플 중 모델이 맞게 분류한 비율을 나타냅니다."
+  },
+  {
+    "id": 330,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "회귀 분석 모델의 오차를 측정할 때 가장 많이 사용되는 지표는?",
+    "choices": [
+      "MSE(평균 제곱 오차)",
+      "정확도",
+      "F1-Score",
+      "재현율"
+    ],
+    "answer": "MSE(평균 제곱 오차)",
+    "explanation": "회귀 문제에서는 예측값과 실제값의 차이를 수치로 계산하는 MSE가 대표적으로 사용됩니다."
+  },
+  {
+    "id": 344,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "혼동 행렬에서 실제 암 환자를 모델이 '정상'이라고 잘못 예측한 경우는?",
+    "choices": [
+      "True Positive",
+      "False Positive",
+      "False Negative(FN)",
+      "True Negative"
+    ],
+    "answer": "False Negative(FN)",
+    "explanation": "실제 정답(Positive)을 모델이 놓치고(Negative) 아니라고 한 실수가 FN입니다."
+  },
+  {
+    "id": 345,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "암 진단 모델처럼 '하나라도 놓치면 치명적인' 상황에서 가장 중요한 지표는?",
+    "choices": [
+      "정확도",
+      "재현율(Recall)",
+      "정밀도",
+      "연산 속도"
+    ],
+    "answer": "재현율(Recall)",
+    "explanation": "재현율은 실제 환자 중 모델이 얼마나 빠짐없이 찾아냈는지를 나타내는 지표입니다."
+  },
+  {
+    "id": 346,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델의 예측이 정교하여 '진짜라고 믿을 수 있어야 할 때' 유용한 지표는?",
+    "choices": [
+      "정확도",
+      "재현율",
+      "정밀도(Precision)",
+      "학습 시간"
+    ],
+    "answer": "정밀도(Precision)",
+    "explanation": "정밀도는 모델이 Positive라고 한 것 중 실제 Positive인 비율을 나타냅니다."
+  },
+  {
+    "id": 347,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 여러 조각으로 나누어 체계적으로 평가하는 교차 검증 방식의 명칭은?",
+    "choices": [
+      "K-Means",
+      "K-Fold 교차 검증",
+      "Standardization",
+      "PCA"
+    ],
+    "answer": "K-Fold 교차 검증",
+    "explanation": "K-Fold는 데이터를 K개 덩어리로 나누어 모든 데이터를 검증에 활용하는 신뢰도 높은 방식입니다."
+  },
+  {
+    "id": 357,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ROC Curve에서 실제 정상인 데이터를 모델이 암이라고 잘못 예측한 오진 비율을 의미하는 용어는?",
+    "choices": [
+      "TPR",
+      "FPR",
+      "AUC",
+      "Precision"
+    ],
+    "answer": "FPR",
+    "explanation": "FPR(False Positive Rate)은 실제 Negative를 Positive로 잘못 판단한 비율을 의미합니다. [5]"
+  },
+  {
+    "id": 358,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ROC Curve 아래쪽 면적인 AUC 값이 얼마에 가까울수록 랜덤 추측 수준의 낮은 성능을 의미합니까?",
+    "choices": [
+      "0",
+      "0.5",
+      "0.8",
+      "1"
+    ],
+    "answer": "0.5",
+    "explanation": "AUC가 1에 가까우면 완벽한 성능, 0.5에 가까우면 동전 던지기 같은 랜덤 추측 수준을 의미합니다. [5]"
+  },
+  {
+    "id": 391,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "회귀 모델에서 오차를 단순히 절대값으로 계산하여 평균 낸 직관적인 지표는?",
+    "choices": [
+      "MSE",
+      "MAE",
+      "BCE",
+      "F1-Score"
+    ],
+    "answer": "MAE",
+    "explanation": "MAE(Mean Absolute Error)는 오차의 절대값 평균으로, MSE보다 이상치에 덜 민감합니다. [9, 20]"
+  },
+  {
+    "id": 392,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "암 진단과 같은 불균형 데이터에서 정밀도와 재현율을 모두 고려한 균형 지표는?",
+    "choices": [
+      "정확도(Accuracy)",
+      "F1-Score",
+      "상관계수",
+      "이너셔"
+    ],
+    "answer": "F1-Score",
+    "explanation": "F1-Score는 정밀도와 재현율의 조화 평균으로, 한쪽에 치우치지 않은 성능을 평가합니다. [26, 27]"
+  },
+  {
+    "id": 393,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "학습 데이터에서 분리하여 '최고의 학습 방법'을 선택하기 위해 사용되는 중간 점검 데이터는?",
+    "choices": [
+      "훈련 데이터",
+      "검증 데이터(Validation)",
+      "테스트 데이터",
+      "외부 데이터"
+    ],
+    "answer": "검증 데이터(Validation)",
+    "explanation": "검증 데이터는 하이퍼파라미터 튜닝 등 최고의 모델 설정을 찾기 위한 연습 시험지 역할을 합니다. [28]"
+  },
+  {
+    "id": 394,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "평가 데이터의 정보가 학습 과정에 포함되어 모델 성능이 실제보다 좋게 착각하게 만드는 현상은?",
+    "choices": [
+      "과소적합",
+      "데이터 누수(Data Leakage)",
+      "망의 퇴화",
+      "기울기 소실"
+    ],
+    "answer": "데이터 누수(Data Leakage)",
+    "explanation": "데이터 누수는 시험 정답을 미리 보고 공부한 것과 같아 모델의 신뢰성을 떨어뜨리는 심각한 문제입니다. [29]"
+  },
+  {
+    "id": 395,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Fold 교차 검증의 최종적인 신뢰도 높은 성능은 어떻게 산출합니까?",
+    "choices": [
+      "첫 번째 결과만 사용",
+      "가장 점수가 높은 결과만 사용",
+      "K번의 모든 검증 결과의 평균을 냄",
+      "마지막 결과만 사용"
+    ],
+    "answer": "K번의 모든 검증 결과의 평균을 냄",
+    "explanation": "모든 덩어리를 돌아가며 검증한 뒤 그 평균값을 사용해야 데이터 분할에 따른 운적인 요소를 배제할 수 있습니다. [29]"
+  }
+]

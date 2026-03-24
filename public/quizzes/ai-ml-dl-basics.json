@@ -1,0 +1,660 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "인공지능(AI), 머신러닝(ML), 딥러닝(DL)의 올바른 포함 관계는 무엇입니까?",
+    "choices": [
+      "AI ⊃ ML ⊃ DL",
+      "DL ⊃ ML ⊃ AI",
+      "ML ⊃ AI ⊃ DL",
+      "AI ⊃ DL ⊃ ML"
+    ],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "AI는 인간의 지능을 모방하는 모든 기술을 포함하는 가장 넓은 개념이며, ML은 그 중 데이터에서 패턴을 학습하는 방법론, DL은 다층 신경망을 사용하는 ML의 한 분야입니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "단일 뉴런 모델인 퍼셉트론(Perceptron)의 가장 큰 한계점으로 지적된 것은 무엇입니까?",
+    "choices": [
+      "학습 속도가 너무 느림",
+      "XOR와 같은 비선형 문제를 해결할 수 없음",
+      "데이터 전처리가 불가능함",
+      "가중치 업데이트가 수행되지 않음"
+    ],
+    "answer": "XOR와 같은 비선형 문제를 해결할 수 없음",
+    "explanation": "단일 레이어 퍼셉트론은 선형 분류만 가능하기 때문에 XOR와 같은 비선형 문제를 해결하지 못하는 표현력의 한계를 가집니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "은닉층이 1개인 얕은 신경망(SNN)이 이론적으로 어떤 연속 함수도 근사할 수 있다는 이론은 무엇입니까?",
+    "choices": [
+      "역전파 알고리즘",
+      "만능 근사 이론 (Universal Approximation Theorem)",
+      "중앙 극한 정리",
+      "경사하강법"
+    ],
+    "answer": "만능 근사 이론 (Universal Approximation Theorem)",
+    "explanation": "만능 근사 이론에 따르면 은닉층이 1개만 있어도 충분히 많은 뉴런이 있다면 이론상 모든 연속 함수를 근사할 수 있습니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습 과정 중 손실 함수의 기울기를 출력층에서 입력층 방향으로 전달하며 가중치를 계산하는 알고리즘은?",
+    "choices": [
+      "순전파 (Forward Propagation)",
+      "역전파 (Backpropagation)",
+      "데이터 증강",
+      "풀링 (Pooling)"
+    ],
+    "answer": "역전파 (Backpropagation)",
+    "explanation": "역전파는 연쇄 법칙(Chain Rule)을 이용하여 출력에서 발생한 오차를 입력 방향으로 되돌리며 각 가중치의 기울기를 효율적으로 계산하는 과정입니다."
+  },
+  {
+    "id": 49,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습 중 기울기가 너무 작아져서 초기 레이어의 가중치가 업데이트되지 않는 현상은?",
+    "choices": [
+      "Dying ReLU",
+      "Exploding Gradient",
+      "Vanishing Gradient (기울기 소실)",
+      "Overfitting"
+    ],
+    "answer": "Vanishing Gradient (기울기 소실)",
+    "explanation": "기울기 소실은 특히 Sigmoid 등을 사용하는 깊은 망에서 발생하며 학습이 제대로 이루어지지 않게 만듭니다."
+  },
+  {
+    "id": 51,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 딥러닝(DL)을 가장 잘 설명한 문장은 무엇입니까?",
+    "choices": [
+      "인간 지능을 모방하는 모든 기술",
+      "데이터에서 패턴을 스스로 학습하는 방법론",
+      "다층 신경망을 사용하는 머신러닝의 한 분야",
+      "통계적 가설 검정을 수행하는 소프트웨어"
+    ],
+    "answer": "다층 신경망을 사용하는 머신러닝의 한 분야",
+    "explanation": "딥러닝은 다층 신경망을 사용한 머신러닝(ML)의 한 분야로 정의됩니다."
+  },
+  {
+    "id": 52,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "현재 산업에서 'AI'라 불리는 것들의 대부분을 차지하며, 대규모 사전학습을 거친 모델은?",
+    "choices": [
+      "단층 퍼셉트론",
+      "파운데이션 모델",
+      "규제 모델",
+      "SNN"
+    ],
+    "answer": "파운데이션 모델",
+    "explanation": "현재 산업의 AI 대부분은 딥러닝 기반의 대규모 사전학습 모델인 파운데이션 모델입니다."
+  },
+  {
+    "id": 59,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "퍼셉트론이 생물학적 뉴런을 수학적으로 모사할 때 사용하는 기본 연산 방식은?",
+    "choices": [
+      "입력값에 가중치를 곱하고 합산",
+      "입력값의 평균 계산",
+      "입력값 중 최댓값 선택",
+      "입력값 간의 거리 계산"
+    ],
+    "answer": "입력값에 가중치를 곱하고 합산",
+    "explanation": "퍼셉트론은 입력값에 가중치를 곱하고 합산한 뒤 임계값과 비교하여 결과를 출력하는 단일 뉴런 모델입니다."
+  },
+  {
+    "id": 60,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다층 퍼셉트론(MLP)이 비선형 문제를 해결하기 위해 도입한 핵심 요소는?",
+    "choices": [
+      "단일 레이어",
+      "은닉층(Hidden Layer)",
+      "단순 합산",
+      "전처리 기술"
+    ],
+    "answer": "은닉층(Hidden Layer)",
+    "explanation": "MLP는 퍼셉트론을 여러 레이어로 쌓아 은닉층을 구성함으로써 XOR와 같은 비선형 문제를 해결할 수 있게 되었습니다."
+  },
+  {
+    "id": 61,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "심층 신경망(DNN)의 특징으로 옳지 않은 것은?",
+    "choices": [
+      "수십~수백 개의 은닉층을 가짐",
+      "고수준 추상 특징을 자동 학습함",
+      "모델 내부 동작의 해석이 매우 쉬움",
+      "대규모 연산 자원이 필요함"
+    ],
+    "answer": "모델 내부 동작의 해석이 매우 쉬움",
+    "explanation": "DNN은 강력한 성능을 내지만 내부 동작 해석이 어려운 '블랙박스'의 특징을 가집니다."
+  },
+  {
+    "id": 62,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "순전파(Forward Propagation) 과정에서 각 레이어가 수행하는 기본 수식은?",
+    "choices": [
+      "y = W·x + b",
+      "y = log(x)",
+      "y = Σ(ŷ−y)²",
+      "y = x / n"
+    ],
+    "answer": "y = W·x + b",
+    "explanation": "순전파 시 각 레이어에서는 가중치(W)와 입력(x)의 곱에 편향(b)을 더하는 연산을 수행합니다."
+  },
+  {
+    "id": 63,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "역전파(Backpropagation)에서 기울기를 계산할 때 사용하는 수학적 원리는?",
+    "choices": [
+      "피타고라스 정리",
+      "연쇄 법칙 (Chain Rule)",
+      "베이즈 정리",
+      "중앙값 정리"
+    ],
+    "answer": "연쇄 법칙 (Chain Rule)",
+    "explanation": "역전파는 출력층에서 입력층 방향으로 연쇄 법칙을 이용해 각 가중치에 대한 기울기를 효율적으로 계산합니다."
+  },
+  {
+    "id": 100,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "MLP와 DNN의 관계를 가장 잘 설명한 것은?",
+    "choices": [
+      "MLP는 DNN의 한 종류이며 기초가 됨",
+      "둘은 전혀 다른 독립적인 기술임",
+      "DNN이 MLP보다 구조가 단순함",
+      "MLP는 이미지 전용이고 DNN은 텍스트 전용임"
+    ],
+    "answer": "MLP는 DNN의 한 종류이며 기초가 됨",
+    "explanation": "다층 퍼셉트론(MLP)은 모든 심층 신경망(DNN) 구조의 토대를 제공합니다."
+  },
+  {
+    "id": 101,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "AI, ML, DL의 정의 중 '데이터에서 패턴을 스스로 학습하는 방법론'에 해당하는 것은?",
+    "choices": [
+      "AI",
+      "ML",
+      "DL",
+      "ANN"
+    ],
+    "answer": "ML",
+    "explanation": "ML(머신러닝)은 데이터에서 패턴을 스스로 학습하는 방법론을 의미합니다."
+  },
+  {
+    "id": 135,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습 파이프라인의 가장 첫 단계는 무엇입니까?",
+    "choices": [
+      "순전파",
+      "손실 함수 계산",
+      "데이터 전처리",
+      "가중치 업데이트"
+    ],
+    "answer": "데이터 전처리",
+    "explanation": "학습 파이프라인은 데이터를 모델에 넣기 적합한 형태로 바꾸는 전처리부터 시작됩니다."
+  },
+  {
+    "id": 136,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "SNN(얕은 신경망)이 복잡한 패턴을 근사할 때 나타나는 실용적 한계는?",
+    "choices": [
+      "학습 속도가 너무 느림",
+      "뉴런 수가 지수적으로 많이 필요함",
+      "이론적으로 증명이 불가능함",
+      "이미지 데이터만 처리가능함"
+    ],
+    "answer": "뉴런 수가 지수적으로 많이 필요함",
+    "explanation": "SNN은 이론적으로 강력하지만 복잡한 패턴 학습을 위해 뉴런이 너무 많이 필요하여 DNN으로 대체되었습니다."
+  },
+  {
+    "id": 137,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "역전파(Backpropagation)의 '장점'으로 언급된 것은?",
+    "choices": [
+      "기울기 소실을 완벽히 해결함",
+      "모든 가중치의 기울기를 효율적으로 계산함",
+      "연산 자원이 전혀 필요 없음",
+      "레이어를 무한대로 쌓게 해줌"
+    ],
+    "answer": "모든 가중치의 기울기를 효율적으로 계산함",
+    "explanation": "역전파는 연쇄 법칙을 통해 복잡한 신경망의 모든 가중치에 대한 기울기를 효율적으로 산출해냅니다."
+  },
+  {
+    "id": 138,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습 루프가 종료되는 세 가지 조건 중 하나는?",
+    "choices": [
+      "데이터 전처리가 완료되었을 때",
+      "설정한 에포크 수에 도달했을 때",
+      "가중치가 0이 되었을 때",
+      "활성화 함수가 변경되었을 때"
+    ],
+    "answer": "설정한 에포크 수에 도달했을 때",
+    "explanation": "학습은 설정된 에포크 수 도달, 조기 종료 조건 만족, 혹은 수동 중단 시 종료됩니다."
+  },
+  {
+    "id": 151,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "인공지능(AI), 머신러닝(ML), 딥러닝(DL)의 관계를 가장 올바르게 나타낸 것은 무엇입니까?",
+    "choices": [
+      "AI ⊃ ML ⊃ DL",
+      "ML ⊃ AI ⊃ DL",
+      "DL ⊃ ML ⊃ AI",
+      "AI ⊃ DL ⊃ ML"
+    ],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "AI는 인간 지능을 모방하는 모든 기술을 포함하며, 그 안에 ML이, 그리고 ML의 한 분야로 DL이 포함되는 관계를 가집니다."
+  },
+  {
+    "id": 152,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "현재 산업에서 흔히 'AI'라고 부르는 대부분의 모델은 어떤 모델에 해당합니까?",
+    "choices": [
+      "단일 퍼셉트론",
+      "SNN 모델",
+      "파운데이션 모델",
+      "전통적 통계 모델"
+    ],
+    "answer": "파운데이션 모델",
+    "explanation": "현재 산업에서 AI라 불리는 대부분은 딥러닝 기반의 대규모 사전학습 모델인 파운데이션 모델입니다."
+  },
+  {
+    "id": 164,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "퍼셉트론(Perceptron) 모델에 대한 설명으로 옳은 것은?",
+    "choices": [
+      "다중 레이어로 구성됨",
+      "생물 뉴런을 수학적으로 모사",
+      "XOR 문제를 쉽게 해결",
+      "복잡한 패턴 인식에 최적"
+    ],
+    "answer": "생물 뉴런을 수학적으로 모사",
+    "explanation": "퍼셉트론은 생물 뉴런을 모사한 단일 뉴런 모델로 모든 신경망 구조의 출발점이 되었습니다."
+  },
+  {
+    "id": 165,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다층 퍼셉트론(MLP)이 단일 퍼셉트론의 어떤 한계를 극복했습니까?",
+    "choices": [
+      "학습 속도 저하",
+      "XOR와 같은 비선형 문제 해결 불가",
+      "데이터 전처리 효율성",
+      "메모리 사용량"
+    ],
+    "answer": "XOR와 같은 비선형 문제 해결 불가",
+    "explanation": "MLP는 레이어를 쌓아 은닉층을 구성함으로써 퍼셉트론이 풀지 못했던 비선형 문제를 해결했습니다."
+  },
+  {
+    "id": 166,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "만능 근사 이론(Universal Approximation Theorem)에 근거하여 SNN이 증명한 것은?",
+    "choices": [
+      "층이 깊을수록 성능이 좋음",
+      "이론상 어떤 연속 함수도 근사 가능",
+      "이미지 처리에만 강점이 있음",
+      "학습률 튜닝이 필요 없음"
+    ],
+    "answer": "이론상 어떤 연속 함수도 근사 가능",
+    "explanation": "은닉층이 하나뿐인 SNN도 충분한 뉴런이 있다면 이론상 모든 연속 함수를 근사할 수 있음을 증명했습니다."
+  },
+  {
+    "id": 167,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "심층 신경망(DNN)의 가장 핵심적인 강점은 무엇입니까?",
+    "choices": [
+      "연산 자원 최소화",
+      "고수준 추상 특징 자동 학습",
+      "가중치 직접 수동 입력",
+      "해석 가능한 블랙박스 구조"
+    ],
+    "answer": "고수준 추상 특징 자동 학습",
+    "explanation": "DNN은 수많은 은닉층을 통해 데이터로부터 고수준의 추상적 특징을 자동으로 추출하는 강력한 능력을 가집니다."
+  },
+  {
+    "id": 168,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "순전파(Forward Propagation) 과정에서 수행되는 주된 목적은?",
+    "choices": [
+      "가중치 수정",
+      "예측값 계산 및 손실 함수 입력 생성",
+      "기울기 소실 방지",
+      "이미지 패딩 추가"
+    ],
+    "answer": "예측값 계산 및 손실 함수 입력 생성",
+    "explanation": "순전파는 입력층부터 출력층까지 통과하며 모델이 현재 가중치로 예측값을 계산하는 과정입니다."
+  },
+  {
+    "id": 169,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "역전파(Backpropagation)에서 가중치의 기울기를 계산할 때 사용하는 핵심 원리는?",
+    "choices": [
+      "정규 방정식",
+      "연쇄 법칙(Chain Rule)",
+      "베이즈 확률",
+      "덴드로그램"
+    ],
+    "answer": "연쇄 법칙(Chain Rule)",
+    "explanation": "역전파는 출력층의 오차를 연쇄 법칙을 이용하여 입력층 방향으로 전파하며 기울기를 계산합니다."
+  },
+  {
+    "id": 201,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 AI, ML, DL의 포함 관계로 올바른 것은?",
+    "choices": [
+      "AI ⊃ ML ⊃ DL",
+      "ML ⊃ AI ⊃ DL",
+      "DL ⊃ ML ⊃ AI",
+      "AI ⊃ DL ⊃ ML"
+    ],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "AI는 인간 지능을 모방하는 기술 전체를, ML은 데이터에서 패턴을 학습하는 방법론을, DL은 신경망을 사용하는 ML의 한 분야를 의미합니다."
+  },
+  {
+    "id": 213,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "인공신경망의 가장 기본적인 단위로, 생물학적 뉴런을 모사한 모델은?",
+    "choices": [
+      "퍼셉트론",
+      "RNN",
+      "CNN",
+      "Transformer"
+    ],
+    "answer": "퍼셉트론",
+    "explanation": "퍼셉트론은 여러 입력을 받아 가중합을 계산하고 출력 신호를 결정하는 기본 단위입니다."
+  },
+  {
+    "id": 214,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "단층 퍼셉트론이 해결하지 못해 인공지능의 겨울을 불러왔던 문제는?",
+    "choices": [
+      "AND 문제",
+      "OR 문제",
+      "XOR 문제",
+      "이미지 분류"
+    ],
+    "answer": "XOR 문제",
+    "explanation": "XOR 문제는 하나의 직선으로 나눌 수 없어 단층 퍼셉트론으로는 해결이 불가능했습니다."
+  },
+  {
+    "id": 215,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터가 입력층에서 출력층 방향으로 흘러가며 예측값을 계산하는 과정은?",
+    "choices": [
+      "역전파",
+      "순전파(Forward Propagation)",
+      "가중치 동결",
+      "데이터 정제"
+    ],
+    "answer": "순전파(Forward Propagation)",
+    "explanation": "순전파는 입력 데이터가 층을 통과하며 최종 결과를 내는 과정입니다."
+  },
+  {
+    "id": 216,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "오차를 출력층에서 입력층 방향으로 전달하며 가중치를 업데이트하는 알고리즘은?",
+    "choices": [
+      "역전파(Backpropagation)",
+      "순전파",
+      "데이터 증강",
+      "K-평균"
+    ],
+    "answer": "역전파(Backpropagation)",
+    "explanation": "역전파는 연쇄 법칙을 이용해 오차의 원인이 되는 가중치를 찾아 수정하는 과정입니다."
+  },
+  {
+    "id": 236,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "훈련 데이터 세트 전체를 한 번 다 훑는 학습 단위를 무엇이라 하나?",
+    "choices": [
+      "배치",
+      "스텝",
+      "에포크(Epoch)",
+      "러닝 레이트"
+    ],
+    "answer": "에포크(Epoch)",
+    "explanation": "에포크는 전체 데이터를 모델이 몇 번 학습할지를 나타내는 횟수입니다."
+  },
+  {
+    "id": 242,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "하나의 은닉층만으로도 거의 모든 함수를 흉내 낼 수 있다는 이론의 명칭은?",
+    "choices": [
+      "연쇄 법칙",
+      "만능 근사 이론",
+      "중심 극한 정리",
+      "잔차 학습 이론"
+    ],
+    "answer": "만능 근사 이론",
+    "explanation": "만능 근사 이론은 얕은 신경망이라도 충분한 뉴런이 있다면 이론상 강력함을 증명합니다."
+  },
+  {
+    "id": 267,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "퍼셉트론 내부에서 가중합 결과에 더해져 출력의 기준값을 조절하는 상수는?",
+    "choices": [
+      "가중치(Weight)",
+      "편향(Bias)",
+      "활성화 함수",
+      "입력값"
+    ],
+    "answer": "편향(Bias)",
+    "explanation": "편향(b)은 직선의 절편과 같은 역할을 하여 모델이 더 유연하게 경계를 찾도록 돕습니다."
+  },
+  {
+    "id": 268,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "만능 근사 이론에 따르면, 연속 함수를 근사하기 위해 필요한 최소 은닉층 개수는?",
+    "choices": [
+      "1개",
+      "5개",
+      "10개",
+      "100개"
+    ],
+    "answer": "1개",
+    "explanation": "만능 근사 이론은 충분한 뉴런이 있다면 단 1개의 은닉층으로도 복잡한 함수를 흉내 낼 수 있음을 설명합니다."
+  },
+  {
+    "id": 272,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "순전파(Forward Propagation) 과정의 올바른 순서는?",
+    "choices": [
+      "입력층 → 은닉층 → 출력층",
+      "출력층 → 은닉층 → 입력층",
+      "은닉층 → 입력층 → 출력층",
+      "입력층 → 출력층 → 은닉층"
+    ],
+    "answer": "입력층 → 은닉층 → 출력층",
+    "explanation": "순전파는 데이터가 앞에서 뒤로(입력에서 출력으로) 흘러가며 계산되는 과정입니다."
+  },
+  {
+    "id": 273,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "역전파(Backpropagation) 과정에서 가중치를 업데이트하기 위해 사용하는 수학 원리는?",
+    "choices": [
+      "최소자승법",
+      "연쇄 법칙(Chain Rule)",
+      "베이즈 정리",
+      "중심극한정리"
+    ],
+    "answer": "연쇄 법칙(Chain Rule)",
+    "explanation": "역전파는 합성함수 미분법인 연쇄 법칙을 사용하여 출력층의 오차 신호를 입력층 방향으로 전달합니다."
+  },
+  {
+    "id": 301,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "머신러닝의 정의로 가장 적절한 것은?",
+    "choices": [
+      "컴퓨터에게 모든 규칙을 사람이 직접 코딩해주는 방식",
+      "데이터 안에서 규칙(패턴)을 컴퓨터가 스스로 학습하게 하는 방식",
+      "인간의 뇌 세포를 그대로 복제하여 컴퓨터를 만드는 기술",
+      "이미지 데이터만을 전문적으로 처리하는 하드웨어 기술"
+    ],
+    "answer": "데이터 안에서 규칙(패턴)을 컴퓨터가 스스로 학습하게 하는 방식",
+    "explanation": "머신러닝은 명시적인 프로그래밍 없이 데이터로부터 학습하여 성능을 개선하는 알고리즘 연구 분야입니다."
+  },
+  {
+    "id": 302,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "딥러닝의 핵심 아이디어는 무엇으로부터 영감을 받았습니까?",
+    "choices": [
+      "인간의 유전자 구조",
+      "동물의 진화 과정",
+      "인간의 뇌 신경망 구조",
+      "우주의 은하계 형성 원리"
+    ],
+    "answer": "인간의 뇌 신경망 구조",
+    "explanation": "딥러닝은 뇌의 신경세포(뉴런)들이 신호를 주고받는 방식을 모방한 인공신경망을 기반으로 합니다."
+  },
+  {
+    "id": 311,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "퍼셉트론 구성 요소 중 입력 신호가 결과에 미치는 영향력을 조절하는 값은?",
+    "choices": [
+      "입력값(x)",
+      "가중치(Weight)",
+      "활성화 함수",
+      "에포크"
+    ],
+    "answer": "가중치(Weight)",
+    "explanation": "가중치는 각 입력 신호의 중요도를 결정하며, 학습을 통해 최적의 값이 찾아집니다."
+  },
+  {
+    "id": 312,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "XOR 논리 게이트의 특징으로 옳은 것은?",
+    "choices": [
+      "두 입력이 서로 같을 때만 1을 출력한다",
+      "두 입력이 서로 다를 때만 1을 출력한다",
+      "하나의 입력이라도 1이면 0을 출력한다",
+      "모든 입력이 0일 때만 1을 출력한다"
+    ],
+    "answer": "두 입력이 서로 다를 때만 1을 출력한다",
+    "explanation": "XOR(배타적 논리합)은 입력값이 서로 다를 때 참(1)을 반환하는 논리 회로입니다."
+  },
+  {
+    "id": 313,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "MLP 학습 과정 중 예측값을 계산하기 위해 데이터가 처음으로 들어가는 곳은?",
+    "choices": [
+      "은닉층",
+      "출력층",
+      "입력층",
+      "활성화 함수"
+    ],
+    "answer": "입력층",
+    "explanation": "모든 신경망의 연산은 데이터가 입력되는 입력층(Input Layer)에서 시작됩니다."
+  },
+  {
+    "id": 314,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "역전파(Backpropagation) 알고리즘이 궁극적으로 수정하고자 하는 대상은?",
+    "choices": [
+      "입력 데이터",
+      "훈련 데이터의 개수",
+      "가중치 및 편향 파라미터",
+      "평가 지표의 종류"
+    ],
+    "answer": "가중치 및 편향 파라미터",
+    "explanation": "역전파는 오차를 줄이기 위해 각 층의 가중치와 편향을 최적화(업데이트)하는 과정입니다."
+  },
+  {
+    "id": 359,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "단층 퍼셉트론의 한계인 XOR 문제를 해결하기 위해 도입된 구조는 무엇입니까?",
+    "choices": [
+      "선형 회귀",
+      "다층 퍼셉트론(여러 층 쌓기)",
+      "단일 은닉층",
+      "K-Means"
+    ],
+    "answer": "다층 퍼셉트론(여러 층 쌓기)",
+    "explanation": "퍼셉트론을 여러 층으로 쌓아 여러 개의 직선을 조합함으로써 비선형적인 XOR 문제를 해결했습니다. [7]"
+  },
+  {
+    "id": 360,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "신경망 학습 과정 중 데이터가 입력층에서 시작해 은닉층을 거쳐 출력층으로 전달되는 과정은?",
+    "choices": [
+      "순전파(Forward Propagation)",
+      "역전파(Backpropagation)",
+      "가중치 동결",
+      "경사 하강"
+    ],
+    "answer": "순전파(Forward Propagation)",
+    "explanation": "순전파는 데이터가 앞에서 뒤로 흘러가며 가중치를 거쳐 최종 예측값을 계산하는 과정입니다. [8]"
+  },
+  {
+    "id": 362,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "역전파 심화 과정에서 뉴런의 출력값이 최종 오차에 얼마나 영향을 미쳤는지 나타내는 신호는?",
+    "choices": [
+      "책임 신호",
+      "입력 신호",
+      "활성화 신호",
+      "바이어스 신호"
+    ],
+    "answer": "책임 신호",
+    "explanation": "역전파 시 각 뉴런은 최종 오차에 대한 각기 다른 '책임 신호'를 전달받아 가중치를 수정합니다. [10]"
+  },
+  {
+    "id": 400,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 가장 큰 범주부터 하위 범주 순으로 올바르게 나열된 것은?",
+    "choices": [
+      "AI > ML > DL",
+      "DL > ML > AI",
+      "ML > AI > DL",
+      "AI > DL > ML"
+    ],
+    "answer": "AI > ML > DL",
+    "explanation": "인공지능(AI)은 인간의 지능을 모방하는 기술 전체이며, 그 안에 머신러닝(ML)이 있고, 신경망을 쓰는 딥러닝(DL)이 포함됩니다. [25, 32]"
+  }
+]

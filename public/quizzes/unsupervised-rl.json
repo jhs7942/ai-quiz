@@ -1,0 +1,492 @@
+[
+  {
+    "id": 29,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "정답 레이블 없이 데이터의 숨겨진 구조나 패턴을 스스로 학습하는 머신러닝 종류는?",
+    "choices": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습",
+      "전이 학습"
+    ],
+    "answer": "비지도 학습",
+    "explanation": "비지도 학습은 군집화(Clustering)나 차원 축소와 같이 레이블이 없는 상태에서 데이터의 본질적인 구조를 찾아냅니다."
+  },
+  {
+    "id": 30,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "에이전트가 환경과 상호작용하며 보상을 최대화하는 정책을 학습하는 방식은?",
+    "choices": [
+      "회귀",
+      "분류",
+      "강화 학습",
+      "차원 축소"
+    ],
+    "answer": "강화 학습",
+    "explanation": "강화 학습은 정답 대신 보상 시스템을 통해 스스로 최적의 행동 순서를 익히는 방식으로 게임이나 로봇 제어에 쓰입니다."
+  },
+  {
+    "id": 47,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "머신러닝 학습 시 데이터의 분산을 최대한 유지하면서 차원을 축소하는 대표적인 기법은?",
+    "choices": [
+      "K-means",
+      "PCA (주성분 분석)",
+      "L1 규제",
+      "One-Hot Encoding"
+    ],
+    "answer": "PCA (주성분 분석)",
+    "explanation": "PCA는 고차원 데이터를 정보 손실을 최소화하면서 저차원으로 투영하는 비지도 학습 기반 차원 축소 기법입니다."
+  },
+  {
+    "id": 48,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 비지도 학습의 대표적인 사례로 볼 수 있는 알고리즘은?",
+    "choices": [
+      "선형 회귀",
+      "로지스틱 회귀",
+      "K-means 군집화",
+      "ResNet 분류"
+    ],
+    "answer": "K-means 군집화",
+    "explanation": "K-means는 데이터 간의 거리를 기준으로 유사한 데이터끼리 묶어주는 대표적인 비지도 군집화 알고리즘입니다."
+  },
+  {
+    "id": 57,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "비지도 학습인 군집화(Clustering)에서 품질을 판단하는 주요 기준은?",
+    "choices": [
+      "분류 정확도",
+      "클러스터 내 분산의 최소화",
+      "기울기의 크기",
+      "에포크 횟수"
+    ],
+    "answer": "클러스터 내 분산의 최소화",
+    "explanation": "군집화에서는 클러스터 내 분산 거리 총합이 최소화될수록 군집의 품질이 향상된 것으로 봅니다."
+  },
+  {
+    "id": 85,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "K-means 군집화 알고리즘의 단점으로 옳은 것은?",
+    "choices": [
+      "연산 속도가 매우 느림",
+      "K(군집 수)를 사전에 지정해야 함",
+      "시각화가 불가능함",
+      "연속 함수 근사가 안 됨"
+    ],
+    "answer": "K(군집 수)를 사전에 지정해야 함",
+    "explanation": "K-means는 단순하고 빠르지만 분석가가 미리 K값을 결정해야 한다는 단점이 있습니다."
+  },
+  {
+    "id": 86,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "강화 학습(RL)의 주요 구성 요소가 아닌 것은?",
+    "choices": [
+      "에이전트 (Agent)",
+      "환경 (Environment)",
+      "정답 레이블 (Label)",
+      "보상 (Reward)"
+    ],
+    "answer": "정답 레이블 (Label)",
+    "explanation": "강화 학습은 정답 레이블 대신 환경과의 상호작용에 따른 보상을 통해 학습합니다."
+  },
+  {
+    "id": 107,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "비지도 군집화(Clustering)에서 품질을 향상시키기 위해 최소화해야 하는 값은?",
+    "choices": [
+      "클러스터 내 분산 거리의 총합",
+      "학습률(Learning Rate)",
+      "에포크 수",
+      "가중치의 절댓값 합"
+    ],
+    "answer": "클러스터 내 분산 거리의 총합",
+    "explanation": "클러스터 내 분산 거리 총합이 최소화될수록 군집의 품질이 향상됩니다."
+  },
+  {
+    "id": 123,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "K-means 군집화의 기본 동작 방식은 무엇입니까?",
+    "choices": [
+      "K개의 중심점을 반복적으로 업데이트",
+      "데이터를 덴드로그램으로 시각화",
+      "분산을 최소화하는 방향으로 투영",
+      "에이전트가 보상을 최대화하도록 학습"
+    ],
+    "answer": "K개의 중심점을 반복적으로 업데이트",
+    "explanation": "K-means는 지정된 K개의 중심점을 기준으로 데이터를 할당하고 중심을 갱신하는 과정을 반복합니다."
+  },
+  {
+    "id": 124,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "PCA(주성분 분석)에서 주성분을 정하는 기준은?",
+    "choices": [
+      "평균값이 가장 큰 방향",
+      "분산이 최대화되는 방향",
+      "데이터 개수가 가장 많은 방향",
+      "결측치가 없는 방향"
+    ],
+    "answer": "분산이 최대화되는 방향",
+    "explanation": "PCA는 데이터의 정보를 최대한 보존하기 위해 분산이 가장 큰 방향을 주성분으로 선택합니다."
+  },
+  {
+    "id": 125,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "강화 학습의 'RLHF' 기술이 현대 LLM에 적용되는 주된 이유는?",
+    "choices": [
+      "데이터 전처리 자동화를 위해",
+      "인간의 피드백을 기반으로 모델을 정렬(Alignment)하기 위해",
+      "배치 크기를 줄이기 위해",
+      "이미지 생성 속도를 높이기 위해"
+    ],
+    "answer": "인간의 피드백을 기반으로 모델을 정렬(Alignment)하기 위해",
+    "explanation": "RLHF는 인간의 피드백을 강화 학습 보상으로 활용하여 LLM의 대답을 인간의 의도에 맞게 정렬합니다."
+  },
+  {
+    "id": 161,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "군집화(Clustering) 품질을 높이기 위해 비지도 학습에서 달성해야 하는 목표는?",
+    "choices": [
+      "분류 정확도 최대화",
+      "클러스터 내 분산 최소화",
+      "학습률 최대화",
+      "기울기 폭발 유도"
+    ],
+    "answer": "클러스터 내 분산 최소화",
+    "explanation": "비지도 군집화에서는 클러스터 내 분산 거리가 최소화될수록 군집의 품질이 향상된 것으로 판단합니다."
+  },
+  {
+    "id": 193,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "K-means 군집화 알고리즘의 동작 방식은 무엇입니까?",
+    "choices": [
+      "K개 중심점의 반복 업데이트",
+      "덴드로그램 시각화",
+      "보상을 위한 시행착오",
+      "단순 선형 회귀"
+    ],
+    "answer": "K개 중심점의 반복 업데이트",
+    "explanation": "K-means는 지정된 K개의 중심을 기준으로 유사한 데이터끼리 묶어 나가는 대표적인 비지도 학습입니다."
+  },
+  {
+    "id": 194,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "PCA(주성분 분석)를 통한 차원 축소의 핵심 기준은?",
+    "choices": [
+      "평균값 고정",
+      "분산 최대화 방향으로 투영",
+      "이상치 제거",
+      "가중치 절댓값 합산"
+    ],
+    "answer": "분산 최대화 방향으로 투영",
+    "explanation": "PCA는 데이터의 정보를 최대한 유지하기 위해 분산이 가장 큰 방향을 주성분으로 선택하여 투영합니다."
+  },
+  {
+    "id": 195,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "강화 학습(Reinforcement)에서 에이전트가 학습하는 목표는?",
+    "choices": [
+      "입력-출력 정답 매핑",
+      "보상을 최대화하는 정책(Policy)",
+      "데이터의 숨겨진 구조",
+      "가중치 0으로 만들기"
+    ],
+    "answer": "보상을 최대화하는 정책(Policy)",
+    "explanation": "강화 학습 에이전트는 환경과의 상호작용을 통해 미래의 보상 합을 최대화하는 최적의 정책을 찾아나갑니다."
+  },
+  {
+    "id": 209,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "정답 레이블이 없는 데이터의 숨겨진 구조나 규칙을 찾는 학습 방식은?",
+    "choices": [
+      "지도 학습",
+      "강화 학습",
+      "비지도 학습",
+      "전이 학습"
+    ],
+    "answer": "비지도 학습",
+    "explanation": "비지도 학습은 정답 없이 비슷한 것끼리 묶거나 차원을 축소하는 학습 방법입니다."
+  },
+  {
+    "id": 210,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "비슷한 특징을 가진 데이터끼리 하나의 그룹으로 묶는 비지도 학습 기술은?",
+    "choices": [
+      "회귀분석",
+      "군집화(Clustering)",
+      "분류",
+      "데이터 증강"
+    ],
+    "answer": "군집화(Clustering)",
+    "explanation": "군집화는 레이블이 없는 데이터를 유사도(거리)에 따라 그룹으로 나누는 작업입니다."
+  },
+  {
+    "id": 211,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Means 알고리즘에서 사용자가 직접 지정해야 하는 값 K는 무엇을 의미하나?",
+    "choices": [
+      "데이터의 개수",
+      "학습 횟수",
+      "군집(Cluster)의 개수",
+      "필터의 크기"
+    ],
+    "answer": "군집(Cluster)의 개수",
+    "explanation": "K-Means에서 K는 데이터를 몇 개의 그룹으로 나눌지를 결정하는 파라미터입니다."
+  },
+  {
+    "id": 212,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터의 특징(차원)이 너무 많아져 패턴을 찾기 어려워지는 현상을 무엇이라 하나?",
+    "choices": [
+      "데이터 누수",
+      "차원의 저주",
+      "기울기 소실",
+      "모드 붕괴"
+    ],
+    "answer": "차원의 저주",
+    "explanation": "차원이 증가할수록 분석에 필요한 공간이 기하급수적으로 커져 발생하는 문제입니다."
+  },
+  {
+    "id": 246,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "머신러닝의 3대 학습 종류 중 '상과 벌'을 통해 행동 방식을 학습하는 것은?",
+    "choices": [
+      "지도 학습",
+      "비지도 학습",
+      "강화 학습(Reinforcement)",
+      "전이 학습"
+    ],
+    "answer": "강화 학습(Reinforcement)",
+    "explanation": "강화 학습은 보상을 최대화하기 위해 에이전트가 스스로 시행착오를 겪으며 학습합니다."
+  },
+  {
+    "id": 250,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 압축하여 핵심 성분만 남기는 기법 중 분산을 최대화하는 축을 찾는 기술은?",
+    "choices": [
+      "K-Means",
+      "PCA(주성분 분석)",
+      "L2 규제",
+      "표준화"
+    ],
+    "answer": "PCA(주성분 분석)",
+    "explanation": "PCA는 정보 손실을 최소화하면서 데이터의 차원을 줄이는 대표적인 비지도 학습 기술입니다."
+  },
+  {
+    "id": 257,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "PCA(주성분 분석)에서 데이터의 정보를 가장 많이 포함하고 있는 새로운 축을 무엇이라 합니까?",
+    "choices": [
+      "제1주성분",
+      "제2주성분",
+      "최소분산축",
+      "직각축"
+    ],
+    "answer": "제1주성분",
+    "explanation": "분산이 최대가 되는 방향으로 설정된 첫 번째 축이 데이터의 정보를 가장 잘 설명하는 제1주성분이 됩니다."
+  },
+  {
+    "id": 269,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Means 군집화에서 데이터들이 중심점과 얼마나 떨어져 있는지 나타내는 거리 총합은?",
+    "choices": [
+      "이너셔(Inertia)",
+      "정확도",
+      "상관계수",
+      "학습률"
+    ],
+    "answer": "이너셔(Inertia)",
+    "explanation": "이너셔는 각 데이터와 클러스터 중심점 사이의 거리 합으로, 값이 작을수록 잘 뭉쳐있음을 뜻합니다."
+  },
+  {
+    "id": 294,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "여러 특성 중 중요한 것만 골라내는 '특성 선택'과 대비되는 '특성 추출'의 대표 기술은?",
+    "choices": [
+      "표준화",
+      "결측치 제거",
+      "PCA(주성분 분석)",
+      "산점도 그리기"
+    ],
+    "answer": "PCA(주성분 분석)",
+    "explanation": "PCA는 기존 변수들을 조합하여 새로운 특징(주성분)으로 압축하는 대표적인 특성 추출 기법입니다."
+  },
+  {
+    "id": 295,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Means 알고리즘에서 각 그룹의 평균을 계산한 뒤 다음 단계에서 수행하는 작업은?",
+    "choices": [
+      "새로운 데이터 수집",
+      "중심점(Centroid) 위치 재설정",
+      "학습 종료",
+      "필터 크기 변경"
+    ],
+    "answer": "중심점(Centroid) 위치 재설정",
+    "explanation": "K-Means는 그룹 내 평균 지점을 새로운 중심점으로 옮기는 과정을 반복하며 군집화합니다."
+  },
+  {
+    "id": 296,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "계층적 군집화에서 오차제곱합에 기초하여 군집을 수행하는 가장 대중적인 연결 방식은?",
+    "choices": [
+      "최단 연결",
+      "최장 연결",
+      "와드 연결(Ward linkage)",
+      "평균 연결"
+    ],
+    "answer": "와드 연결(Ward linkage)",
+    "explanation": "와드 연결법은 군집 내 오차제곱합을 최소화하는 방식으로 현재 가장 널리 사용됩니다."
+  },
+  {
+    "id": 309,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 비지도 학습(Unsupervised Learning)이 활용되는 분야가 아닌 것은?",
+    "choices": [
+      "추천 시스템",
+      "이상 거래 탐지",
+      "고객 세분화",
+      "스팸 메일 분류"
+    ],
+    "answer": "스팸 메일 분류",
+    "explanation": "스팸 메일 분류는 '스팸'과 '정상'이라는 정답(레이블)이 있는 지도 학습 분야입니다."
+  },
+  {
+    "id": 310,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Means 알고리즘에서 각 데이터가 가장 가까운 곳을 기준으로 그룹을 형성하는 기준점은?",
+    "choices": [
+      "뉴런(Neuron)",
+      "중심점(Centroid)",
+      "필터(Filter)",
+      "게이트(Gate)"
+    ],
+    "answer": "중심점(Centroid)",
+    "explanation": "K-Means는 데이터들이 가장 가까운 중심점(Centroid)을 기준으로 뭉치도록 군집화합니다."
+  },
+  {
+    "id": 348,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "나무 형태의 구조(Dendrogram)를 통해 가까운 데이터부터 묶어가는 군집화 방식은?",
+    "choices": [
+      "K-Means",
+      "계층적 군집(Hierarchical)",
+      "경사하강법",
+      "순전파"
+    ],
+    "answer": "계층적 군집(Hierarchical)",
+    "explanation": "계층적 군집은 데이터 간의 거리를 바탕으로 계단식으로 병합해 나가는 알고리즘입니다."
+  },
+  {
+    "id": 349,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "차원의 저주를 해결하기 위해 데이터의 핵심만 남기고 부피를 줄이는 기술은?",
+    "choices": [
+      "데이터 증강",
+      "차원 축소(PCA 등)",
+      "과적합",
+      "순환 신경망"
+    ],
+    "answer": "차원 축소(PCA 등)",
+    "explanation": "차원 축소는 노이즈를 제거하고 핵심 정보만 보존하여 학습 효율을 높입니다."
+  },
+  {
+    "id": 352,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "여러 특징 중 중요한 것만 골라내는 '특성 선택'과 달리, 기존 특징을 압축하여 새로운 특징을 만드는 방식은?",
+    "choices": [
+      "특성 추출",
+      "특성 제거",
+      "데이터 증강",
+      "레이블 인코딩"
+    ],
+    "answer": "특성 추출",
+    "explanation": "특성 추출은 PCA와 같이 기존 특징들을 조합하여 더 적은 수의 새로운 특징으로 압축하는 방식입니다. [2]"
+  },
+  {
+    "id": 354,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-Means 군집화 알고리즘의 가장 첫 번째 동작 단계는 무엇입니까?",
+    "choices": [
+      "데이터의 평균 계산",
+      "K개의 중심점을 랜덤으로 배치",
+      "가까운 데이터끼리 연결",
+      "이상치 제거"
+    ],
+    "answer": "K개의 중심점을 랜덤으로 배치",
+    "explanation": "K-Means는 데이터 공간에 사용자가 지정한 K개의 중심점을 무작위로 배치하며 시작합니다. [4]"
+  },
+  {
+    "id": 355,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "PCA(주성분 분석)를 수행하기 전, 큰 값을 가진 특징이 주성분을 독점하지 않도록 수행해야 하는 필수 전처리는?",
+    "choices": [
+      "데이터 증강",
+      "결측치 제거",
+      "StandardScaler(표준화)",
+      "원-핫 인코딩"
+    ],
+    "answer": "StandardScaler(표준화)",
+    "explanation": "모든 특징의 단위를 똑같이 맞춰주지 않으면 수치가 큰 변수가 주성분 결정에 압도적인 영향을 미칩니다. [2, 5]"
+  },
+  {
+    "id": 356,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "계층적 군집화에서 군집 내의 오차제곱합을 최소화하는 방식으로 가장 많이 쓰이는 연결법은?",
+    "choices": [
+      "최단 연결",
+      "최장 연결",
+      "와드 연결(Ward linkage)",
+      "중심 연결"
+    ],
+    "answer": "와드 연결(Ward linkage)",
+    "explanation": "와드 연결법은 군집 내 오차제곱합에 기초하여 군집을 수행하며 가장 널리 사용됩니다. [6]"
+  },
+  {
+    "id": 396,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "PCA에서 데이터를 2D로 표현할 때, 가장 길어 보이는 방향(분산 최대)의 첫 번째 축은?",
+    "choices": [
+      "제1주성분",
+      "제2주성분",
+      "직각 주성분",
+      "평균 주성분"
+    ],
+    "answer": "제1주성분",
+    "explanation": "분산이 가장 큰 방향인 제1주성분이 데이터의 정보를 가장 많이 포함하고 있습니다. [2]"
+  }
+]

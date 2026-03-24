@@ -1,0 +1,688 @@
+[
+  {
+    "id": 34,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "수치형 데이터를 평균 0, 표준편차 1이 되도록 변환하여 이상치에 강건하게 만드는 전처리 기법은?",
+    "choices": [
+      "정규화 (Normalization)",
+      "표준화 (Standardization)",
+      "라벨 인코딩",
+      "결측치 처리"
+    ],
+    "answer": "표준화 (Standardization)",
+    "explanation": "표준화(Z-score)는 데이터의 분포를 정규분포 형태로 변환하여 학습의 안정성을 높입니다."
+  },
+  {
+    "id": 35,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "순서가 없는 범주형 데이터를 이진 벡터(0과 1)로 변환하는 인코딩 방식은?",
+    "choices": [
+      "Label Encoding",
+      "One-Hot Encoding",
+      "Embedding",
+      "Min-Max Scaling"
+    ],
+    "answer": "One-Hot Encoding",
+    "explanation": "원-핫 인코딩은 각 범주를 독립적인 차원으로 변환하여 카테고리 간의 가상의 순서 관계가 발생하는 것을 방지합니다."
+  },
+  {
+    "id": 46,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "데이터 전처리 과정에서 이상치를 파악하고 데이터의 분포를 시각적으로 확인하기 가장 좋은 도구는?",
+    "choices": [
+      "Softmax",
+      "Adam",
+      "Box Plot (박스 플롯)",
+      "BCE"
+    ],
+    "answer": "Box Plot (박스 플롯)",
+    "explanation": "박스 플롯은 사분위수와 이상치를 직관적으로 보여주어 데이터의 정제 필요성을 파악하는 데 유용합니다."
+  },
+  {
+    "id": 56,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이진 분류(Binary Classification) 손실 함수로 가장 적합한 것은?",
+    "choices": [
+      "MSE",
+      "BCE",
+      "CCE",
+      "L1"
+    ],
+    "answer": "BCE",
+    "explanation": "BCE(Binary Cross Entropy)는 이진 분류 전용 손실 함수로 확률적 해석이 가능합니다."
+  },
+  {
+    "id": 87,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "훈련 데이터와 실제 배포 시의 데이터 분포가 달라지는 현상은?",
+    "choices": [
+      "Overfitting",
+      "Distribution Shift",
+      "Normalization",
+      "Pruning"
+    ],
+    "answer": "Distribution Shift",
+    "explanation": "훈련/배포 환경의 불일치로 성능이 떨어지는 현상을 Distribution Shift라고 하며 데이터 재수집 등이 필요합니다."
+  },
+  {
+    "id": 89,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "범주형 데이터를 연속적인 저차원 벡터로 변환하는 기술로 NLP에서 필수적인 전처리는?",
+    "choices": [
+      "Label Encoding",
+      "One-Hot Encoding",
+      "Embedding",
+      "Z-score Scaling"
+    ],
+    "answer": "Embedding",
+    "explanation": "임베딩은 단어나 범주를 의미가 담긴 저차원의 수치 벡터로 변환합니다."
+  },
+  {
+    "id": 90,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "상관관계 행렬을 색상으로 시각화하여 변수 간 관계를 파악하는 도구는?",
+    "choices": [
+      "히스토그램",
+      "히트맵 (Heatmap)",
+      "박스 플롯",
+      "산점도"
+    ],
+    "answer": "히트맵 (Heatmap)",
+    "explanation": "히트맵은 상관관계 등을 한눈에 파악하기 좋은 EDA 도구입니다."
+  },
+  {
+    "id": 106,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "BCE(Binary Cross Entropy) 손실 함수에 대한 설명으로 옳은 것은?",
+    "choices": [
+      "회귀 문제의 기본 손실 함수이다",
+      "확률적 해석이 가능하며 이진 분류에 사용된다",
+      "다중 분류 시 Softmax와 결합한다",
+      "이상치에 매우 강건하다"
+    ],
+    "answer": "확률적 해석이 가능하며 이진 분류에 사용된다",
+    "explanation": "BCE는 이진 분류 손실 함수로, 확률적인 해석이 가능한 장점이 있습니다."
+  },
+  {
+    "id": 126,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Distribution Shift 문제가 발생했을 때의 해결책으로 적절한 것은?",
+    "choices": [
+      "모델의 은닉층 개수 감소",
+      "데이터 재수집 또는 도메인 적응",
+      "에포크 수 대폭 증가",
+      "학습률을 0으로 설정"
+    ],
+    "answer": "데이터 재수집 또는 도메인 적응",
+    "explanation": "훈련 데이터와 배포 데이터의 분포가 불일치할 경우 데이터를 재수집하거나 도메인 적응 기법을 사용해야 합니다."
+  },
+  {
+    "id": 127,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "정규화(Normalization)와 표준화(Standardization)의 주요 차이점은?",
+    "choices": [
+      "정규화는 범위를 0~1로 고정하며 이상치에 민감하다",
+      "표준화는 항상 0~1 사이의 값을 가진다",
+      "정규화는 정규분포를 가정한다",
+      "표준화는 결측치 처리를 위한 기법이다"
+    ],
+    "answer": "정규화는 범위를 0~1로 고정하며 이상치에 민감하다",
+    "explanation": "정규화(Min-Max)는 0~1 범위로 변환하며 이상치가 있을 경우 범위 왜곡이 심해질 수 있습니다."
+  },
+  {
+    "id": 128,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "범주형 데이터 전처리 중 '라벨 인코딩(Label Encoding)' 사용 시 주의사항은?",
+    "choices": [
+      "숫자 간의 크기 관계(순서)가 의도치 않게 학습될 수 있음",
+      "이진 벡터로 변환되어 메모리를 많이 차지함",
+      "텍스트 데이터에는 적용할 수 없음",
+      "항상 정규화를 거쳐야 함"
+    ],
+    "answer": "숫자 간의 크기 관계(순서)가 의도치 않게 학습될 수 있음",
+    "explanation": "단순 숫자를 부여하는 라벨 인코딩은 범주 간에 존재하지 않는 순서 관계를 모델이 학습할 위험이 있습니다."
+  },
+  {
+    "id": 129,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "EDA 시각화 중 '페어 플롯(Pair Plot)'의 유용함은 무엇입니까?",
+    "choices": [
+      "단일 변수의 분포만 확인 가능하다",
+      "다변수 간의 쌍별 관계를 한눈에 파악할 수 있다",
+      "결측치 위치를 정확히 표시한다",
+      "손실 함수 그래프를 그려준다"
+    ],
+    "answer": "다변수 간의 쌍별 관계를 한눈에 파악할 수 있다",
+    "explanation": "페어 플롯은 여러 변수들 사이의 관계를 산점도와 히스토그램 형태로 한꺼번에 시각화합니다."
+  },
+  {
+    "id": 147,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "통계 시각화 도구인 Seaborn의 주요 특징은 무엇입니까?",
+    "choices": [
+      "기본적인 그래프만 생성 가능함",
+      "미려한 기본 스타일과 통계 시각화에 최적화됨",
+      "속도가 매우 느림",
+      "신경망 레이어를 시각화함"
+    ],
+    "answer": "미려한 기본 스타일과 통계 시각화에 최적화됨",
+    "explanation": "Seaborn은 Matplotlib 기반의 라이브러리로, 통계 분석에 특화된 미려한 시각화를 제공합니다."
+  },
+  {
+    "id": 159,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "BCE(Binary Cross Entropy) 손실 함수의 주된 특징은 무엇입니까?",
+    "choices": [
+      "다중 분류에 최적화",
+      "확률적 해석이 가능",
+      "이상치를 무시함",
+      "미분 없이 학습"
+    ],
+    "answer": "확률적 해석이 가능",
+    "explanation": "BCE는 이진 분류 손실 함수로서 확률적인 해석이 가능하다는 장점이 있습니다."
+  },
+  {
+    "id": 197,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "원-핫 인코딩(One-Hot Encoding)은 범주형 데이터를 어떤 형태로 변환합니까?",
+    "choices": [
+      "임의의 연속 정수",
+      "이진 벡터 형태",
+      "고차원 연속 벡터",
+      "사분위수 분포"
+    ],
+    "answer": "이진 벡터 형태",
+    "explanation": "범주를 각각의 독립적인 이진 값으로 변환하여 순서 관계가 없는 명목형 데이터를 수치화합니다."
+  },
+  {
+    "id": 202,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 본격적으로 분석하기 전 여러 각도에서 관찰하고 이해하는 과정은?",
+    "choices": [
+      "데이터 크롤링",
+      "탐색적 데이터 분석(EDA)",
+      "하이퍼파라미터 튜닝",
+      "모델 배포"
+    ],
+    "answer": "탐색적 데이터 분석(EDA)",
+    "explanation": "EDA는 본격적인 분석 전에 데이터를 이해하고 방향성을 제시하는 필수적인 첫 단계입니다."
+  },
+  {
+    "id": 203,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "피어슨 상관계수(Pearson Correlation Coefficient)가 가질 수 있는 값의 범위는?",
+    "choices": [
+      "0에서 100 사이",
+      "0에서 1 사이",
+      "-1에서 1 사이",
+      "-10에서 10 사이"
+    ],
+    "answer": "-1에서 1 사이",
+    "explanation": "상관계수는 일반적으로 -1(음의 상관관계)에서 1(양의 상관관계) 사이의 값을 가집니다."
+  },
+  {
+    "id": 204,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "두 수치형 변수 사이의 관계를 점을 찍어 시각화하는 그래프는?",
+    "choices": [
+      "히스토그램",
+      "산점도(Scatter Plot)",
+      "박스 플롯",
+      "파이 차트"
+    ],
+    "answer": "산점도(Scatter Plot)",
+    "explanation": "산점도는 두 변수 사이의 관계나 패턴, 이상치를 직관적으로 파악하는 데 사용됩니다."
+  },
+  {
+    "id": 206,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 훈련용과 테스트용으로 분리할 때 주로 사용되는 일반적인 비율은?",
+    "choices": [
+      "1:9",
+      "5:5",
+      "8:2 또는 7:3",
+      "0:10"
+    ],
+    "answer": "8:2 또는 7:3",
+    "explanation": "일반적으로 데이터의 70~80%를 학습에, 나머지 20~30%를 최종 평가에 활용합니다."
+  },
+  {
+    "id": 207,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 표준화(Standardization)를 수행하면 평균과 표준편차는 각각 어떤 값이 됩니까?",
+    "choices": [
+      "평균 1, 표준편차 0",
+      "평균 0, 표준편차 1",
+      "평균 100, 표준편차 10",
+      "평균 0, 표준편차 0"
+    ],
+    "answer": "평균 0, 표준편차 1",
+    "explanation": "표준화는 데이터의 단위를 맞추기 위해 평균을 0, 표준편차를 1로 변환하는 기법입니다."
+  },
+  {
+    "id": 231,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 수치형 데이터를 0과 1 사이의 범위로 압축하는 전처리 기법은?",
+    "choices": [
+      "표준화",
+      "정규화(Normalization)",
+      "원-핫 인코딩",
+      "결측치 제거"
+    ],
+    "answer": "정규화(Normalization)",
+    "explanation": "정규화(Min-Max Scaling)는 데이터의 범위를 특정 구간으로 변환합니다."
+  },
+  {
+    "id": 232,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "여러 변수들 간의 상관관계를 색상으로 시각화하여 보여주는 도구는?",
+    "choices": [
+      "박스 플롯",
+      "히트맵(Heatmap)",
+      "히스토그램",
+      "산점도 행렬"
+    ],
+    "answer": "히트맵(Heatmap)",
+    "explanation": "히트맵은 상관관계가 높은 변수 쌍을 한눈에 찾아내기에 유용합니다."
+  },
+  {
+    "id": 240,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 분석 시 수치 데이터의 분포와 이상치를 한눈에 보기 좋은 그래프는?",
+    "choices": [
+      "파이 차트",
+      "박스 플롯(Box Plot)",
+      "막대 그래프",
+      "히트맵"
+    ],
+    "answer": "박스 플롯(Box Plot)",
+    "explanation": "박스 플롯은 사분위수와 수염을 통해 데이터 분포와 극단적인 이상치를 보여줍니다."
+  },
+  {
+    "id": 243,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "비슷한 데이터를 그룹으로 묶을 때 최적의 그룹 수 K를 찾기 위한 시각화 방법은?",
+    "choices": [
+      "ROC 커브",
+      "엘보우 방법(Elbow Method)",
+      "덴드로그램",
+      "박스 플롯"
+    ],
+    "answer": "엘보우 방법(Elbow Method)",
+    "explanation": "이너셔가 급격히 줄어들다가 완만해지는 '팔꿈치' 지점을 최적의 K로 봅니다."
+  },
+  {
+    "id": 244,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 전처리 과정 중 문자열 범주를 이진 벡터(0과 1)로 변환하는 방식은?",
+    "choices": [
+      "레이블 인코딩",
+      "원-핫 인코딩(One-Hot Encoding)",
+      "표준화",
+      "임베딩"
+    ],
+    "answer": "원-핫 인코딩(One-Hot Encoding)",
+    "explanation": "원-핫 인코딩은 순서가 없는 범주 데이터를 신경망에 넣기 좋은 형태로 바꿉니다."
+  },
+  {
+    "id": 253,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "EDA 과정에서 데이터에 비어있는 값(결측치)을 처리하는 가장 일반적인 방법이 아닌 것은?",
+    "choices": [
+      "평균값으로 채우기",
+      "해당 행 삭제하기",
+      "중앙값으로 채우기",
+      "모든 값을 0으로 바꾸기"
+    ],
+    "answer": "모든 값을 0으로 바꾸기",
+    "explanation": "결측치는 제거하거나 통계량(평균, 중앙값)으로 대체하는 것이 일반적이며, 무조건 0으로 바꾸는 것은 데이터의 왜곡을 초래할 수 있습니다."
+  },
+  {
+    "id": 258,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "박스 플롯(Box Plot)의 중앙에 위치한 선이 의미하는 통계값은?",
+    "choices": [
+      "평균",
+      "중앙값(Median)",
+      "최빈값",
+      "최댓값"
+    ],
+    "answer": "중앙값(Median)",
+    "explanation": "박스 플롯 내부의 선은 데이터의 50% 지점인 중앙값을 나타냅니다."
+  },
+  {
+    "id": 259,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "히트맵을 통해 상관계수가 0.9 이상인 변수 쌍을 발견했을 때 의심할 수 있는 상태는?",
+    "choices": [
+      "과소적합",
+      "다중공선성",
+      "기울기 소실",
+      "모드 붕괴"
+    ],
+    "answer": "다중공선성",
+    "explanation": "독립 변수들 사이의 상관계수가 너무 높은 상태를 다중공선성이라고 하며, 히트맵으로 이를 쉽게 파악할 수 있습니다."
+  },
+  {
+    "id": 270,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 분할 시 정답 클래스 비율을 훈련과 테스트 세트에 동일하게 맞춰주는 옵션은?",
+    "choices": [
+      "random_state",
+      "test_size",
+      "stratify",
+      "shuffle"
+    ],
+    "answer": "stratify",
+    "explanation": "stratify 옵션은 원본의 정답 비율을 유지하며 데이터를 나눠주어 분류 문제에서 필수적입니다."
+  },
+  {
+    "id": 286,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "범주형 데이터를 처리할 때 사과=0, 바나나=1과 같이 정수를 부여하는 방식은?",
+    "choices": [
+      "원-핫 인코딩",
+      "레이블 인코딩(Label Encoding)",
+      "임베딩",
+      "표준화"
+    ],
+    "answer": "레이블 인코딩(Label Encoding)",
+    "explanation": "레이블 인코딩은 각 범주 문자를 고유한 정수 숫자로 단순 변환하는 기법입니다."
+  },
+  {
+    "id": 287,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "각 범주를과 같이 이진 벡터로 변환하여 순서 관계를 없애는 인코딩은?",
+    "choices": [
+      "레이블 인코딩",
+      "원-핫 인코딩(One-Hot Encoding)",
+      "Z-score",
+      "Min-Max 스케일링"
+    ],
+    "answer": "원-핫 인코딩(One-Hot Encoding)",
+    "explanation": "원-핫 인코딩은 특정 위치만 1로 표시하여 범주 간의 수치적 순서가 생기지 않게 합니다."
+  },
+  {
+    "id": 288,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "단어를 고차원 벡터에서 의미를 담은 저차원 연속 벡터로 변환하는 자연어 처리 기법은?",
+    "choices": [
+      "표준화",
+      "임베딩(Embedding)",
+      "정규화",
+      "패딩"
+    ],
+    "answer": "임베딩(Embedding)",
+    "explanation": "임베딩은 단어 사이의 관계를 보존하면서 컴퓨터가 이해하기 쉬운 연속적인 숫자로 바꿉니다."
+  },
+  {
+    "id": 291,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "두 변수 사이의 관계가 뚜렷한 선형 관계가 없을 때 상관계수는 어디에 가깝습니까?",
+    "choices": [
+      "1",
+      "-1",
+      "0",
+      "100"
+    ],
+    "answer": "0",
+    "explanation": "상관계수가 0에 가까울수록 두 변수 사이에는 선형적인 관련성이 거의 없습니다."
+  },
+  {
+    "id": 292,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "산점도(Scatter Plot) 시각화를 통해 가장 쉽게 발견할 수 있는 데이터의 특징은?",
+    "choices": [
+      "정확한 평균값",
+      "패턴과 이상치(Outlier)",
+      "데이터의 총 개수",
+      "가중치 크기"
+    ],
+    "answer": "패턴과 이상치(Outlier)",
+    "explanation": "산점도는 점들의 분포를 통해 데이터 간의 관계나 툭 튀어나온 이상치를 찾기에 최적입니다."
+  },
+  {
+    "id": 293,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "페어 플롯(Pair Plot)을 그릴 때 변수가 너무 많아지면 발생하는 단점은?",
+    "choices": [
+      "색상을 칠할 수 없음",
+      "가독성이 떨어지고 복잡해짐",
+      "평균값을 알 수 없음",
+      "결측치가 모두 사라짐"
+    ],
+    "answer": "가독성이 떨어지고 복잡해짐",
+    "explanation": "페어 플롯은 변수가 10개를 넘어가면 그래프가 너무 작아지고 복잡해져 한눈에 보기 어렵습니다."
+  },
+  {
+    "id": 303,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "파이썬 데이터 시각화의 근간이 되며 그래프의 세부 설정을 조절할 수 있는 라이브러리는?",
+    "choices": [
+      "Pandas",
+      "Scikit-learn",
+      "Matplotlib",
+      "NumPy"
+    ],
+    "answer": "Matplotlib",
+    "explanation": "Matplotlib은 파이썬 시각화의 기초가 되는 라이브러리로, 레이아웃과 세부 요소를 자유롭게 설정할 수 있습니다."
+  },
+  {
+    "id": 304,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "히스토그램에서 가로축(X축)의 구간을 의미하는 용어는 무엇입니까?",
+    "choices": [
+      "Fold",
+      "Bin",
+      "Kernel",
+      "Patch"
+    ],
+    "answer": "Bin",
+    "explanation": "히스토그램은 데이터의 범위를 동일한 구간인 빈(bin)으로 나누어 분포를 표현합니다."
+  },
+  {
+    "id": 305,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 표준화(Standardization) 계산 시, 각 데이터 값에서 빼주어야 하는 값은?",
+    "choices": [
+      "최솟값",
+      "최댓값",
+      "평균",
+      "중앙값"
+    ],
+    "answer": "평균",
+    "explanation": "표준화는 각 데이터에서 평균을 빼고 이를 표준편차로 나누어 스케일을 조절합니다."
+  },
+  {
+    "id": 331,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "EDA(탐색적 데이터 분석)의 궁극적인 목표는 무엇입니까?",
+    "choices": [
+      "데이터를 삭제하기 위해",
+      "데이터에 대한 이해와 분석 방향 설정",
+      "가중치를 수동으로 입력하기 위해",
+      "인터넷 속도를 높이기 위해"
+    ],
+    "answer": "데이터에 대한 이해와 분석 방향 설정",
+    "explanation": "EDA는 모델 구축 전 데이터를 다각도로 관찰하여 데이터의 특성을 파악하는 과정입니다."
+  },
+  {
+    "id": 332,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "파이썬의 시각화 라이브러리 중 '근간'이 되는 가장 기초적인 도구는?",
+    "choices": [
+      "Seaborn",
+      "Matplotlib",
+      "Pandas",
+      "PyTorch"
+    ],
+    "answer": "Matplotlib",
+    "explanation": "Matplotlib은 파이썬 시각화 생태계의 기초가 되는 핵심 라이브러리입니다."
+  },
+  {
+    "id": 333,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "Matplotlib을 기반으로 더 세련되고 통계적인 그래프를 제공하는 라이브러리는?",
+    "choices": [
+      "NumPy",
+      "Seaborn",
+      "TensorFlow",
+      "Scipy"
+    ],
+    "answer": "Seaborn",
+    "explanation": "Seaborn은 Matplotlib 기반으로 더 예쁘고 의미 있는 통계 그래프를 쉽게 그리게 해줍니다."
+  },
+  {
+    "id": 334,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "히스토그램에서 봉우리가 2군데 나타난다면 이는 무엇을 의미할 수 있습니까?",
+    "choices": [
+      "데이터가 오염됨",
+      "서로 다른 특성의 하위 그룹이 섞여 있음",
+      "데이터 개수가 너무 부족함",
+      "학습이 완료됨"
+    ],
+    "answer": "서로 다른 특성의 하위 그룹이 섞여 있음",
+    "explanation": "두 개의 봉우리는 데이터 세트 내에 성격이 다른 두 집단이 포함되어 있음을 시사합니다."
+  },
+  {
+    "id": 335,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "박스 플롯에서 '전체 데이터의 50% 지점'을 나타내는 선은?",
+    "choices": [
+      "평균선",
+      "최댓값선",
+      "중앙값(Median) 선",
+      "최솟값선"
+    ],
+    "answer": "중앙값(Median) 선",
+    "explanation": "박스 플롯 내부의 선은 데이터를 크기순으로 나열했을 때 정중앙에 위치한 값을 나타냅니다."
+  },
+  {
+    "id": 336,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "산점도에서 점들이 아무런 규칙 없이 넓게 흩어져 있다면 두 변수의 관계는?",
+    "choices": [
+      "양의 상관관계",
+      "음의 상관관계",
+      "무상관(관계없음)",
+      "비선형 관계"
+    ],
+    "answer": "무상관(관계없음)",
+    "explanation": "점들이 흩어져 일정한 방향성을 보이지 않는다면 두 변수 사이에는 선형적 관련성이 없습니다."
+  },
+  {
+    "id": 337,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "히트맵(Heatmap) 시각화에서 색상의 진하기는 보통 무엇을 나타냅니까?",
+    "choices": [
+      "데이터의 생성 날짜",
+      "수치의 크기 또는 상관계수의 강도",
+      "데이터의 저장 용량",
+      "변수의 알파벳 순서"
+    ],
+    "answer": "수치의 크기 또는 상관계수의 강도",
+    "explanation": "히트맵은 숫자의 크기를 색상의 진하기나 종류로 변환하여 시각적으로 보여줍니다."
+  },
+  {
+    "id": 340,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 분리하는 함수인 train_test_split은 어느 라이브러리 소속입니까?",
+    "choices": [
+      "Pandas",
+      "Scikit-learn(sklearn)",
+      "Matplotlib",
+      "NumPy"
+    ],
+    "answer": "Scikit-learn(sklearn)",
+    "explanation": "머신러닝의 표준 라이브러리인 Scikit-learn에서 데이터 분할 기능을 제공합니다."
+  },
+  {
+    "id": 341,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 분리 시 random_state 옵션을 사용하는 이유는?",
+    "choices": [
+      "컴퓨터 속도를 높이기 위해",
+      "코드를 재시행해도 결과(랜덤성)를 일정하게 유지하기 위해",
+      "데이터를 모두 삭제하기 위해",
+      "오차를 0으로 만들기 위해"
+    ],
+    "answer": "코드를 재시행해도 결과(랜덤성)를 일정하게 유지하기 위해",
+    "explanation": "동일한 랜덤 시드를 고정하여 실험 결과를 재현 가능하게 만들기 위해 사용합니다."
+  },
+  {
+    "id": 342,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "키(cm)와 몸무게(kg)처럼 단위가 다른 데이터를 비슷한 범위로 맞추는 과정은?",
+    "choices": [
+      "Flatten",
+      "스케일링(Scaling)",
+      "임베딩",
+      "조기 종료"
+    ],
+    "answer": "스케일링(Scaling)",
+    "explanation": "스케일링은 모델이 특정 단위가 큰 변수를 더 중요하다고 오해하는 것을 방지합니다."
+  },
+  {
+    "id": 343,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터의 평균을 0, 표준편차를 1로 만드는 스케일링 방식의 명칭은?",
+    "choices": [
+      "정규화",
+      "표준화(Standardization)",
+      "최소-최대 변환",
+      "로그 변환"
+    ],
+    "answer": "표준화(Standardization)",
+    "explanation": "표준화(Z-score Scaling)는 데이터를 정규분포 형태로 변환하는 기법입니다."
+  }
+]
