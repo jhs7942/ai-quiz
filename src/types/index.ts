@@ -15,7 +15,7 @@ export interface ShortAnswerQuestion {
   type: 'short_answer'
   difficulty: 'easy' | 'medium' | 'hard'
   question: string
-  answer: string
+  answer: string | string[]  // 복수 정답 허용 (배열)
   explanation: string
   quizId?: string  // buildQuestions에서 런타임에 태깅
 }

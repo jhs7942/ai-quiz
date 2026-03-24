@@ -1,6 +1,6 @@
 interface FeedbackPanelProps {
   isCorrect: boolean
-  correctAnswer: string
+  correctAnswer: string | string[]
   explanation: string
 }
 
@@ -21,7 +21,7 @@ export default function FeedbackPanel({ isCorrect, correctAnswer, explanation }:
       </div>
       {!isCorrect && (
         <p className="text-sm text-gray-700 mb-2">
-          <span className="font-semibold">정답: </span>{correctAnswer}
+          <span className="font-semibold">정답: </span>{Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer}
         </p>
       )}
       <p className="text-sm text-gray-600 leading-relaxed">{explanation}</p>

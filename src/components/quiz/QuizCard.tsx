@@ -75,7 +75,7 @@ export default function QuizCard({
           {isChecked && (
             <div className="mt-3 bg-gray-50 rounded-xl p-3">
               <p className="text-xs text-gray-500 mb-1">정답</p>
-              <p className="text-sm font-semibold text-gray-800">{question.answer}</p>
+              <p className="text-sm font-semibold text-gray-800">{Array.isArray(question.answer) ? question.answer.join(' / ') : question.answer}</p>
             </div>
           )}
         </div>

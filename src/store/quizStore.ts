@@ -59,8 +59,12 @@ export const useQuizStore = create<QuizStore>()(
         if (question.type === 'multiple_choice') {
           isCorrect = userAnswer === question.answer
         } else {
-          // 주관식: 사용자 입력이 answer에 포함되면 정답 (대소문자 무시)
-          isCorrect = question.answer.toLowerCase().includes(userAnswer.trim().toLowerCase())
+          // 주관식: 사용자 입력이 answer에 포함되면 정답 (대소문자 무시, 배열 정답 지원)
+          const ans = question.answer
+          const normalized = userAnswer.trim().toLowerCase()
+          isCorrect = Array.isArray(ans)
+            ? ans.some((a) => a.toLowerCase().includes(normalized))
+            : ans.toLowerCase().includes(normalized)
         }
 
         set((state) => ({

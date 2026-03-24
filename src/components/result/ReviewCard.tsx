@@ -34,7 +34,7 @@ export default function ReviewCard({ question, userAnswer, isCorrect, isSkipped 
       </div>
       <div className="pl-5 space-y-1 text-xs text-gray-600">
         <p><span className="font-semibold">내 답: </span>{userAnswer ?? '(미답변)'}</p>
-        <p><span className="font-semibold">정답: </span>{question.answer}</p>
+        <p><span className="font-semibold">정답: </span>{Array.isArray(question.answer) ? question.answer.join(' / ') : question.answer}</p>
         <p className="text-gray-500 leading-relaxed mt-1">{question.explanation}</p>
       </div>
     </div>
