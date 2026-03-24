@@ -97,7 +97,7 @@ export default function ResultPage() {
   }
 
   function handleCopyResult() {
-    const text = `AI Quiz 결과: ${correctCount}/${scoredResults.length} (${scorePercent}%)\n${results
+    const text = `AI Quiz 결과: ${correctCount}/${results.length} (${scorePercent}%)\n${results
       .map((r, i) => {
         const status = r.isSkipped ? '↷' : r.isCorrect ? '✓' : '✗'
         return `${i + 1}. ${status} ${r.question.question.slice(0, 30)}...`
