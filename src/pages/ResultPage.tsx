@@ -4,6 +4,7 @@ import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
 import { saveQuizSession } from '../lib/db'
 import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 import ResultChart from '../components/result/ResultChart'
 import ReviewCard from '../components/result/ReviewCard'
 import Toast from '../components/common/Toast'
@@ -195,6 +196,7 @@ export default function ResultPage() {
       </div>
 
       {toast && <Toast message={toast} onClose={() => setToast('')} />}
+      <Footer />
     </div>
   )
 }

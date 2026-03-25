@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/layout/Header'
+import Footer from '../components/layout/Footer'
 import Sidebar from '../components/layout/Sidebar'
 import QuizSettingsPanel from '../components/quiz/QuizSettings'
 import MockExamGrid from '../components/mock-exam/MockExamGrid'
@@ -150,6 +151,7 @@ export default function MainPage() {
           )}
         </main>
       </div>
+      <Footer />
     </div>
   )
 }
