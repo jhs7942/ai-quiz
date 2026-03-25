@@ -20,6 +20,7 @@ export default function QuizPage() {
     scoredAnswers,
     checkedIds,
     skippedIds,
+    mockExamTitle,
     selectAnswer,
     checkAnswer,
     skipQuestion,
@@ -90,6 +91,11 @@ export default function QuizPage() {
     <div className="min-h-screen bg-[#F8F6F1]">
       <Header />
       <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
+        {/* 모의고사 타이틀 */}
+        {mockExamTitle && (
+          <p className="text-sm font-semibold text-blue-600 mb-2">{mockExamTitle}</p>
+        )}
+
         {/* 상단 진행 정보 */}
         <div className="flex items-center gap-4 mb-4 sm:mb-6">
           <div className="flex-1">

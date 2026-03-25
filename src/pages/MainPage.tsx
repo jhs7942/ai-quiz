@@ -3,19 +3,26 @@ import { useNavigate } from 'react-router-dom'
 import Header from '../components/layout/Header'
 import Sidebar from '../components/layout/Sidebar'
 import QuizSettingsPanel from '../components/quiz/QuizSettings'
+import MockExamGrid from '../components/mock-exam/MockExamGrid'
 import { fetchCategories, buildQuestions } from '../lib/quiz'
+import { fetchMockExams, fetchMockExamQuestions } from '../lib/mockExam'
 import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
-import type { QuizCategory } from '../types'
+import type { MockExam, QuizCategory } from '../types'
+
+type Mode = 'category' | 'mock-exam'
 
 export default function MainPage() {
   useSession('/')
   const navigate = useNavigate()
-  const { selectedCategories, questionCount, difficulty, shuffle, setCategories, setSettings, startQuiz } = useQuizStore()
+  const { selectedCategories, questionCount, difficulty, shuffle, setCategories, setSettings, startQuiz, startMockExam } = useQuizStore()
   const [categories, setCategories_] = useState<QuizCategory[]>([])
+  const [mockExams, setMockExams] = useState<MockExam[]>([])
   const [loading, setLoading] = useState(true)
+  const [mockExamsLoading, setMockExamsLoading] = useState(false)
   const [starting, setStarting] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [mode, setMode] = useState<Mode>('category')
 
   useEffect(() => {
     fetchCategories()
@@ -23,9 +30,16 @@ export default function MainPage() {
       .finally(() => setLoading(false))
   }, [])
 
-  const selectedCats = categories.filter((c) => selectedCategories.includes(c.id))
+  // 모의고사 모드 진입 시 목록 로드
+  useEffect(() => {
+    if (mode !== 'mock-exam') return
+    setMockExamsLoading(true)
+    fetchMockExams()
+      .then(setMockExams)
+      .finally(() => setMockExamsLoading(false))
+  }, [mode])
 
-  // 현재 필터 기준 예상 문제 수 계산
+  const selectedCats = categories.filter((c) => selectedCategories.includes(c.id))
   const estimatedMax = selectedCats.reduce((sum, cat) => sum + cat.questionCount, 0)
 
   async function handleStart() {
@@ -38,6 +52,17 @@ export default function MainPage() {
         return
       }
       startQuiz(questions)
+      navigate('/quiz')
+    } finally {
+      setStarting(false)
+    }
+  }
+
+  async function handleMockExamSelect(exam: MockExam) {
+    setStarting(true)
+    try {
+      const questions = await fetchMockExamQuestions(exam)
+      startMockExam(exam, questions)
       navigate('/quiz')
     } finally {
       setStarting(false)
@@ -60,6 +85,21 @@ export default function MainPage() {
     }
   }
 
+  function handleMockExamClick() {
+    setMode('mock-exam')
+    setCategories([])
+  }
+
+  function handleCategoryToggle(id: string) {
+    setMode('category')
+    handleToggle(id)
+  }
+
+  function handleCategoryToggleAll() {
+    setMode('category')
+    handleToggleAll()
+  }
+
   return (
     <div className="min-h-screen bg-[#F8F6F1]">
       <Header onMenuToggle={() => setDrawerOpen(true)} showMenuButton />
@@ -67,13 +107,25 @@ export default function MainPage() {
         <Sidebar
           categories={categories}
           selected={selectedCategories}
-          onToggle={handleToggle}
-          onToggleAll={handleToggleAll}
+          onToggle={handleCategoryToggle}
+          onToggleAll={handleCategoryToggleAll}
           isOpen={drawerOpen}
           onClose={() => setDrawerOpen(false)}
+          mode={mode}
+          onMockExamClick={handleMockExamClick}
         />
         <main className="flex-1 p-4 sm:p-5 lg:p-6">
-          {loading ? (
+          {starting && (
+            <p className="text-sm text-blue-600 mb-4 text-center">문제를 불러오는 중...</p>
+          )}
+
+          {mode === 'mock-exam' ? (
+            <MockExamGrid
+              exams={mockExams}
+              onSelect={handleMockExamSelect}
+              loading={mockExamsLoading}
+            />
+          ) : loading ? (
             <div className="flex items-center justify-center h-64 text-gray-400">
               카테고리를 불러오는 중...
             </div>
@@ -94,9 +146,6 @@ export default function MainPage() {
                 onChange={setSettings}
                 onStart={handleStart}
               />
-              {starting && (
-                <p className="text-sm text-blue-600 mt-3 text-center">문제를 불러오는 중...</p>
-              )}
             </div>
           )}
         </main>

@@ -1,0 +1,405 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "딥러닝의 모태가 되었으며, 인간의 뇌 뉴런 구조를 모방하여 만든 초기 선형 분류 모델의 이름은?",
+    "choices": [
+      "퍼셉트론(Perceptron)",
+      "결정 트리(Decision Tree)",
+      "K-최근접 이웃(KNN)",
+      "서포트 벡터 머신(SVM)"
+    ],
+    "answer": "퍼셉트론(Perceptron)",
+    "explanation": "퍼셉트론은 인공 신경망의 기원이 되는 알고리즘으로 선형적인 문제 해결이 가능합니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 모델의 과적합(Overfitting)을 막기 위해 학습 과정에서 가중치에 제약을 거는 기법을 통칭하는 용어는?",
+    "choices": [
+      "활성화(Activation)",
+      "규제(Regularization)",
+      "최적화(Optimization)",
+      "정규화(Normalization)"
+    ],
+    "answer": "규제(Regularization)",
+    "explanation": "L1, L2 규제 등은 모델의 복잡도를 제어하여 과적합을 방지하는 역할을 합니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN의 연산 과정 중, 이미지의 주변부에 0을 채워 넣어 출력 특징맵의 크기가 급격히 줄어드는 것을 방지하는 기법은?",
+    "choices": [
+      "스트라이드(Stride)",
+      "패딩(Padding)",
+      "풀링(Pooling)",
+      "플래튼(Flatten)"
+    ],
+    "answer": "패딩(Padding)",
+    "explanation": "패딩은 입력 데이터 외곽에 값을 채워 출력 크기를 조절하고 테두리 정보를 보존합니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 방대한 데이터를 사전 학습(Pre-training)하여 다양한 작업에 범용적으로 쓰이는 거대 모델을 무엇이라 부르는가?",
+    "choices": [
+      "퍼셉트론",
+      "파운데이션 모델(Foundation Model)",
+      "의사결정 나무",
+      "선형 회귀 모델"
+    ],
+    "answer": "파운데이션 모델(Foundation Model)",
+    "explanation": "파운데이션 모델은 광범위한 데이터로 학습되어 다양한 다운스트림 작업의 기반이 됩니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "머신러닝 학습 시, 오차(Loss)가 최소가 되는 지점을 찾기 위해 기울기를 이용해 가중치를 조절하는 알고리즘을 무엇이라 하는가?",
+    "choices": [
+      "경사하강법(Gradient Descent)",
+      "차원 축소",
+      "앙상블",
+      "클러스터링"
+    ],
+    "answer": "경사하강법(Gradient Descent)",
+    "explanation": "경사하강법은 손실 함수의 기울기를 따라 최적의 가중치를 찾아가는 핵심 알고리즘입니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 데이터 증강(Data Augmentation)의 목적으로 가장 적절한 것은?",
+    "choices": [
+      "모델의 연산 속도를 높이기 위해",
+      "부족한 학습 데이터 양을 늘려 모델의 일반화 성능을 높이기 위해",
+      "데이터의 차원을 축소하기 위해",
+      "정답 레이블을 자동으로 생성하기 위해"
+    ],
+    "answer": "부족한 학습 데이터 양을 늘려 모델의 일반화 성능을 높이기 위해",
+    "explanation": "무작위 회전, 대칭 등을 통해 데이터를 변형시켜 과적합을 방지하고 성능을 올립니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN의 출력층 직전에 위치하며, 추출된 특징들을 종합하여 최종 분류를 수행하는 계층은?",
+    "choices": [
+      "입력층",
+      "은닉층",
+      "완전 연결 층(Fully Connected Layer)",
+      "풀링층"
+    ],
+    "answer": "완전 연결 층(Fully Connected Layer)",
+    "explanation": "특징맵을 1차원으로 펼친 후 MLP 구조를 통해 최종 결과를 도출합니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 딥러닝 프레임워크가 아닌 것은?",
+    "choices": [
+      "PyTorch",
+      "TensorFlow",
+      "Keras",
+      "Matplotlib"
+    ],
+    "answer": "Matplotlib",
+    "explanation": "Matplotlib은 데이터 시각화를 위한 라이브러리입니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델이 예측한 값과 실제 정답 사이의 차이를 계산하는 함수의 이름은?",
+    "choices": [
+      "활성화 함수",
+      "손실 함수(Loss Function)",
+      "결정 함수",
+      "시그모이드 함수"
+    ],
+    "answer": "손실 함수(Loss Function)",
+    "explanation": "손실 함수는 모델의 오차를 수치화하여 학습의 방향을 결정하게 합니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 생성 분야에서 최근 Stable Diffusion과 같은 고성능 모델의 기반이 되는 기술은?",
+    "choices": [
+      "RNN",
+      "Decision Tree",
+      "Diffusion(확산) 모델",
+      "K-Means"
+    ],
+    "answer": "Diffusion(확산) 모델",
+    "explanation": "노이즈를 단계적으로 제거하며 이미지를 생성하는 기술이 현재 트렌드입니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "과적합 방지를 위한 가중치 규제 중, 중요하지 않은 변수의 가중치를 0으로 만들어 변수 선택 효과를 내는 규제는?",
+    "choices": [
+      "L1 규제 (Lasso)",
+      "L2 규제 (Ridge)",
+      "드롭아웃 (Dropout)",
+      "배치 정규화 (Batch Normalization)"
+    ],
+    "answer": "L1 규제 (Lasso)",
+    "explanation": "L1 규제는 절댓값을 사용하여 일부 가중치를 완전히 0으로 만드는 특징이 있습니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN 아키텍처 중 3x3 크기의 작은 필터를 여러 개 쌓아 파라미터 수를 줄이면서도 성능을 높인 모델은?",
+    "choices": [
+      "AlexNet",
+      "VGGNet",
+      "LeNet",
+      "RNN"
+    ],
+    "answer": "VGGNet",
+    "explanation": "VGGNet은 3x3 필터를 표준화하여 깊은 망을 쌓는 방식을 정착시켰습니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "입력 데이터 5x5, 필터 3x3, 패딩 0, 스트라이드 1일 때 출력되는 특징맵의 크기는?",
+    "choices": [
+      "2x2",
+      "3x3",
+      "4x4",
+      "5x5"
+    ],
+    "answer": "3x3",
+    "explanation": "공식: (5 - 3 + 2*0) / 1 + 1 = 3. 따라서 3x3입니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "회귀 모델 성능 평가 시, RSS(잔차제곱합)를 데이터 개수로 나누어 평균을 낸 지표의 이름은?",
+    "choices": [
+      "MAE",
+      "MSE(평균제곱오차)",
+      "RMSE",
+      "R-Squared"
+    ],
+    "answer": "MSE(평균제곱오차)",
+    "explanation": "RSS의 평균값이 바로 MSE(Mean Squared Error)입니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 비지도 학습인 군집화에서 최적의 군집 수(K)를 찾기 위한 '엘보우 방법'에 대한 설명으로 옳은 것은?",
+    "choices": [
+      "정확도가 가장 높은 지점을 찾는다.",
+      "군집 내 오차 제곱합(SSE)의 감소 폭이 급격히 줄어드는 지점을 찾는다.",
+      "데이터의 차원이 가장 많이 축소되는 지점을 찾는다.",
+      "학습 속도가 가장 빠른 지점을 찾는다."
+    ],
+    "answer": "군집 내 오차 제곱합(SSE)의 감소 폭이 급격히 줄어드는 지점을 찾는다.",
+    "explanation": "그래프가 꺾이는 모양이 팔꿈치(Elbow)와 같다고 하여 붙여진 이름입니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이미지 파운데이션 모델 중 하나인 LDM(Latent Diffusion Model)이 기존 Diffusion 모델보다 빠른 이유는?",
+    "choices": [
+      "데이터를 전혀 압축하지 않기 때문",
+      "고차원의 픽셀 공간이 아닌 압축된 저차원의 '잠재 공간'에서 연산하기 때문",
+      "레이블링 된 데이터만 사용하기 때문",
+      "학습률을 고정하기 때문"
+    ],
+    "answer": "고차원의 픽셀 공간이 아닌 압축된 저차원의 '잠재 공간'에서 연산하기 때문",
+    "explanation": "LDM은 연산량을 획기적으로 줄여 효율적인 이미지 생성을 가능케 합니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전이 학습에서 '리니어 프로빙(Linear Probing)'과 '파인 튜닝(Fine-tuning)'의 공통적인 특징은?",
+    "choices": [
+      "모델 전체의 가중치를 무조건 고정한다.",
+      "사전 학습된 특징 추출부(Feature Extractor)를 기반으로 활용한다.",
+      "이미지를 항상 텍스트로 변환하여 처리한다.",
+      "학습 데이터를 무조건 삭제한다."
+    ],
+    "answer": "사전 학습된 특징 추출부(Feature Extractor)를 기반으로 활용한다.",
+    "explanation": "두 기법 모두 이미 잘 학습된 모델의 앞부분(특징 추출기)을 재사용합니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Adam 옵티마이저에서 가중치마다 고유한 학습률을 부여하여 학습 효율을 높이는 기능을 무엇이라 하는가?",
+    "choices": [
+      "관성(Momentum)",
+      "적응적 학습률(Adaptive Learning Rate)",
+      "조기 종료(Early Stopping)",
+      "배치 처리(Batch Processing)"
+    ],
+    "answer": "적응적 학습률(Adaptive Learning Rate)",
+    "explanation": "Adam은 기울기의 크기에 따라 학습률을 스스로 조절하는 기능을 포함합니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "데이터 분석 중 특정 시점부터 데이터의 통계적 특성이나 유형 자체가 변하여 모델 성능이 하락하는 현상은?",
+    "choices": [
+      "과소적합",
+      "분포 변화(Distribution Shift)",
+      "역전파",
+      "다중공선성"
+    ],
+    "answer": "분포 변화(Distribution Shift)",
+    "explanation": "학습 데이터와 실제 데이터의 분포가 달라지면 모델의 예측력이 떨어집니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Transformer 아키텍처의 핵심 메커니즘으로, 문장 내 단어들 간의 관계를 한 번에 계산하는 방식은?",
+    "choices": [
+      "순차 처리(Sequential Processing)",
+      "셀프 어텐션(Self-Attention)",
+      "최대 풀링(Max Pooling)",
+      "드롭아웃(Dropout)"
+    ],
+    "answer": "셀프 어텐션(Self-Attention)",
+    "explanation": "셀프 어텐션은 문장 전체의 문맥을 병렬적으로 한 번에 파악하게 해줍니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "SANA 모델이나 최신 모델들에서 큰 모델의 핵심 지식만 뽑아 가벼운 모델에 전달할 때 쓰는 기법은?",
+    "choices": [
+      "데이터 누수",
+      "지식 증류(Knowledge Distillation)",
+      "제로샷 학습",
+      "스트라이드 연산"
+    ],
+    "answer": "지식 증류(Knowledge Distillation)",
+    "explanation": "학습 노트에 언급된 것처럼 큰 모델(Teacher)의 지식을 핵심만 뽑아 전달하는 방식입니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "로지스틱 회귀에서 손실 함수로 주로 사용되며, 정답일 확률과 실제 정답 사이의 차이를 계산하는 함수는?",
+    "choices": [
+      "평균 제곱 오차(MSE)",
+      "크로스 엔트로피(Cross Entropy)",
+      "결정계수(R2)",
+      "절대 오차(MAE)"
+    ],
+    "answer": "크로스 엔트로피(Cross Entropy)",
+    "explanation": "분류 문제에서는 확률 분포의 차이를 계산하는 크로스 엔트로피가 표준입니다."
+  },
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 GAN(생성적 적대 신경망)의 구성 요소인 '판별자(Discriminator)'의 주된 역할은?",
+    "choices": [
+      "무작위 노이즈로부터 이미지를 생성한다.",
+      "입력된 이미지가 진짜인지 가짜인지를 판별한다.",
+      "이미지를 1차원 벡터로 변환한다.",
+      "텍스트를 이미지로 번역한다."
+    ],
+    "answer": "입력된 이미지가 진짜인지 가짜인지를 판별한다.",
+    "explanation": "판별자는 생성자가 만든 가짜를 걸러내는 경찰 역할을 합니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "학습 데이터의 클래스 불균형이 심할 때(예: 암 환자 1%, 정상인 99%), 단순 정확도(Accuracy) 대신 신뢰할 수 있는 지표는?",
+    "choices": [
+      "평균",
+      "F1-score",
+      "RSS",
+      "표준편차"
+    ],
+    "answer": "F1-score",
+    "explanation": "F1-score는 정밀도와 재현율을 모두 고려하므로 불균형 데이터 평가에 적합합니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN에서 'GAP(Global Average Pooling)' 대신 주로 쓰이는 연산으로, 특징맵의 각 채널에서 평균값을 뽑아내는 기법의 주된 목적은?",
+    "choices": [
+      "이미지 크기를 키우기 위해",
+      "파라미터 수를 대폭 줄여 과적합을 방지하기 위해",
+      "데이터를 증강하기 위해",
+      "텍스트를 벡터화하기 위해"
+    ],
+    "answer": "파라미터 수를 대폭 줄여 과적합을 방지하기 위해",
+    "explanation": "풀링 연산은 정보를 압축하여 모델을 가볍게 만들고 과적합을 예방합니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "특징맵 계산 문제입니다. 입력 6x6, 필터 3x3, 패딩 1, 스트라이드 2일 때 출력되는 특징맵의 가로 크기를 숫자로만 적으시오.",
+    "answer": [
+      "3"
+    ],
+    "explanation": "공식: (6 - 3 + 2*1) / 2 + 1 = 2.5 + 1 = 3.5인데, 보통 소수점은 버림 처리하므로 3입니다. (또는 올림 정책에 따라 4가 될 수 있으나 표준은 floor 연산입니다.)"
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "신경망 학습 시 가중치 업데이트에 관성을 부여하여 지역 최솟값(Local Minimum)에 빠지는 것을 방지하는 개념의 이름은?",
+    "answer": [
+      "모멘텀",
+      "Momentum",
+      "관성"
+    ],
+    "explanation": "모멘텀은 이전 기울기 방향을 유지하려는 성질을 이용한 최적화 기법입니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "이미지와 텍스트를 대조 학습하여, '개 사진'과 '개라는 단어'를 벡터 공간에서 가깝게 위치시키는 멀티모달 모델의 영문 약자는?",
+    "answer": [
+      "CLIP"
+    ],
+    "explanation": "CLIP은 대조 학습(Contrastive Learning)의 대표적인 모델입니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "훈련 데이터 세트의 통계량을 사용하여 테스트 데이터를 변환하지 않고, 테스트 데이터만의 통계량으로 변환하여 발생하는 심각한 오류를 무엇이라 합니까?",
+    "answer": [
+      "데이터 누수",
+      "Data Leakage"
+    ],
+    "explanation": "테스트 데이터의 정보가 학습에 개입되는 현상을 데이터 누수라고 합니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "어떤 스팸 메일 분류 모델의 평가 결과, 실제 스팸 메일(Positive) 200개 중 모델이 스팸이라고 정확히 맞춘 것(TP)이 70개였습니다. 이 모델의 재현율(Recall) 값을 % 단위의 숫자로만 적으시오.",
+    "answer": [
+      "35"
+    ],
+    "explanation": "재현율 = TP / (TP + FN). 실제 Positive는 TP+FN이므로 70/200 = 0.35 = 35% 입니다."
+  }
+]

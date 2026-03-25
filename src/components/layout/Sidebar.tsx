@@ -8,6 +8,8 @@ interface SidebarProps {
   onToggleAll: () => void
   isOpen?: boolean
   onClose?: () => void
+  mode?: 'category' | 'mock-exam'
+  onMockExamClick?: () => void
 }
 
 export default function Sidebar({
@@ -17,11 +19,29 @@ export default function Sidebar({
   onToggleAll,
   isOpen,
   onClose,
+  mode = 'category',
+  onMockExamClick,
 }: SidebarProps) {
   const allSelected = selected.length === categories.length && categories.length > 0
 
   const content = (
     <div className="flex flex-col h-full">
+      {/* 실전 모의고사 항목 */}
+      <div className="p-3 border-b border-gray-200">
+        <button
+          onClick={() => { onMockExamClick?.(); onClose?.() }}
+          className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+            mode === 'mock-exam'
+              ? 'bg-blue-600 text-white'
+              : 'text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          <span>📋</span>
+          <span>실전 모의고사</span>
+        </button>
+      </div>
+
+      {/* 카테고리 영역 */}
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-sm font-bold text-gray-700">퀴즈 카테고리</h2>

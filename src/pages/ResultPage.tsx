@@ -21,6 +21,8 @@ export default function ResultPage() {
     difficulty,
     shuffle,
     startedAt,
+    mockExamId,
+    mockExamTitle,
     startQuiz,
     resetQuiz,
   } = useQuizStore()
@@ -57,13 +59,14 @@ export default function ResultPage() {
     const selectedTypes = [...new Set(questions.map((q) => q.type))]
     saveQuizSession({
       userId,
-      categories: selectedCategories,
+      categories: mockExamId ? [mockExamId] : selectedCategories,
       selectedTypes,
       totalQuestions: questions.length,
       correctCount,
       scorePercent,
       startedAt,
       settings: { difficulty, shuffle },
+      pretest: !!mockExamId,
       answers: results
         .filter((r) => r.userAnswer !== undefined)
         .map((r) => ({
@@ -121,6 +124,9 @@ export default function ResultPage() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           <ResultChart correct={correctCount} total={results.length} />
           <div className="w-full sm:w-auto text-center sm:text-left">
+            {mockExamTitle && (
+              <p className="text-sm font-semibold text-blue-600 mb-1">{mockExamTitle}</p>
+            )}
             <h1 className="text-2xl font-bold text-gray-800">
               {correctCount} / {results.length} 정답
             </h1>

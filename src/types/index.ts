@@ -32,6 +32,15 @@ export interface QuizCategory {
   questionCount: number
 }
 
+// 실전 모의고사 메타데이터
+export interface MockExam {
+  id: string
+  title: string
+  description: string
+  file: string
+  questionCount: number
+}
+
 // 퀴즈 설정
 export interface QuizSettings {
   questionCount: number | 'all'
@@ -58,10 +67,13 @@ export interface QuizStore {
   checkedIds: number[]                           // 정답 확인 완료된 문제 id
   skippedIds: number[]                           // 건너뛴 문제 id
   startedAt: string | null
+  mockExamId: string | null                      // 모의고사 ID (null = 카테고리 퀴즈 모드)
+  mockExamTitle: string | null                   // 모의고사 타이틀 표시용
 
   setCategories: (ids: string[]) => void
   setSettings: (settings: Partial<QuizSettings>) => void
   startQuiz: (questions: Question[]) => void
+  startMockExam: (exam: MockExam, questions: Question[]) => void  // 모의고사 시작 (설정 없이)
   selectAnswer: (questionId: number, answer: string) => void  // 답변 선택만 (채점 X)
   checkAnswer: (questionId: number) => void                   // 정답 확인 (채점 실행)
   clearAnswer: (questionId: number) => void                   // 채점 초기화 (수정 시)
@@ -81,6 +93,7 @@ export interface SaveQuizSessionPayload {
   startedAt: string
   settings: { difficulty: string; shuffle: boolean }
   answers: SaveAnswerPayload[]
+  pretest?: boolean
 }
 
 export interface SaveAnswerPayload {

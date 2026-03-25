@@ -58,6 +58,7 @@ export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<
         score_percent: payload.scorePercent,
         started_at: payload.startedAt,
         settings: payload.settings,
+        pretest: payload.pretest ?? false,
       })
       .select('id')
       .single()
@@ -73,6 +74,7 @@ export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<
           question_type: a.questionType,
           user_answer: a.userAnswer,
           is_correct: a.isCorrect,
+          pretest: payload.pretest ?? false,
         }))
       )
     }

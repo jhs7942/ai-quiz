@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 모델이 학습 데이터에 지나치게 최적화되어 새로운 데이터에서 성능이 떨어지는 현상을 무엇이라고 하는가?",
+    "choices": [
+      "과적합(Overfitting)",
+      "과소적합(Underfitting)",
+      "데이터 증강(Data Augmentation)",
+      "차원 축소(Dimensionality Reduction)"
+    ],
+    "answer": "과적합(Overfitting)",
+    "explanation": "과적합은 모델이 훈련 데이터의 노이즈까지 학습하여 일반화 성능이 떨어지는 현상을 말합니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터를 학습, 검증, 테스트 세트로 나눌 때 'stratify=y' 옵션을 사용하는 주된 이유는 무엇인가?",
+    "choices": [
+      "데이터의 순서를 무작위로 섞기 위해",
+      "훈련 속도를 빠르게 하기 위해",
+      "원본 데이터의 클래스 비율을 유지하며 나누기 위해",
+      "결측치를 자동으로 제거하기 위해"
+    ],
+    "answer": "원본 데이터의 클래스 비율을 유지하며 나누기 위해",
+    "explanation": "stratify 옵션은 타겟값(y)의 비율을 유지하며 데이터를 분할하여 데이터 편향을 막아줍니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "박스플롯(Box Plot)에서 IQR(Interquartile Range)을 계산하는 올바른 방법은?",
+    "choices": [
+      "최댓값 - 최솟값",
+      "제3사분위수(Q3) - 제1사분위수(Q1)",
+      "평균 - 표준편차",
+      "중앙값 * 1.5"
+    ],
+    "answer": "제3사분위수(Q3) - 제1사분위수(Q1)",
+    "explanation": "IQR은 데이터의 중간 50% 범위를 나타내며, Q3에서 Q1을 뺀 값입니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 변수 간의 상관관계를 시각화하고, 특히 다중공선성 문제를 확인하기 위해 주로 사용하는 시각화 도구는?",
+    "choices": [
+      "히스토그램(Histogram)",
+      "히트맵(Heatmap)",
+      "파이 차트(Pie Chart)",
+      "박스플롯(Box Plot)"
+    ],
+    "answer": "히트맵(Heatmap)",
+    "explanation": "히트맵은 상관계수 행렬을 색상으로 표현하여 변수 간의 관계나 다중공선성을 파악하기 좋습니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "신경망에서 입력값이 0보다 작으면 0을 출력하고, 0보다 크면 입력값 그대로를 출력하는 활성화 함수는?",
+    "choices": [
+      "시그모이드(Sigmoid)",
+      "하이퍼볼릭 탄젠트(tanh)",
+      "ReLU",
+      "소프트맥스(Softmax)"
+    ],
+    "answer": "ReLU",
+    "explanation": "ReLU는 연산이 매우 빠르고 기울기 소실 문제를 완화해주는 가장 대중적인 활성화 함수입니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "관성(Momentum)과 적응적 학습률(Adaptive Learning Rate)의 장점을 합친 것으로, 현재 가장 널리 쓰이는 최적화 알고리즘(Optimizer)은?",
+    "choices": [
+      "SGD",
+      "RMSprop",
+      "Adam",
+      "Adagrad"
+    ],
+    "answer": "Adam",
+    "explanation": "Adam은 방향(모멘텀)과 보폭(적응적 학습률)을 모두 고려하여 효율적으로 학습합니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "회귀 모델에서 오차의 제곱합을 의미하며, 이 값이 작을수록 모델의 예측 성능이 좋다고 판단하는 지표는?",
+    "choices": [
+      "RSS",
+      "F1-score",
+      "Accuracy",
+      "Recall"
+    ],
+    "answer": "RSS",
+    "explanation": "RSS(Residual Sum of Squares)는 잔차 제곱합으로, 회귀 모델의 성능 측정 기준이 됩니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 과적합을 막기 위한 규제(Regularization) 기법으로, 가중치의 절댓값 합을 손실함수에 더하는 방식은?",
+    "choices": [
+      "L1 규제 (Lasso)",
+      "L2 규제 (Ridge)",
+      "드롭아웃 (Dropout)",
+      "얼리 스타핑 (Early Stopping)"
+    ],
+    "answer": "L1 규제 (Lasso)",
+    "explanation": "L1 규제(라쏘)는 가중치의 절댓값 합을, L2 규제(릿지)는 가중치의 제곱합을 이용합니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "K-평균(K-means) 군집화에서 가장 적절한 군집 수(K)를 찾기 위해 기울기가 완만해지는 지점을 확인하는 방법은?",
+    "choices": [
+      "그리드 서치(Grid Search)",
+      "엘보우 방법(Elbow Method)",
+      "크로스 엔트로피",
+      "주성분 분석(PCA)"
+    ],
+    "answer": "엘보우 방법(Elbow Method)",
+    "explanation": "엘보우 방법은 군집 내 오차 제곱합의 감소 폭이 급격히 줄어드는 '팔꿈치' 지점을 최적의 K로 봅니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN에서 이미지의 가장자리 정보를 보존하고 출력 크기를 조절하기 위해 입력 주위에 0을 채워 넣는 기법은?",
+    "choices": [
+      "스트라이드(Stride)",
+      "패딩(Padding)",
+      "풀링(Pooling)",
+      "플래튼(Flatten)"
+    ],
+    "answer": "패딩(Padding)",
+    "explanation": "패딩은 입력 데이터 외곽에 특정 값(보통 0)을 채워 출력 크기를 유지하는 역할을 합니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "RNN(순환 신경망)에서 주로 사용되며, 출력 범위를 -1에서 1 사이로 변환하는 활성화 함수는?",
+    "choices": [
+      "ReLU",
+      "Sigmoid",
+      "tanh (Hyperbolic Tangent)",
+      "Softmax"
+    ],
+    "answer": "tanh (Hyperbolic Tangent)",
+    "explanation": "RNN의 은닉 상태 업데이트에는 주로 하이퍼볼릭 탄젠트(tanh) 함수가 사용됩니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 전체의 문맥을 한 번에 파악하며, 셀프 어텐션(Self-Attention) 메커니즘을 이미지 처리에 도입한 모델은?",
+    "choices": [
+      "AlexNet",
+      "VGGNet",
+      "ResNet",
+      "ViT (Vision Transformer)"
+    ],
+    "answer": "ViT (Vision Transformer)",
+    "explanation": "ViT는 트랜스포머 구조를 이미지 분야에 적용하여 전역적인 특징을 잘 파악합니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "사전 학습된 모델을 가져와 특정 목적에 맞게 가중치를 미세하게 조정하는 과정을 무엇이라고 하는가?",
+    "choices": [
+      "파인 튜닝(Fine-tuning)",
+      "데이터 증강(Data Augmentation)",
+      "지식 증류(Knowledge Distillation)",
+      "제로샷 학습(Zero-shot Learning)"
+    ],
+    "answer": "파인 튜닝(Fine-tuning)",
+    "explanation": "파인 튜닝은 전이 학습의 일종으로, 기존 모델을 새로운 도메인에 맞게 재학습하는 것입니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "GAN(생성적 적대 신경망)에서 생성자가 특정 모드에만 갇혀 다양성 없는 이미지만 만들어내는 현상을 무엇이라고 하는가?",
+    "choices": [
+      "과적합",
+      "모드 붕괴 (Mode Collapse)",
+      "기울기 소실",
+      "장기 의존성 문제"
+    ],
+    "answer": "모드 붕괴 (Mode Collapse)",
+    "explanation": "모드 붕괴는 GAN 학습 시 생성자가 판별자를 속이기 쉬운 특정 데이터만 반복 생성하는 현상입니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지와 텍스트를 같은 벡터 공간상에 배치하여 대조 학습(Contrastive Learning)을 수행하는 멀티모달 모델은?",
+    "choices": [
+      "BERT",
+      "CLIP",
+      "LSTM",
+      "ResNet"
+    ],
+    "answer": "CLIP",
+    "explanation": "CLIP은 텍스트와 이미지 사이의 유사도를 코사인 유사도 방식으로 학습하는 모델입니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "큰 모델의 지식을 가볍고 작은 모델에게 핵심만 전달하여 효율성을 높이는 기법은?",
+    "choices": [
+      "파인 튜닝",
+      "지식 증류 (Knowledge Distillation)",
+      "데이터 증강",
+      "제로샷 유사도"
+    ],
+    "answer": "지식 증류 (Knowledge Distillation)",
+    "explanation": "지식 증류는 Teacher 모델의 지식을 Student 모델에게 효율적으로 학습시키는 기법입니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN에서 주요 특징만 뽑아내기 위해 커널(필터)이 한 번에 이동하는 간격을 결정하는 파라미터는?",
+    "choices": [
+      "채널(Channel)",
+      "스트라이드(Stride)",
+      "커널 크기(Kernel Size)",
+      "풀링(Pooling)"
+    ],
+    "answer": "스트라이드(Stride)",
+    "explanation": "스트라이드는 필터가 이미지를 순회할 때 건너뛰는 보폭(Step)을 의미합니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 CNN 연산 순서로 가장 일반적인 것은?",
+    "choices": [
+      "합성곱(Conv) -> 렐루(ReLU) -> 풀링(Pooling)",
+      "풀링(Pooling) -> 합성곱(Conv) -> 렐루(ReLU)",
+      "렐루(ReLU) -> 풀링(Pooling) -> 합성곱(Conv)",
+      "플래튼(Flatten) -> 합성곱(Conv) -> 렐루(ReLU)"
+    ],
+    "answer": "합성곱(Conv) -> 렐루(ReLU) -> 풀링(Pooling)",
+    "explanation": "일반적으로 특징 추출(Conv), 활성화(ReLU), 크기 축소(Pooling) 단계를 반복합니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "ResNet 모델에서 기울기 소실 문제를 해결하기 위해 도입된 핵심 기술은 무엇인가?",
+    "choices": [
+      "드롭아웃",
+      "잔차 학습 (Residual Learning / Skip Connection)",
+      "L2 규제",
+      "배치 정규화"
+    ],
+    "answer": "잔차 학습 (Residual Learning / Skip Connection)",
+    "explanation": "ResNet은 입력을 출력에 더해주는 잔차 연결을 통해 층이 깊어져도 학습이 잘 되게 합니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "언어 모델이 '헷갈리는 정도'를 나타내며, 낮을수록 성능이 좋음을 의미하는 지표는?",
+    "choices": [
+      "Accuracy",
+      "Perplexity (PPL)",
+      "BLEU",
+      "ROUGE"
+    ],
+    "answer": "Perplexity (PPL)",
+    "explanation": "PPL은 확률 모델의 복잡도를 나타내며, 낮을수록 다음 단어를 잘 예측한다는 뜻입니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 딥러닝에서 학습 중에만 무작위로 일부 뉴런을 끄는 방식으로 과적합을 방지하는 기법은?",
+    "choices": [
+      "L1 라쏘",
+      "L2 릿지",
+      "드롭아웃 (Dropout)",
+      "데이터 증강"
+    ],
+    "answer": "드롭아웃 (Dropout)",
+    "explanation": "드롭아웃은 학습 시 무작위로 노드를 생략하여 특정 노드에 대한 의존성을 줄입니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 이미지 생성 모델인 Diffusion 모델의 특징이 아닌 것은?",
+    "choices": [
+      "노이즈를 단계적으로 제거하며 이미지를 생성한다.",
+      "GAN보다 모드 붕괴 현상이 적다.",
+      "연산량이 매우 적고 생성 속도가 압도적으로 빠르다.",
+      "노이즈 예측기를 학습하는 과정이 포함된다."
+    ],
+    "answer": "연산량이 매우 적고 생성 속도가 압도적으로 빠르다.",
+    "explanation": "디퓨전 모델은 품질은 좋지만 여러 단계를 거쳐야 하므로 GAN에 비해 연산량이 많고 속도가 느린 편입니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델이 예측한 Positive 중 실제 Positive의 비율을 나타내며 '정확도(Accuracy)'와 혼동하기 쉬운 지표는?",
+    "choices": [
+      "정밀도 (Precision)",
+      "재현율 (Recall)",
+      "특이도 (Specificity)",
+      "결정계수 (R²)"
+    ],
+    "answer": "정밀도 (Precision)",
+    "explanation": "정밀도는 모델이 맞다고 한 것 중 진짜 정답인 비율(TP / (TP+FP))입니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "3차원의 특징맵(Feature Map) 데이터를 신경망(MLP)에 입력하기 위해 1차원 벡터로 길게 펼치는 과정은?",
+    "choices": [
+      "합성곱(Convolution)",
+      "풀링(Pooling)",
+      "플래튼(Flatten)",
+      "패딩(Padding)"
+    ],
+    "answer": "플래튼(Flatten)",
+    "explanation": "Flatten 레이어는 다차원 데이터를 1차원으로 변환하여 전결합층(Dense)에 연결해줍니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 데이터의 차원이 커질수록 데이터 분석에 필요한 공간이 기하급수적으로 커지는 현상은?",
+    "choices": [
+      "기울기 소실",
+      "차원의 저주",
+      "모드 붕괴",
+      "장기 의존성"
+    ],
+    "answer": "차원의 저주",
+    "explanation": "차원의 저주는 데이터의 차원이 높아질수록 데이터가 희소해져 분석이 어려워지는 문제입니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "정밀도(Precision)와 재현율(Recall)의 조화 평균을 구하여, 두 지표를 한 번에 평가할 때 사용하는 지표의 이름은 무엇입니까?",
+    "answer": [
+      "F1 스코어",
+      "F1-score",
+      "F1 score",
+      "F1"
+    ],
+    "explanation": "F1 스코어는 데이터가 불균형할 때 모델의 성능을 판단하기 좋은 지표입니다."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "CNN의 풀링 방식 중, 특정 영역에서 가장 큰 값만을 추출하여 연산량을 줄이고 특징을 부각하는 방식은 무엇입니까?",
+    "answer": [
+      "맥스 풀링",
+      "Max Pooling",
+      "맥스풀링"
+    ],
+    "explanation": "맥스 풀링은 설정된 윈도우 내에서 최대치를 뽑아내는 기법입니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "고차원의 데이터를 정보 손실을 최소화하면서 저차원으로 압축하여 시각화나 분석에 활용하는 '주성분 분석'의 영문 약자는 무엇입니까?",
+    "answer": [
+      "PCA",
+      "Principal Component Analysis"
+    ],
+    "explanation": "PCA는 대표적인 차원 축소 기법입니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "RNN에서 문장이 길어질 때 이전 정보를 잊어버리는 문제를 해결하기 위해, 입력/망각/출력 게이트와 셀 상태를 도입한 모델은 무엇입니까?",
+    "answer": [
+      "LSTM",
+      "Long Short-Term Memory"
+    ],
+    "explanation": "LSTM은 RNN의 장기 의존성 문제를 해결한 대표적인 모델입니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "테스트 데이터 전처리 시 '데이터 누수(Data Leakage)'를 방지하기 위해, 반드시 어떤 데이터의 평균과 표준편차를 활용하여 표준화를 진행해야 합니까?",
+    "answer": [
+      "훈련 데이터",
+      "학습 데이터",
+      "Train Data",
+      "Training Data"
+    ],
+    "explanation": "테스트 데이터는 미래의 데이터로 간주해야 하므로, 훈련 데이터에서 얻은 통계량을 사용해야 합니다."
+  }
+]
