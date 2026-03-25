@@ -20,12 +20,16 @@ export default function QuizPage() {
     scoredAnswers,
     checkedIds,
     skippedIds,
+    mockExamId,
     mockExamTitle,
     selectAnswer,
     checkAnswer,
+    checkAllAnswers,
     skipQuestion,
     goToQuestion,
   } = useQuizStore()
+
+  const isMockExam = !!mockExamId
 
   const [feedbackTarget, setFeedbackTarget] = useState<{ questionIndex: number } | null>(null)
   const [toast, setToast] = useState('')
@@ -47,11 +51,17 @@ export default function QuizPage() {
   const quizId = currentQuestion.quizId ?? 'quiz'
   const checkedCount = checkedIds.length
 
-  // 미풀이 문제: 건너뛰었고 채점도 안 된 문제
+  // 미풀이 문제: 건너뛰었고 채점도 안 된 문제 (일반 모드)
   const unansweredSkipped = skippedIds.filter((id) => !checkedIds.includes(id))
+  // 미답변 문제: 답을 선택하지 않은 문제 (모의고사 모드)
+  const unansweredMock = questions.filter((q) => !selectedAnswers[q.id])
 
   const isLastQuestion = currentIndex === questions.length - 1
   const isSkipped = skippedIds.includes(currentId)
+
+  // 모의고사 모드: 선택된 답변 수 기준으로 진행률 표시
+  const progressCurrent = isMockExam ? Object.keys(selectedAnswers).length : checkedCount
+  const mockAnsweredIds = Object.keys(selectedAnswers).map(Number)
 
   function handleNext() {
     if (currentIndex < questions.length - 1) {
@@ -74,17 +84,31 @@ export default function QuizPage() {
   }
 
   function handleFinishClick() {
-    if (unansweredSkipped.length > 0) {
-      setShowUnansweredPopup(true)
+    if (isMockExam) {
+      if (unansweredMock.length > 0) {
+        setShowUnansweredPopup(true)
+      } else {
+        checkAllAnswers()
+        navigate('/result')
+      }
     } else {
-      navigate('/result')
+      if (unansweredSkipped.length > 0) {
+        setShowUnansweredPopup(true)
+      } else {
+        navigate('/result')
+      }
     }
   }
 
   function handleGoToFirstUnanswered() {
     setShowUnansweredPopup(false)
-    const firstUnansweredIndex = questions.findIndex((q) => unansweredSkipped.includes(q.id))
-    if (firstUnansweredIndex !== -1) goToQuestion(firstUnansweredIndex)
+    if (isMockExam) {
+      const firstUnansweredIndex = questions.findIndex((q) => !selectedAnswers[q.id])
+      if (firstUnansweredIndex !== -1) goToQuestion(firstUnansweredIndex)
+    } else {
+      const firstUnansweredIndex = questions.findIndex((q) => unansweredSkipped.includes(q.id))
+      if (firstUnansweredIndex !== -1) goToQuestion(firstUnansweredIndex)
+    }
   }
 
   return (
@@ -99,7 +123,7 @@ export default function QuizPage() {
         {/* 상단 진행 정보 */}
         <div className="flex items-center gap-4 mb-4 sm:mb-6">
           <div className="flex-1">
-            <ProgressBar current={checkedCount} total={questions.length} />
+            <ProgressBar current={progressCurrent} total={questions.length} />
           </div>
           <button
             onClick={() => setShowExitConfirm(true)}
@@ -136,45 +160,70 @@ export default function QuizPage() {
               </button>
 
               <div className="flex gap-2 flex-1 sm:flex-none justify-end">
-                {/* 건너뛰기 — 채점 전, 마지막 문제 건너뜀 상태 제외 */}
-                {!isChecked && !(isLastQuestion && isSkipped) && (
-                  <button
-                    onClick={handleSkip}
-                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
-                  >
-                    건너뛰기
-                  </button>
-                )}
+                {isMockExam ? (
+                  // 모의고사 모드: 정답 확인 없이 다음으로 이동, 마지막 문제에서 제출
+                  <>
+                    {!isLastQuestion && (
+                      <button
+                        onClick={handleNext}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                      >
+                        다음 →
+                      </button>
+                    )}
+                    {isLastQuestion && (
+                      <button
+                        onClick={handleFinishClick}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                      >
+                        제출 →
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  // 일반 모드: 건너뛰기 → 정답 확인 → 다음 / 결과 보기
+                  <>
+                    {/* 건너뛰기 — 채점 전, 마지막 문제 건너뜀 상태 제외 */}
+                    {!isChecked && !(isLastQuestion && isSkipped) && (
+                      <button
+                        onClick={handleSkip}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
+                      >
+                        건너뛰기
+                      </button>
+                    )}
 
-                {/* 정답 확인 — 채점 전, 답변 선택 시 활성화, 마지막 문제 건너뜀 상태 제외 */}
-                {!isChecked && !(isLastQuestion && isSkipped) && (
-                  <button
-                    onClick={handleCheck}
-                    disabled={!selectedAnswer}
-                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
-                  >
-                    정답 확인
-                  </button>
-                )}
+                    {/* 정답 확인 — 채점 전, 답변 선택 시 활성화, 마지막 문제 건너뜀 상태 제외 */}
+                    {!isChecked && !(isLastQuestion && isSkipped) && (
+                      <button
+                        onClick={handleCheck}
+                        disabled={!selectedAnswer}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                      >
+                        정답 확인
+                      </button>
+                    )}
 
-                {/* 결과 보기 — 마지막 문제 채점 완료 또는 건너뜀 */}
-                {isLastQuestion && (isChecked || isSkipped) && (
-                  <button
-                    onClick={handleFinishClick}
-                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                  >
-                    결과 보기 →
-                  </button>
-                )}
+                    {/* 결과 보기 — 마지막 문제 채점 완료 또는 건너뜀 */}
+                    {isLastQuestion && (isChecked || isSkipped) && (
+                      <button
+                        onClick={handleFinishClick}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                      >
+                        결과 보기 →
+                      </button>
+                    )}
 
-                {/* 다음 — 채점 완료 후, 마지막 문제 제외 */}
-                {isChecked && !isLastQuestion && (
-                  <button
-                    onClick={handleNext}
-                    className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                  >
-                    다음 →
-                  </button>
+                    {/* 다음 — 채점 완료 후, 마지막 문제 제외 */}
+                    {isChecked && !isLastQuestion && (
+                      <button
+                        onClick={handleNext}
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                      >
+                        다음 →
+                      </button>
+                    )}
+                  </>
                 )}
               </div>
             </div>
@@ -184,7 +233,7 @@ export default function QuizPage() {
               <QuestionNavigator
                 total={questions.length}
                 currentIndex={currentIndex}
-                answeredIds={checkedIds}
+                answeredIds={isMockExam ? mockAnsweredIds : checkedIds}
                 skippedIds={skippedIds}
                 questionIds={questions.map((q) => q.id)}
                 onNavigate={goToQuestion}
@@ -198,7 +247,7 @@ export default function QuizPage() {
             <QuestionNavigator
               total={questions.length}
               currentIndex={currentIndex}
-              answeredIds={checkedIds}
+              answeredIds={isMockExam ? mockAnsweredIds : checkedIds}
               skippedIds={skippedIds}
               questionIds={questions.map((q) => q.id)}
               onNavigate={goToQuestion}
@@ -234,7 +283,9 @@ export default function QuizPage() {
         <Modal onClose={() => setShowUnansweredPopup(false)}>
           <h2 className="text-base font-bold text-gray-800 mb-2">아직 풀지 않은 문제가 있어요</h2>
           <p className="text-sm text-gray-500 mb-5">
-            건너뛴 문제 {unansweredSkipped.length}개가 남아있습니다.
+            {isMockExam
+              ? `답을 입력하지 않은 문제 ${unansweredMock.length}개가 있습니다.`
+              : `건너뛴 문제 ${unansweredSkipped.length}개가 남아있습니다.`}
           </p>
           <div className="flex gap-2 justify-end">
             <button
@@ -244,7 +295,13 @@ export default function QuizPage() {
               문제 풀러 가기
             </button>
             <button
-              onClick={() => { setShowUnansweredPopup(false); navigate('/result') }}
+              onClick={() => {
+                setShowUnansweredPopup(false)
+                if (isMockExam) {
+                  checkAllAnswers()
+                }
+                navigate('/result')
+              }}
               className="px-4 py-2 rounded-full text-sm bg-blue-600 text-white hover:bg-blue-700 transition-colors"
             >
               제출

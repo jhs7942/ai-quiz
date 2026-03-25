@@ -76,6 +76,7 @@ export interface QuizStore {
   startMockExam: (exam: MockExam, questions: Question[]) => void  // 모의고사 시작 (설정 없이)
   selectAnswer: (questionId: number, answer: string) => void  // 답변 선택만 (채점 X)
   checkAnswer: (questionId: number) => void                   // 정답 확인 (채점 실행)
+  checkAllAnswers: () => void                                  // 모의고사 종료 시 일괄 채점
   clearAnswer: (questionId: number) => void                   // 채점 초기화 (수정 시)
   skipQuestion: (questionId: number) => void
   goToQuestion: (index: number) => void

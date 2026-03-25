@@ -118,6 +118,48 @@ export const useQuizStore = create<QuizStore>()(
           }
         }),
 
+      // 모의고사 종료 시 전체 일괄 채점
+      checkAllAnswers: () => {
+        const { questions, selectedAnswers } = get()
+        const newScoredAnswers: Record<number, { answer: string; isCorrect: boolean }> = {}
+        const newCheckedIds: number[] = []
+
+        for (const question of questions) {
+          const userAnswer = selectedAnswers[question.id]
+          if (!userAnswer) continue
+
+          let isCorrect = false
+          if (question.type === 'multiple_choice') {
+            isCorrect = userAnswer === question.answer
+          } else {
+            const normalize = (s: string) => s.replace(/\s+/g, '').toLowerCase()
+            const expandAnswer = (s: string): string[] => {
+              const variants = [normalize(s)]
+              const match = s.match(/^(.+?)\((.+?)\)$/)
+              if (match) {
+                variants.push(normalize(match[1]))
+                variants.push(normalize(match[2]))
+              }
+              return variants
+            }
+            const normalized = normalize(userAnswer)
+            const ans = question.answer
+            const candidates = Array.isArray(ans)
+              ? ans.flatMap(expandAnswer)
+              : expandAnswer(ans)
+            isCorrect = candidates.includes(normalized)
+          }
+
+          newScoredAnswers[question.id] = { answer: userAnswer, isCorrect }
+          newCheckedIds.push(question.id)
+        }
+
+        set((state) => ({
+          scoredAnswers: { ...state.scoredAnswers, ...newScoredAnswers },
+          checkedIds: [...new Set([...state.checkedIds, ...newCheckedIds])],
+        }))
+      },
+
       skipQuestion: (questionId) =>
         set((state) => ({
           skippedIds: state.skippedIds.includes(questionId)
