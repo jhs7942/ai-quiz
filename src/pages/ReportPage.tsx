@@ -5,23 +5,23 @@ import { useMeta } from '../hooks/useMeta'
 export default function ReportPage() {
   useMeta(
     'Report - AI Quiz',
-    'AI Quiz 서비스 이용 현황. 방문자 수, 문제 풀이 수, 정답률 등 실제 사용 데이터를 확인하세요.',
+    'AI Quiz 서비스 성과 리포트. 누적 사용자 1,556명, 문제 풀이 73,000건 이상의 실제 데이터를 확인하세요.',
   )
   return (
     <div className="min-h-screen bg-[#F8F6F1] flex flex-col">
       <Header />
       <main className="flex-1 max-w-3xl mx-auto px-5 py-10 w-full">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Report</h1>
-        <p className="text-sm text-gray-400 mb-8">웹 서비스 사용자 경험(UX) 및 참여도 분석</p>
+        <p className="text-sm text-gray-400 mb-8">AI Quiz 서비스 성과 리포트</p>
 
         {/* 개요 */}
         <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">1. 개요</h2>
           <p className="text-gray-700 leading-relaxed text-sm">
-            본 보고서는 총 1,556명의 고정 사용자를 대상으로 한 서비스 이용 데이터를 분석한 결과입니다.
-            전반적인 지표는 사용자의 <strong>높은 체류 시간</strong>과 <strong>반복적 방문</strong>을 증명하고 있으며,
-            이는 구글의 알고리즘이 해당 웹사이트를 "신뢰도 높고 유익한 콘텐츠를 제공하는 사이트"로
-            판단하는 데 긍정적인 신호를 줍니다.
+            AI Quiz는 인공지능 학습을 돕기 위해 만들어진 퀴즈 기반 플랫폼입니다.
+            서비스 운영 이후 총 <strong>1,556명의 사용자</strong>가 <strong>73,000건 이상의 문제</strong>를 풀었으며,
+            높은 재방문율과 문제 풀이량이 서비스의 실질적인 가치를 증명하고 있습니다.
+            축적된 데이터를 바탕으로 더 나은 AI 학습 경험을 제공하기 위해 계속 발전해 나가겠습니다.
           </p>
         </section>
 
@@ -36,10 +36,9 @@ export default function ReportPage() {
           />
         </section>
 
-        {/* 핵심 지표 요약 */}
+        {/* 핵심 지표 */}
         <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">2. 핵심 사용자 참여 지표</h2>
-          <p className="text-sm text-gray-500 mb-4">구글 SEO는 단순 방문보다 실질적인 상호작용을 중요하게 평가합니다.</p>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">2. 핵심 성과 지표</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-5">
             <div className="bg-blue-50 rounded-lg p-4">
               <p className="text-xl font-bold text-blue-600">13.3회</p>
@@ -65,64 +64,77 @@ export default function ReportPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>1인당 평균 풀이량 (126.9문제)</strong>: 개별 사용자가 사이트 내에서 매우 활발하게 상호작용하고 있음을 나타내며, 이는 낮은 이탈률과 높은 세션당 페이지 뷰로 직결됩니다.</span>
+              <span><strong>높은 재방문율 (13.3회)</strong>: 사용자가 반복적으로 방문해 학습하고 있으며, 이는 서비스의 지속적인 학습 가치를 보여줍니다.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>평균 방문 횟수 (13.3회)</strong>: 사용자의 재방문율(Retention)이 매우 높습니다. 이는 구글의 E-E-A-T 중 '신뢰성' 지표를 강화하는 요소입니다.</span>
+              <span><strong>사용자 피드백 (134건)</strong>: 적극적인 사용자 피드백을 바탕으로 문제 품질을 지속적으로 개선하고 있습니다.</span>
             </li>
           </ul>
         </section>
 
-        {/* 모바일 최적화 */}
+        {/* 성장 비교 테이블 */}
         <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">3. 모바일 최적화 및 접근성</h2>
-          <p className="text-sm text-gray-500 mb-3">구글은 'Mobile-First Indexing' 정책을 통해 모바일 환경에서의 사용자 경험을 최우선으로 평가합니다.</p>
-          <ul className="space-y-2 text-sm text-gray-700">
-            <li className="flex items-start gap-2">
-              <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>모바일 유입 비중 (11.2%)</strong>: 현재 모바일 유입 비중이 현저히 낮습니다. 서비스의 특성상 데스크톱 환경이 유리할 수 있으나, SEO 점수 확보를 위해 모바일 반응형 웹 디자인의 최적화 상태(Core Web Vitals)를 재점검할 필요가 있습니다.</span>
-            </li>
-          </ul>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">3. 서비스 성장 지표</h2>
+          <p className="text-sm text-gray-500 mb-4">서비스 초기 대비 현재까지의 성장을 확인하세요.</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-gray-800 text-white">
+                  <th className="px-4 py-3 text-left font-medium rounded-tl-lg">항목</th>
+                  <th className="px-4 py-3 text-center font-medium">이전</th>
+                  <th className="px-4 py-3 text-center font-medium rounded-tr-lg">현재</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">사용자 수</td>
+                  <td className="px-4 py-3 text-center text-gray-500">800~977명</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">1,556명</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">문제 풀이</td>
+                  <td className="px-4 py-3 text-center text-gray-500">23,000~46,000건</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">73,000건</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">1인당 풀이</td>
+                  <td className="px-4 py-3 text-center text-gray-500">47.7문제</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">126.9문제</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">평균 정답률</td>
+                  <td className="px-4 py-3 text-center text-gray-500">66.5%</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">67.5%</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">평균 재방문</td>
+                  <td className="px-4 py-3 text-center text-gray-500">12.7회</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">13.3회</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700">퀴즈 세션</td>
+                  <td className="px-4 py-3 text-center text-gray-500">2,497회</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600">4,795회</td>
+                </tr>
+                <tr className="hover:bg-gray-50">
+                  <td className="px-4 py-3 text-gray-700 rounded-bl-lg">피드백</td>
+                  <td className="px-4 py-3 text-center text-gray-500">124건</td>
+                  <td className="px-4 py-3 text-center font-bold text-blue-600 rounded-br-lg">134건</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
-        {/* 콘텐츠 품질 */}
-        <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-3">4. 콘텐츠 품질 및 검색 만족도</h2>
-          <p className="text-sm text-gray-500 mb-3">사용자가 검색 의도에 맞는 결과를 얻었는지를 정답률과 피드백으로 확인합니다.</p>
-          <ul className="space-y-3 text-sm text-gray-700">
-            <li className="flex items-start gap-2">
-              <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>전체 평균 정답률 (67.5%)</strong>: 사용자에게 적절한 도전적 가치를 제공하고 있음을 의미합니다.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>최고 오답 문제 (ID: 634, 오답률 100%)</strong>: 특정 콘텐츠에서 사용자 경험의 '단절'이 발생하고 있습니다. 해당 페이지에서 사용자가 포기하고 이탈할 가능성이 높으므로 해설 콘텐츠 보강이 필요합니다.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>사용자 피드백 (134건)</strong>: 구글이 강조하는 '사용자 중심의 콘텐츠 업데이트'의 핵심 근거가 됩니다.</span>
-            </li>
-          </ul>
-        </section>
-
-        {/* 향후 전략 */}
+        {/* 앞으로의 계획 */}
         <section className="bg-white rounded-xl p-6 shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">5. SEO 개선을 위한 향후 전략</h2>
-          <ol className="space-y-3 text-sm text-gray-700 list-none">
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">1</span>
-              <span><strong>모바일 UX 강화</strong>: 모바일 유입 비중을 높이기 위해 모바일 페이지 로딩 속도 및 인터페이스 개선.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">2</span>
-              <span><strong>고난도 콘텐츠 최적화</strong>: 오답률 100%인 ID 634번 문항에 대한 상세 가이드 페이지를 제작하여 '전문성' 지표 강화.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
-              <span><strong>피드백 루프 반영</strong>: 124건의 피드백을 바탕으로 한 FAQ 또는 도움말 페이지 구축 (롱테일 키워드 유입 효과).</span>
-            </li>
-          </ol>
+          <h2 className="text-lg font-semibold text-gray-800 mb-3">4. 앞으로의 계획</h2>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            AI Quiz를 통해 축적된 <strong>73,000건 이상의 풀이 데이터</strong>와 <strong>134건의 사용자 피드백</strong>을
+            바탕으로 AI 모델을 파인 튜닝할 예정입니다.
+            이를 통해 사용자 맞춤형 문제를 자동으로 생성하는 진정한 의미의 AI 기반 퀴즈 서비스로 돌아오겠습니다.
+          </p>
         </section>
       </main>
       <Footer />
