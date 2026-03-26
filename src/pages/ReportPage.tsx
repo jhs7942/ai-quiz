@@ -18,7 +18,7 @@ export default function ReportPage() {
         <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">1. 개요</h2>
           <p className="text-gray-700 leading-relaxed text-sm">
-            본 보고서는 총 977명의 고정 사용자를 대상으로 한 서비스 이용 데이터를 분석한 결과입니다.
+            본 보고서는 총 1,556명의 고정 사용자를 대상으로 한 서비스 이용 데이터를 분석한 결과입니다.
             전반적인 지표는 사용자의 <strong>높은 체류 시간</strong>과 <strong>반복적 방문</strong>을 증명하고 있으며,
             이는 구글의 알고리즘이 해당 웹사이트를 "신뢰도 높고 유익한 콘텐츠를 제공하는 사이트"로
             판단하는 데 긍정적인 신호를 줍니다.
@@ -42,34 +42,34 @@ export default function ReportPage() {
           <p className="text-sm text-gray-500 mb-4">구글 SEO는 단순 방문보다 실질적인 상호작용을 중요하게 평가합니다.</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-5">
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-xl font-bold text-blue-600">12.7회</p>
+              <p className="text-xl font-bold text-blue-600">13.3회</p>
               <p className="text-xs text-gray-500 mt-1">평균 방문 횟수</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-xl font-bold text-blue-600">47.7문제</p>
+              <p className="text-xl font-bold text-blue-600">126.9문제</p>
               <p className="text-xs text-gray-500 mt-1">1인당 문제 풀이</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-xl font-bold text-blue-600">66.5%</p>
+              <p className="text-xl font-bold text-blue-600">67.5%</p>
               <p className="text-xs text-gray-500 mt-1">평균 정답률</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-xl font-bold text-blue-600">977명</p>
+              <p className="text-xl font-bold text-blue-600">1,556명</p>
               <p className="text-xs text-gray-500 mt-1">전체 사용자</p>
             </div>
           </div>
           <ul className="space-y-3 text-sm text-gray-700">
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>총 문제 풀이 및 세션</strong>: 총 46,591건의 풀이와 2,497회의 퀴즈 세션이 발생했습니다.</span>
+              <span><strong>총 문제 풀이 및 세션</strong>: 총 73,848건의 풀이와 4,795회의 퀴즈 세션이 발생했습니다.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>1인당 평균 풀이량 (47.7문제)</strong>: 개별 사용자가 사이트 내에서 매우 활발하게 상호작용하고 있음을 나타내며, 이는 낮은 이탈률과 높은 세션당 페이지 뷰로 직결됩니다.</span>
+              <span><strong>1인당 평균 풀이량 (126.9문제)</strong>: 개별 사용자가 사이트 내에서 매우 활발하게 상호작용하고 있음을 나타내며, 이는 낮은 이탈률과 높은 세션당 페이지 뷰로 직결됩니다.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>평균 방문 횟수 (12.7회)</strong>: 사용자의 재방문율(Retention)이 매우 높습니다. 이는 구글의 E-E-A-T 중 '신뢰성' 지표를 강화하는 요소입니다.</span>
+              <span><strong>평균 방문 횟수 (13.3회)</strong>: 사용자의 재방문율(Retention)이 매우 높습니다. 이는 구글의 E-E-A-T 중 '신뢰성' 지표를 강화하는 요소입니다.</span>
             </li>
           </ul>
         </section>
@@ -93,7 +93,7 @@ export default function ReportPage() {
           <ul className="space-y-3 text-sm text-gray-700">
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>전체 평균 정답률 (66.5%)</strong>: 사용자에게 적절한 도전적 가치를 제공하고 있음을 의미합니다.</span>
+              <span><strong>전체 평균 정답률 (67.5%)</strong>: 사용자에게 적절한 도전적 가치를 제공하고 있음을 의미합니다.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
@@ -101,7 +101,7 @@ export default function ReportPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="text-blue-400 mt-0.5 shrink-0">•</span>
-              <span><strong>사용자 피드백 (124건)</strong>: 구글이 강조하는 '사용자 중심의 콘텐츠 업데이트'의 핵심 근거가 됩니다.</span>
+              <span><strong>사용자 피드백 (134건)</strong>: 구글이 강조하는 '사용자 중심의 콘텐츠 업데이트'의 핵심 근거가 됩니다.</span>
             </li>
           </ul>
         </section>

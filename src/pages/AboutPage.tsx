@@ -32,15 +32,15 @@ export default function AboutPage() {
           <h2 className="text-lg font-semibold text-gray-800 mb-4">2. 우리가 함께 만든 기록</h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-2xl font-bold text-blue-600">800명+</p>
+              <p className="text-2xl font-bold text-blue-600">1,556명+</p>
               <p className="text-xs text-gray-500 mt-1">함께 공부한 사람들</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-2xl font-bold text-blue-600">23,000+</p>
+              <p className="text-2xl font-bold text-blue-600">73,000+</p>
               <p className="text-xs text-gray-500 mt-1">격파한 총 문제 수</p>
             </div>
             <div className="bg-blue-50 rounded-lg p-4">
-              <p className="text-2xl font-bold text-blue-600">66.5%</p>
+              <p className="text-2xl font-bold text-blue-600">67.5%</p>
               <p className="text-xs text-gray-500 mt-1">평균 정답률</p>
             </div>
           </div>

@@ -23,9 +23,13 @@ export default function Header({ onMenuToggle, showMenuButton }: HeaderProps) {
         <span className="text-xl">🧠</span>
         <span className="text-base font-bold text-gray-800">AI Quiz</span>
       </Link>
-      <div className="ml-auto">
-        <span className="text-xs text-gray-400">JSON 기반 퀴즈 플랫폼</span>
-      </div>
+      <nav className="ml-auto flex items-center gap-1 sm:gap-3 text-xs sm:text-sm text-gray-500">
+        <Link to="/about" className="hover:text-gray-800 transition-colors">About</Link>
+        <span className="text-gray-300">·</span>
+        <Link to="/contact" className="hover:text-gray-800 transition-colors">Contact</Link>
+        <span className="text-gray-300 hidden sm:inline">·</span>
+        <Link to="/privacy" className="hidden sm:inline hover:text-gray-800 transition-colors">Privacy</Link>
+      </nav>
     </header>
   )
 }
