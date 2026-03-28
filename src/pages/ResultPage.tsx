@@ -172,7 +172,7 @@ export default function ResultPage() {
 
         {/* 광고 */}
         <div className="mb-4">
-          <GoogleAdSense adSlot="YOUR_AD_SLOT_ID" />
+          <GoogleAdSense adSlot="1276120546" adFormat="fluid" adLayoutKey="-fb+5w+4e-db+86" />
         </div>
 
         {/* 탭 */}

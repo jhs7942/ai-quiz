@@ -28,7 +28,7 @@ export default function ReportPage() {
 
         {/* 광고 */}
         <div className="mb-5">
-          <GoogleAdSense adSlot="YOUR_AD_SLOT_ID" />
+          <GoogleAdSense adSlot="9154610564" adFormat="fluid" adLayoutKey="-fb+5w+4e-db+86" />
         </div>
 
         {/* 통계 이미지 */}

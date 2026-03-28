@@ -9,9 +9,10 @@ declare global {
 interface Props {
   adSlot: string
   adFormat?: string
+  adLayoutKey?: string
 }
 
-export default function GoogleAdSense({ adSlot, adFormat = 'auto' }: Props) {
+export default function GoogleAdSense({ adSlot, adFormat = 'auto', adLayoutKey }: Props) {
   useEffect(() => {
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({})
@@ -27,6 +28,7 @@ export default function GoogleAdSense({ adSlot, adFormat = 'auto' }: Props) {
       data-ad-client="ca-pub-9907319302562189"
       data-ad-slot={adSlot}
       data-ad-format={adFormat}
+      {...(adLayoutKey ? { 'data-ad-layout-key': adLayoutKey } : {})}
       data-full-width-responsive="true"
     />
   )
