@@ -14,7 +14,20 @@
     <meta property="og:image" content="https://ai-quiz-xi-livid.vercel.app/og-image.jpg">
     <meta property="og:url" content="https://ai-quiz-xi-livid.vercel.app">
     <link rel="canonical" href="https://ai-quiz-xi-livid.vercel.app">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907319302562189" crossorigin="anonymous"></script>
+    <script>
+      // /quiz, /result 페이지에서는 AdSense 로드 제외 (콘텐츠 없는 페이지 정책 준수)
+      (function () {
+        var noAdRoutes = ['/quiz', '/result'];
+        var path = window.location.pathname;
+        if (!noAdRoutes.some(function (r) { return path === r || path.startsWith(r + '/'); })) {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907319302562189';
+          s.crossOrigin = 'anonymous';
+          document.head.appendChild(s);
+        }
+      })();
+    </script>
     <script>
       // SPA GitHub Pages: 404.html에서 저장한 경로로 이동
       var redirect = sessionStorage.getItem('spa_redirect')

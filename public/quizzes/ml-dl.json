@@ -17,7 +17,7 @@
     "explanation": "역전파는 출력층에서 입력층 방향으로 손실 함수의 편미분을 계산하여 각 가중치의 업데이트 방향과 크기를 결정하는 알고리즘입니다."
   },
   {
-    "id": 203,
+    "id": 203, 
     "type": "multiple_choice",
     "difficulty": "easy",
     "question": "랜덤 포레스트(Random Forest)의 핵심 앙상블 기법은?",

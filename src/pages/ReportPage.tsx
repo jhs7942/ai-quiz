@@ -1,6 +1,7 @@
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { useMeta } from '../hooks/useMeta'
+import GoogleAdSense from '../components/common/GoogleAdSense'
 
 export default function ReportPage() {
   useMeta(
@@ -24,6 +25,11 @@ export default function ReportPage() {
             축적된 데이터를 바탕으로 더 나은 AI 학습 경험을 제공하기 위해 계속 발전해 나가겠습니다.
           </p>
         </section>
+
+        {/* 광고 */}
+        <div className="mb-5">
+          <GoogleAdSense adSlot="YOUR_AD_SLOT_ID" />
+        </div>
 
         {/* 통계 이미지 */}
         <section className="bg-white rounded-xl p-6 mb-5 shadow-sm">

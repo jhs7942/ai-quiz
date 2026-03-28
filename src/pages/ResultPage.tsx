@@ -5,6 +5,7 @@ import { useSession } from '../hooks/useSession'
 import { saveQuizSession } from '../lib/db'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
+import GoogleAdSense from '../components/common/GoogleAdSense'
 import ResultChart from '../components/result/ResultChart'
 import ReviewCard from '../components/result/ReviewCard'
 import Toast from '../components/common/Toast'
@@ -31,8 +32,13 @@ export default function ResultPage() {
   const [toast, setToast] = useState('')
   const [saved, setSaved] = useState(false)
 
+  useEffect(() => {
+    if (questions.length === 0) {
+      navigate('/')
+    }
+  }, [questions.length, navigate])
+
   if (questions.length === 0) {
-    navigate('/')
     return null
   }
 
@@ -162,6 +168,11 @@ export default function ResultPage() {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* 광고 */}
+        <div className="mb-4">
+          <GoogleAdSense adSlot="YOUR_AD_SLOT_ID" />
         </div>
 
         {/* 탭 */}
