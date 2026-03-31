@@ -61,5 +61,19 @@
     "description": "전 범위 종합 모의고사",
     "file": "pre_test_15.json",
     "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비1",
+    "title": "재시험 모의고사 1회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비1.json",
+    "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비2",
+    "title": "재시험 모의고사 2회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비2.json",
+    "questionCount": 30
   }
 ]
