@@ -103,5 +103,19 @@
     "description": "전 범위 종합 모의고사",
     "file": "AI재시험대비6.json",
     "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비7",
+    "title": "재시험 모의고사 7회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비7.json",
+    "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비8",
+    "title": "재시험 모의고사 8회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비8.json",
+    "questionCount": 30
   }
 ]
