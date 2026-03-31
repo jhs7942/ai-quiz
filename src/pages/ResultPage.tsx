@@ -124,20 +124,20 @@ export default function ResultPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F6F1]">
+    <div className="min-h-screen bg-[#F8F6F1] dark:bg-gray-900">
       <Header />
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* 점수 카드 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           <ResultChart correct={correctCount} total={results.length} />
           <div className="w-full sm:w-auto text-center sm:text-left">
             {mockExamTitle && (
               <p className="text-sm font-semibold text-blue-600 mb-1">{mockExamTitle}</p>
             )}
-            <h1 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
               {correctCount} / {results.length} 정답
             </h1>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
               정답률 {scorePercent}%
             </p>
             <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:flex-wrap">
@@ -184,7 +184,7 @@ export default function ResultPage() {
               className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 min-h-[44px] rounded-full text-xs sm:text-sm border transition-all ${
                 tab === t
                   ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
+                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:border-blue-300'
               }`}
             >
               {TAB_LABELS[t]}

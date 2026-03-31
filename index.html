@@ -15,6 +15,15 @@
     <meta property="og:url" content="https://ai-quiz-xi-livid.vercel.app">
     <link rel="canonical" href="https://ai-quiz-xi-livid.vercel.app">
     <script>
+      // 다크 모드 초기 적용 (FOUC 방지)
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <script>
       // /quiz, /result 페이지에서는 AdSense 로드 제외 (콘텐츠 없는 페이지 정책 준수)
       (function () {
         var noAdRoutes = ['/quiz', '/result'];

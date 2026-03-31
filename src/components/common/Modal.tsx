@@ -19,7 +19,7 @@ export default function Modal({ onClose, children }: ModalProps) {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 transition-all duration-300"
+        className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6 transition-all duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

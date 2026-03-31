@@ -42,13 +42,34 @@ export default function QuizPage() {
     }
   }, [questions.length, navigate])
 
+  // early return 전에 미리 계산 (useEffect 의존성으로 사용)
+  const currentQuestion = questions[currentIndex]
+  const isChecked = currentQuestion ? checkedIds.includes(currentQuestion.id) : false
+  const isLastQuestion = questions.length > 0 ? currentIndex === questions.length - 1 : false
+
+  // 엔터키로 다음 문제 이동
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Enter') return
+      const tag = (e.target as HTMLElement).tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+      if (showExitConfirm || showUnansweredPopup || feedbackTarget !== null) return
+
+      if (isMockExam && !isLastQuestion) {
+        goToQuestion(currentIndex + 1)
+      } else if (!isMockExam && isChecked && !isLastQuestion) {
+        goToQuestion(currentIndex + 1)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isMockExam, isLastQuestion, isChecked, currentIndex, goToQuestion, showExitConfirm, showUnansweredPopup, feedbackTarget])
+
   if (questions.length === 0) {
     return null
   }
 
-  const currentQuestion = questions[currentIndex]
   const currentId = currentQuestion.id
-  const isChecked = checkedIds.includes(currentId)
   const selectedAnswer = selectedAnswers[currentId]
   const scored = scoredAnswers[currentId]
   const isCorrect = scored?.isCorrect
@@ -61,12 +82,18 @@ export default function QuizPage() {
   // 미답변 문제: 답을 선택하지 않은 문제 (모의고사 모드)
   const unansweredMock = questions.filter((q) => !selectedAnswers[q.id])
 
-  const isLastQuestion = currentIndex === questions.length - 1
   const isSkipped = skippedIds.includes(currentId)
 
   // 모의고사 모드: 선택된 답변 수 기준으로 진행률 표시
   const progressCurrent = isMockExam ? Object.keys(selectedAnswers).length : checkedCount
   const mockAnsweredIds = Object.keys(selectedAnswers).map(Number)
+
+  const correctIds = isMockExam ? undefined : Object.entries(scoredAnswers)
+    .filter(([, v]) => v.isCorrect)
+    .map(([k]) => Number(k))
+  const wrongIds = isMockExam ? undefined : Object.entries(scoredAnswers)
+    .filter(([, v]) => !v.isCorrect)
+    .map(([k]) => Number(k))
 
   function handleNext() {
     if (currentIndex < questions.length - 1) {
@@ -117,7 +144,7 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8F6F1]">
+    <div className="min-h-screen bg-[#F8F6F1] dark:bg-gray-900">
       <Header />
       <div className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {/* 모의고사 타이틀 */}
@@ -141,7 +168,7 @@ export default function QuizPage() {
         <div className="flex gap-6">
           {/* 메인 퀴즈 영역 */}
           <div className="flex-1 min-w-0">
-            <p className="text-xs text-gray-500 mb-3">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
               {currentIndex + 1} / {questions.length}
             </p>
 
@@ -159,7 +186,7 @@ export default function QuizPage() {
               <button
                 onClick={handlePrev}
                 disabled={currentIndex === 0}
-                className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 disabled:opacity-40 hover:border-gray-300 transition-colors"
+                className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 disabled:opacity-40 hover:border-gray-300 transition-colors"
               >
                 ← 이전
               </button>
@@ -192,7 +219,7 @@ export default function QuizPage() {
                     {!isChecked && !(isLastQuestion && isSkipped) && (
                       <button
                         onClick={handleSkip}
-                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors whitespace-nowrap"
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:border-gray-300 transition-colors whitespace-nowrap"
                       >
                         건너뛰기
                       </button>
@@ -242,6 +269,8 @@ export default function QuizPage() {
                 skippedIds={skippedIds}
                 questionIds={questions.map((q) => q.id)}
                 onNavigate={goToQuestion}
+                correctIds={correctIds}
+                wrongIds={wrongIds}
                 compact
               />
             </div>
@@ -256,6 +285,8 @@ export default function QuizPage() {
               skippedIds={skippedIds}
               questionIds={questions.map((q) => q.id)}
               onNavigate={goToQuestion}
+              correctIds={correctIds}
+              wrongIds={wrongIds}
             />
           </div>
         </div>
@@ -264,8 +295,8 @@ export default function QuizPage() {
       {/* 나가기 확인 팝업 */}
       {showExitConfirm && (
         <Modal onClose={() => setShowExitConfirm(false)}>
-          <h2 className="text-base font-bold text-gray-800 mb-2">퀴즈를 나가시겠습니까?</h2>
-          <p className="text-sm text-gray-500 mb-5">진행 상황이 사라집니다.</p>
+          <h2 className="text-base font-bold text-gray-800 dark:text-gray-100 mb-2">퀴즈를 나가시겠습니까?</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">진행 상황이 사라집니다.</p>
           <div className="flex gap-2 justify-end">
             <button
               onClick={() => setShowExitConfirm(false)}
@@ -286,8 +317,8 @@ export default function QuizPage() {
       {/* 미풀이 문제 팝업 */}
       {showUnansweredPopup && (
         <Modal onClose={() => setShowUnansweredPopup(false)}>
-          <h2 className="text-base font-bold text-gray-800 mb-2">아직 풀지 않은 문제가 있어요</h2>
-          <p className="text-sm text-gray-500 mb-5">
+          <h2 className="text-base font-bold text-gray-800 dark:text-gray-100 mb-2">아직 풀지 않은 문제가 있어요</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">
             {isMockExam
               ? `답을 입력하지 않은 문제 ${unansweredMock.length}개가 있습니다.`
               : `건너뛴 문제 ${unansweredSkipped.length}개가 남아있습니다.`}
