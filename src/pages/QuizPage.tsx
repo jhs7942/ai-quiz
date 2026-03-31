@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/layout/Header'
 import ProgressBar from '../components/quiz/ProgressBar'
@@ -36,8 +36,13 @@ export default function QuizPage() {
   const [showExitConfirm, setShowExitConfirm] = useState(false)
   const [showUnansweredPopup, setShowUnansweredPopup] = useState(false)
 
+  useEffect(() => {
+    if (questions.length === 0) {
+      navigate('/')
+    }
+  }, [questions.length, navigate])
+
   if (questions.length === 0) {
-    navigate('/')
     return null
   }
 
@@ -187,7 +192,7 @@ export default function QuizPage() {
                     {!isChecked && !(isLastQuestion && isSkipped) && (
                       <button
                         onClick={handleSkip}
-                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors"
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm border border-gray-200 bg-white text-gray-600 hover:border-gray-300 transition-colors whitespace-nowrap"
                       >
                         건너뛰기
                       </button>
@@ -198,7 +203,7 @@ export default function QuizPage() {
                       <button
                         onClick={handleCheck}
                         disabled={!selectedAnswer}
-                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors"
+                        className="flex-1 sm:flex-none px-4 sm:px-5 py-2.5 min-h-[44px] rounded-full text-sm bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition-colors whitespace-nowrap"
                       >
                         정답 확인
                       </button>
@@ -243,7 +248,7 @@ export default function QuizPage() {
           </div>
 
           {/* 문제 번호 네비게이터 (데스크톱) */}
-          <div className="hidden lg:block w-44 shrink-0">
+          <div className="hidden lg:block w-56 shrink-0">
             <QuestionNavigator
               total={questions.length}
               currentIndex={currentIndex}
