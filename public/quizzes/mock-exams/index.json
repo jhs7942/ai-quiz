@@ -75,5 +75,33 @@
     "description": "전 범위 종합 모의고사",
     "file": "AI재시험대비2.json",
     "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비3",
+    "title": "재시험 모의고사 3회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비3.json",
+    "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비4",
+    "title": "재시험 모의고사 4회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비4.json",
+    "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비5",
+    "title": "재시험 모의고사 5회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비5.json",
+    "questionCount": 30
+  },
+  {
+    "id": "AI재시험대비6",
+    "title": "재시험 모의고사 6회",
+    "description": "전 범위 종합 모의고사",
+    "file": "AI재시험대비6.json",
+    "questionCount": 30
   }
 ]
