@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 
 interface ResultChartProps {
@@ -6,6 +7,7 @@ interface ResultChartProps {
 }
 
 export default function ResultChart({ correct, total }: ResultChartProps) {
+  const [isDark] = useState(() => document.documentElement.classList.contains('dark'))
   const wrong = total - correct
   const percent = total > 0 ? Math.round((correct / total) * 100) : 0
 
@@ -29,16 +31,16 @@ export default function ResultChart({ correct, total }: ResultChartProps) {
             dataKey="value"
           >
             <Cell fill="#0D904F" />
-            <Cell fill="#E5E7EB" />
+            <Cell fill={isDark ? '#4B5563' : '#E5E7EB'} />
           </Pie>
           <Tooltip />
         </PieChart>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold text-gray-800">{percent}%</span>
-          <span className="text-xs text-gray-500">{correct}/{total}</span>
+          <span className="text-2xl font-bold text-gray-800 dark:text-gray-100">{percent}%</span>
+          <span className="text-xs text-gray-500 dark:text-gray-400">{correct}/{total}</span>
         </div>
       </div>
-      <p className="text-sm text-gray-600 mt-2">
+      <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
         {percent >= 80 ? '🎉 훌륭해요!' : percent >= 60 ? '👍 잘했어요!' : '💪 더 연습해봐요'}
       </p>
     </div>
