@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useWrongNoteStore } from '../../store/wrongNoteStore'
 import { fetchCategories, fetchQuiz } from '../../lib/quiz'
-import type { Question, QuizCategory } from '../../types'
+import { fetchMockExams, fetchMockExamQuestions } from '../../lib/mockExam'
+import type { Question, QuizCategory, MockExam } from '../../types'
 
-interface CategoryWrongNote {
-  category: QuizCategory
+interface WrongNoteGroup {
+  id: string
+  title: string
+  icon: string
   count: number
+  isMockExam: boolean
 }
 
 interface WrongNoteGridProps {
@@ -14,42 +18,62 @@ interface WrongNoteGridProps {
 
 export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
   const { wrongNotes, clearWrongNotes } = useWrongNoteStore()
-  const [categoryGroups, setCategoryGroups] = useState<CategoryWrongNote[]>([])
+  const [groups, setGroups] = useState<WrongNoteGroup[]>([])
   const [categories, setCategories] = useState<QuizCategory[]>([])
+  const [mockExams, setMockExams] = useState<MockExam[]>([])
   const [loading, setLoading] = useState(true)
   const [starting, setStarting] = useState(false)
 
   useEffect(() => {
-    fetchCategories()
-      .then(setCategories)
+    Promise.all([fetchCategories(), fetchMockExams()])
+      .then(([cats, exams]) => {
+        setCategories(cats)
+        setMockExams(exams)
+      })
       .finally(() => setLoading(false))
   }, [])
 
   useEffect(() => {
     if (loading) return
-    const groups: CategoryWrongNote[] = []
+    const newGroups: WrongNoteGroup[] = []
+
     for (const cat of categories) {
       const count = wrongNotes.filter((n) => n.quizId === cat.id).length
-      if (count > 0) groups.push({ category: cat, count })
+      if (count > 0) newGroups.push({ id: cat.id, title: cat.title, icon: cat.icon, count, isMockExam: false })
     }
-    setCategoryGroups(groups)
-  }, [wrongNotes, categories, loading])
 
-  async function fetchWrongQuestions(quizIds: string[]): Promise<Question[]> {
-    const wrongIds = new Set(wrongNotes.map((n) => n.id))
-    const result: Question[] = []
-    for (const cat of categories) {
-      if (!quizIds.includes(cat.id)) continue
-      const questions = await fetchQuiz(cat.id, cat.file)
-      result.push(...questions.filter((q) => wrongIds.has(q.id)))
+    for (const exam of mockExams) {
+      const count = wrongNotes.filter((n) => n.quizId === exam.id).length
+      if (count > 0) newGroups.push({ id: exam.id, title: exam.title, icon: '📋', count, isMockExam: true })
     }
+
+    setGroups(newGroups)
+  }, [wrongNotes, categories, mockExams, loading])
+
+  async function fetchWrongQuestions(groupIds: string[]): Promise<Question[]> {
+    const result: Question[] = []
+
+    for (const cat of categories) {
+      if (!groupIds.includes(cat.id)) continue
+      const wrongIdsForCat = new Set(wrongNotes.filter((n) => n.quizId === cat.id).map((n) => n.id))
+      const questions = await fetchQuiz(cat.id, cat.file)
+      result.push(...questions.filter((q) => wrongIdsForCat.has(q.id)))
+    }
+
+    for (const exam of mockExams) {
+      if (!groupIds.includes(exam.id)) continue
+      const wrongIdsForExam = new Set(wrongNotes.filter((n) => n.quizId === exam.id).map((n) => n.id))
+      const questions = await fetchMockExamQuestions(exam)
+      result.push(...questions.filter((q) => wrongIdsForExam.has(q.id)))
+    }
+
     return result
   }
 
-  async function handleCategoryStart(quizId: string) {
+  async function handleGroupStart(groupId: string) {
     setStarting(true)
     try {
-      const questions = await fetchWrongQuestions([quizId])
+      const questions = await fetchWrongQuestions([groupId])
       onStart(questions)
     } finally {
       setStarting(false)
@@ -59,8 +83,8 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
   async function handleAllStart() {
     setStarting(true)
     try {
-      const allQuizIds = categoryGroups.map((g) => g.category.id)
-      const questions = await fetchWrongQuestions(allQuizIds)
+      const allIds = groups.map((g) => g.id)
+      const questions = await fetchWrongQuestions(allIds)
       onStart(questions)
     } finally {
       setStarting(false)
@@ -92,7 +116,7 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
         <div>
           <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">오답노트</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            총 {wrongNotes.length}문제 · {categoryGroups.length}개 카테고리
+            총 {wrongNotes.length}문제 · {groups.length}개 카테고리
           </p>
         </div>
         <div className="flex gap-2">
@@ -112,12 +136,12 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
         </div>
       </div>
 
-      {/* 카테고리별 카드 그리드 */}
+      {/* 카테고리/모의고사별 카드 그리드 */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {categoryGroups.map(({ category, count }) => (
+        {groups.map(({ id, title, icon, count }) => (
           <button
-            key={category.id}
-            onClick={() => handleCategoryStart(category.id)}
+            key={id}
+            onClick={() => handleGroupStart(id)}
             disabled={starting}
             className="group relative flex flex-col bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:border-orange-400 hover:shadow-md transition-all duration-200 text-left cursor-pointer disabled:opacity-40"
           >
@@ -125,14 +149,14 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
             <div className="h-2 w-full bg-gradient-to-r from-orange-400 to-orange-300 group-hover:from-orange-500 group-hover:to-orange-400 transition-colors" />
 
             <div className="p-4 flex flex-col gap-2">
-              {/* 카테고리 아이콘 */}
-              <span className="text-2xl">{category.icon}</span>
+              {/* 아이콘 */}
+              <span className="text-2xl">{icon}</span>
 
               {/* 카테고리명 */}
               <div>
                 <p className="text-[11px] text-gray-400 font-medium">오답노트</p>
                 <p className="text-base font-bold text-gray-800 dark:text-gray-100 leading-tight">
-                  {category.title}
+                  {title}
                 </p>
               </div>
 
