@@ -5,13 +5,14 @@ import Footer from '../components/layout/Footer'
 import Sidebar from '../components/layout/Sidebar'
 import QuizSettingsPanel from '../components/quiz/QuizSettings'
 import MockExamGrid from '../components/mock-exam/MockExamGrid'
+import WrongNoteGrid from '../components/wrong-note/WrongNoteGrid'
 import { fetchCategories, buildQuestions } from '../lib/quiz'
 import { fetchMockExams, fetchMockExamQuestions } from '../lib/mockExam'
 import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
 import type { MockExam, QuizCategory } from '../types'
 
-type Mode = 'category' | 'mock-exam'
+type Mode = 'category' | 'mock-exam' | 'wrong-note'
 
 export default function MainPage() {
   useSession('/')
@@ -91,6 +92,16 @@ export default function MainPage() {
     setCategories([])
   }
 
+  function handleWrongNoteClick() {
+    setMode('wrong-note')
+    setCategories([])
+  }
+
+  function handleWrongNoteStart(questions: import('../types').Question[]) {
+    startQuiz(questions)
+    navigate('/quiz')
+  }
+
   function handleCategoryToggle(id: string) {
     setMode('category')
     handleToggle(id)
@@ -114,13 +125,16 @@ export default function MainPage() {
           onClose={() => setDrawerOpen(false)}
           mode={mode}
           onMockExamClick={handleMockExamClick}
+          onWrongNoteClick={handleWrongNoteClick}
         />
         <main className="flex-1 p-4 sm:p-5 lg:p-6">
           {starting && (
             <p className="text-sm text-blue-600 mb-4 text-center">문제를 불러오는 중...</p>
           )}
 
-          {mode === 'mock-exam' ? (
+          {mode === 'wrong-note' ? (
+            <WrongNoteGrid onStart={handleWrongNoteStart} />
+          ) : mode === 'mock-exam' ? (
             <MockExamGrid
               exams={mockExams}
               onSelect={handleMockExamSelect}

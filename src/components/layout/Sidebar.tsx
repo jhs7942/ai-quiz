@@ -1,5 +1,6 @@
 import type { QuizCategory } from '../../types'
 import CategoryCard from '../common/CategoryCard'
+import { useWrongNoteStore } from '../../store/wrongNoteStore'
 
 interface SidebarProps {
   categories: QuizCategory[]
@@ -8,8 +9,9 @@ interface SidebarProps {
   onToggleAll: () => void
   isOpen?: boolean
   onClose?: () => void
-  mode?: 'category' | 'mock-exam'
+  mode?: 'category' | 'mock-exam' | 'wrong-note'
   onMockExamClick?: () => void
+  onWrongNoteClick?: () => void
 }
 
 export default function Sidebar({
@@ -21,8 +23,10 @@ export default function Sidebar({
   onClose,
   mode = 'category',
   onMockExamClick,
+  onWrongNoteClick,
 }: SidebarProps) {
   const allSelected = selected.length === categories.length && categories.length > 0
+  const wrongNoteCount = useWrongNoteStore((s) => s.wrongNotes.length)
 
   const content = (
     <div className="flex flex-col h-full">
@@ -71,6 +75,33 @@ export default function Sidebar({
             onToggle={onToggle}
           />
         ))}
+      </div>
+
+      {/* 오답노트 */}
+      <div className="p-3 border-t border-gray-200 dark:border-gray-700 shrink-0">
+        <button
+          onClick={() => { onWrongNoteClick?.(); onClose?.() }}
+          disabled={wrongNoteCount === 0}
+          className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors disabled:opacity-40 ${
+            mode === 'wrong-note'
+              ? 'bg-orange-500 text-white'
+              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+          }`}
+        >
+          <div className="flex items-center gap-2">
+            <span>📝</span>
+            <span>오답노트</span>
+          </div>
+          {wrongNoteCount > 0 && (
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+              mode === 'wrong-note'
+                ? 'bg-white/20 text-white'
+                : 'bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400'
+            }`}>
+              {wrongNoteCount}
+            </span>
+          )}
+        </button>
       </div>
     </div>
   )

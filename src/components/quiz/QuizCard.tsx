@@ -54,7 +54,7 @@ export default function QuizCard({
                 index={i}
                 state={state}
                 onClick={() => onSelect(choice)}
-                disabled={false}
+                disabled={isChecked}
               />
             )
           })}

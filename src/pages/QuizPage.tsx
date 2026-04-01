@@ -46,31 +46,36 @@ export default function QuizPage() {
   const currentQuestion = questions[currentIndex]
   const isChecked = currentQuestion ? checkedIds.includes(currentQuestion.id) : false
   const isLastQuestion = questions.length > 0 ? currentIndex === questions.length - 1 : false
+  const currentId = currentQuestion?.id ?? 0
+  const selectedAnswer = currentQuestion ? selectedAnswers[currentQuestion.id] : undefined
 
-  // 엔터키로 다음 문제 이동
+  // 엔터키로 정답 확인 및 다음 문제 이동
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key !== 'Enter') return
-      const tag = (e.target as HTMLElement).tagName
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return
       if (showExitConfirm || showUnansweredPopup || feedbackTarget !== null) return
 
-      if (isMockExam && !isLastQuestion) {
-        goToQuestion(currentIndex + 1)
-      } else if (!isMockExam && isChecked && !isLastQuestion) {
-        goToQuestion(currentIndex + 1)
+      const tag = (e.target as HTMLElement).tagName
+      const isInputFocused = tag === 'INPUT' || tag === 'TEXTAREA'
+
+      if (isMockExam) {
+        if (!isInputFocused && !isLastQuestion) goToQuestion(currentIndex + 1)
+      } else {
+        if (!isChecked && selectedAnswer) {
+          checkAnswer(currentId)
+        } else if (!isInputFocused && isChecked && !isLastQuestion) {
+          goToQuestion(currentIndex + 1)
+        }
       }
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [isMockExam, isLastQuestion, isChecked, currentIndex, goToQuestion, showExitConfirm, showUnansweredPopup, feedbackTarget])
+  }, [isMockExam, isLastQuestion, isChecked, currentIndex, goToQuestion, showExitConfirm, showUnansweredPopup, feedbackTarget, selectedAnswer, checkAnswer, currentId])
 
   if (questions.length === 0) {
     return null
   }
 
-  const currentId = currentQuestion.id
-  const selectedAnswer = selectedAnswers[currentId]
   const scored = scoredAnswers[currentId]
   const isCorrect = scored?.isCorrect
 
