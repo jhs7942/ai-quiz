@@ -61,5 +61,75 @@
     "description": "전 범위 종합 모의고사",
     "file": "pre_test_15.json",
     "questionCount": 30
+  },
+  {
+    "id": "pretest_2_1",
+    "title": "6회차 과목평가 모의고사 1회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_1.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_2",
+    "title": "6회차 과목평가 모의고사 2회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_2.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_3",
+    "title": "6회차 과목평가 모의고사 3회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_3.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_4",
+    "title": "6회차 과목평가 모의고사 4회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_4.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_5",
+    "title": "6회차 과목평가 모의고사 5회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_5.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_6",
+    "title": "6회차 과목평가 모의고사 6회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_6.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_7",
+    "title": "6회차 과목평가 모의고사 7회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_7.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_8",
+    "title": "6회차 과목평가 모의고사 8회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_8.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_9",
+    "title": "6회차 과목평가 모의고사 9회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_9.json",
+    "questionCount": 30
+  },
+  {
+    "id": "pretest_2_10",
+    "title": "6회차 과목평가 모의고사 10회",
+    "description": "전 범위 종합 모의고사",
+    "file": "pretest2_10.json",
+    "questionCount": 30
   }
 ]
