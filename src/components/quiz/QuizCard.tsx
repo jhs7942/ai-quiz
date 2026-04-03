@@ -4,10 +4,10 @@ import FeedbackPanel from './FeedbackPanel'
 
 interface QuizCardProps {
   question: Question
-  selectedAnswer: string | undefined  // 현재 선택/입력한 답변 (채점 전)
-  isChecked: boolean                  // 정답 확인 완료 여부
-  isCorrect: boolean | undefined      // isChecked일 때만 유효
-  onSelect: (answer: string) => void  // 답변 선택 또는 입력
+  selectedAnswer: string | undefined
+  isChecked: boolean
+  isCorrect: boolean | undefined
+  onSelect: (answer: string) => void
   onReport: () => void
 }
 
@@ -20,17 +20,17 @@ export default function QuizCard({
   onReport,
 }: QuizCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 relative">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 relative">
       {/* 신고 버튼 */}
       <button
         onClick={onReport}
-        className="absolute top-4 right-4 text-xs text-orange-500 bg-orange-50 hover:bg-orange-100 px-3 py-1 rounded-full border border-orange-200 transition-colors"
+        className="absolute top-4 right-4 text-xs text-orange-500 bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 px-3 py-1 rounded-full border border-orange-200 dark:border-orange-800 transition-colors"
       >
         🚨 신고하기
       </button>
 
       {/* 문제 텍스트 */}
-      <p className="text-base font-medium text-gray-800 leading-relaxed pr-28 mb-5">
+      <p className="text-base font-medium text-gray-800 dark:text-gray-100 leading-relaxed pr-28 mb-5">
         {question.question}
       </p>
 
@@ -54,7 +54,7 @@ export default function QuizCard({
                 index={i}
                 state={state}
                 onClick={() => onSelect(choice)}
-                disabled={false}  // 채점 후에도 클릭 가능 (답변 수정용)
+                disabled={isChecked}
               />
             )
           })}
@@ -66,22 +66,22 @@ export default function QuizCard({
         <div>
           <input
             type="text"
-            className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-400 disabled:bg-gray-50 disabled:text-gray-500"
+            className="w-full border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-400 disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500"
             placeholder="답을 입력하세요"
             value={selectedAnswer ?? ''}
             onChange={(e) => onSelect(e.target.value)}
             disabled={isChecked}
           />
           {isChecked && (
-            <div className="mt-3 bg-gray-50 rounded-xl p-3">
-              <p className="text-xs text-gray-500 mb-1">정답</p>
-              <p className="text-sm font-semibold text-gray-800">{Array.isArray(question.answer) ? question.answer.join(' / ') : question.answer}</p>
+            <div className="mt-3 bg-gray-50 dark:bg-gray-700 rounded-xl p-3">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">정답</p>
+              <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">{Array.isArray(question.answer) ? question.answer.join(' / ') : question.answer}</p>
             </div>
           )}
         </div>
       )}
 
-      {/* 피드백 패널 — 정답 확인 후에만 표시 */}
+      {/* 피드백 패널 */}
       {isChecked && isCorrect !== undefined && (
         <FeedbackPanel
           isCorrect={isCorrect}

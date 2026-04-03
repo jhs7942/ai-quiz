@@ -1,6 +1,27 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import type { MockExam, Question, QuizSettings, QuizStore } from '../types'
+import { useWrongNoteStore } from './wrongNoteStore'
+
+function gradeAnswer(question: Question, userAnswer: string): boolean {
+  if (question.type === 'multiple_choice') {
+    return userAnswer === question.answer
+  }
+  const normalize = (s: string) => s.replace(/\s+/g, '').toLowerCase()
+  const expandAnswer = (s: string): string[] => {
+    const variants = [normalize(s)]
+    const match = s.match(/^(.+?)\((.+?)\)$/)
+    if (match) {
+      variants.push(normalize(match[1]))
+      variants.push(normalize(match[2]))
+    }
+    return variants
+  }
+  const normalized = normalize(userAnswer)
+  const ans = question.answer
+  const candidates = Array.isArray(ans) ? ans.flatMap(expandAnswer) : expandAnswer(ans)
+  return candidates.includes(normalized)
+}
 
 export const useQuizStore = create<QuizStore>()(
   persist(
@@ -72,28 +93,10 @@ export const useQuizStore = create<QuizStore>()(
         const userAnswer = selectedAnswers[questionId]
         if (!question || !userAnswer) return
 
-        let isCorrect = false
-        if (question.type === 'multiple_choice') {
-          isCorrect = userAnswer === question.answer
-        } else {
-          // 주관식: 공백 제거 + 대소문자 무시 후 완전 일치
-          // 괄호 패턴 "용어(영문)" → "용어", "영문" 각각도 정답으로 인식
-          const normalize = (s: string) => s.replace(/\s+/g, '').toLowerCase()
-          const expandAnswer = (s: string): string[] => {
-            const variants = [normalize(s)]
-            const match = s.match(/^(.+?)\((.+?)\)$/)
-            if (match) {
-              variants.push(normalize(match[1]))
-              variants.push(normalize(match[2]))
-            }
-            return variants
-          }
-          const normalized = normalize(userAnswer)
-          const ans = question.answer
-          const candidates = Array.isArray(ans)
-            ? ans.flatMap(expandAnswer)
-            : expandAnswer(ans)
-          isCorrect = candidates.includes(normalized)
+        const isCorrect = gradeAnswer(question, userAnswer)
+
+        if (!isCorrect) {
+          useWrongNoteStore.getState().addWrongNote(questionId, question.quizId ?? '')
         }
 
         set((state) => ({
@@ -128,26 +131,10 @@ export const useQuizStore = create<QuizStore>()(
           const userAnswer = selectedAnswers[question.id]
           if (!userAnswer) continue
 
-          let isCorrect = false
-          if (question.type === 'multiple_choice') {
-            isCorrect = userAnswer === question.answer
-          } else {
-            const normalize = (s: string) => s.replace(/\s+/g, '').toLowerCase()
-            const expandAnswer = (s: string): string[] => {
-              const variants = [normalize(s)]
-              const match = s.match(/^(.+?)\((.+?)\)$/)
-              if (match) {
-                variants.push(normalize(match[1]))
-                variants.push(normalize(match[2]))
-              }
-              return variants
-            }
-            const normalized = normalize(userAnswer)
-            const ans = question.answer
-            const candidates = Array.isArray(ans)
-              ? ans.flatMap(expandAnswer)
-              : expandAnswer(ans)
-            isCorrect = candidates.includes(normalized)
+          const isCorrect = gradeAnswer(question, userAnswer)
+
+          if (!isCorrect) {
+            useWrongNoteStore.getState().addWrongNote(question.id, question.quizId ?? '')
           }
 
           newScoredAnswers[question.id] = { answer: userAnswer, isCorrect }

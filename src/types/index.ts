@@ -83,6 +83,13 @@ export interface QuizStore {
   resetQuiz: () => void
 }
 
+// 오답노트
+export interface WrongNote {
+  id: number
+  quizId: string
+  addedAt: string
+}
+
 // DB 관련 타입
 export interface SaveQuizSessionPayload {
   userId: string

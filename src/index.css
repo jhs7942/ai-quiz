@@ -1,6 +1,8 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +12,11 @@ body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #F8F6F1;
   color: #202124;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
 }
 
 #root {
