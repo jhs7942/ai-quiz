@@ -103,33 +103,5 @@
     "description": "전 범위 종합 모의고사",
     "file": "pretest2_6.json",
     "questionCount": 30
-  },
-  {
-    "id": "pretest_2_7",
-    "title": "6회차 과목평가 모의고사 7회",
-    "description": "전 범위 종합 모의고사",
-    "file": "pretest2_7.json",
-    "questionCount": 30
-  },
-  {
-    "id": "pretest_2_8",
-    "title": "6회차 과목평가 모의고사 8회",
-    "description": "전 범위 종합 모의고사",
-    "file": "pretest2_8.json",
-    "questionCount": 30
-  },
-  {
-    "id": "pretest_2_9",
-    "title": "6회차 과목평가 모의고사 9회",
-    "description": "전 범위 종합 모의고사",
-    "file": "pretest2_9.json",
-    "questionCount": 30
-  },
-  {
-    "id": "pretest_2_10",
-    "title": "6회차 과목평가 모의고사 10회",
-    "description": "전 범위 종합 모의고사",
-    "file": "pretest2_10.json",
-    "questionCount": 30
   }
 ]
