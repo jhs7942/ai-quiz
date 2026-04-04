@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import type { Question } from '../../types'
 import ChoiceButton from './ChoiceButton'
 import FeedbackPanel from './FeedbackPanel'
@@ -19,11 +20,42 @@ export default function QuizCard({
   onSelect,
   onReport,
 }: QuizCardProps) {
+  const choicesRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // 문제 전환 시 객관식은 첫 번째 선택지, 주관식은 input에 포커스
+  useEffect(() => {
+    if (isChecked) return
+    if (question.type === 'short_answer') {
+      inputRef.current?.focus()
+    } else {
+      const firstBtn = choicesRef.current?.querySelector('button:not([disabled])') as HTMLElement
+      firstBtn?.focus()
+    }
+  }, [question.id])
+
+  // 객관식: Tab 키로 선택지 1~4만 순환
+  function handleChoicesKeyDown(e: React.KeyboardEvent) {
+    if (e.key !== 'Tab') return
+    if (!choicesRef.current) return
+    const buttons = Array.from(choicesRef.current.querySelectorAll('button:not([disabled])')) as HTMLElement[]
+    if (buttons.length === 0) return
+
+    e.preventDefault()
+    const idx = buttons.indexOf(document.activeElement as HTMLElement)
+    if (e.shiftKey) {
+      buttons[idx <= 0 ? buttons.length - 1 : idx - 1].focus()
+    } else {
+      buttons[idx >= buttons.length - 1 ? 0 : idx + 1].focus()
+    }
+  }
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 relative">
       {/* 신고 버튼 */}
       <button
         onClick={onReport}
+        tabIndex={-1}
         className="absolute top-4 right-4 text-xs text-orange-500 bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/40 px-3 py-1 rounded-full border border-orange-200 dark:border-orange-800 transition-colors"
       >
         🚨 신고하기
@@ -36,7 +68,7 @@ export default function QuizCard({
 
       {/* 객관식 */}
       {question.type === 'multiple_choice' && (
-        <div className="space-y-2">
+        <div ref={choicesRef} onKeyDown={handleChoicesKeyDown} className="space-y-2">
           {question.choices.map((choice, i) => {
             let state: 'idle' | 'selected' | 'correct' | 'wrong' | 'unselected-correct' = 'idle'
             if (isChecked) {
@@ -65,6 +97,7 @@ export default function QuizCard({
       {question.type === 'short_answer' && (
         <div>
           <input
+            ref={inputRef}
             type="text"
             className="w-full border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-400 disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-500"
             placeholder="답을 입력하세요"
