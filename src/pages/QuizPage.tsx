@@ -105,10 +105,18 @@ export default function QuizPage() {
       const isInputFocused = tag === 'INPUT' || tag === 'TEXTAREA'
 
       if (isMockExam) {
-        if (!isInputFocused && !isLastQuestion) goToQuestion(currentIndex + 1)
+        if (!isInputFocused && !isLastQuestion) {
+          if (selectedAnswer && currentQuestion) {
+            saveCurrentAnswer(currentId, currentQuestion, selectedAnswer, true)
+          }
+          goToQuestion(currentIndex + 1)
+        }
       } else {
         if (!isChecked && selectedAnswer) {
           checkAnswer(currentId)
+          if (currentQuestion) {
+            saveCurrentAnswer(currentId, currentQuestion, selectedAnswer, false)
+          }
         } else if (!isInputFocused && isChecked && !isLastQuestion) {
           goToQuestion(currentIndex + 1)
         }
