@@ -95,7 +95,7 @@ export default function QuizCard({
 
       {/* 주관식 */}
       {question.type === 'short_answer' && (
-        <div>
+        <div onKeyDown={(e) => { if (e.key === 'Tab') { e.preventDefault(); inputRef.current?.focus() } }}>
           <input
             ref={inputRef}
             type="text"
