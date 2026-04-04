@@ -65,8 +65,7 @@ export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<
 
     if (error || !session) return
 
-    // 모의고사(pretest)는 quiz_answers 저장 스킵
-    if (payload.answers.length > 0 && !payload.pretest) {
+    if (payload.answers.length > 0) {
       await supabase.from('quiz_answers').insert(
         payload.answers.map((a) => ({
           quiz_session_id: session.id,
