@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/layout/Header'
 import ProgressBar from '../components/quiz/ProgressBar'
@@ -7,8 +7,10 @@ import QuestionNavigator from '../components/quiz/QuestionNavigator'
 import FeedbackModal from '../components/common/FeedbackModal'
 import Modal from '../components/common/Modal'
 import Toast from '../components/common/Toast'
-import { useQuizStore } from '../store/quizStore'
+import { useQuizStore, gradeAnswer } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
+import { createDraftSession, saveQuizAnswer } from '../lib/db'
+import type { Question } from '../types'
 
 export default function QuizPage() {
   const { userId } = useSession('/quiz')
@@ -22,11 +24,17 @@ export default function QuizPage() {
     skippedIds,
     mockExamId,
     mockExamTitle,
+    quizSessionId,
+    selectedCategories,
+    difficulty,
+    shuffle,
+    startedAt,
     selectAnswer,
     checkAnswer,
     checkAllAnswers,
     skipQuestion,
     goToQuestion,
+    setQuizSessionId,
   } = useQuizStore()
 
   const isMockExam = !!mockExamId
@@ -35,6 +43,44 @@ export default function QuizPage() {
   const [toast, setToast] = useState('')
   const [showExitConfirm, setShowExitConfirm] = useState(false)
   const [showUnansweredPopup, setShowUnansweredPopup] = useState(false)
+
+  // DB draft 세션 생성 (중복 방지)
+  const creatingSession = useRef(false)
+  // 이미 저장된 답안 ID 추적 (중복 INSERT 방지)
+  const savedIds = useRef<Set<number>>(new Set())
+
+  useEffect(() => {
+    if (!userId || !startedAt || questions.length === 0) return
+    if (quizSessionId || creatingSession.current) return
+    creatingSession.current = true
+    const selectedTypes = [...new Set(questions.map((q) => q.type))]
+    createDraftSession({
+      userId,
+      categories: mockExamId ? [mockExamId] : selectedCategories,
+      selectedTypes,
+      totalQuestions: questions.length,
+      startedAt,
+      settings: { difficulty, shuffle },
+      pretest: !!mockExamId,
+    }).then((id) => {
+      if (id) setQuizSessionId(id)
+      creatingSession.current = false
+    })
+  }, [userId, startedAt, questions.length])
+
+  // 단일 답안 즉시 저장 헬퍼
+  function saveCurrentAnswer(questionId: number, question: Question, userAnswer: string, pretest: boolean) {
+    if (!quizSessionId || savedIds.current.has(questionId)) return
+    savedIds.current.add(questionId)
+    const isCorrect = gradeAnswer(question, userAnswer)
+    saveQuizAnswer(quizSessionId, {
+      questionId: question.id,
+      quizId: question.quizId ?? 'quiz',
+      questionType: question.type,
+      userAnswer,
+      isCorrect,
+    }, pretest)
+  }
 
   useEffect(() => {
     if (questions.length === 0) {
@@ -101,6 +147,10 @@ export default function QuizPage() {
     .map(([k]) => Number(k))
 
   function handleNext() {
+    // 모의고사: "다음" 클릭 시 현재 답변 즉시 저장
+    if (isMockExam && selectedAnswer) {
+      saveCurrentAnswer(currentId, currentQuestion, selectedAnswer, true)
+    }
     if (currentIndex < questions.length - 1) {
       goToQuestion(currentIndex + 1)
     }
@@ -118,10 +168,17 @@ export default function QuizPage() {
 
   function handleCheck() {
     checkAnswer(currentId)
+    // 일반 퀴즈: "정답 확인" 클릭 시 답변 즉시 저장
+    const answer = selectedAnswers[currentId]
+    if (answer) saveCurrentAnswer(currentId, currentQuestion, answer, false)
   }
 
   function handleFinishClick() {
     if (isMockExam) {
+      // 모의고사 제출 시 현재 문제 답변 저장
+      if (selectedAnswer) {
+        saveCurrentAnswer(currentId, currentQuestion, selectedAnswer, true)
+      }
       if (unansweredMock.length > 0) {
         setShowUnansweredPopup(true)
       } else {
@@ -339,6 +396,10 @@ export default function QuizPage() {
               onClick={() => {
                 setShowUnansweredPopup(false)
                 if (isMockExam) {
+                  // 팝업에서 제출 시에도 현재 문제 답변 저장
+                  if (selectedAnswer) {
+                    saveCurrentAnswer(currentId, currentQuestion, selectedAnswer, true)
+                  }
                   checkAllAnswers()
                 }
                 navigate('/result')

@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 import type { MockExam, Question, QuizSettings, QuizStore } from '../types'
 import { useWrongNoteStore } from './wrongNoteStore'
 
-function gradeAnswer(question: Question, userAnswer: string): boolean {
+export function gradeAnswer(question: Question, userAnswer: string): boolean {
   if (question.type === 'multiple_choice') {
     return userAnswer === question.answer
   }
@@ -39,6 +39,7 @@ export const useQuizStore = create<QuizStore>()(
       startedAt: null,
       mockExamId: null,
       mockExamTitle: null,
+      quizSessionId: null,
 
       setCategories: (ids) => set({ selectedCategories: ids }),
 
@@ -48,6 +49,8 @@ export const useQuizStore = create<QuizStore>()(
           difficulty: settings.difficulty ?? state.difficulty,
           shuffle: settings.shuffle ?? state.shuffle,
         })),
+
+      setQuizSessionId: (id) => set({ quizSessionId: id }),
 
       startQuiz: (questions: Question[]) =>
         set({
@@ -60,6 +63,7 @@ export const useQuizStore = create<QuizStore>()(
           startedAt: new Date().toISOString(),
           mockExamId: null,
           mockExamTitle: null,
+          quizSessionId: null,
         }),
 
       startMockExam: (exam: MockExam, questions: Question[]) =>
@@ -73,6 +77,7 @@ export const useQuizStore = create<QuizStore>()(
           startedAt: new Date().toISOString(),
           mockExamId: exam.id,
           mockExamTitle: exam.title,
+          quizSessionId: null,
         }),
 
       // 답변 선택만 (채점 X) — 선택 변경 시 기존 채점 결과 초기화
@@ -172,6 +177,7 @@ export const useQuizStore = create<QuizStore>()(
           startedAt: null,
           mockExamId: null,
           mockExamTitle: null,
+          quizSessionId: null,
         }),
     }),
     {

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
-import { saveQuizSession } from '../lib/db'
+import { saveQuizSession, updateSessionResult } from '../lib/db'
 import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import GoogleAdSense from '../components/common/GoogleAdSense'
@@ -25,6 +25,7 @@ export default function ResultPage() {
     startedAt,
     mockExamId,
     mockExamTitle,
+    quizSessionId,
     startQuiz,
     resetQuiz,
   } = useQuizStore()
@@ -63,27 +64,34 @@ export default function ResultPage() {
   useEffect(() => {
     if (saved || !userId || !startedAt) return
     setSaved(true)
-    const selectedTypes = [...new Set(questions.map((q) => q.type))]
-    saveQuizSession({
-      userId,
-      categories: mockExamId ? [mockExamId] : selectedCategories,
-      selectedTypes,
-      totalQuestions: questions.length,
-      correctCount,
-      scorePercent,
-      startedAt,
-      settings: { difficulty, shuffle },
-      pretest: !!mockExamId,
-      answers: results
-        .filter((r) => r.userAnswer !== undefined)
-        .map((r) => ({
-          questionId: r.question.id,
-          quizId: r.question.quizId ?? 'quiz',
-          questionType: r.question.type,
-          userAnswer: r.userAnswer!,
-          isCorrect: r.isCorrect,
-        })),
-    })
+
+    if (quizSessionId) {
+      // quiz_answers는 QuizPage에서 문제별로 이미 저장됨 — 점수만 업데이트
+      updateSessionResult(quizSessionId, correctCount, scorePercent)
+    } else {
+      // fallback: quizSessionId가 없으면 기존 방식 (세션 + 답안 일괄 저장)
+      const selectedTypes = [...new Set(questions.map((q) => q.type))]
+      saveQuizSession({
+        userId,
+        categories: mockExamId ? [mockExamId] : selectedCategories,
+        selectedTypes,
+        totalQuestions: questions.length,
+        correctCount,
+        scorePercent,
+        startedAt,
+        settings: { difficulty, shuffle },
+        pretest: !!mockExamId,
+        answers: results
+          .filter((r) => r.userAnswer !== undefined)
+          .map((r) => ({
+            questionId: r.question.id,
+            quizId: r.question.quizId ?? 'quiz',
+            questionType: r.question.type,
+            userAnswer: r.userAnswer!,
+            isCorrect: r.isCorrect,
+          })),
+      })
+    }
   }, [userId])
 
   const filtered = results.filter((r) => {

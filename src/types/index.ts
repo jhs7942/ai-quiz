@@ -69,6 +69,7 @@ export interface QuizStore {
   startedAt: string | null
   mockExamId: string | null                      // 모의고사 ID (null = 카테고리 퀴즈 모드)
   mockExamTitle: string | null                   // 모의고사 타이틀 표시용
+  quizSessionId: string | null                   // DB 세션 ID (문제별 즉시 저장용)
 
   setCategories: (ids: string[]) => void
   setSettings: (settings: Partial<QuizSettings>) => void
@@ -81,6 +82,7 @@ export interface QuizStore {
   skipQuestion: (questionId: number) => void
   goToQuestion: (index: number) => void
   resetQuiz: () => void
+  setQuizSessionId: (id: string | null) => void              // DB 세션 ID 설정
 }
 
 // 오답노트

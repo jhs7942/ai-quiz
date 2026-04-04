@@ -44,6 +44,83 @@ export async function logAccess(userId: string, pagePath: string, userAgent: str
   }
 }
 
+// draft 세션 생성 (퀴즈 시작 시, score 0)
+export async function createDraftSession(payload: {
+  userId: string
+  categories: string[]
+  selectedTypes: string[]
+  totalQuestions: number
+  startedAt: string
+  settings: { difficulty: string; shuffle: boolean }
+  pretest: boolean
+}): Promise<string | null> {
+  try {
+    const { data, error } = await supabase
+      .from('quiz_sessions')
+      .insert({
+        user_id: payload.userId,
+        categories: payload.categories,
+        selected_types: payload.selectedTypes,
+        total_questions: payload.totalQuestions,
+        correct_count: 0,
+        score_percent: 0,
+        started_at: payload.startedAt,
+        settings: payload.settings,
+        pretest: payload.pretest,
+      })
+      .select('id')
+      .single()
+
+    if (error || !data) return null
+    return data.id
+  } catch {
+    return null
+  }
+}
+
+// 단일 답안 저장
+export async function saveQuizAnswer(
+  sessionId: string,
+  answer: {
+    questionId: number
+    quizId: string
+    questionType: string
+    userAnswer: string
+    isCorrect: boolean
+  },
+  pretest: boolean
+): Promise<void> {
+  try {
+    await supabase.from('quiz_answers').insert({
+      quiz_session_id: sessionId,
+      question_id: answer.questionId,
+      quiz_id: answer.quizId,
+      question_type: answer.questionType,
+      user_answer: answer.userAnswer,
+      is_correct: answer.isCorrect,
+      pretest,
+    })
+  } catch {
+    // 조용히 무시
+  }
+}
+
+// 최종 점수 업데이트
+export async function updateSessionResult(
+  sessionId: string,
+  correctCount: number,
+  scorePercent: number
+): Promise<void> {
+  try {
+    await supabase
+      .from('quiz_sessions')
+      .update({ correct_count: correctCount, score_percent: scorePercent })
+      .eq('id', sessionId)
+  } catch {
+    // 조용히 무시
+  }
+}
+
 // 퀴즈 풀이 세션 저장
 export async function saveQuizSession(payload: SaveQuizSessionPayload): Promise<void> {
   try {
