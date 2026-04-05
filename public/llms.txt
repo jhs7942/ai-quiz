@@ -1,0 +1,32 @@
+# AI Quiz
+
+> 시험 직전 10분, AI가 생성하는 맞춤형 퀴즈로 핵심 개념을 완벽 마스터하는 무료 한국어 학습 플랫폼.
+
+AI Quiz는 사용자가 입력한 학습 자료 또는 주제를 기반으로 AI가 핵심 개념 문제를 생성하여, 시험 직전 단시간(10분) 복습을 통해 인출 학습 효율을 극대화하는 웹 애플리케이션입니다. 회원가입 없이 무료로 이용할 수 있습니다.
+
+## 주요 페이지
+
+- [홈](https://ai-quiz-xi-livid.vercel.app/): 퀴즈 생성 시작, 서비스 소개
+- [소개](https://ai-quiz-xi-livid.vercel.app/about): 서비스 철학과 학습 방법론
+- [문의](https://ai-quiz-xi-livid.vercel.app/contact): 문의 및 피드백 채널
+- [개인정보처리방침](https://ai-quiz-xi-livid.vercel.app/privacy): 개인정보 처리 정책
+- [오류 신고](https://ai-quiz-xi-livid.vercel.app/report): 퀴즈 오류 및 개선 신고
+
+## 핵심 특징
+
+- AI 기반 맞춤형 퀴즈 생성
+- 시험 직전 10분 단기 집중 학습 모델
+- 한국어 콘텐츠 지원
+- 무료 및 회원가입 불필요
+- 73,000건 이상의 풀이 데이터 기반
+
+## 대상 사용자
+
+- 시험 직전 빠른 복습이 필요한 수험생
+- AI·머신러닝·딥러닝 개념을 학습 중인 학생
+- 핵심 개념 암기가 필요한 모든 학습자
+
+## 연락처
+
+- 문의: https://ai-quiz-xi-livid.vercel.app/contact
+- 오류 신고: https://ai-quiz-xi-livid.vercel.app/report

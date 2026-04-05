@@ -9,11 +9,111 @@
     <meta name="keywords" content="AI퀴즈, 인공지능학습, AI시험대비, 머신러닝문제, 딥러닝퀴즈, SSAFY">
     <meta name="google-site-verification" content="pkaE0d-TRWWvveY9nuB3X0WQdZQUN_KWy_-a49FQC-c" />
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AI Quiz">
+    <meta property="og:locale" content="ko_KR">
     <meta property="og:title" content="AI Quiz - 당신의 AI 실력을 점검하세요">
     <meta property="og:description" content="총 73,000건의 풀이 데이터가 증명하는 AI 핵심 요약 퀴즈!">
     <meta property="og:image" content="https://ai-quiz-xi-livid.vercel.app/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://ai-quiz-xi-livid.vercel.app">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Quiz - 당신의 AI 실력을 점검하세요">
+    <meta name="twitter:description" content="총 73,000건의 풀이 데이터가 증명하는 AI 핵심 요약 퀴즈!">
+    <meta name="twitter:image" content="https://ai-quiz-xi-livid.vercel.app/og-image.jpg">
     <link rel="canonical" href="https://ai-quiz-xi-livid.vercel.app">
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AI Quiz",
+      "alternateName": "AI 퀴즈",
+      "url": "https://ai-quiz-xi-livid.vercel.app/",
+      "description": "AI 핵심 이론부터 실전 문제까지! 시험 대비 최적화 AI 퀴즈 플랫폼입니다. 짧은 시간 안에 고효율 학습을 경험하세요.",
+      "applicationCategory": "EducationalApplication",
+      "applicationSubCategory": "Quiz",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript, HTML5",
+      "inLanguage": "ko-KR",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      },
+      "keywords": "AI퀴즈, 인공지능학습, 머신러닝, 딥러닝, SSAFY"
+    }
+    </script>
+    <!-- JSON-LD: EducationalOrganization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "AI Quiz",
+      "alternateName": "AI 퀴즈",
+      "url": "https://ai-quiz-xi-livid.vercel.app/",
+      "logo": "https://ai-quiz-xi-livid.vercel.app/og-image.jpg",
+      "description": "시험 직전 10분, 핵심 개념 완벽 마스터 — AI 학습 퀴즈 플랫폼",
+      "sameAs": []
+    }
+    </script>
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AI Quiz",
+      "url": "https://ai-quiz-xi-livid.vercel.app/",
+      "inLanguage": "ko-KR"
+    }
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "AI Quiz는 무료인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, AI Quiz의 모든 퀴즈는 무료로 제공되며 회원가입 없이 바로 이용할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 방식으로 퀴즈가 만들어지나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "사용자가 입력한 학습 자료나 주제를 바탕으로 AI가 핵심 개념을 추출하여 맞춤형 퀴즈를 생성합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 주제를 다루나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI, 머신러닝, 딥러닝 등 인공지능 핵심 개념과 SSAFY 등 실전 시험 대비 문제를 다룹니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "시험 직전 10분 학습이 효과가 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "시험 직전 단시간 복습은 작업기억에 핵심 개념을 활성화시켜 인출 효율을 높이는 것으로 알려져 있으며, AI Quiz는 이 원리를 활용합니다."
+          }
+        }
+      ]
+    }
+    </script>
     <script>
       // /quiz, /result 페이지에서는 AdSense 로드 제외 (콘텐츠 없는 페이지 정책 준수)
       (function () {
@@ -38,6 +138,14 @@
     </script>
   </head>
   <body>
+    <!-- noscript 폴백 (SSR 적용 전 임시 조치) -->
+    <noscript>
+      <div>
+        <h1>AI Quiz - 시험 직전 10분, 핵심 개념 완벽 마스터</h1>
+        <p>AI Quiz는 AI가 생성하는 맞춤형 퀴즈로 시험 직전 10분 만에 핵심 개념을 완벽하게 마스터할 수 있는 무료 한국어 학습 플랫폼입니다. 총 73,000건 이상의 풀이 데이터가 증명하는 고효율 학습 도구입니다.</p>
+        <p>이 애플리케이션을 사용하려면 JavaScript를 활성화해주세요.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
