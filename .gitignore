@@ -32,3 +32,8 @@ dist-ssr
 # E2E 테스트 결과
 test-results/
 playwright-report/
+
+# Claude Code 로컬 상태
+.claude/settings.local.json
+.claude/memory/
+.claude/context/

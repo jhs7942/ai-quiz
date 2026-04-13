@@ -1,0 +1,13 @@
+Total messages: 5 (Errors: 2, Warnings: 0)
+Returning 2 messages for level "error"
+
+[ERROR] Cannot update a component (`%s`) while rendering a different component (`%s`). To locate the bad setState() call inside `%s`, follow the stack trace as described in https://react.dev/link/setstate-in-render BrowserRouter ResultPage ResultPage @ http://localhost:5173/@vite/client:509
+Error: There was an error during concurrent rendering but React was able to recover by instead synchronously rendering the entire root.
+    at throwException (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:5369:43)
+    at throwAndUnwindWorkLoop (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:8461:9)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:8305:137)
+    at performWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:7956:181)
+    at performSyncWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:9066:4)
+    at flushSyncWorkAcrossRoots_impl (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:8983:302)
+    at processRootScheduleInMicrotask (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:9004:101)
+    at http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=91bd3779:9077:150

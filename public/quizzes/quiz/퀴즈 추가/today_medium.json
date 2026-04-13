@@ -1,0 +1,402 @@
+[
+  {
+    "id": 51,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "파운데이션 모델이 특정 작업을 수행하기 전, 방대한 양의 텍스트 데이터로부터 언어의 구조와 지식을 습득하는 가장 첫 번째 학습 단계는?",
+    "answer": ["사전 학습", "Pre-training", "프리트레이닝"],
+    "explanation": "LLM의 학습은 거대한 말뭉치를 통한 사전 학습에서 시작됩니다."
+  },
+  {
+    "id": 52,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "지시 학습(Instruction Tuning) 단계에서 모델의 가중치를 미세 조정하기 위해 사용하는 학습 방식의 명칭은?",
+    "answer": ["SFT", "Supervised Fine-Tuning", "지도 미세 조정"],
+    "explanation": "지시 학습은 정답이 포함된 데이터를 활용하는 SFT 과정을 포함합니다."
+  },
+  {
+    "id": 53,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF 단계에서 모델이 생성한 여러 답변 중 인간이 선호하는 답변에 높은 점수를 주도록 학습되는 별도의 모델은?",
+    "answer": ["보상 모델", "Reward Model"],
+    "explanation": "선호 학습(RLHF)을 위해 인간의 피드백을 수치화하는 보상 모델이 필요합니다."
+  },
+  {
+    "id": 54,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 시 확률 분포에서 상위 토큰들을 선택할 때, '온도(Temperature)' 파라미터가 0에 가까워지면 답변은 어떤 특성을 갖게 됩니까?",
+    "answer": ["결정론적", "일관적", "단조로움", "Deterministic"],
+    "explanation": "온도가 낮아지면 가장 확률이 높은 토큰 위주로 선택되어 답변의 다양성이 줄어듭니다."
+  },
+  {
+    "id": 55,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "프롬프트 엔지니어링 기법 중, 복잡한 문제를 풀기 위해 사고의 중간 단계를 명시적으로 출력하도록 유도하는 기법의 약어는?",
+    "answer": ["CoT", "Chain of Thought"],
+    "explanation": "CoT는 단계별 추론을 통해 복잡한 문제 해결 능력을 높이는 프롬프트 기법입니다."
+  },
+  {
+    "id": 56,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM 평가 방법 중, 텍스트의 유사도를 측정하기 위해 정답 문장과 생성 문장의 n-gram 중첩도를 계산하는 지표는? (기계 번역 평가에 주로 사용)",
+    "answer": ["BLEU", "BLEU score"],
+    "explanation": "거대 언어 모델의 평가 시 기계적인 유사도 측정을 위해 BLEU 등이 활용됩니다."
+  },
+  {
+    "id": 57,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델이 학습한 지식에만 의존하지 않고, 외부 문서를 참고하여 답변을 생성함으로써 '환각' 현상을 줄이는 기술은?",
+    "answer": ["RAG", "Retrieval-Augmented Generation", "검색 증강 생성"],
+    "explanation": "RAG는 LLM의 한계인 정보의 최신성과 정확성을 보완하는 응용 기술입니다."
+  },
+  {
+    "id": 58,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF의 최적화 단계에서 모델의 정책이 기존 학습 상태에서 너무 멀어지지 않도록 제어하는 데 주로 사용되는 알고리즘은?",
+    "answer": ["PPO", "Proximal Policy Optimization"],
+    "explanation": "선호 학습 시 안정적인 정책 업데이트를 위해 PPO 알고리즘이 널리 쓰입니다."
+  },
+  {
+    "id": 59,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 알고리즘 중, 매 순간 최적의 토큰을 고르는 대신 여러 후보 경로(Beam)를 유지하며 전체 확률을 고려하는 방식은?",
+    "answer": ["빔 서치", "Beam Search"],
+    "explanation": "빔 서치는 단기적인 최적해보다 전체 문장의 확률을 높이는 디코딩 방식입니다."
+  },
+  {
+    "id": 60,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM이 학습 데이터에서 본 적 없는 새로운 작업에 대해 프롬프트 예시만으로 대응하는 능력을 무엇이라 합니까?",
+    "answer": ["인컨텍스트 러닝", "In-Context Learning", "문맥 내 학습"],
+    "explanation": "추가 학습 없이 프롬프트 정보만으로 능력을 발휘하는 파운데이션 모델의 특징입니다."
+  },
+  {
+    "id": 61,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델 평가 시 GPT-4와 같은 강력한 모델을 평가자로 활용하여 답변의 질을 판별하는 방식은?",
+    "answer": ["LLM-as-a-judge", "LLM 기반 평가"],
+    "explanation": "사람의 평가를 대신하여 고성능 LLM을 평가 지표로 사용하는 방법입니다."
+  },
+  {
+    "id": 62,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "프롬프트 입력 시 사용자가 원하는 답변의 형식을 지정하여 모델이 특정 JSON이나 리스트 형태로 출력하게 만드는 기법은?",
+    "answer": ["출력 형식 지정", "Output Formatting"],
+    "explanation": "프롬프트 엔지니어링을 통해 결과물의 구조를 제어할 수 있습니다."
+  },
+  {
+    "id": 63,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM의 한계 중 하나로, 모델이 학습하지 않은 민감한 정보나 편향된 답변을 거부하지 못하고 출력하는 보안 위협 기법은?",
+    "answer": ["프롬프트 인젝션", "Prompt Injection", "탈옥", "Jailbreak"],
+    "explanation": "모델의 안전 가이드라인을 우회하려는 시도는 LLM의 주요 보안 한계점입니다."
+  },
+  {
+    "id": 64,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "사전 학습 단계에서 모델이 데이터의 다음 단어를 예측하며 손실(Loss)을 줄여나가는 함수를 무엇이라 합니까?",
+    "answer": ["교차 엔트로피", "Cross-Entropy", "손실 함수"],
+    "explanation": "언어 모델의 학습은 예측 값과 실제 값 사이의 교차 엔트로피를 최소화하는 방향으로 진행됩니다."
+  },
+  {
+    "id": 65,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "지시 학습에서 모델이 질문의 의도를 더 잘 이해하도록 질문 앞에 추가하는 구체적인 배경 정보나 역할을 무엇이라 합니까?",
+    "answer": ["컨텍스트", "Context", "문맥"],
+    "explanation": "풍부한 컨텍스트 제공은 지시 학습 모델의 성능을 향상시킵니다."
+  },
+  {
+    "id": 66,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 파라미터 중 하나로, 확률이 낮은 토큰들이 선택될 가능성을 완전히 차단하기 위해 사용되는 기법은? (Top-k 외)",
+    "answer": ["Top-p", "Nucleus Sampling", "핵 샘플링"],
+    "explanation": "Top-p는 누적 확률을 기준으로 후보군을 걸러내어 비논리적인 단어 선택을 방지합니다."
+  },
+  {
+    "id": 67,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "선호 학습(RLHF)의 데이터 구축을 위해, 모델의 여러 답변을 사람이 순위를 매기는 과정을 무엇이라 합니까?",
+    "answer": ["랭킹", "Ranking", "선호도 라벨링"],
+    "explanation": "사람의 선호도를 학습 데이터로 만들기 위해 답변 간의 순위를 매깁니다."
+  },
+  {
+    "id": 68,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM 평가 지표 중, 요약 작업에서 정답 요약문과 모델 생성문 사이의 단어 겹침을 측정하는 지표는?",
+    "answer": ["ROUGE", "ROUGE score"],
+    "explanation": "ROUGE는 주로 텍스트 요약 모델의 성능을 평가할 때 사용됩니다."
+  },
+  {
+    "id": 69,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델이 답변 중간에 '사실'이 아닌 내용을 포함하더라도 문장이 매우 유창하여 사용자가 속기 쉬운 현상을 무엇이라 합니까?",
+    "answer": ["유창한 환각", "Fluent Hallucination"],
+    "explanation": "LLM의 한계로, 겉보기에는 완벽한 문장이지만 정보가 틀린 경우가 빈번합니다."
+  },
+  {
+    "id": 70,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "미세 조정 시 모든 파라미터를 수정하지 않고 일부 가중치만 추가하거나 수정하여 효율적으로 학습하는 기법을 통칭하는 말은?",
+    "answer": ["PEFT", "Parameter-Efficient Fine-Tuning"],
+    "explanation": "PEFT는 거대 모델을 적은 자원으로 미세 조정하기 위한 필수 기술입니다."
+  },
+  {
+    "id": 71,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "프롬프트 내에 '당신은 최고의 프로그래머입니다'와 같이 모델의 행동 방식을 규정하는 메시지 유형은?",
+    "answer": ["Persona", "페르소나", "시스템 메시지"],
+    "explanation": "페르소나 설정은 모델이 특정 전문성을 띠고 답변하도록 유도합니다."
+  },
+  {
+    "id": 72,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RAG 시스템에서 입력된 쿼리와 가장 유사한 문서를 찾기 위해 계산하는 수학적 거리 지표는?",
+    "answer": ["코사인 유사도", "Cosine Similarity"],
+    "explanation": "벡터 공간에서 두 벡터 사이의 각도를 이용해 의미적 유사성을 판단합니다."
+  },
+  {
+    "id": 73,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "사전 학습 시 데이터의 양(Token)과 모델의 파라미터 수, 연산량 사이의 관계를 설명하는 이론은?",
+    "answer": ["스케일링 법칙", "Scaling Law"],
+    "explanation": "모델의 성능 향상을 위해 필요한 자원의 규모를 예측하는 법칙입니다."
+  },
+  {
+    "id": 74,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM의 한계 중, 특정 시점까지의 데이터만 학습되어 발생하는 '정보의 시차' 문제를 무엇이라 합니까?",
+    "answer": ["지식 컷오프", "Knowledge Cutoff"],
+    "explanation": "사전 학습 데이터의 수집 기간 한계로 인해 발생하는 문제입니다."
+  },
+  {
+    "id": 75,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 과정에서 이전에 생성된 토큰이 다시 생성되지 않도록 확률을 낮추는 패널티는?",
+    "answer": ["반복 패널티", "Repetition Penalty"],
+    "explanation": "모델이 같은 단어를 무한 반복하는 현상을 방지하기 위한 설정입니다."
+  },
+  {
+    "id": 76,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF 대신, 정답 쌍(Positive)과 오답 쌍(Negative)을 직접 비교하여 효율적으로 학습하는 최신 기법의 약어는?",
+    "answer": ["DPO", "Direct Preference Optimization"],
+    "explanation": "DPO는 별도의 보상 모델 없이 선호도를 직접 최적화하는 기법입니다."
+  },
+  {
+    "id": 77,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "프롬프트 엔지니어링에서 예시를 줄 때, 정답뿐만 아니라 '왜 이것이 정답인지' 설명을 추가하는 기법은?",
+    "answer": ["Thought-augmented prompting", "설명 포함 퓨샷"],
+    "explanation": "추론 과정을 예시에 포함하면 모델의 이해도가 높아집니다."
+  },
+  {
+    "id": 78,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "여러 LLM 중 어떤 모델이 더 뛰어난지 사용자가 블라인드 테스트를 통해 투표하는 유명한 벤치마크 플랫폼은?",
+    "answer": ["LMSYS Chatbot Arena", "챗봇 아레나"],
+    "explanation": "인간의 주관적 선호를 반영한 실시간 모델 평가 지표입니다."
+  },
+  {
+    "id": 79,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델이 생성한 답변이 유해하거나 위험한 내용을 포함하지 않도록 필터링하거나 학습시키는 가이드라인을 무엇이라 합니까?",
+    "answer": ["안전 가드레일", "Safety Guardrails", "세이프티"],
+    "explanation": "LLM의 윤리적 사용을 위한 핵심 한계 극복 방안입니다."
+  },
+  {
+    "id": 80,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "텍스트를 토큰화할 때, 자주 등장하는 글자 조합은 하나의 토큰으로 묶는 가장 대표적인 알고리즘은?",
+    "answer": ["BPE", "Byte Pair Encoding"],
+    "explanation": "대부분의 현대 LLM은 BPE 또는 그 변형을 토큰화에 사용합니다."
+  },
+  {
+    "id": 81,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "지시 학습용 데이터셋을 구축할 때, 모델 스스로 질문과 답변을 생성하게 하여 데이터를 증강하는 기법은?",
+    "answer": ["Self-Instruct", "셀프 인스트럭트"],
+    "explanation": "고품질의 지시 데이터를 대량으로 확보하기 위한 자동화 기법입니다."
+  },
+  {
+    "id": 82,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 시 'Top-p' 샘플링에서 p 값이 1.0이라는 것은 무엇을 의미합니까?",
+    "answer": ["샘플링 안 함", "전체 토큰 고려", "그리디 서치와 유사"],
+    "explanation": "p가 1.0이면 확률 컷오프 없이 모든 후보 토큰을 대상으로 선택합니다."
+  },
+  {
+    "id": 83,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "인간의 가치관(도움이 됨, 정직함, 무해함)을 모델에 정렬시키는 기준을 뜻하는 약어는?",
+    "answer": ["HHH", "Helpful, Honest, Harmless"],
+    "explanation": "선호 학습에서 모델이 지켜야 할 주요 정렬 기준입니다."
+  },
+  {
+    "id": 84,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RAG에서 사용자의 질문에 가장 적합한 문서 조각(Chunk)을 찾아오는 모듈의 명칭은?",
+    "answer": ["리트리버", "Retriever", "검색기"],
+    "explanation": "리트리버는 관련성 높은 정보를 데이터베이스에서 추출하는 역할을 합니다."
+  },
+  {
+    "id": 85,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델이 긴 문맥(Context)을 처리할 때, 문장의 앞부분이나 뒷부분보다 중간 부분을 잘 기억하지 못하는 현상은?",
+    "answer": ["Lost in the Middle", "중간 유실 현상"],
+    "explanation": "컨텍스트 윈도우가 커져도 발생하는 모델의 구조적 한계점입니다."
+  },
+  {
+    "id": 86,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "지시 학습(SFT) 데이터의 양보다 '데이터의 품질'이 모델 성능에 더 결정적이라는 주장을 담은 유명한 논문의 제목은?",
+    "answer": ["LIMA"],
+    "explanation": "적은 양이라도 고품질의 지시 데이터가 모델 정렬에 중요함을 보여주었습니다."
+  },
+  {
+    "id": 87,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "디코딩 시 현재 토큰 예측이 다음 토큰 선택에 영향을 미치는 자기회귀(Autoregressive)적 성질 때문에 발생하는 연산상의 단점은?",
+    "answer": ["속도가 느림", "추론 지연", "순차적 연산"],
+    "explanation": "한 번에 하나의 토큰만 생성할 수 있어 병렬 처리가 어렵습니다."
+  },
+  {
+    "id": 88,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF의 보상 모델 학습 시, 두 답변의 점수 차이를 통해 선호도를 확률적으로 모델링하는 방식은?",
+    "answer": ["브래들리-테리 모델", "Bradley-Terry model"],
+    "explanation": "비교 기반 데이터를 수치화된 보상값으로 변환하는 수학적 기초입니다."
+  },
+  {
+    "id": 89,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델 평가 시 특정 도메인(수학, 코딩 등)에 특화된 능력을 측정하기 위한 문제 모음집을 무엇이라 합니까?",
+    "answer": ["벤치마크 데이터셋", "Benchmark dataset"],
+    "explanation": "MMLU, HumanEval 등이 대표적인 벤치마크 예시입니다."
+  },
+  {
+    "id": 90,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "사용자가 입력한 프롬프트를 모델이 그대로 따라하지 않고, 의도를 재해석하여 더 나은 프롬프트로 변환하는 기능은?",
+    "answer": ["프롬프트 재작성", "Prompt Rewriting"],
+    "explanation": "더 정교한 답변을 얻기 위해 입력 프롬프트를 자동으로 최적화하는 응용 기법입니다."
+  },
+  {
+    "id": 91,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "학습 데이터셋 내의 텍스트 간 중복을 제거하여 학습 효율을 높이는 전처리 과정은?",
+    "answer": ["중복 제거", "De-duplication", "디두플리케이션"],
+    "explanation": "고품질 사전 학습 데이터를 만들기 위한 필수 단계입니다."
+  },
+  {
+    "id": 92,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "지시 학습 시 모델이 '모르는 것은 모른다고 답하게' 유도하여 환각을 방지하는 학습 방식은?",
+    "answer": ["거부 학습", "Refusal training"],
+    "explanation": "모델의 정직성(Honesty)을 높이기 위한 정렬 기법 중 하나입니다."
+  },
+  {
+    "id": 93,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF를 수행할 때 모델의 출력이 너무 보상 모델에만 최적화되어 문장이 어색해지는 현상은?",
+    "answer": ["보상 해킹", "Reward Hacking"],
+    "explanation": "수치적인 보상만 쫓다가 언어 모델 본연의 능력이 망가지는 부작용입니다."
+  },
+  {
+    "id": 94,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "프롬프트 엔지니어링 중, 모델에게 '반대 의견을 제시하라'는 식의 비판적 사고를 요구하는 기법은?",
+    "answer": ["자기 비판", "Self-Criticism", "페르소나 반전"],
+    "explanation": "다각도의 분석이 필요한 응용 작업에서 사용되는 기법입니다."
+  },
+  {
+    "id": 95,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RAG에서 검색된 문서가 질문과 상관없을 때 모델이 이를 무시하도록 학습시키는 것은 어떤 능력에 해당합니까?",
+    "answer": ["강건성", "Robustness", "노이즈 저항성"],
+    "explanation": "잘못된 외부 지식(노이즈)에 휘둘리지 않는 능력이 중요합니다."
+  },
+  {
+    "id": 96,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "LLM이 생성한 텍스트가 사람이 쓴 것인지 AI가 쓴 것인지 판별하는 기술은?",
+    "answer": ["AI 탐지", "AI Detection", "워터마킹"],
+    "explanation": "모델 오남용 및 저작권 문제 대응을 위한 응용 분야입니다."
+  },
+  {
+    "id": 97,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "사전 학습 데이터의 비중을 조절하여 특정 언어나 주제에 대한 성능을 높이는 전략을 무엇이라 합니까?",
+    "answer": ["데이터 믹싱", "Data Mixing"],
+    "explanation": "어떤 종류의 데이터를 얼마나 넣을지가 모델의 최종 성능을 결정합니다."
+  },
+  {
+    "id": 98,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "복잡한 지시 사항이 담긴 프롬프트에서 모델이 지시의 일부를 무시하는 현상을 무엇이라 합니까?",
+    "answer": ["지시 유실", "Instruction Following Failure"],
+    "explanation": "지시 학습이 부족하거나 프롬프트가 너무 길 때 발생합니다."
+  },
+  {
+    "id": 99,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "RLHF 과정에서 보상 모델의 편향이 학습된 모델에 전이되는 현상은 어떤 한계에 해당합니까?",
+    "answer": ["보상 모델 편향", "Reward Bias"],
+    "explanation": "평가자(사람)의 편향이 보상 모델을 통해 최종 LLM에 반영될 수 있습니다."
+  },
+  {
+    "id": 100,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "모델의 컨텍스트 윈도우 한계를 극복하기 위해, 대화의 핵심 내용만 요약하여 전달하는 기법은?",
+    "answer": ["대화 요약", "Conversation Summarization", "메모리 요약"],
+    "explanation": "기억 용량의 한계를 극복하고 긴 대화를 유지하기 위한 응용 기법입니다."
+  }
+]

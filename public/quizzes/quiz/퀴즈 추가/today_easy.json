@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "거대 언어 모델을 뜻하는 'LLM'의 약자를 영어 풀네임으로 쓰시오.",
+    "answer": ["Large Language Model"],
+    "explanation": "LLM은 대규모 데이터를 학습한 거대 언어 모델을 의미합니다."
+  },
+  {
+    "id": 2,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "방대한 데이터를 사전에 학습하여 다양한 작업의 기초가 되는 모델을 무엇이라 부릅니까?",
+    "answer": ["파운데이션 모델", "Foundation Model"],
+    "explanation": "파운데이션 모델은 하위 작업을 수행하기 전 미리 대량의 데이터로 학습된 기반 모델입니다."
+  },
+  {
+    "id": 3,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 텍스트를 처리할 때 사용하는 가장 작은 의미 단위를 무엇이라고 합니까?",
+    "answer": ["토큰", "Token"],
+    "explanation": "모델은 텍스트를 토큰 단위로 나누어 처리하고 생성합니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 4,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델이 사용자의 지시사항을 따르도록 추가 학습시키는 과정을 무엇이라고 합니까?",
+    "answer": ["지시 학습", "Instruction Tuning", "인스트럭션 튜닝"],
+    "explanation": "지시 학습은 모델이 특정 명령어나 지시를 이해하고 수행하도록 돕는 학습 방식입니다."
+  },
+  {
+    "id": 5,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "인간의 피드백을 통해 모델의 답변을 정렬하는 학습 방식을 무엇이라 합니까? (약어로 쓰시오)",
+    "answer": ["RLHF"],
+    "explanation": "RLHF(Reinforcement Learning from Human Feedback)는 인간의 선호도를 학습에 반영하는 기술입니다."
+  },
+  {
+    "id": 6,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 사실이 아닌 내용을 그럴듯하게 지어내어 답변하는 현상을 무엇이라고 합니까?",
+    "answer": ["환각", "Hallucination", "할루시네이션"],
+    "explanation": "환각은 LLM의 주요 한계점 중 하나로, 거짓 정보를 생성하는 현상을 말합니다."
+  },
+  {
+    "id": 7,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델에게 입력하는 질문이나 명령어를 무엇이라고 합니까?",
+    "answer": ["프롬프트", "Prompt"],
+    "explanation": "사용자가 모델에게 제공하는 모든 입력을 프롬프트라고 합니다."
+  },
+  {
+    "id": 8,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "프롬프트에 예시를 하나도 제공하지 않고 바로 답을 요구하는 방식을 무엇이라 합니까?",
+    "answer": ["제로샷", "Zero-shot", "제로샷 프롬프팅"],
+    "explanation": "제로샷 방식은 사전 예시 없이 모델의 지식만으로 답을 얻는 기법입니다."
+  },
+  {
+    "id": 9,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "프롬프트에 소량의 예시를 포함하여 모델의 성능을 높이는 기법을 무엇이라 합니까?",
+    "answer": ["퓨샷", "Few-shot", "퓨샷 프롬프팅"],
+    "explanation": "퓨샷은 몇 가지 예시를 주어 모델이 작업의 형식을 이해하게 돕는 기법입니다."
+  },
+  {
+    "id": 10,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델이 논리적으로 사고하도록 '단계별로 생각해보자'와 같은 문구를 넣는 기법은?",
+    "answer": ["CoT", "Chain of Thought", "생각의 사슬"],
+    "explanation": "CoT는 복잡한 추론 문제를 해결하기 위해 단계별 사고 과정을 유도하는 기법입니다."
+  },
+  {
+    "id": 11,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "매 단계에서 가장 확률이 높은 단어만을 선택하여 문장을 생성하는 알고리즘은?",
+    "answer": ["그리디 서치", "Greedy Search", "탐욕 서치"],
+    "explanation": "그리디 서치는 각 시점에서 최선의 선택만을 하는 단순한 디코딩 방식입니다."
+  },
+  {
+    "id": 12,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "외부 지식 베이스에서 정보를 검색해 답변의 정확도를 높이는 기술의 약어는?",
+    "answer": ["RAG"],
+    "explanation": "RAG(Retrieval-Augmented Generation)는 검색 증강 생성 기술로, 최신 정보나 외부 데이터를 활용합니다."
+  },
+  {
+    "id": 13,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "생성되는 텍스트의 무작위성을 조절하여 답변의 다양성을 결정하는 파라미터는?",
+    "answer": ["온도", "Temperature", "템퍼러처"],
+    "explanation": "온도 설정이 높을수록 모델은 더 창의적이고 무작위적인 답변을 생성합니다."
+  },
+  {
+    "id": 14,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델이 한 번에 처리할 수 있는 입력 데이터의 최대 길이를 무엇이라 합니까?",
+    "answer": ["컨텍스트 윈도우", "Context Window", "문맥 창"],
+    "explanation": "컨텍스트 윈도우는 모델이 기억하고 처리할 수 있는 토큰의 한계를 의미합니다."
+  },
+  {
+    "id": 15,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "특정 분야의 데이터로 기존 모델을 추가 학습시켜 성능을 최적화하는 과정은?",
+    "answer": ["미세 조정", "Fine-tuning", "파인튜닝"],
+    "explanation": "파인튜닝은 사전 학습된 모델을 특정 목적에 맞게 조정하는 과정입니다."
+  },
+  {
+    "id": 16,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM 성능 평가 시 인간이 직접 답변의 질을 측정하는 방식을 무엇이라 합니까?",
+    "answer": ["인간 평가", "Human Evaluation"],
+    "explanation": "정량적 지표 외에 실제 사람이 유용성 등을 판단하는 방식입니다."
+  },
+  {
+    "id": 17,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "다음 단어를 예측하며 문장을 이어가는 언어 모델의 학습 방식을 무엇이라 합니까?",
+    "answer": ["자기회귀", "Autoregressive"],
+    "explanation": "대부분의 LLM은 이전 토큰들을 기반으로 다음 토큰을 예측하는 자기회귀 모델입니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 18,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "텍스트뿐만 아니라 이미지, 오디오 등 여러 형태의 데이터를 동시에 처리하는 모델은?",
+    "answer": ["멀티모달", "Multi-modal", "멀티모달 모델"],
+    "explanation": "멀티모달 LLM은 다양한 감각 데이터를 통합적으로 이해하고 생성할 수 있습니다."
+  },
+  {
+    "id": 19,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "RLHF 과정에서 사람의 선호도를 모방하여 답변에 점수를 매기는 모델은?",
+    "answer": ["리워드 모델", "Reward Model", "보상 모델"],
+    "explanation": "보상 모델은 어떤 답변이 더 좋은지 학습하여 RL 과정을 가이드합니다."
+  },
+  {
+    "id": 20,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "사용자의 질문 의도를 파악하고 도구를 사용하여 문제를 해결하는 지능형 시스템은?",
+    "answer": ["에이전트", "Agent", "AI 에이전트"],
+    "explanation": "LLM 에이전트는 계획을 세우고 도구를 활용하여 복잡한 과업을 수행합니다."
+  },
+  {
+    "id": 21,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델의 크기나 학습 데이터의 양이 늘어남에 따라 성능이 비약적으로 향상되는 법칙은?",
+    "answer": ["스케일링 법칙", "Scaling Law"],
+    "explanation": "데이터, 파라미터, 연산량이 늘어날수록 성능이 개선된다는 관찰 결과입니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 22,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "학습 데이터에 포함된 편향이 결과물에 반영되어 나타나는 사회적 한계점은?",
+    "answer": ["편향성", "Bias", "편향"],
+    "explanation": "LLM은 학습 데이터 속의 선입견이나 차별적 시각을 그대로 출력할 위험이 있습니다."
+  },
+  {
+    "id": 23,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델 성능 측정을 위해 표준화된 문제 세트를 활용하는 평가 방식을 무엇이라 합니까?",
+    "answer": ["벤치마크", "Benchmark"],
+    "explanation": "MMLU, GSM8K 등과 같은 벤치마크 데이터셋을 통해 모델 성능을 비교합니다."
+  },
+  {
+    "id": 24,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "프롬프트 입력 시 모델의 행동 지침을 설정하는 최상단 메시지를 무엇이라 합니까?",
+    "answer": ["시스템 프롬프트", "System Prompt", "시스템 메시지"],
+    "explanation": "시스템 프롬프트는 모델의 페르소나나 규칙을 정의합니다."
+  },
+  {
+    "id": 25,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델 내부의 연산 강도를 조절하는 가중치와 편향을 통칭하는 용어는?",
+    "answer": ["파라미터", "Parameter", "매개변수"],
+    "explanation": "모델의 크기는 보통 이 파라미터의 개수로 측정됩니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "입력된 텍스트를 모델이 이해할 수 있는 숫자 벡터로 변환하는 과정은?",
+    "answer": ["임베딩", "Embedding"],
+    "explanation": "임베딩은 단어나 문장을 고차원 공간의 좌표로 표현하는 기술입니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "디코딩 시 상위 K개의 확률 높은 토큰 중 하나를 선택하는 샘플링 방식은?",
+    "answer": ["Top-k", "Top-k 샘플링"],
+    "explanation": "Top-k 샘플링은 단어 후보군을 상위 K개로 제한하여 생성의 질을 관리합니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "누적 확률 분포가 일정 임계값(p)을 넘을 때까지의 후보군에서 선택하는 방식은?",
+    "answer": ["Top-p", "Nucleus sampling", "핵 샘플링"],
+    "explanation": "Top-p 샘플링은 확률의 합을 기준으로 후보군을 동적으로 조절합니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 사전 학습된 시점까지만 정보를 알고 있어 최신 정보를 모르는 현상은?",
+    "answer": ["지식 컷오프", "Knowledge Cutoff"],
+    "explanation": "학습 데이터가 수집된 시점 이후의 사건에 대해 모델은 알지 못합니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "프롬프트를 효과적으로 작성하여 모델로부터 최적의 답을 이끌어내는 기술은?",
+    "answer": ["프롬프트 엔지니어링", "Prompt Engineering"],
+    "explanation": "입력값의 설계를 통해 모델의 출력을 제어하는 기법입니다."
+  },
+  {
+    "id": 31,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM의 핵심 아키텍처로, '주의(Attention)' 메커니즘을 사용하는 모델 구조는?",
+    "answer": ["트랜스포머", "Transformer"],
+    "explanation": "현재 대부분의 언어 모델은 트랜스포머 구조를 기반으로 합니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 32,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "인간의 가치관과 윤리에 맞게 모델의 답변을 조정하는 과정을 무엇이라 합니까?",
+    "answer": ["정렬", "Alignment", "얼라이먼트"],
+    "explanation": "정렬은 모델이 유해하거나 편향된 답변을 하지 않도록 인간의 의도와 맞추는 작업입니다."
+  },
+  {
+    "id": 33,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "데이터의 레이블(답) 없이 스스로 학습하는 LLM의 초기 학습 단계는?",
+    "answer": ["비지도 학습", "Unsupervised Learning", "사전 학습"],
+    "explanation": "LLM은 대규모 텍스트 데이터에서 스스로 패턴을 익히는 과정을 거칩니다."
+  },
+  {
+    "id": 34,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "RAG 시스템에서 검색된 문서를 보관하고 유사도 검색을 수행하는 데이터베이스는?",
+    "answer": ["벡터 데이터베이스", "Vector DB", "Vector Database"],
+    "explanation": "벡터 DB는 텍스트 임베딩을 저장하고 빠르게 검색하는 데 최적화되어 있습니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 35,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "지시 학습에서 사용되는 정답이 포함된 학습 데이터를 무엇이라 합니까?",
+    "answer": ["SFT 데이터", "SFT 데이터셋"],
+    "explanation": "Supervised Fine-Tuning(SFT) 데이터는 질문과 정답 쌍으로 구성됩니다."
+  },
+  {
+    "id": 36,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "사용자의 질문에 대해 모델이 '모른다'고 답하지 않고 거짓말을 하는 한계점은?",
+    "answer": ["할루시네이션", "환각", "Hallucination"],
+    "explanation": "모델은 확률적으로 단어를 이어가기 때문에 사실 확인 없이 문장을 완성할 수 있습니다."
+  },
+  {
+    "id": 37,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "텍스트 생성을 위해 이전에 생성된 단어를 다시 입력으로 사용하는 방식은?",
+    "answer": ["디코딩", "Decoding", "디코딩 알고리즘"],
+    "explanation": "디코딩은 학습된 확률 분포로부터 실제 텍스트를 뽑아내는 과정입니다."
+  },
+  {
+    "id": 38,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 코딩, 요약, 번역 등 다양한 응용 분야에서 사용되는 것을 무엇이라 합니까?",
+    "answer": ["LLM의 응용", "LLM Applications"],
+    "explanation": "범용 모델인 LLM은 수많은 하위 작업에 적용 가능합니다."
+  },
+  {
+    "id": 39,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "학습 데이터에 포함된 민감한 개인 정보를 모델이 출력할 위험성을 뜻하는 한계점은?",
+    "answer": ["개인정보 유출", "프라이버시 침해", "Privacy issue"],
+    "explanation": "데이터 학습 과정에서 포함된 민감 정보가 생성될 가능성이 존재합니다."
+  },
+  {
+    "id": 40,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "여러 개의 가닥(Beam)을 유지하며 최적의 문장 조합을 찾는 디코딩 방식은?",
+    "answer": ["빔 서치", "Beam Search"],
+    "explanation": "빔 서치는 단일 경로가 아닌 복수의 유망한 경로를 탐색하여 품질을 높입니다."
+  },
+  {
+    "id": 41,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델의 출력을 인간이 선호하는 방향으로 유도하는 학습 전반을 뜻하는 용어는?",
+    "answer": ["선호 학습", "Preference Learning"],
+    "explanation": "모델의 답변 중 사람이 더 선호하는 것을 고르게 하여 학습에 반영합니다."
+  },
+  {
+    "id": 42,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델 학습에 사용되는 대규모 텍스트 묶음을 일컫는 말은?",
+    "answer": ["말뭉치", "코퍼스", "Corpus"],
+    "explanation": "LLM은 인터넷상의 거대한 말뭉치를 통해 언어를 배웁니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 43,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "프롬프트 없이 모델이 학습한 내용만으로 답을 생성하는 가장 기초적인 생성 방식은?",
+    "answer": ["제로샷", "Zero-shot"],
+    "explanation": "별도의 유도 과정 없이 모델의 성능을 테스트할 때 사용합니다."
+  },
+  {
+    "id": 44,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 특정 문맥 안에서 새로운 패턴을 즉석에서 배우는 능력을 무엇이라 합니까?",
+    "answer": ["인컨텍스트 러닝", "In-context learning", "문맥 내 학습"],
+    "explanation": "가중치를 수정하지 않고 프롬프트의 예시만으로 학습하는 능력입니다."
+  },
+  {
+    "id": 45,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "LLM이 생성한 텍스트의 유창성이나 논리성을 검증하는 모든 활동을 통칭하는 용어는?",
+    "answer": ["평가", "Evaluation", "에볼루션"],
+    "explanation": "모델이 의도대로 동작하는지 확인하기 위해 다양한 평가 지표를 사용합니다."
+  },
+  {
+    "id": 46,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "모델의 답변이 너무 길어지거나 짧아지지 않도록 제한하는 값은?",
+    "answer": ["최대 토큰 수", "Max tokens", "Maximum length"],
+    "explanation": "생성될 답변의 길이를 제어하기 위해 사용합니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 47,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "AI가 스스로를 평가하거나 다른 AI 모델을 평가하는 방식을 무엇이라 합니까?",
+    "answer": ["AI 피드백", "RLAIF", "AI 평가"],
+    "explanation": "인간 대신 다른 강력한 모델(예: GPT-4)을 평가자로 활용하기도 합니다."
+  },
+  {
+    "id": 48,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "문장의 의미적 유사성을 계산할 때 단어를 수치화하는 기술은?",
+    "answer": ["임베딩", "Embedding", "텍스트 임베딩"],
+    "explanation": "단어의 의미를 다차원 공간에 배치하여 유사도를 계산합니다 (출처 미포함 상식)."
+  },
+  {
+    "id": 49,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "지시 학습 시 모델에게 보여주는 '질문-답변' 예시 세트를 무엇이라 합니까?",
+    "answer": ["데모", "Demonstration", "예시"],
+    "explanation": "퓨샷 프롬프팅에서 제공되는 구체적인 예시들을 의미합니다."
+  },
+  {
+    "id": 50,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "사전 학습 단계에서 주로 사용되는, 문장 속 가려진 단어를 맞추는 방식의 학습은?",
+    "answer": ["마스크드 언어 모델링", "Masked Language Modeling", "MLM"],
+    "explanation": "문장의 일부를 가리고 예측하게 함으로써 문맥을 파악하게 합니다 (출처 미포함 상식)."
+  }
+]

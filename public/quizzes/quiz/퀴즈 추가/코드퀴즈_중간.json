@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 (3, 1) 모양의 배열과 (1, 3) 모양의 배열을 더했을 때 결과 배열의 모양(shape)은?",
+    "choices": ["(3, 1)", "(1, 3)", "(3, 3)", "에러 발생"],
+    "answer": "(3, 3)",
+    "explanation": "NumPy의 브로드캐스팅 규칙에 따라 각 차원의 크기가 1인 경우 다른 배열의 차원 크기에 맞춰 확장되므로 (3, 3)이 됩니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 df.sort_values(by=['A', 'B'], ascending=[True, False])의 실행 결과는?",
+    "choices": ["A열과 B열 모두 오름차순 정렬", "A열은 오름차순, B열은 내림차순 정렬", "A열은 내림차순, B열은 오름차순 정렬", "에러 발생"],
+    "answer": "A열은 오름차순, B열은 내림차순 정렬",
+    "explanation": "ascending 인자에 리스트를 전달하여 각 컬럼별로 정렬 기준을 다르게 설정할 수 있습니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy 배열 arr가 2차원일 때, np.sum(arr, axis=0)이 의미하는 것은?",
+    "choices": ["모든 원소의 합", "각 행(row)별 합계", "각 열(column)별 합계", "대각 성분의 합"],
+    "answer": "각 열(column)별 합계",
+    "explanation": "axis=0은 행 방향을 축으로 연산하라는 의미이므로, 결과적으로 각 열의 합계가 계산됩니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas DataFrame에서 문자열 열 'Date'를 datetime 객체로 변환하는 올바른 방법은?",
+    "choices": ["pd.to_datetime(df['Date'])", "df['Date'].astype('datetime')", "pd.strptime(df['Date'])", "df['Date'].to_date()"],
+    "answer": "pd.to_datetime(df['Date'])",
+    "explanation": "pd.to_datetime() 함수는 다양한 형태의 날짜 표현을 Pandas의 Timestamp 객체로 변환해줍니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 np.nan == np.nan의 결과값은?",
+    "choices": ["True", "False", "None", "에러 발생"],
+    "answer": "False",
+    "explanation": "NaN(Not a Number)은 자기 자신과도 같지 않다고 정의되어 있습니다. 결측치 확인은 np.isnan()을 사용해야 합니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 'Left'와 'Right' 두 DataFrame을 병합할 때, 'Left'의 키는 모두 유지하고 'Right'는 일치하는 것만 가져오는 방식은?",
+    "choices": ["inner join", "outer join", "left join", "right join"],
+    "answer": "left join",
+    "explanation": "how='left' 옵션은 왼쪽 DataFrame의 키를 기준으로 결합합니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열의 복사본이 아닌 '뷰(View)'를 생성하는 슬라이싱의 특성에 대한 설명 중 옳은 것은?",
+    "choices": ["슬라이싱된 배열의 값을 바꿔도 원본은 유지된다.", "슬라이싱된 배열의 값을 바꾸면 원본 배열의 값도 바뀐다.", "슬라이싱은 항상 메모리에 새로운 배열을 생성한다.", "copy() 메서드와 동일하게 작동한다."],
+    "answer": "슬라이싱된 배열의 값을 바꾸면 원본 배열의 값도 바뀐다.",
+    "explanation": "NumPy의 슬라이싱은 기본적으로 원본의 뷰를 반환하여 메모리 효율을 높입니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 df.groupby('Category')['Sales'].transform('mean')의 결과 형태는?",
+    "choices": ["그룹별 평균값만 있는 요약된 Series", "원본 DataFrame과 동일한 길이의 Series", "Category 수만큼의 행을 가진 DataFrame", "단일 스칼라 값"],
+    "answer": "원본 DataFrame과 동일한 길이의 Series",
+    "explanation": "transform은 집계 결과를 원본 인덱스 구조에 맞춰 다시 늘려주는 역할을 합니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 불리언 인덱싱 arr[arr > 5]를 수행했을 때 결과의 차원은?",
+    "choices": ["원본 배열과 동일한 차원", "항상 1차원 배열", "항상 2차원 배열", "스칼라 값"],
+    "answer": "항상 1차원 배열",
+    "explanation": "조건을 만족하는 요소들만 추출되므로, 구조가 무너지고 1차원 배열로 반환됩니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas DataFrame에서 loc[0:3]과 iloc[0:3]의 차이점은? (인덱스가 0,1,2,3,4... 일 때)",
+    "choices": ["차이가 없다.", "loc는 3번 인덱스를 포함하고, iloc는 포함하지 않는다.", "iloc는 3번 인덱스를 포함하고, loc는 포함하지 않는다.", "loc는 컬럼명만 선택 가능하다."],
+    "answer": "loc는 3번 인덱스를 포함하고, iloc는 포함하지 않는다.",
+    "explanation": "loc는 라벨 기반이므로 끝점을 포함하고, iloc는 파이썬 슬라이싱 규칙을 따라 끝점을 포함하지 않습니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 두 배열을 가로(열 방향)로 합치는 함수는?",
+    "choices": ["np.vstack()", "np.hstack()", "np.append()", "np.split()"],
+    "answer": "np.hstack()",
+    "explanation": "hstack은 horizontal stack의 약자로 배열을 가로 방향으로 쌓습니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 데이터의 범주화를 위해 사용하는 함수(예: 점수를 학점으로 변환)는?",
+    "choices": ["pd.split()", "pd.cut()", "pd.category()", "pd.group()"],
+    "answer": "pd.cut()",
+    "explanation": "pd.cut()은 수치형 데이터를 구간에 따라 범주형으로 나눌 때 사용합니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "DataFrame의 특정 열에 함수를 적용할 때, 행 전체의 데이터를 인자로 사용하기 위한 설정은?",
+    "choices": ["df.apply(func, axis=0)", "df.apply(func, axis=1)", "df.map(func)", "df.applymap(func)"],
+    "answer": "df.apply(func, axis=1)",
+    "explanation": "axis=1을 설정하면 함수에 행(row) 단위의 Series가 전달됩니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 np.where(arr > 0, 1, -1)의 의미는?",
+    "choices": ["0보다 큰 값의 인덱스 반환", "0보다 크면 1로, 아니면 -1로 변환한 배열 반환", "0보다 큰 값만 추출", "에러 발생"],
+    "answer": "0보다 크면 1로, 아니면 -1로 변환한 배열 반환",
+    "explanation": "np.where(조건, 참일때값, 거짓일때값) 형식으로 사용됩니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 결측치를 바로 이전 행의 값으로 채우는 방법은?",
+    "choices": ["fillna(method='ffill')", "fillna(method='bfill')", "fillna(mean())", "dropna()"],
+    "answer": "fillna(method='ffill')",
+    "explanation": "ffill(forward fill)은 결측치를 이전의 유효한 값으로 채웁니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas Series 객체 s1 = [1, 2], s2 = [3, 4]를 인덱스 무시하고 세로로 합쳐 인덱스를 0~3으로 재설정하는 코드는?",
+    "choices": ["pd.concat([s1, s2])", "pd.concat([s1, s2], ignore_index=True)", "pd.merge(s1, s2)", "s1.append(s2)"],
+    "answer": "pd.concat([s1, s2], ignore_index=True)",
+    "explanation": "ignore_index=True 옵션은 기존 인덱스를 버리고 새 정수 인덱스를 부여합니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열 원소 중 고유한(Unique) 값들만 추출하고 빈도수까지 확인하는 함수는?",
+    "choices": ["np.unique(arr, return_counts=True)", "np.count_values(arr)", "np.distinct(arr)", "np.unique_count(arr)"],
+    "answer": "np.unique(arr, return_counts=True)",
+    "explanation": "return_counts 매개변수를 True로 설정하면 각 고유값의 개수 배열을 함께 반환합니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 pivot_table과 groupby의 결정적인 차이점은?",
+    "choices": ["결과값이 Series인가 DataFrame인가의 차이", "pivot_table은 2차원 표 형태의 재구조화에 특화됨", "groupby는 집계 함수를 하나만 사용 가능함", "차이가 없다."],
+    "answer": "pivot_table은 2차원 표 형태의 재구조화에 특화됨",
+    "explanation": "pivot_table은 행과 열 양방향으로 그룹화하여 표 형태(Cross-tabulation)를 만들기에 용이합니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy 배열의 차원을 늘리고 싶을 때(예: 1차원 -> 2차원) 사용하는 것은?",
+    "choices": ["np.newaxis", "np.expand()", "np.add_dim()", "np.reshape_more()"],
+    "answer": "np.newaxis",
+    "explanation": "배열 슬라이싱 시 np.newaxis를 추가하면 해당 위치에 새로운 축이 생성됩니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 멀티 인덱스(MultiIndex)를 해제하여 일반 열로 돌리는 메서드는?",
+    "choices": ["set_index()", "reset_index()", "drop_index()", "unstack()"],
+    "answer": "reset_index()",
+    "explanation": "reset_index()는 인덱스 레벨을 열로 이동시키고 기본 정수 인덱스를 생성합니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열 원소를 랜덤하게 섞는 함수 중 원본 배열 자체를 수정하는 함수는?",
+    "choices": ["np.random.permutation()", "np.random.shuffle()", "np.random.rand()", "np.random.mix()"],
+    "answer": "np.random.shuffle()",
+    "explanation": "shuffle()은 인플레이스(In-place) 연산으로 원본을 변경하고, permutation()은 복사본을 반환합니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas DataFrame에서 문자열 열의 특정 패턴 포함 여부를 확인하는 메서드는?",
+    "choices": ["df['col'].str.find()", "df['col'].str.contains()", "df['col'].is_in()", "df['col'].str.match_all()"],
+    "answer": "df['col'].str.contains()",
+    "explanation": "contains()는 각 원소에 특정 문자열이나 정규표현식이 포함되어 있는지 불리언으로 반환합니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "DataFrame에서 'A'열의 값이 10보다 크고 'B'열의 값이 20보다 작은 행을 선택하는 올바른 문법은?",
+    "choices": ["df[(df['A'] > 10) and (df['B'] < 20)]", "df[(df['A'] > 10) & (df['B'] < 20)]", "df[df['A'] > 10 | df['B'] < 20]", "df.query('A > 10 and B < 20')"],
+    "answer": "df[(df['A'] > 10) & (df['B'] < 20)]",
+    "explanation": "Pandas의 비트 연산자(&, |)를 사용해야 하며, 각 조건은 반드시 괄호로 묶어줘야 합니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 np.argmax(arr, axis=1)이 수행하는 작업은?",
+    "choices": ["전체 배열에서 최대값의 인덱스", "각 열별 최대값의 인덱스", "각 행별 최대값의 인덱스", "최대값의 실제 값"],
+    "answer": "각 행별 최대값의 인덱스",
+    "explanation": "axis=1은 열 방향으로 이동하며 연산하므로, 각 행 안에서 가장 큰 값의 위치를 찾습니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 데이터프레임의 모든 원소에 개별적으로 함수를 적용하는 메서드는?",
+    "choices": ["apply()", "map()", "applymap()", "transform()"],
+    "answer": "applymap()",
+    "explanation": "applymap()은 DataFrame의 모든 요소에 함수를 일대일로 적용합니다. (최근 버전에서는 apply로 통합되는 추세이나 기본 명칭은 applymap입니다.)"
+  },
+  {
+    "id": 26,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas의 pd.merge()에서 두 테이블에 공통된 컬럼 이름이 없을 때 결합 키를 지정하는 속성은?",
+    "choices": ["on", "left_on, right_on", "key_left, key_right", "index_on"],
+    "answer": "left_on, right_on",
+    "explanation": "왼쪽과 오른쪽의 기준 컬럼명이 다를 경우 각각 명시해줄 수 있습니다."
+  },
+  {
+    "id": 27,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy 배열 arr의 차원이 (5, 4)일 때, arr.reshape(2, -1)를 실행하면 결과 배열의 모양은?",
+    "choices": ["(2, 5)", "(2, 10)", "(2, 2)", "에러 발생"],
+    "answer": "(2, 10)",
+    "explanation": "reshape에서 -1은 다른 차원의 크기에 맞춰 자동으로 계산하라는 의미입니다. 전체 원소 20개를 2로 나누면 10이 됩니다."
+  },
+  {
+    "id": 28,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 시계열 데이터의 주기(예: 일별 -> 월별)를 변경하고 집계하는 메서드는?",
+    "choices": ["reindex()", "resample()", "shift()", "rolling()"],
+    "answer": "resample()",
+    "explanation": "resample()은 시간 인덱스를 기준으로 데이터를 다시 샘플링하여 집계할 때 사용합니다."
+  },
+  {
+    "id": 29,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "DataFrame에서 복합적인 집계 연산을 수행할 때(예: A열은 평균, B열은 합계) 사용하는 메서드는?",
+    "choices": ["apply()", "agg()", "sum()", "compute()"],
+    "answer": "agg()",
+    "explanation": "agg() 혹은 aggregate() 메서드에 딕셔너리를 전달하여 열별로 다른 집계 함수를 적용할 수 있습니다."
+  },
+  {
+    "id": 30,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열의 차원 순서를 바꾸는(예: (3, 4, 5) -> (5, 3, 4)) 함수는?",
+    "choices": ["reshape()", "transpose()", "swapaxes()", "flip()"],
+    "answer": "transpose()",
+    "explanation": "transpose()에 원하는 축의 순서 리스트를 전달하여 차원을 재배열할 수 있습니다."
+  },
+  {
+    "id": 31,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 인덱스가 섞여 있는 두 DataFrame을 연산(예: 더하기)할 때 발생하는 현상은?",
+    "choices": ["위치 기준으로 더해진다.", "인덱스 라벨이 일치하는 것끼리 더해지고 나머지는 NaN이 된다.", "에러가 발생한다.", "교집합 인덱스만 남고 나머지는 삭제된다."],
+    "answer": "인덱스 라벨이 일치하는 것끼리 더해지고 나머지는 NaN이 된다.",
+    "explanation": "Pandas는 연산 시 데이터 정렬(Data Alignment) 원칙에 따라 라벨을 기준으로 계산합니다."
+  },
+  {
+    "id": 32,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "DataFrame에서 중복된 행을 찾되, 첫 번째 행만 남기고 나머지를 중복으로 간주하는 메서드 설정은?",
+    "choices": ["duplicated(keep='first')", "duplicated(keep='last')", "duplicated(keep=False)", "unique()"],
+    "answer": "duplicated(keep='first')",
+    "explanation": "keep='first'가 기본값이며, 중복 데이터 중 첫 번째는 False, 이후 동일 데이터는 True를 반환합니다."
+  },
+  {
+    "id": 33,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 np.linspace(0, 10, 5)의 실행 결과는?",
+    "choices": ["[0, 2, 4, 6, 8]", "[0, 2.5, 5, 7.5, 10]", "[0, 2, 5, 7, 10]", "[0, 10, 10, 10, 10]"],
+    "answer": "[0, 2.5, 5, 7.5, 10]",
+    "explanation": "0부터 10까지 포함하여 균등한 간격으로 5개의 숫자를 생성합니다."
+  },
+  {
+    "id": 34,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 특정 열의 빈도수를 기준으로 상위 3개를 가져오는 코드는?",
+    "choices": ["df['col'].value_counts().head(3)", "df['col'].top(3)", "df['col'].counts()[:3]", "df['col'].sort_values().head(3)"],
+    "answer": "df['col'].value_counts().head(3)",
+    "explanation": "value_counts()는 내림차순 정렬된 결과를 반환하므로 head(3)를 붙이면 상위 3개가 나옵니다."
+  },
+  {
+    "id": 35,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy 배열에서 0이 아닌 요소의 인덱스를 모두 찾는 함수는?",
+    "choices": ["np.where(arr != 0)", "np.nonzero(arr)", "np.find(arr)", "A와 B 모두 맞음"],
+    "answer": "A와 B 모두 맞음",
+    "explanation": "np.nonzero()와 조건문을 사용한 np.where() 모두 동일한 결과를 반환합니다."
+  },
+  {
+    "id": 36,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 Categorical 데이터를 원-핫 인코딩(One-hot Encoding)으로 변환하는 함수는?",
+    "choices": ["pd.get_dummies()", "pd.onehot()", "pd.encode()", "pd.to_numeric()"],
+    "answer": "pd.get_dummies()",
+    "explanation": "get_dummies()는 범주형 변수를 0과 1로 구성된 여러 열로 변환합니다."
+  },
+  {
+    "id": 37,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 두 배열의 내적(Dot product)을 구하는 함수가 아닌 것은?",
+    "choices": ["np.dot(a, b)", "a.dot(b)", "a @ b", "a * b"],
+    "answer": "a * b",
+    "explanation": "a * b는 요소별(element-wise) 곱셈이며, 내적은 dot()이나 @ 연산자를 사용합니다."
+  },
+  {
+    "id": 38,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas DataFrame에서 인덱스와 컬럼의 위치를 기준으로 슬라이싱할 때 iloc[:, 1:3]이 의미하는 것은?",
+    "choices": ["1행부터 2행까지", "1열부터 2열까지", "1행부터 3행까지", "1열부터 3열까지"],
+    "answer": "1열부터 2열까지",
+    "explanation": "첫 번째 축(:)은 모든 행을, 두 번째 축(1:3)은 1번과 2번 인덱스 열을 의미합니다."
+  },
+  {
+    "id": 39,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열 원소들 중 특정 범위(예: 0~10)로 값을 제한(Clipping)하는 함수는?",
+    "choices": ["np.limit()", "np.clip()", "np.restrict()", "np.cut()"],
+    "answer": "np.clip()",
+    "explanation": "np.clip(arr, min, max)는 범위를 벗어나는 값을 최소/최대값으로 고정합니다."
+  },
+  {
+    "id": 40,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 행과 열을 뒤바꾸는 unstack()의 반대 연산은?",
+    "choices": ["stack()", "pivot()", "melt()", "transpose()"],
+    "answer": "stack()",
+    "explanation": "stack()은 컬럼 인덱스를 행 인덱스의 하위 레벨로 내립니다."
+  },
+  {
+    "id": 41,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 행렬의 역행렬을 구하는 함수는?",
+    "choices": ["np.linalg.inv()", "np.matrix.inverse()", "np.rev()", "np.transpose()"],
+    "answer": "np.linalg.inv()",
+    "explanation": "선형대수 관련 연산은 np.linalg 모듈 안에 정의되어 있습니다."
+  },
+  {
+    "id": 42,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas DataFrame에서 열의 데이터를 이동시켜 전일 대비 증감 등을 계산할 때 쓰는 메서드는?",
+    "choices": ["move()", "shift()", "diff()", "B와 C 모두 유용함"],
+    "answer": "B와 C 모두 유용함",
+    "explanation": "shift()는 데이터를 밀고, diff()는 차분(현재-이전)을 바로 계산해줍니다."
+  },
+  {
+    "id": 43,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열을 복사할 때 원본과 완전히 독립된 메모리 공간을 확보하는 방법은?",
+    "choices": ["b = a", "b = a[:]", "b = a.view()", "b = a.copy()"],
+    "answer": "b = a.copy()",
+    "explanation": "Deep Copy를 위해서는 반드시 copy() 메서드를 사용해야 합니다."
+  },
+  {
+    "id": 44,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 특정 조건을 만족하는 데이터의 값을 한꺼번에 변경하는 올바른 방식은?",
+    "choices": ["df[df['A'] > 0]['B'] = 1", "df.loc[df['A'] > 0, 'B'] = 1", "df.set(df['A'] > 0, 'B', 1)", "변경 불가능"],
+    "answer": "df.loc[df['A'] > 0, 'B'] = 1",
+    "explanation": "Chained Indexing(첫 번째 방식)은 설정 시 경고나 에러가 발생할 수 있으므로 loc를 권장합니다."
+  },
+  {
+    "id": 45,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 배열의 각 요소에 대해 제곱근을 구하는 유니버설 함수(ufunc)는?",
+    "choices": ["np.sqrt()", "np.square_root()", "math.sqrt()", "np.root()"],
+    "answer": "np.sqrt()",
+    "explanation": "NumPy의 ufunc는 배열 전체를 빠르게 처리합니다."
+  },
+  {
+    "id": 46,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 wide 형태의 데이터를 long 형태로 녹여서 재구조화하는 함수는?",
+    "choices": ["pivot()", "melt()", "reshape()", "concat()"],
+    "answer": "melt()",
+    "explanation": "melt()는 식별자 컬럼을 유지하며 나머지 컬럼들을 변수-값 쌍으로 변환합니다."
+  },
+  {
+    "id": 47,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 불리언 배열 [True, False, True]를 정수형으로 변환하면?",
+    "choices": ["[1, 0, 1]", "[True, False, True]", "에러 발생", "None"],
+    "answer": "[1, 0, 1]",
+    "explanation": "astype(int)를 수행하면 True는 1, False는 0이 됩니다."
+  },
+  {
+    "id": 48,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 결측치가 있는 행을 지우지 않고, 그 행의 다른 데이터만 보고 싶을 때 유용한 메서드는?",
+    "choices": ["notnull()", "dropna()", "fillna()", "A와 C"],
+    "answer": "A와 C",
+    "explanation": "notnull()로 필터링하거나 fillna()로 채워서 분석을 계속할 수 있습니다."
+  },
+  {
+    "id": 49,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "NumPy에서 np.stack()과 np.concatenate()의 차이점은?",
+    "choices": ["차이가 없다.", "stack은 새로운 축을 생성하며 합치고, concatenate는 기존 축을 따라 합친다.", "concatenate만 2차원에서 사용 가능하다.", "stack은 항상 1차원 결과만 낸다."],
+    "answer": "stack은 새로운 축을 생성하며 합치고, concatenate는 기존 축을 따라 합친다.",
+    "explanation": "예를 들어 (3,4) 배열 두 개를 stack하면 (2,3,4)가 되고, concatenate하면 (6,4)가 될 수 있습니다."
+  },
+  {
+    "id": 50,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Pandas에서 두 DataFrame을 병합한 후, 각 행이 어느 쪽에 속해 있었는지 표시해주는 merge의 옵션은?",
+    "choices": ["on", "how", "indicator", "validate"],
+    "answer": "indicator",
+    "explanation": "indicator=True로 설정하면 _merge 열이 생성되어 left_only, right_only, both 여부를 알려줍니다."
+  }
+]

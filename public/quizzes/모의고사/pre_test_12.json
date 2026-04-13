@@ -1,0 +1,406 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "인공지능(AI), 머신러닝(ML), 딥러닝(DL)의 포함 관계로 가장 올바른 것은?",
+    "choices": [
+      "AI ⊃ ML ⊃ DL",
+      "DL ⊃ ML ⊃ AI",
+      "ML ⊃ AI ⊃ DL",
+      "AI ⊃ DL ⊃ ML"
+    ],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "인공지능이 가장 큰 개념이며, 데이터를 통해 학습하는 머신러닝, 그중 신경망을 깊게 쌓은 것이 딥러닝입니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 연속적인 수치(예: 주택 가격, 온도)를 예측하는 머신러닝 기법은?",
+    "choices": [
+      "분류(Classification)",
+      "회귀(Regression)",
+      "군집화(Clustering)",
+      "차원 축소(Dimensionality Reduction)"
+    ],
+    "answer": "회귀(Regression)",
+    "explanation": "회귀는 연속적인 타겟 값을 예측하는 지도학습의 대표적인 유형입니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "모델이 학습 데이터에는 너무 잘 맞지만, 새로운 데이터에서는 성능이 낮은 현상을 무엇이라 하는가?",
+    "choices": [
+      "과소적합(Underfitting)",
+      "과적합(Overfitting)",
+      "데이터 증강(Augmentation)",
+      "전이 학습(Transfer Learning)"
+    ],
+    "answer": "과적합(Overfitting)",
+    "explanation": "학습 데이터에 과하게 맞춰져 일반화 성능이 떨어지는 것을 과적합이라고 합니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN에서 이미지의 크기를 줄이고 주요 특징을 추출하기 위해 사용하는 층은?",
+    "choices": [
+      "합성곱 층(Convolutional Layer)",
+      "풀링 층(Pooling Layer)",
+      "완전 연결 층(Fully Connected Layer)",
+      "입력 층(Input Layer)"
+    ],
+    "answer": "풀링 층(Pooling Layer)",
+    "explanation": "풀링 층(특히 Max Pooling)은 연산량을 줄이고 특징을 강화하는 역할을 합니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "시퀀스 데이터 처리에 적합하며, 은닉 상태(Hidden State)를 통해 과거 정보를 전달하는 모델은?",
+    "choices": [
+      "CNN",
+      "RNN",
+      "GAN",
+      "MLP"
+    ],
+    "answer": "RNN",
+    "explanation": "순환 신경망(RNN)은 재귀적인 구조를 통해 순서가 있는 데이터를 처리합니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 AI 분야의 깃허브로 불리며, 다양한 사전 학습 모델과 데이터셋이 공유되는 플랫폼은?",
+    "choices": [
+      "Kaggle",
+      "HuggingFace",
+      "TensorFlow",
+      "PyTorch"
+    ],
+    "answer": "HuggingFace",
+    "explanation": "허깅페이스는 현대 AI 생태계에서 모델 공유의 핵심 플랫폼입니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 생성 모델 중 노이즈를 단계적으로 제거하며 이미지를 생성하는 방식은?",
+    "choices": [
+      "RNN",
+      "BERT",
+      "Diffusion 모델",
+      "로지스틱 회귀"
+    ],
+    "answer": "Diffusion 모델",
+    "explanation": "디퓨전 모델은 노이즈 예측 및 제거 과정을 통해 고품질 이미지를 생성합니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "경사하강법에서 가중치를 업데이트할 때 이동하는 보폭을 결정하는 설정값은?",
+    "choices": [
+      "손실 함수",
+      "학습률(Learning Rate)",
+      "활성화 함수",
+      "에포크(Epoch)"
+    ],
+    "answer": "학습률(Learning Rate)",
+    "explanation": "학습률은 오차를 줄이기 위해 가중치를 얼마나 조절할지 결정하는 하이퍼파라미터입니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN 연산에서 필터가 이미지를 순회하며 이동하는 간격을 무엇이라 하는가?",
+    "choices": [
+      "패딩(Padding)",
+      "스트라이드(Stride)",
+      "풀링(Pooling)",
+      "채널(Channel)"
+    ],
+    "answer": "스트라이드(Stride)",
+    "explanation": "스트라이드는 필터가 한 번에 움직이는 스텝의 크기입니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 데이터를 다차원 그대로 처리하기 어려워 1차원으로 길게 펼치는 과정은?",
+    "choices": [
+      "Padding",
+      "Flatten",
+      "Pooling",
+      "Convolution"
+    ],
+    "answer": "Flatten",
+    "explanation": "Flatten은 다차원 특징맵을 전결합층에 입력하기 위해 1차원 벡터로 만드는 과정입니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "박스플롯(Boxplot)에서 IQR(Interquartile Range)을 구하는 공식으로 옳은 것은?",
+    "choices": [
+      "Q2 - Q1",
+      "Q3 - Q1",
+      "최댓값 - 최솟값",
+      "Q3 - Q2"
+    ],
+    "answer": "Q3 - Q1",
+    "explanation": "IQR은 제3사분위수에서 제1사분위수를 뺀 값입니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "회귀 모델의 성능 지표 중, 모델이 데이터를 얼마나 잘 설명하는지 0~1 사이 값으로 나타내는 것은?",
+    "choices": [
+      "MSE",
+      "RSS",
+      "결정계수(R²)",
+      "F1-score"
+    ],
+    "answer": "결정계수(R²)",
+    "explanation": "R²는 회귀 모델의 설명력을 나타내는 대표적인 지표입니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이진 분류에서 실제 암 환자(Positive)를 정상(Negative)으로 잘못 예측하는 위험(FN)을 줄이기 위해 가장 높여야 할 지표는?",
+    "choices": [
+      "정밀도(Precision)",
+      "재현율(Recall)",
+      "특이도(Specificity)",
+      "정확도(Accuracy)"
+    ],
+    "answer": "재현율(Recall)",
+    "explanation": "재현율은 실제 양성 중 양성으로 맞춘 비율이며, 놓치면 안 되는 대상을 찾을 때 중요합니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "입력 크기 30x30, 필터 3x3, 패딩 0, 스트라이드 1일 때 출력 특징맵의 크기는?",
+    "choices": [
+      "27x27",
+      "28x28",
+      "29x29",
+      "30x30"
+    ],
+    "answer": "28x28",
+    "explanation": "공식: (30 - 3 + 2*0) / 1 + 1 = 28. 따라서 28x28입니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "테스트 데이터를 표준화할 때 반드시 훈련 데이터의 통계량(평균, 표준편차)을 사용해야 하는 이유는?",
+    "choices": [
+      "연산 속도를 줄이기 위해",
+      "데이터 누수(Data Leakage)를 방지하기 위해",
+      "과소적합을 막기 위해",
+      "레이블 인코딩을 돕기 위해"
+    ],
+    "answer": "데이터 누수(Data Leakage)를 방지하기 위해",
+    "explanation": "테스트 데이터의 정보가 학습에 포함되지 않도록 훈련 데이터 기준을 따라야 합니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 비지도 학습의 군집화(Clustering) 알고리즘에 속하는 것은?",
+    "choices": [
+      "로지스틱 회귀",
+      "K-Means",
+      "결정 트리",
+      "SVM"
+    ],
+    "answer": "K-Means",
+    "explanation": "K-Means는 데이터를 K개의 군집으로 묶는 비지도 학습 기법입니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "ReLU 활성화 함수가 0 이하의 값을 0으로 만드는 특성 때문에 얻는 이점은?",
+    "choices": [
+      "기울기 소실(Vanishing Gradient) 완화 및 빠른 연산",
+      "모든 뉴런을 항상 활성화함",
+      "출력값을 0~1 사이로 압축함",
+      "문맥의 양방향성을 이해함"
+    ],
+    "answer": "기울기 소실(Vanishing Gradient) 완화 및 빠른 연산",
+    "explanation": "ReLU는 지수 연산이 없어 빠르고 깊은 망에서도 기울기 전달이 잘 됩니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Adam 옵티마이저가 '매우 빠르니 써라'라고 권장되는 주된 이유는?",
+    "choices": [
+      "L1 규제를 자동으로 수행하기 때문에",
+      "관성(Momentum)과 가중치별 적응적 학습률을 결합했기 때문에",
+      "모든 데이터를 한 번에 학습하기 때문에",
+      "오직 텍스트 데이터에만 특화되었기 때문에"
+    ],
+    "answer": "관성(Momentum)과 가중치별 적응적 학습률을 결합했기 때문에",
+    "explanation": "Adam은 방향과 보폭을 동시에 최적화하는 효율적인 알고리즘입니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전이 학습의 '파인 튜닝(Fine-tuning)' 단계에서 특징 추출부의 가중치를 고정하지 않고 일부 재학습하는 이유는?",
+    "choices": [
+      "학습 시간을 최대한 늘리기 위해",
+      "새로운 특정 도메인 데이터에 모델을 더 잘 적응시키기 위해",
+      "모델의 크기를 줄이기 위해",
+      "이미지를 텍스트로 변환하기 위해"
+    ],
+    "answer": "새로운 특정 도메인 데이터에 모델을 더 잘 적응시키기 위해",
+    "explanation": "사전 학습된 지식을 유지하면서 새 데이터에 맞춰 미세 조정하는 과정입니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN의 장기 의존성(Long-term dependency) 문제를 해결하기 위해 Gate 구조를 도입한 모델은?",
+    "choices": [
+      "CNN",
+      "LSTM",
+      "Perceptron",
+      "ViT"
+    ],
+    "answer": "LSTM",
+    "explanation": "LSTM은 Cell state와 Gate를 통해 먼 과거의 정보를 보존합니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "GAN 학습 시 생성자가 판별자를 너무 쉽게 속여서 다양성 없는 결과물만 반복 생성하는 현상은?",
+    "choices": [
+      "과적합",
+      "모드 붕괴(Mode Collapse)",
+      "기울기 소실",
+      "차원의 저주"
+    ],
+    "answer": "모드 붕괴(Mode Collapse)",
+    "explanation": "생성자가 특정 데이터 패턴만 생성하는 현상을 모드 붕괴라고 합니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CLIP 모델이 이미지와 텍스트 벡터 쌍을 학습할 때 사용하는 유사도 측정 방식은?",
+    "choices": [
+      "유클리드 거리",
+      "코사인 유사도",
+      "맨해튼 거리",
+      "해밍 거리"
+    ],
+    "answer": "코사인 유사도",
+    "explanation": "CLIP은 두 벡터 사이의 각도를 이용한 코사인 유사도를 통해 대조 학습을 수행합니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "지식 증류(Knowledge Distillation)에서 큰 모델의 지식을 가벼운 모델에 전달하는 목적은?",
+    "choices": [
+      "모델의 정확도를 무조건 낮추기 위해",
+      "효율적인 배포를 위해 성능을 유지하며 모델의 크기를 줄이려고",
+      "데이터의 개수를 늘리기 위해",
+      "비지도 학습을 지도 학습으로 바꾸기 위해"
+    ],
+    "answer": "효율적인 배포를 위해 성능을 유지하며 모델의 크기를 줄이려고",
+    "explanation": "작은 모델이 큰 모델의 추론 결과를 흉내 내게 하여 효율성을 높입니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LLM 디코딩 알고리즘 중 확률을 기반으로 창의적인 답변을 유도하는 방식은?",
+    "choices": [
+      "Greedy Search",
+      "Beam Search",
+      "Sampling (Top-k, Top-p)",
+      "Backpropagation"
+    ],
+    "answer": "Sampling (Top-k, Top-p)",
+    "explanation": "샘플링 방식은 확률 분포 내에서 무작위성을 부여하여 다양성을 확보합니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "시각적 정보와 언어 정보를 동시에 처리하여 '이미지를 설명'할 수 있는 모델을 무엇이라 하는가?",
+    "choices": [
+      "Uni-modal",
+      "Vision-Language Models (VLM)",
+      "RNN",
+      "Decision Tree"
+    ],
+    "answer": "Vision-Language Models (VLM)",
+    "explanation": "멀티모달의 일종으로 시각과 언어를 함께 다루는 모델입니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "데이터 차원이 커질수록 분석 공간 부피가 기하급수적으로 커져 분석이 어려워지는 문제를 무엇이라 합니까?",
+    "answer": [
+      "차원의 저주",
+      "Curse of Dimensionality"
+    ],
+    "explanation": "차원의 저주는 차원 축소(PCA 등)로 해결해야 하는 주요 문제입니다."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "ResNet에서 층이 깊어져도 학습이 가능하게 만든, 입력을 출력에 직접 더해주는 구조의 이름은?",
+    "answer": [
+      "잔차 학습",
+      "Skip Connection",
+      "Shortcut Connection"
+    ],
+    "explanation": "잔차 학습(Skip Connection)은 기울기 소실 문제를 획기적으로 해결했습니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "인간이 순위를 매긴 데이터로 보상 모델을 만들고, 이를 통해 언어 모델을 강화학습하는 기법의 약자는?",
+    "answer": [
+      "RLHF"
+    ],
+    "explanation": "RLHF는 모델의 답변을 인간의 선호도에 맞추는 핵심 기법입니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "로지스틱 회귀에서 결과를 0과 1 사이의 확률값으로 변환해주는 대표적인 활성화 함수의 이름은?",
+    "answer": [
+      "시그모이드",
+      "Sigmoid"
+    ],
+    "explanation": "시그모이드 함수는 이진 분류의 확률 예측에 필수적입니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "어떤 이진 분류 모델의 성능 평가 결과, 실제 Positive 데이터 100개 중 모델이 정답을 맞춘 것(TP)이 35개, 놓친 것(FN)이 65개였습니다. 이 모델의 재현율(Recall) 값을 % 단위의 숫자로만 적으시오.",
+    "answer": [
+      "35"
+    ],
+    "explanation": "재현율 = TP / (TP + FN) = 35 / (35 + 65) = 35 / 100 = 0.35 = 35% 입니다."
+  }
+]

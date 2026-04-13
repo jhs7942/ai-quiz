@@ -1,0 +1,411 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터의 분포를 확인할 때 사용하는 박스플롯(Boxplot)에서 IQR(Interquartile Range)을 구하는 올바른 수식은?",
+    "choices": [
+      "최댓값 - 최솟값",
+      "제3사분위수(Q3) - 제1사분위수(Q1)",
+      "평균 - 표준편차",
+      "중앙값 * 1.5"
+    ],
+    "answer": "제3사분위수(Q3) - 제1사분위수(Q1)",
+    "explanation": "IQR은 데이터의 중간 50% 범위를 나타내며, Q3에서 Q1을 뺀 값으로 계산합니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 전처리 과정에서 'stratify=y' 옵션을 사용하는 주된 목적은 무엇인가?",
+    "choices": [
+      "데이터의 차원을 축소하기 위해",
+      "훈련 데이터와 테스트 데이터의 타겟(레이블) 비율을 원본과 동일하게 맞추기 위해",
+      "데이터의 이상치를 자동으로 제거하기 위해",
+      "모든 특성의 스케일을 0과 1 사이로 맞추기 위해"
+    ],
+    "answer": "훈련 데이터와 테스트 데이터의 타겟(레이블) 비율을 원본과 동일하게 맞추기 위해",
+    "explanation": "층화 추출(Stratified Sampling)은 특정 클래스가 한쪽 데이터셋에 쏠리는 것을 방지하여 모델의 신뢰도를 높입니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "테스트 데이터를 표준화(Standardization)할 때 반드시 지켜야 하는 원칙으로 올바른 것은?",
+    "choices": [
+      "테스트 데이터만의 평균과 표준편차를 새로 구해서 적용한다.",
+      "훈련 데이터의 평균과 표준편차를 그대로 활용하여 변환한다.",
+      "표준화 대신 정규화(Normalization)만 사용한다.",
+      "레이블(정답) 데이터도 반드시 표준화해야 한다."
+    ],
+    "answer": "훈련 데이터의 평균과 표준편차를 그대로 활용하여 변환한다.",
+    "explanation": "테스트 데이터의 통계량을 미리 알 수 없다는 가정이 필요하며, 이를 어길 시 데이터 누수(Data Leakage)가 발생합니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 모델의 과적합(Overfitting)을 방지하기 위한 방법으로 적절하지 않은 것은?",
+    "choices": [
+      "더 많은 학습 데이터를 확보한다.",
+      "모델의 복잡도를 낮춘다.",
+      "가중치 규제(L1, L2)를 적용한다.",
+      "학습 횟수(Epoch)를 무제한으로 늘린다."
+    ],
+    "answer": "학습 횟수(Epoch)를 무제한으로 늘린다.",
+    "explanation": "학습을 너무 오래 하면 훈련 데이터에만 과하게 맞춰져 과적합이 발생하므로 조기 종료(Early Stopping)가 필요합니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "신경망에서 선형 함수를 비선형으로 꺾어주어 복잡한 패턴을 학습할 수 있게 해주는 요소를 무엇이라 하는가?",
+    "choices": [
+      "손실 함수",
+      "활성화 함수",
+      "옵티마이저",
+      "풀링 레이어"
+    ],
+    "answer": "활성화 함수",
+    "explanation": "활성화 함수는 입력 신호의 총합을 출력 신호로 변환하며, 비선형성을 부여하는 스위치 역할을 합니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "활성화 함수 중 하나로, 0보다 작은 값은 모두 0으로 처리하고 0보다 큰 값은 그대로 통과시키는 함수는?",
+    "choices": [
+      "Sigmoid",
+      "Tanh",
+      "ReLU",
+      "Softmax"
+    ],
+    "answer": "ReLU",
+    "explanation": "ReLU는 지수 연산이 없어 계산 속도가 빠르고, 0 이하의 값을 차단하는 특징이 있습니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN 아키텍처에서 이미지의 주변부에 0을 채워 넣어 출력 데이터의 크기를 조절하는 기법은?",
+    "choices": [
+      "스트라이드(Stride)",
+      "패딩(Padding)",
+      "채널(Channel)",
+      "커널(Kernel)"
+    ],
+    "answer": "패딩(Padding)",
+    "explanation": "패딩은 외곽 정보를 보존하고 출력 크기가 급격히 줄어드는 것을 방지하기 위해 0 등을 채워 넣는 기법입니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 RNN(순환 신경망) 모델에서 과거 정보를 다음 단계로 전달해주는 핵심 요소를 무엇이라 부르는가?",
+    "choices": [
+      "Hidden State (은닉 상태)",
+      "Attention Weight",
+      "Pooling Map",
+      "Filter"
+    ],
+    "answer": "Hidden State (은닉 상태)",
+    "explanation": "RNN은 은닉 상태를 통해 이전 시점의 정보를 현재 시점으로 전달하며 재귀적인 구조를 가집니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "데이터 차원이 증가할수록 분석에 필요한 공간 부피가 기하급수적으로 커져 데이터 밀도가 희박해지는 현상을 뜻하는 용어는?",
+    "choices": [
+      "기울기 소실",
+      "차원의 저주",
+      "모드 붕괴",
+      "다중공선성"
+    ],
+    "answer": "차원의 저주",
+    "explanation": "차원의 저주는 차원이 높아질수록 데이터 간 거리가 멀어져 분석 효율이 떨어지는 현상을 말하며, PCA 등으로 해결합니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "비지도 학습인 K-Means 클러스터링에서 최적의 군집 수(K)를 결정하기 위해 오차 제곱합의 기울기가 급격히 완만해지는 지점을 찾는 방법은?",
+    "choices": [
+      "엘보우 방법 (Elbow Method)",
+      "코사인 유사도",
+      "그리드 서치",
+      "교차 검증"
+    ],
+    "answer": "엘보우 방법 (Elbow Method)",
+    "explanation": "팔꿈치처럼 꺾이는 지점을 찾는다고 하여 엘보우 방법이라 부르며, 이때의 K값을 최적으로 봅니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "옵티마이저 중 하나인 Adam(아담)이 빠른 학습 속도와 안정성을 갖는 주된 이유 두 가지는?",
+    "choices": [
+      "L1 규제와 L2 규제의 결합",
+      "관성(Momentum)과 가중치별 적응 학습률(Adaptive Learning Rate)",
+      "데이터 증강과 드롭아웃",
+      "순전파와 역전파의 병렬 연산"
+    ],
+    "answer": "관성(Momentum)과 가중치별 적응 학습률(Adaptive Learning Rate)",
+    "explanation": "Adam은 진행 방향의 관성을 유지하면서 각 가중치마다 최적화된 학습률을 부여하여 매우 효율적입니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN의 연산 과정 중 'nn.Conv2d(3, 6, 5)'라는 코드에서 숫자 '6'이 의미하는 것은?",
+    "choices": [
+      "입력 이미지의 채널 수",
+      "출력될 특징 맵의 채널 수 (필터의 개수)",
+      "필터(커널)의 가로 세로 크기",
+      "스트라이드의 간격"
+    ],
+    "answer": "출력될 특징 맵의 채널 수 (필터의 개수)",
+    "explanation": "첫 번째 인자는 입력 채널(3), 두 번째는 출력 채널(6), 세 번째는 커널 크기(5)를 의미합니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 CNN 모델의 발전 순서가 올바르게 나열된 것은?",
+    "choices": [
+      "AlexNet -> VGGNet -> ResNet -> ViT",
+      "ResNet -> AlexNet -> ViT -> VGGNet",
+      "ViT -> VGGNet -> AlexNet -> ResNet",
+      "VGGNet -> ResNet -> AlexNet -> ViT"
+    ],
+    "answer": "AlexNet -> VGGNet -> ResNet -> ViT",
+    "explanation": "2012년 AlexNet을 기점으로 VGGNet의 표준화, ResNet의 잔차 학습을 거쳐 최근 Transformer 기반의 ViT로 발전했습니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "학습된 모델의 일부(특징 추출부)를 고정하고, 목적에 맞게 끝부분만 다시 학습시키거나 전체를 미세 조정하는 기법은?",
+    "choices": [
+      "데이터 증강 (Data Augmentation)",
+      "파인 튜닝 (Fine-Tuning)",
+      "지식 증류 (Knowledge Distillation)",
+      "차원 축소 (PCA)"
+    ],
+    "answer": "파인 튜닝 (Fine-Tuning)",
+    "explanation": "전이 학습의 대표적 방법인 파인 튜닝은 기존의 학습된 지식을 새로운 작업에 맞춰 정교하게 조정하는 과정입니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이미지와 텍스트를 같은 벡터 공간에 두고, 정답 쌍은 가깝게 오답 쌍은 멀게 학습하는 멀티모달 대조 학습 모델은?",
+    "choices": [
+      "GAN",
+      "RNN",
+      "CLIP",
+      "LSTM"
+    ],
+    "answer": "CLIP",
+    "explanation": "CLIP은 이미지와 텍스트의 유사도(코사인 유사도)를 기반으로 대조 학습을 수행하는 대표적인 멀티모달 모델입니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "생성 모델 중 GAN에서 가짜 이미지가 너무 비슷해져서 생성자가 특정 종류의 이미지만 계속 만들어내는 현상을 무엇이라 하는가?",
+    "choices": [
+      "기울기 소실 (Gradient Vanishing)",
+      "모드 붕괴 (Mode Collapse)",
+      "차원의 저주",
+      "과적합"
+    ],
+    "answer": "모드 붕괴 (Mode Collapse)",
+    "explanation": "모드 붕괴는 생성 모델이 다양성을 잃고 특정 패턴의 데이터만 반복 생성하는 GAN의 주요 한계점입니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 Diffusion 모델에 대한 설명으로 가장 적절하지 않은 것은?",
+    "choices": [
+      "데이터에 노이즈를 추가했다가 다시 제거하며 원본을 복원한다.",
+      "GAN에 비해 모드 붕괴 현상이 덜 발생한다.",
+      "생성 속도가 매우 빠르고 연산량이 적다는 장점이 있다.",
+      "원본 데이터의 분포를 학습하는 생성 모델의 일종이다."
+    ],
+    "answer": "생성 속도가 매우 빠르고 연산량이 적다는 장점이 있다.",
+    "explanation": "디퓨전 모델은 품질은 좋으나 단계별로 노이즈를 제거해야 하므로 GAN보다 생성 속도가 느리고 연산량이 많습니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "가장 뛰어난(큰) 모델의 지식을 가벼운 모델에게 핵심만 쪽 뽑아 전달하여 효율적인 모델을 만드는 기법은?",
+    "choices": [
+      "데이터 누수",
+      "지식 증류 (Knowledge Distillation)",
+      "다중공선성",
+      "상관계수"
+    ],
+    "answer": "지식 증류 (Knowledge Distillation)",
+    "explanation": "지식 증류는 스승(Teacher) 모델의 학습 결과를 제자(Student) 모델이 이어받아 모델을 경량화하는 기술입니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN의 학습 과정 순서로 가장 일반적인 것은?",
+    "choices": [
+      "합성곱 -> ReLU -> 풀링 -> 반복 -> Flatten -> MLP",
+      "풀링 -> 합성곱 -> Flatten -> ReLU",
+      "Flatten -> 합성곱 -> 풀링 -> ReLU",
+      "ReLU -> 합성곱 -> 반복 -> 풀링"
+    ],
+    "answer": "합성곱 -> ReLU -> 풀링 -> 반복 -> Flatten -> MLP",
+    "explanation": "특징 추출부(Conv+ReLU+Pool)를 거쳐 3차원을 1차원으로 펴준(Flatten) 뒤 분류기(MLP)로 전달하는 것이 표준 순서입니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "회귀 모델의 히트맵(Heatmap) 분석에서 독립 변수들 간의 상관관계가 너무 높아 모델의 신뢰도가 떨어지는 현상을 무엇이라 하는가?",
+    "choices": [
+      "장기 의존성",
+      "다중공선성 (Multicollinearity)",
+      "데이터 누수",
+      "교차 검증"
+    ],
+    "answer": "다중공선성 (Multicollinearity)",
+    "explanation": "다중공선성은 변수 간의 높은 상관성 때문에 분석 결과가 왜곡되는 현상을 말합니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "정밀도(Precision)가 0.8이고 재현율(Recall)이 0.8일 때, F1-score의 값은?",
+    "choices": [
+      "0.64",
+      "0.80",
+      "1.60",
+      "0.40"
+    ],
+    "answer": "0.80",
+    "explanation": "F1-score = 2 * (0.8 * 0.8) / (0.8 + 0.8) = 1.28 / 1.6 = 0.8 입니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "입력 데이터 크기가 32x32이고, 커널(필터) 크기가 5x5, 패딩이 2, 스트라이드가 1일 때 출력되는 특징 맵의 크기는?",
+    "choices": [
+      "28x28",
+      "30x30",
+      "32x32",
+      "34x34"
+    ],
+    "answer": "32x32",
+    "explanation": "(32 - 5 + 2*2) / 1 + 1 = 27 + 4 + 1 = 32입니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "L2 규제(릿지)에 대한 설명으로 가장 올바른 것은?",
+    "choices": [
+      "중요하지 않은 가중치를 0으로 만들어 변수를 선택한다.",
+      "가중치의 제곱합을 손실 함수에 더해 가중치 감쇠(Decay)를 유도한다.",
+      "학습 시 뉴런을 무작위로 끈다.",
+      "데이터의 평균을 0, 분산을 1로 맞춘다."
+    ],
+    "answer": "가중치의 제곱합을 손실 함수에 더해 가중치 감쇠(Decay)를 유도한다.",
+    "explanation": "L2 규제는 가중치를 전반적으로 작게 만들어(감쇠) 모델의 변동성을 줄이고 과적합을 방지합니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "박스플롯 데이터에서 Q1=20, Q3=50일 때, 이상치(Outlier)로 판단하는 기준 경계값(Upper Fence)은 얼마인가?",
+    "choices": [
+      "65",
+      "80",
+      "95",
+      "110"
+    ],
+    "answer": "95",
+    "explanation": "IQR = 50 - 20 = 30입니다. 상단 경계 = Q3 + (1.5 * IQR) = 50 + (1.5 * 30) = 50 + 45 = 95입니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "어떤 이진 분류 모델에서 실제 정답이 Positive인 데이터가 총 100개인데, 모델이 그중 70개만 Positive라고 맞췄다면 이 모델의 재현율(Recall)은?",
+    "choices": [
+      "30%",
+      "50%",
+      "70%",
+      "100%"
+    ],
+    "answer": "70%",
+    "explanation": "재현율은 실제 정답(100개) 중 모델이 맞춘 정답(70개)의 비율인 TP / (TP + FN)으로 계산합니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "신경망이 깊어질수록 기울기가 소실되는 문제를 해결하기 위해, 입력값을 출력값에 더해주는 '잔차 학습(Residual Learning)' 개념을 도입한 모델의 이름은 무엇입니까?",
+    "answer": [
+      "ResNet",
+      "레스넷",
+      "resnet"
+    ],
+    "explanation": "ResNet은 지름길(Shortcut Connection)을 만들어 층이 매우 깊어져도 학습이 잘 되도록 혁신한 모델입니다."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "머신러닝 학습 과정에서 '어떤 훈련 방법이 가장 최적인가?'를 확인하기 위해, 데이터를 K개의 묶음으로 나누어 번갈아가며 검증하는 기법의 이름을 쓰시오.",
+    "answer": [
+      "교차 검증",
+      "K-fold",
+      "K-폴드",
+      "K-폴드 교차 검증"
+    ],
+    "explanation": "K-fold 교차 검증은 모든 데이터를 훈련과 검증에 골고루 사용하여 모델의 일반화 성능을 신뢰성 있게 평가합니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "CNN의 특징 추출 마지막 단계에서, 3차원 형태의 텐서 데이터를 분류기(MLP)에 넣기 위해 1차원 벡터 형태로 쭉 펴주는 작업의 명칭은 무엇입니까?",
+    "answer": [
+      "Flatten",
+      "플래튼",
+      "평탄화"
+    ],
+    "explanation": "Flatten 과정을 거쳐야만 다층 퍼셉트론(MLP)의 입력층으로 데이터를 전달할 수 있습니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "학습 시에만 무작위로 일부 뉴런의 연결을 끊어 모델이 특정 뉴런에만 의존하는 것을 막고 과적합을 방지하는 규제 기법은 무엇입니까?",
+    "answer": [
+      "드롭아웃",
+      "Dropout"
+    ],
+    "explanation": "드롭아웃은 매 학습 단계마다 다른 뉴런들을 끔으로써 여러 모델을 앙상블하는 듯한 효과를 주어 과적합을 방지합니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "데이터 차원이 증가할수록 필요한 데이터 양이 기하급수적으로 늘어나는 '차원의 저주'를 해결하기 위해, 데이터의 정보 손실을 최소화하면서 차원을 줄이는 대표적인 알고리즘(영문 3글자)은 무엇입니까?",
+    "answer": [
+      "PCA",
+      "주성분 분석"
+    ],
+    "explanation": "PCA(Principal Component Analysis)는 데이터의 분산을 가장 잘 보존하는 축을 찾아 차원을 축소하는 기법입니다."
+  }
+]

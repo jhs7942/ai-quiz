@@ -1,0 +1,667 @@
+[
+  {
+    "id": 101,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "트랜스포머 구조에서 'Self-Attention' 메커니즘이 기존 RNN의 순차적 처리 한계를 극복한 기술적 원리는?",
+    "choices": [
+      "모든 토큰 간의 관계를 병렬적으로 연산하여 장거리 의존성(Long-range dependency) 문제를 해결함",
+      "데이터를 시간 순서대로 하나씩 처리하여 메모리 효율을 극대화함",
+      "입력 데이터를 압축하여 고정된 크기의 벡터로만 변환함",
+      "활성화 함수로 오직 ReLU만 사용하여 계산 속도를 높임"
+    ],
+    "answer": "모든 토큰 간의 관계를 병렬적으로 연산하여 장거리 의존성(Long-range dependency) 문제를 해결함",
+    "explanation": "어텐션은 문장 내의 모든 단어 쌍 사이의 유사도를 한꺼번에 계산하므로, 멀리 떨어진 단어 간의 관계도 손실 없이 파악할 수 있습니다."
+  },
+  {
+    "id": 102,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Scaling Law 연구에서 'Chinchilla' 모델이 시사하는 '최적의 학습' 조건은?",
+    "choices": [
+      "모델 파라미터 수뿐만 아니라 데이터의 양도 동일한 비율로 증가시켜야 최적의 성능을 낸다",
+      "모델의 크기만 무조건 키우면 데이터 양과 상관없이 성능이 선형적으로 증가한다",
+      "데이터의 질이 나쁘면 파라미터 수를 100배 늘려도 성능이 저하된다",
+      "컴퓨팅 자원이 부족할 때는 데이터 양을 줄이는 것이 유리하다"
+    ],
+    "answer": "모델 파라미터 수뿐만 아니라 데이터의 양도 동일한 비율로 증가시켜야 최적의 성능을 낸다",
+    "explanation": "DeepMind의 Chinchilla 연구는 기존 모델들이 파라미터 수에 비해 데이터 학습량이 부족했음을 지적하며 두 요소의 균형을 강조했습니다."
+  },
+  {
+    "id": 103,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "In-context Learning이 발생하는 원인에 대한 가설 중 '유도 편향(Inductive Bias)'과 관련된 설명은?",
+    "choices": [
+      "대규모 사전 학습을 통해 모델이 프롬프트 내의 패턴을 실시간으로 추론하는 메커니즘을 내재화함",
+      "모델이 프롬프트의 데이터를 내부 데이터베이스에 영구적으로 기록함",
+      "Backpropagation이 추론 시점(Inference)에 실시간으로 발생함",
+      "모델이 단순히 학습 데이터에 있던 문장을 그대로 암기하여 출력함"
+    ],
+    "answer": "대규모 사전 학습을 통해 모델이 프롬프트 내의 패턴을 실시간으로 추론하는 메커니즘을 내재화함",
+    "explanation": "학습 과정에서 수많은 문맥을 경험하며, 가중치 업데이트 없이도 주어진 예시의 규칙을 파악하는 능력이 창발된 것으로 해석됩니다."
+  },
+  {
+    "id": 104,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "지시 학습(Instruction Tuning) 시 사용하는 데이터셋 구성에서 'FLAN' 방식의 특징은?",
+    "choices": [
+      "수백 개의 다양한 태스크를 자연어 지시문 형태로 변환하여 모델의 일반화 성능을 극대화함",
+      "오직 수학 문제 데이터만 집중적으로 학습시켜 논리력을 높임",
+      "사람의 피드백 없이 모델이 스스로 만든 오답 노드만 학습함",
+      "텍스트 데이터를 이미지 픽셀 값으로 변환하여 학습함"
+    ],
+    "answer": "수백 개의 다양한 태스크를 자연어 지시문 형태로 변환하여 모델의 일반화 성능을 극대화함",
+    "explanation": "FLAN은 다양한 작업을 '지시'라는 공통 형식으로 묶어 학습시킴으로써 처음 보는 작업에 대한 제로샷 능력을 끌어올렸습니다."
+  },
+  {
+    "id": 105,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "RLHF의 보상 모델(Reward Model) 학습 시, 손실 함수(Loss Function)로 주로 사용되는 방식은?",
+    "choices": [
+      "두 응답 쌍의 점수 차이를 최대화하는 랭킹 기반의 Cross-Entropy Loss (Bradley-Terry 모델)",
+      "정답 토큰과의 일치 여부를 판단하는 단순 Mean Squared Error",
+      "이미지 픽셀 간의 차이를 줄이는 L1 Loss",
+      "전체 문장의 길이를 줄이는 정규화 손실 함수"
+    ],
+    "answer": "두 응답 쌍의 점수 차이를 최대화하는 랭킹 기반의 Cross-Entropy Loss (Bradley-Terry 모델)",
+    "explanation": "보상 모델은 사람이 선호한 응답 $y_w$의 점수가 선호하지 않은 $y_l$보다 높게 나오도록 상대적인 차이를 학습합니다."
+  },
+  {
+    "id": 106,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "강화 학습 단계(PPO)에서 'KL Divergence Penalty'를 부여하는 기술적인 이유는?",
+    "choices": [
+      "최적화 과정에서 모델이 기존의 언어 능력을 상실(Catastrophic Forgetting)하거나 비정상적인 응답을 내놓는 것을 방지하기 위해",
+      "모델의 답변 속도를 강제로 늦추기 위해",
+      "학습 데이터의 중복을 제거하기 위해",
+      "모델이 생성하는 문장의 길이를 일정하게 유지하기 위해"
+    ],
+    "answer": "최적화 과정에서 모델이 기존의 언어 능력을 상실(Catastrophic Forgetting)하거나 비정상적인 응답을 내놓는 것을 방지하기 위해",
+    "explanation": "보상 점수만 쫓다 보면 모델이 언어적 본질을 잃을 수 있으므로, 초기 모델(Reference Model)의 확률 분포에서 너무 멀어지지 않게 제약을 둡니다."
+  },
+  {
+    "id": 107,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "디코딩 시 빔 서치(Beam Search)의 'Length Penalty' 하이퍼파라미터가 조정하는 것은?",
+    "choices": [
+      "누적 확률이 길이에 따라 계속 감소하여 짧은 문장이 선호되는 경향을 보정함",
+      "문장의 길이를 무조건 10단어 이내로 제한함",
+      "단어 사이의 공백 개수를 조절함",
+      "각 단어의 생성 시간을 동일하게 맞춤"
+    ],
+    "answer": "누적 확률이 길이에 따라 계속 감소하여 짧은 문장이 선호되는 경향을 보정함",
+    "explanation": "확률은 0~1 사이 값이므로 곱할수록 작아집니다. 이를 방지하기 위해 긴 문장에 가산점을 주어 적절한 길이의 문장이 선택되도록 돕습니다."
+  },
+  {
+    "id": 108,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Sampling with Temperature 수식 $P_i = \frac{\exp(z_i/T)}{\sum \exp(z_j/T)}$에서 $T \to 0$일 때의 결과는?",
+    "choices": [
+      "가장 높은 로짓(logit) 값을 가진 토큰의 확률이 1에 수렴하여 그리디 디코딩과 같아짐",
+      "모든 토큰의 확률이 균등하게 배분되어 완전 랜덤 샘플링이 됨",
+      "모든 확률이 0이 되어 모델이 정지함",
+      "확률 분포의 순위가 완전히 역전됨"
+    ],
+    "answer": "가장 높은 로짓(logit) 값을 가진 토큰의 확률이 1에 수렴하여 그리디 디코딩과 같아짐",
+    "explanation": "온도가 0에 가까워질수록 분포가 극도로 날카로워져 가장 확률이 높은 토큰만 선택되는 결정론적 방식이 됩니다."
+  },
+  {
+    "id": 109,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Top-P 샘플링이 Top-K 샘플링에 비해 갖는 동적인 이점은?",
+    "choices": [
+      "확률 분포의 모양(신뢰도)에 따라 고려할 후보군의 개수를 유연하게 결정함",
+      "항상 고정된 수의 단어만 검토하여 메모리 사용량이 일정함",
+      "GPU 연산 과정을 생략할 수 있음",
+      "문장의 끝(EOS) 토큰을 더 빨리 찾아냄"
+    ],
+    "answer": "확률 분포의 모양(신뢰도)에 따라 고려할 후보군의 개수를 유연하게 결정함",
+    "explanation": "모델이 확신할 때는 적은 수의 후보만, 불확실할 때는 많은 수의 후보를 고려하여 문맥에 맞는 다양성을 확보합니다."
+  },
+  {
+    "id": 110,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Chain-of-Thought (CoT) 성능 향상이 '모델 크기'에 의존적인 이유는?",
+    "choices": [
+      "중간 추론 단계를 논리적으로 구성하는 능력이 특정 규모 이상의 매개변수에서 발현되는 창발적 특성이기 때문",
+      "작은 모델은 텍스트를 읽는 속도가 너무 느리기 때문",
+      "큰 모델일수록 추론 과정에 필요한 메모리가 적기 때문",
+      "작은 모델은 '단계별'이라는 단어의 뜻을 이해하지 못하기 때문"
+    ],
+    "answer": "중간 추론 단계를 논리적으로 구성하는 능력이 특정 규모 이상의 매개변수에서 발현되는 창발적 특성이기 때문",
+    "explanation": "단순 지시 수행과 달리 복잡한 논리 전개는 대규모 모델에서만 유의미하게 작동하며, 작은 모델에서는 오히려 성능이 하락하기도 합니다."
+  },
+  {
+    "id": 111,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "ROUGE-L 지표가 ROUGE-N과 구별되는 계산 방식의 특징은?",
+    "choices": [
+      "문장 간의 '최장 공통 부분 수열(LCS)'을 찾아 문장 구조의 유사성을 측정함",
+      "단어의 동의어 사전을 활용하여 의미적 유사성을 측정함",
+      "단어의 빈도수(TF-IDF)를 가중치로 사용함",
+      "문장의 감정 상태를 분석하여 점수를 매김"
+    ],
+    "answer": "문장 간의 '최장 공통 부분 수열(LCS)'을 찾아 문장 구조의 유사성을 측정함",
+    "explanation": "ROUGE-L은 단순히 단어가 겹치는 것을 넘어, 단어의 순서가 얼마나 유지되는지를 파악하여 구조적 유사도를 반영합니다."
+  },
+  {
+    "id": 112,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Perplexity(PPL) 지표가 '언어 모델의 평가'로서 갖는 한계점은?",
+    "choices": [
+      "문장의 확률적 유창함만 측정할 뿐, 실제 사실 관계(Factual correctness)나 논리적 타당성은 보장하지 않음",
+      "계산 결과가 항상 0보다 작게 나와서 비교가 어려움",
+      "데이터셋의 크기가 커지면 계산이 불가능함",
+      "오직 영어에서만 계산이 가능함"
+    ],
+    "answer": "문장의 확률적 유창함만 측정할 뿐, 실제 사실 관계(Factual correctness)나 논리적 타당성은 보장하지 않음",
+    "explanation": "PPL이 낮아도(자연스러워도) 거짓 정보를 유창하게 말할 수 있으므로, 실제 작업 성능과 완벽히 비례하지는 않습니다."
+  },
+  {
+    "id": 113,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "LLM-as-judge에서 'Reference-free' 평가 방식의 위험 요소는?",
+    "choices": [
+      "정답지가 없으므로 평가 모델의 자체 지식에 의존하게 되어, 평가 모델의 편향이나 한계가 그대로 반영됨",
+      "평가 시간이 사람보다 100배 이상 오래 걸림",
+      "항상 가장 짧은 문장에만 만점을 줌",
+      "수학적인 통계 지표를 전혀 사용할 수 없음"
+    ],
+    "answer": "정답지가 없으므로 평가 모델의 자체 지식에 의존하게 되어, 평가 모델의 편향이나 한계가 그대로 반영됨",
+    "explanation": "정답(Ground Truth) 없이 모델의 판단만 믿을 경우, 평가 모델이 틀린 지식을 정답으로 간주할 위험이 있습니다."
+  },
+  {
+    "id": 114,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "GPT-4o와 같은 모델에서 'Native Multimodal' 학습이 'Late Fusion' 방식보다 우수한 이유는?",
+    "choices": [
+      "모든 모달리티를 동일한 토큰 공간에서 동시에 학습하여 모달리티 간의 복합적 관계를 더 깊게 이해함",
+      "텍스트 모델과 이미지 모델을 각각 따로 학습시킨 뒤 연결하기 때문",
+      "학습에 필요한 데이터 양을 1/10로 줄여주기 때문",
+      "오직 텍스트 데이터만 사용하여 이미지를 생성하기 때문"
+    ],
+    "answer": "모든 모달리티를 동일한 토큰 공간에서 동시에 학습하여 모달리티 간의 복합적 관계를 더 깊게 이해함",
+    "explanation": "별도의 인코더를 결합하는 방식보다, 처음부터 여러 데이터를 통합 처리하는 것이 정보 손실이 적고 응답 속도도 빠릅니다."
+  },
+  {
+    "id": 115,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Alpagasus 연구에서 사용한 'I-Fidelity' 필터링의 핵심 로직은?",
+    "choices": [
+      "강력한 LLM을 사용하여 합성 데이터의 품질을 채점하고, 일정 점수 이하의 저품질 데이터를 제거함",
+      "데이터의 길이를 기준으로 상위 10%만 남김",
+      "데이터에 포함된 특수 문자의 개수를 제한함",
+      "사람이 직접 52,000개의 데이터를 다시 검수함"
+    ],
+    "answer": "강력한 LLM을 사용하여 합성 데이터의 품질을 채점하고, 일정 점수 이하의 저품질 데이터를 제거함",
+    "explanation": "데이터의 '양'보다 '질'이 중요하다는 전제하에, 고품질 데이터만 선별하여 학습 효율을 극대화했습니다."
+  },
+  {
+    "id": 116,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "환각(Hallucination) 현상을 해결하기 위한 'RAG' 구조에서 'Retriever'의 역할은?",
+    "choices": [
+      "사용자의 질문과 관련된 최신 정보를 외부 지식 베이스(벡터 DB 등)에서 찾아오는 것",
+      "찾아온 정보를 요약하여 삭제하는 것",
+      "사용자의 질문을 다른 언어로 번역하는 것",
+      "모델의 가중치를 실시간으로 업데이트하는 것"
+    ],
+    "answer": "사용자의 질문과 관련된 최신 정보를 외부 지식 베이스(벡터 DB 등)에서 찾아오는 것",
+    "explanation": "모델이 모르는 정보를 외부에서 실시간으로 공급함으로써, 근거 없는 답변 생성을 억제합니다."
+  },
+  {
+    "id": 117,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "탈옥(Jailbreaking) 방어를 위한 'Adversarial Training'의 원리는?",
+    "choices": [
+      "공격적인 프롬프트를 미리 생성하여 이에 대해 안전하게 답변하도록 모델을 명시적으로 학습시킴",
+      "모델에게 욕설 사전을 통째로 암기시킴",
+      "특정 단어가 들어오면 무조건 전원을 끄도록 설계함",
+      "사용자의 질문을 항상 긍정적으로만 해석하게 함"
+    ],
+    "answer": "공격적인 프롬프트를 미리 생성하여 이에 대해 안전하게 답변하도록 모델을 명시적으로 학습시킴",
+    "explanation": "공격 시나리오를 학습 단계에 포함시켜 모델의 정렬(Alignment)을 더욱 견고하게 만듭니다."
+  },
+  {
+    "id": 118,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "자가 학습(Self-supervised Learning)에서 'Next Sentence Prediction (NSP)' 태스크의 목적은?",
+    "choices": [
+      "두 문장 사이의 논리적 연결성과 문맥 파악 능력을 기르기 위해",
+      "문장 내의 오타를 수정하기 위해",
+      "문장의 길이를 예측하기 위해",
+      "문장에 사용된 단어의 개수를 세기 위해"
+    ],
+    "answer": "두 문장 사이의 논리적 연결성과 문맥 파악 능력을 기르기 위해",
+    "explanation": "BERT 등에서 사용된 NSP는 두 문장이 이어지는 것이 자연스러운지 판단하게 하여 문맥 이해도를 높입니다."
+  },
+  {
+    "id": 119,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "LLM의 '지식 증류(Knowledge Distillation)' 과정에서 거대 모델(Teacher)과 작은 모델(Student)의 상호작용은?",
+    "choices": [
+      "거대 모델의 출력 확률 분포나 데이터를 작은 모델이 모방하여 학습함으로써 효율성을 높임",
+      "작은 모델이 거대 모델의 하드웨어를 공유하여 사용함",
+      "두 모델의 파라미터를 단순히 합산함",
+      "거대 모델의 학습 데이터를 모두 삭제하고 작은 모델에 새로 입력함"
+    ],
+    "answer": "거대 모델의 출력 확률 분포나 데이터를 작은 모델이 모방하여 학습함으로써 효율성을 높임",
+    "explanation": "강력한 모델의 지식을 효율적으로 압축하여 작은 모델에 전수함으로써 성능 대비 비용 효율을 개선합니다."
+  },
+  {
+    "id": 120,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "디코딩 알고리즘 중 '안정성'을 최우선으로 하여 동일 질문에 항상 동일 답을 내놓도록 설정하는 방법은?",
+    "choices": [
+      "Greedy Decoding 또는 Temperature를 0으로 설정",
+      "Top-P 샘플링을 1.0으로 설정",
+      "빔 사이즈를 무한대로 설정",
+      "랜덤 샘플링 활성화"
+    ],
+    "answer": "Greedy Decoding 또는 Temperature를 0으로 설정",
+    "explanation": "무작위성을 배제하고 매 순간 최대 확률 토큰만 선택하면 결과의 재현성이 확보됩니다."
+  },
+  {
+    "id": 121,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Transformer의 Scaled Dot-Product Attention에서 유사도 계산 후 $\sqrt{d_k}$로 나누어주는(Scaling) 수학적 이유는?",
+    "choices": [
+      "차원이 커질수록 내적값이 비대해져 소프트맥스의 기울기가 소실(Gradient Vanishing)되는 것을 방지하기 위해",
+      "모델의 전체 파라미터 수를 줄여 메모리 효율을 높이기 위해",
+      "문장의 길이에 따라 연산 속도를 일정하게 유지하기 위해",
+      "학습 데이터의 편향을 제거하여 공정성을 확보하기 위해"
+    ],
+    "answer": "차원이 커질수록 내적값이 비대해져 소프트맥스의 기울기가 소실(Gradient Vanishing)되는 것을 방지하기 위해",
+    "explanation": "내적값이 너무 커지면 소프트맥스 함수가 매우 작은 기울기를 갖는 영역으로 이동하여 학습이 정체되므로, 이를 스케일링하여 안정화합니다."
+  },
+  {
+    "id": 122,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "RLHF의 PPO(Proximal Policy Optimization) 알고리즘에서 'Clipped Surrogate Objective'를 사용하는 목적은?",
+    "choices": [
+      "업데이트 단계에서 정책(Policy)이 급격하게 변하여 학습이 불안정해지는 것을 억제하기 위해",
+      "모델이 생성하는 토큰의 개수를 강제로 제한하기 위해",
+      "보상 모델의 점수를 항상 양수로 유지하기 위해",
+      "데이터의 손실(Loss)을 0으로 만들기 위해"
+    ],
+    "answer": "업데이트 단계에서 정책(Policy)이 급격하게 변하여 학습이 불안정해지는 것을 억제하기 위해",
+    "explanation": "PPO는 이전 정책과 새로운 정책의 비율을 일정 범위 내로 제한(clipping)하여 안정적인 수렴을 돕습니다."
+  },
+  {
+    "id": 123,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "LLM-as-judge에서 나타나는 '자기 선호 편향(Self-enhancement Bias)'의 기술적 원인에 대한 가설은?",
+    "choices": [
+      "평가 모델이 학습 시 사용한 데이터 분포나 토큰 생성 패턴이 피평가 모델과 유사할 때 더 높은 점수를 부여함",
+      "평가 모델이 하드웨어적으로 동일한 GPU를 공유하기 때문",
+      "평가 모델이 자신의 이름을 응답 속에서 찾아내기 때문",
+      "모든 LLM은 기본적으로 자신을 가장 똑똑하다고 믿도록 설계되었기 때문"
+    ],
+    "answer": "평가 모델이 학습 시 사용한 데이터 분포나 토큰 생성 패턴이 피평가 모델과 유사할 때 더 높은 점수를 부여함",
+    "explanation": "모델은 자신이 생성했을 법한 논리 전개 방식이나 문체에 대해 통계적으로 더 높은 확신(Confidence)을 갖는 경향이 있습니다."
+  },
+  {
+    "id": 124,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "다음 중 '지식 증류(Knowledge Distillation)' 시 Teacher 모델의 Soft Label을 사용하는 것이 Hard Label보다 유리한 이유는?",
+    "choices": [
+      "각 토큰 간의 상대적 확률 분포 정보를 포함하고 있어 모델의 잠재적 지식을 더 풍부하게 전달하기 때문",
+      "데이터의 용량이 더 작아서 전송 속도가 빠르기 때문",
+      "정답이 아닌 토큰은 무조건 0으로 처리하여 혼선을 줄이기 때문",
+      "GPU 메모리를 전혀 사용하지 않는 방식이기 때문"
+    ],
+    "answer": "각 토큰 간의 상대적 확률 분포 정보를 포함하고 있어 모델의 잠재적 지식을 더 풍부하게 전달하기 때문",
+    "explanation": "Soft Label(확률 분포)은 정답 외의 다른 오답들 사이의 관계 정보(Dark Knowledge)를 포함하고 있어 Student 모델 학습에 더 유용합니다."
+  },
+  {
+    "id": 125,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Beam Search의 단점 중 하나인 '반복 생성(Repetitive loops)' 현상을 억제하기 위해 사용하는 기법은?",
+    "choices": ["N-gram Blocking (Penalty)", "Temperature 증가", "학습 데이터 삭제", "모델 레이어 수 감소"],
+    "answer": "N-gram Blocking (Penalty)",
+    "explanation": "이미 생성된 특정 단어 조합(N-gram)이 다시 나타날 확률을 강제로 낮추어 동일 문구가 반복되는 것을 방지합니다."
+  },
+  {
+    "id": 126,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Temperature $T > 1$일 때, 소프트맥스 출력값의 엔트로피(Entropy) 변화는?",
+    "choices": [
+      "엔트로피가 증가하여 확률 분포가 더 균등(Uniform)해짐",
+      "엔트로피가 감소하여 특정 토큰에 확률이 집중됨",
+      "엔트로피가 0이 됨",
+      "엔트로피는 온도와 상관없이 일정함"
+    ],
+    "answer": "엔트로피가 증가하여 확률 분포가 더 균등(Uniform)해짐",
+    "explanation": "온도가 높아지면 분포가 평탄해지므로 불확실성(엔트로피)이 커지고 응답이 다양해집니다."
+  },
+  {
+    "id": 127,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "자가 학습(Self-supervised Learning)에서 'Contrastive Learning'의 핵심 원리는?",
+    "choices": [
+      "유사한 데이터(Positive)는 벡터 공간에서 가깝게, 다른 데이터(Negative)는 멀게 배치하도록 학습함",
+      "모든 데이터를 하나의 점으로 모으도록 학습함",
+      "데이터의 순서를 무작위로 섞어 정답을 맞추게 함",
+      "데이터의 크기를 절반으로 줄여서 학습함"
+    ],
+    "answer": "유사한 데이터(Positive)는 벡터 공간에서 가깝게, 다른 데이터(Negative)는 멀게 배치하도록 학습함",
+    "explanation": "데이터 간의 상대적 거리 관계를 학습하여 의미적 특징을 효과적으로 추출하는 방식입니다."
+  },
+  {
+    "id": 128,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "LLM의 창발성 중 'Few-shot prompting' 성능이 모델 크기에 따라 계단식으로 상승하는 현상을 무엇이라 부르는가?",
+    "choices": ["Phase Transition (상전이)", "Linear Scaling", "Overfitting", "Gradient Descent"],
+    "answer": "Phase Transition (상전이)",
+    "explanation": "물리학의 상전이처럼, 특정 임계점(Scale)을 넘는 순간 성능이 비약적으로 점프하는 현상을 의미합니다."
+  },
+  {
+    "id": 129,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Instruction Tuning 시 '도움이 되지만 안전한(Helpful but Harmless)' 응답을 만들기 위한 데이터 설계의 어려움은?",
+    "choices": [
+      "사용자의 모든 요청에 답하려는 성질과 위험한 요청을 거절하려는 성질 사이의 충돌(Conflict)",
+      "데이터의 텍스트 길이가 너무 길어지는 문제",
+      "한국어와 영어의 문법 차이",
+      "GPU의 전력 소모량 측정의 어려움"
+    ],
+    "answer": "사용자의 모든 요청에 답하려는 성질과 위험한 요청을 거절하려는 성질 사이의 충돌(Conflict)",
+    "explanation": "지시를 잘 따르는 모델은 위험한 지시도 잘 따를 위험이 있으므로, 두 가치 사이의 미세한 균형점을 찾는 것이 정렬 학습의 핵심 난제입니다."
+  },
+  {
+    "id": 130,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "디코딩 과정에서 'KV Cache' 기술을 사용하는 결정적인 이유는?",
+    "choices": [
+      "이전 단계에서 계산한 Attention의 Key와 Value 값을 재사용하여 중복 연산을 제거하고 속도를 높이기 위해",
+      "모델의 가중치를 압축하여 디스크 용량을 아끼기 위해",
+      "인터넷 연결 없이 모델을 구동하기 위해",
+      "학습 시 발생하는 오버헤드를 줄이기 위해"
+    ],
+    "answer": "이전 단계에서 계산한 Attention의 Key와 Value 값을 재사용하여 중복 연산을 제거하고 속도를 높이기 위해",
+    "explanation": "추론 시 매번 처음부터 전체 문장을 재연산하지 않고, 기존 계산 결과(KV)를 메모리에 저장해 두어 추론 효율을 극대화합니다."
+  },
+  {
+    "id": 131,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "환각(Hallucination) 현상 중 'Faithfulness' 부족이란 무엇을 의미하는가?",
+    "choices": [
+      "모델이 주어진 입력 컨텍스트(Context)에 근거하지 않고 임의의 정보를 생성하는 것",
+      "모델이 사용자의 이름을 잘못 부르는 것",
+      "모델의 답변 속도가 느려지는 것",
+      "모델이 문법적으로 틀린 문장을 생성하는 것"
+    ],
+    "answer": "모델이 주어진 입력 컨텍스트(Context)에 근거하지 않고 임의의 정보를 생성하는 것",
+    "explanation": "제시된 문서나 자료가 있음에도 불구하고 이를 무시하거나 왜곡하여 답변하는 현상을 지칭합니다."
+  },
+  {
+    "id": 132,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "RLHF의 'Reward Model'이 'Bradley-Terry' 모델을 기반으로 설계되었을 때의 가정은?",
+    "choices": [
+      "두 응답 $A, B$에 대해 사람이 $A$를 선호할 확률은 두 응답의 지수화된 점수 합 중 $A$의 점수 비율과 같다",
+      "사람은 항상 가장 긴 문장을 선호한다",
+      "보상 점수는 항상 정수(Integer)로만 표현된다",
+      "모델의 응답은 항상 선형적으로 증가한다"
+    ],
+    "answer": "두 응답 $A, B$에 대해 사람이 $A$를 선호할 확률은 두 응답의 지수화된 점수 합 중 $A$의 점수 비율과 같다",
+    "explanation": "확률적 선호도를 로지스틱 함수 형태로 모델링하여 상대적 우위를 점수화하는 통계적 방법론입니다."
+  },
+  {
+    "id": 133,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Top-P 샘플링에서 $P=1.0$으로 설정했을 때의 동작 방식은?",
+    "choices": ["일반적인 무작위 샘플링(Random Sampling)과 동일하게 동작함", "그리디 디코딩과 동일하게 동작함", "모델이 토큰 생성을 중단함", "가장 짧은 문장만 생성함"],
+    "answer": "일반적인 무작위 샘플링(Random Sampling)과 동일하게 동작함",
+    "explanation": "누적 확률 1.0은 모든 후보 토큰을 포함한다는 의미이므로, 확률 분포 전체를 대상으로 샘플링하는 것과 같습니다."
+  },
+  {
+    "id": 134,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "다음 중 'Scaling Law'가 깨질 수 있는 변수로 가장 적절한 것은?",
+    "choices": ["학습 데이터의 중복도 및 저품질 데이터의 혼입", "GPU의 제조사 변경", "모델의 이름 변경", "사용자의 프롬프트 언어"],
+    "answer": "학습 데이터의 중복도 및 저품질 데이터의 혼입",
+    "explanation": "데이터의 양이 많아도 품질이 낮거나 중복이 심하면 성능 향상 폭이 법칙을 벗어나 정체될 수 있습니다."
+  },
+  {
+    "id": 135,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "CoT(Chain-of-Thought) 프롬프팅에서 '중간 단계'를 생성하는 것이 모델의 최종 정답률을 높이는 수학적 이유는?",
+    "choices": [
+      "복잡한 사후 확률(Posterior probability) 계산을 연쇄적인 조건부 확률의 곱으로 분해하여 계산 효율을 높이기 때문",
+      "모델이 단어 수를 늘려서 시간을 벌기 때문",
+      "더 많은 메모리를 점유하여 연산 정밀도를 높이기 때문",
+      "사람이 읽기에 더 그럴듯해 보이기 때문"
+    ],
+    "answer": "복잡한 사후 확률(Posterior probability) 계산을 연쇄적인 조건부 확률의 곱으로 분해하여 계산 효율을 높이기 때문",
+    "explanation": "한 번에 정답 토큰에 도달하는 확률보다, 중간 단계를 거쳐 단계별로 확률을 좁혀가는 것이 통계적으로 유리합니다."
+  },
+  {
+    "id": 136,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "거대 언어 모델의 '추론(Inference)' 성능을 평가하는 지표 중 'TTFT(Time To First Token)'가 중요한 이유는?",
+    "choices": [
+      "사용자가 체감하는 모델의 반응 속도(대기 시간)를 결정하는 핵심 지표이기 때문",
+      "모델이 전체 문장을 완성하는 데 걸리는 총 시간을 나타내기 때문",
+      "모델이 학습 데이터를 얼마나 빨리 읽는지 나타내기 때문",
+      "GPU의 온도가 얼마나 빨리 오르는지 측정하기 때문"
+    ],
+    "answer": "사용자가 체감하는 모델의 반응 속도(대기 시간)를 결정하는 핵심 지표이기 때문",
+    "explanation": "TTFT는 첫 번째 글자가 나올 때까지의 지연 시간으로, 실시간 대화 시스템의 사용자 경험에 직접적인 영향을 줍니다."
+  },
+  {
+    "id": 137,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "합성 데이터 생성 시 '지식 오염(Data Contamination)' 리스크란?",
+    "choices": [
+      "평가 데이터셋의 문제와 정답이 LLM의 학습 데이터에 포함되어 평가 결과가 왜곡되는 현상",
+      "데이터 파일에 바이러스가 침투하는 것",
+      "데이터베이스의 인덱스가 꼬이는 것",
+      "사용자의 개인 정보가 삭제되는 것"
+    ],
+    "answer": "평가 데이터셋의 문제와 정답이 LLM의 학습 데이터에 포함되어 평가 결과가 왜곡되는 현상",
+    "explanation": "이미 본 적 있는 문제를 푸는 것은 진정한 성능 측정이 아니므로, 평가의 신뢰성을 크게 떨어뜨립니다."
+  },
+  {
+    "id": 138,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "PPO 알고리즘에서 'Value Network'의 역할은?",
+    "choices": [
+      "현재 상태에서 기대되는 미래 보상의 총합을 예측하여 정책 네트워크의 업데이트를 가이드함",
+      "사용자가 입력한 문장의 단어 개수를 세는 것",
+      "이미지를 텍스트로 변환하는 것",
+      "모델의 답변을 외부 API로 전송하는 것"
+    ],
+    "answer": "현재 상태에서 기대되는 미래 보상의 총합을 예측하여 정책 네트워크의 업데이트를 가이드함",
+    "explanation": "가치 네트워크(Critic)는 현재 응답의 '가치'를 평가하여 생성 모델(Actor)이 더 나은 방향으로 학습되도록 돕습니다."
+  },
+  {
+    "id": 139,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "다음 중 '워터마킹' 기술을 통해 생성된 AI 텍스트를 검출할 때 사용하는 통계량은?",
+    "choices": ["Z-score (그린 토큰과 레드 토큰의 선택 비율 분석)", "평균값", "최빈값", "상관계수"],
+    "answer": "Z-score (그린 토큰과 레드 토큰의 선택 비율 분석)",
+    "explanation": "특정 규칙(그린 리스트)에 따라 단어가 선택된 빈도가 우연보다 높은지를 통계적 검정(Z-test)을 통해 판별합니다."
+  },
+  {
+    "id": 140,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "BERT의 'Masked Language Model' 학습 시 전체 토큰의 15%만 마스킹하는 주된 이유는?",
+    "choices": [
+      "충분한 주변 문맥(Context) 정보를 유지하면서도 모델이 효율적으로 학습할 수 있는 균형점이기 때문",
+      "15% 이상 마스킹하면 GPU가 폭발하기 때문",
+      "사람이 읽을 수 있는 최소한의 비율이기 때문",
+      "법적으로 정해진 인공지능 학습 가이드라인이기 때문"
+    ],
+    "answer": "충분한 주변 문맥(Context) 정보를 유지하면서도 모델이 효율적으로 학습할 수 있는 균형점이기 때문",
+    "explanation": "너무 많이 가리면 맞출 근거가 없고, 너무 적게 가리면 학습 효율이 떨어지므로 최적의 비율을 설정한 것입니다."
+  },
+  {
+    "id": 141,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "디코딩 알고리즘 중 '최적의 문장'을 찾기 위해 동적 계획법(Dynamic Programming)과 유사한 원리를 사용하는 것은?",
+    "choices": ["Beam Search", "Greedy Decoding", "Top-K Sampling", "Temperature Scaling"],
+    "answer": "Beam Search",
+    "explanation": "빔 서치는 여러 경로를 유지하며 누적 확률을 계산한다는 점에서 일종의 제한된 형태의 동적 계획법으로 볼 수 있습니다."
+  },
+  {
+    "id": 142,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "LLM 아키텍처에서 'Grouped-Query Attention (GQA)'이 사용되는 목적은?",
+    "choices": [
+      "Multi-head Attention의 성능을 유지하면서도 KV Cache의 메모리 요구량을 획기적으로 줄이기 위해",
+      "모델의 레이어를 더 깊게 쌓기 위해",
+      "이미지와 텍스트를 결합하기 위해",
+      "데이터의 전처리 속도를 높이기 위해"
+    ],
+    "answer": "Multi-head Attention의 성능을 유지하면서도 KV Cache의 메모리 요구량을 획기적으로 줄이기 위해",
+    "explanation": "여러 개의 Query가 Key와 Value 헤드를 공유하게 함으로써 추론 시 메모리 병목 현상을 해결합니다."
+  },
+  {
+    "id": 143,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "PPO 강화 학습 중 'Reward Hacking' 현상이란?",
+    "choices": [
+      "모델이 실제 품질은 낮지만 보상 모델로부터 높은 점수를 받는 편법(예: 특정 단어 반복)을 찾아내는 현상",
+      "해커가 모델의 서버를 공격하는 것",
+      "보상 모델이 스스로 점수를 조작하는 것",
+      "사용자가 모델에게 돈을 주는 것"
+    ],
+    "answer": "모델이 실제 품질은 낮지만 보상 모델로부터 높은 점수를 받는 편법(예: 특정 단어 반복)을 찾아내는 현상",
+    "explanation": "보상 수식의 빈틈을 이용해 인간의 의도와 상관없이 점수만 높이는 부정적인 학습 결과를 의미합니다."
+  },
+  {
+    "id": 144,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Instruction Tuning의 성능 향상을 위해 '지시문의 다양성'을 확보하는 가장 고도화된 방법은?",
+    "choices": [
+      "Semantic 클러스터링을 통해 중복된 지시를 제거하고 희소한 테스크를 보충함",
+      "동일한 지시문을 100만 번 반복함",
+      "지시문의 폰트 크기를 다양하게 조절함",
+      "모든 지시문을 영어로 통일함"
+    ],
+    "answer": "Semantic 클러스터링을 통해 중복된 지시를 제거하고 희소한 테스크를 보충함",
+    "explanation": "의미적으로 유사한 데이터는 줄이고, 모델이 경험하지 못한 영역의 데이터를 추가하여 범용성을 높입니다."
+  },
+  {
+    "id": 145,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "0-shot CoT 연구인 'Kojima et al. (2022)'에서 발견된 핵심적인 현상은?",
+    "choices": [
+      "대규모 모델은 'Let's think step by step' 문구 하나로 추론 과정 유발이 가능하며, 이는 모델 크기에 비례함",
+      "작은 모델이 큰 모델보다 추론을 더 잘함",
+      "한국어 모델은 추론 과정이 필요 없음",
+      "추론 과정은 모델의 답변 속도를 100배 빠르게 만듦"
+    ],
+    "answer": "대규모 모델은 'Let's think step by step' 문구 하나로 추론 과정 유발이 가능하며, 이는 모델 크기에 비례함",
+    "explanation": "특정 유인 문구가 모델 내부의 추론 메커니즘을 활성화하는 '트리거' 역할을 함을 입증했습니다."
+  },
+  {
+    "id": 146,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "G-Eval과 같은 평가 프레임워크에서 'Chain-of-Thought 평가'가 점수 신뢰도를 높이는 이유는?",
+    "choices": [
+      "평가 모델에게 평가 사유를 먼저 쓰게 함으로써 채점의 일관성과 논리적 타당성을 강제하기 때문",
+      "채점 속도가 빨라지기 때문",
+      "평가 비용이 0원이 되기 때문",
+      "평가 모델의 메모리가 늘어나기 때문"
+    ],
+    "answer": "평가 모델에게 평가 사유를 먼저 쓰게 함으로써 채점의 일관성과 논리적 타당성을 강제하기 때문",
+    "explanation": "단순 점수 부여보다 근거를 먼저 작성하게 하는 것이 평가의 객관성을 높인다는 연구 결과가 있습니다."
+  },
+  {
+    "id": 147,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "다음 중 '탈옥' 방어를 위해 정렬 학습된 모델이 겪는 '거부 과잉(Over-refusal)' 현상이란?",
+    "choices": [
+      "안전 수칙을 너무 엄격하게 적용하여 무해한 질문에 대해서도 답변을 거부하는 현상",
+      "모델이 사용자의 모든 질문에 무조건 '네'라고 답하는 것",
+      "모델이 답변 도중 갑자기 멈추는 것",
+      "모델이 질문과 상관없는 광고를 노출하는 것"
+    ],
+    "answer": "안전 수칙을 너무 엄격하게 적용하여 무해한 질문에 대해서도 답변을 거부하는 현상",
+    "explanation": "안전 정렬이 과하게 적용되어 모델의 유용성(Helpfulness)이 훼손되는 부작용입니다."
+  },
+  {
+    "id": 148,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "Scaling Law 수식에서 Loss값 $L(N, D)$는 일반적으로 어떤 형태의 함수를 따르는가?",
+    "choices": ["Power Law (멱법칙) 함수", "일차 선형 함수", "삼각 함수", "로그 함수"],
+    "answer": "Power Law (멱법칙) 함수",
+    "explanation": "모델 크기(N)와 데이터량(D)이 커짐에 따라 손실값이 멱법칙에 따라 예측 가능하게 감소합니다."
+  },
+  {
+    "id": 149,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "디코딩 시 'Repetition Penalty' 수식에서 패널티 값이 1보다 클 때(예: 1.2)의 영향은?",
+    "choices": [
+      "이미 생성된 토큰의 로짓(Logit) 값을 나누어 해당 토큰이 재선택될 확률을 낮춤",
+      "이미 생성된 토큰을 무조건 다시 선택함",
+      "모든 토큰의 확률을 1.2배 높임",
+      "토큰 생성을 즉시 중단함"
+    ],
+    "answer": "이미 생성된 토큰의 로짓(Logit) 값을 나누어 해당 토큰이 재선택될 확률을 낮춤",
+    "explanation": "이전에 나온 단어의 점수를 깎아서 중복 생성을 억제하는 기술적 설정입니다."
+  },
+  {
+    "id": 150,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "파운데이션 모델의 '자가 학습'이 인터넷 데이터의 시계열적 특성을 학습하는 구체적인 방식은?",
+    "choices": [
+      "인과적 언어 모델링(Causal Language Modeling)을 통해 과거 정보를 바탕으로 미래 토큰을 예측함",
+      "미래의 데이터를 미리 보고 과거를 수정함",
+      "모든 데이터를 한꺼번에 섞어서 시간 개념을 없앰",
+      "매일 새로운 모델을 처음부터 다시 학습함"
+    ],
+    "answer": "인과적 언어 모델링(Causal Language Modeling)을 통해 과거 정보를 바탕으로 미래 토큰을 예측함",
+    "explanation": "GPT와 같은 모델은 '왼쪽에서 오른쪽으로' 단어를 예측하며 데이터에 내재된 시간적 순차성을 학습합니다."
+  }
+]

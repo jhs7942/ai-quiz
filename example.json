@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 인공지능(AI), 머신러닝(ML), 딥러닝(DL)의 포함 관계로 올바른 것은?",
+    "choices": ["AI ⊃ ML ⊃ DL", "ML ⊃ AI ⊃ DL", "DL ⊃ ML ⊃ AI", "AI ⊃ DL ⊃ ML"],
+    "answer": "AI ⊃ ML ⊃ DL",
+    "explanation": "AI는 인간 지능을 모방하는 기술 전체를 의미하며, ML은 데이터를 학습하는 방법론, DL은 다층 신경망을 사용하는 ML의 하위 분야입니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "은닉층을 수십에서 수백 개로 깊게 쌓아 고수준의 추상 특징(Abstract Feature)을 자동으로 학습하며, 현재 딥러닝의 핵심 구조가 되는 신경망은?",
+    "choices": ["단일 퍼셉트론 (Perceptron)", "얕은 신경망 (SNN)", "심층 신경망 (DNN)", "순환 신경망 (RNN)"],
+    "answer": "심층 신경망 (DNN)",
+    "explanation": "심층 신경망(DNN)은 복잡한 비선형 패턴을 학습하고 계층별로 특징을 자동 추출하는 딥러닝의 핵심 구조입니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 과적합(Overfitting)을 방지하기 위해 학습 중 랜덤으로 일정 확률의 뉴런을 비활성화하는 기법은?",
+    "choices": ["데이터 증강 (Data Augmentation)", "드롭아웃 (Dropout)", "L1 규제 (Lasso)", "조기 종료 (Early Stopping)"],
+    "answer": "드롭아웃 (Dropout)",
+    "explanation": "드롭아웃(Dropout)은 특정 뉴런에 대한 의존성을 차단하고 앙상블 효과를 통해 모델의 일반화 성능을 향상시키는 기법입니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "딥러닝 모델의 옵티마이저 중 관성(Momentum)과 적응형 학습률(RMSProp)의 장점을 결합하여 사실상 기본으로 사용되는 것은?",
+    "choices": ["경사하강법 (GD)", "확률적 경사하강법 (SGD)", "Adagrad", "Adam"],
+    "answer": "Adam",
+    "explanation": "Adam(Adaptive Moment Estimation)은 관성과 적응형 학습률을 결합한 최적화 알고리즘으로 빠르고 안정적인 수렴을 제공합니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "hard",
+    "question": "사전 학습된 모델의 특징 추출 레이어는 고정(freeze)하고 최종 분류층(Head)만 새로운 태스크에 맞게 교체하여 학습하는 기법은?",
+    "choices": ["Fine-tuning", "Linear Probing", "지식 증류 (Knowledge Distillation)", "전이 학습 (Transfer Learning)"],
+    "answer": "Linear Probing",
+    "explanation": "Linear Probing은 특징 추출 역할을 하는 백본의 가중치를 동결하고 최종 분류층만 새로운 데이터에 맞게 재학습하는 기법입니다."
+  }
+]

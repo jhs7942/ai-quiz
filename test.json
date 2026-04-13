@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "데이터를 본격적으로 분석하기 전에 여러 각도에서 관찰하고 이해하는 과정을 무엇이라 합니까?",
+    "answer": "탐색적 데이터 분석(EDA)",
+    "explanation": ""
+  }
+]

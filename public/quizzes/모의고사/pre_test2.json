@@ -1,0 +1,412 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 데이터 구성 요소에서 모델이 예측해야 할 '정답'을 의미하는 용어는 무엇인가?",
+    "choices": [
+      "특성(Feature)",
+      "레이블(Label)",
+      "은닉층(Hidden Layer)",
+      "잔차(Residual)"
+    ],
+    "answer": "레이블(Label)",
+    "explanation": "데이터 구성 요소에는 특성, 레이블(정답), 훈련데이터, 검증데이터 등이 포함됩니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "회귀 분석에서 모델이 얼마나 정답과 틀렸는지를 계산하는 기본적인 방법인 '잔차제곱합'의 영문 약자는?",
+    "choices": [
+      "MSE",
+      "RNN",
+      "RSS",
+      "CNN"
+    ],
+    "answer": "RSS",
+    "explanation": "RSS(잔차제곱합)는 회귀 분석에서 오차를 계산하는 기본 방법입니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "신경망 구조에서 데이터를 가장 먼저 받아들이는 층의 이름은?",
+    "choices": [
+      "출력층",
+      "은닉층",
+      "입력층",
+      "활성화층"
+    ],
+    "answer": "입력층",
+    "explanation": "신경망은 데이터를 받아들이는 입력층, 연산이 이루어지는 은닉층, 결과를 내는 출력층으로 구성됩니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 혼동행렬(Confusion Matrix)을 통해 구할 수 있는 수치가 아닌 것은?",
+    "choices": [
+      "정확도",
+      "정밀도",
+      "학습률",
+      "재현율"
+    ],
+    "answer": "학습률",
+    "explanation": "혼동행렬을 통해서는 정확도, 정밀도, 재현율, F1-score 등의 수치를 구할 수 있습니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 지도학습에 속하며, 주로 연속적인 숫자를 예측하는 데 사용되는 모델은?",
+    "choices": [
+      "선형 회귀",
+      "디퓨전 모델",
+      "K-Means",
+      "Transformer"
+    ],
+    "answer": "선형 회귀",
+    "explanation": "선형 회귀는 연속적인 숫자를 예측하는 지도학습의 대표적인 방법입니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "분류(Classification) 문제에서 모델을 채점하는 기준인 손실함수로 가장 적절한 것은?",
+    "choices": [
+      "크로스 엔트로피",
+      "잔차제곱합(RSS)",
+      "결정계수(R^2)",
+      "BLEU"
+    ],
+    "answer": "크로스 엔트로피",
+    "explanation": "분류 모델의 손실함수(채점 기준)로는 크로스 엔트로피가 주로 사용됩니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "자연어 처리(NLP) 모델이 얼마나 말을 잘하는지 채점하는 성능 평가 지표가 아닌 것은?",
+    "choices": [
+      "PPL (Perplexity)",
+      "BLEU",
+      "ROUGE",
+      "SigLIP"
+    ],
+    "answer": "SigLIP",
+    "explanation": "PPL, BLEU, ROUGE는 NLP 성능평가 지표이며, SigLIP은 비전 랭귀지 모델의 일종입니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "디코딩 알고리즘 중 매 순간 확률이 가장 높은 단어만을 선택하여 문장을 완성하는 방식은?",
+    "choices": [
+      "Beam Search",
+      "Greedy Search",
+      "Top-k Sampling",
+      "RLHF"
+    ],
+    "answer": "Greedy Search",
+    "explanation": "디코딩 알고리즘에는 확률이 가장 높은 것만 고르는 Greedy Search, 여러 경로를 탐색하는 Beam Search 등이 있습니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 생성 모델 중 현재 가장 대표적으로 활용되고 있는 '스테이블 디퓨전'은 어떤 모델 계열에 속하는가?",
+    "choices": [
+      "RNN 계열",
+      "디퓨전 모델",
+      "순환 신경망",
+      "LLM-as-a-judge"
+    ],
+    "answer": "디퓨전 모델",
+    "explanation": "스테이블 디퓨전 모델은 이미지 생성에 특화된 디퓨전 모델의 한 종류입니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "AI 깃허브라고도 불리며, 전 세계 개발자들이 데이터셋과 인공지능 모델을 공유하는 플랫폼의 이름은?",
+    "choices": [
+      "HuggingFace (허깅페이스)",
+      "TensorBoard",
+      "Colab",
+      "Vercel"
+    ],
+    "answer": "HuggingFace (허깅페이스)",
+    "explanation": "허깅페이스는 데이터셋과 모델을 공유하는 AI 분야의 대표적인 사이트입니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "상관계수에 대한 설명으로 가장 올바른 것은?",
+    "choices": [
+      "모델이 정답을 맞춘 총비율을 의미한다.",
+      "두 변수가 얼마나 같은 방향성을 갖고 있는지 나타낸다.",
+      "잔차의 제곱을 모두 더한 값이다.",
+      "이미지와 텍스트를 동시에 이해하는 능력이다."
+    ],
+    "answer": "두 변수가 얼마나 같은 방향성을 갖고 있는지 나타낸다.",
+    "explanation": "상관계수는 두 변수가 얼마나 같은 방향성을 띠고 움직이는지를 수치로 나타낸 것입니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RSS(잔차제곱합)를 올바르게 계산하는 방법은?",
+    "choices": [
+      "실제값에서 예측값을 뺀 후 모두 더한다.",
+      "잔차 제곱을 다 더하고, 데이터 개수로 나눈다.",
+      "정확도와 재현율을 곱한 후 2로 나눈다.",
+      "데이터의 가중치합에 활성화 함수를 적용한다."
+    ],
+    "answer": "잔차 제곱을 다 더하고, 데이터 개수로 나눈다.",
+    "explanation": "RSS는 잔차 제곱을 모두 더한 후, 데이터 개수로 나누어 평균적인 오차 크기를 계산합니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "경사하강법(Gradient Descent)을 통해 가중치를 업데이트할 때, 한 번에 업데이트하는 '크기'를 무엇이라고 부르는가?",
+    "choices": [
+      "손실률",
+      "학습률",
+      "결정계수",
+      "은닉층"
+    ],
+    "answer": "학습률",
+    "explanation": "손실함수의 값을 최소로 만들기 위해 가중치를 업데이트할 때, 그 업데이트하는 크기를 학습률이라고 합니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Transformer 모델이 기존 RNN과 달리 문장 전체를 한 번에 처리할 수 있도록 돕는 핵심 원리(기술)는 무엇인가?",
+    "choices": [
+      "풀링(Pooling)",
+      "스트라이드(Stride)",
+      "self-Attention",
+      "Cell state"
+    ],
+    "answer": "self-Attention",
+    "explanation": "Transformer는 문장 전체를 한 번에 병렬 처리하며, 문맥의 중요도를 파악하기 위해 self-Attention 원리를 활용합니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "양방향으로 문장을 이해하여 문맥 파악 능력이 뛰어나고, 감정 분석 등에 널리 활용되는 모델은?",
+    "choices": [
+      "RNN",
+      "CNN",
+      "BERT",
+      "LSTM"
+    ],
+    "answer": "BERT",
+    "explanation": "BERT는 양방향으로 문장을 이해하여 문맥 파악이 뛰어나며, 감정 분석 등에 많이 활용됩니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "생성된 답변의 품질을 사람이 일일이 평가하기 까다로울 때, 다른 고성능 AI 모델이 이를 대신 채점하게 하는 거대 언어 모델의 평가 방식은?",
+    "choices": [
+      "LLM-as-a-judge",
+      "RLHF",
+      "Beam Search",
+      "Cross Entropy"
+    ],
+    "answer": "LLM-as-a-judge",
+    "explanation": "평가가 까다로운 거대 언어 모델의 결과물을 다른 언어 모델이 채점하게 하는 방식을 LLM-as-a-judge라고 합니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "선호 학습(Preference Learning)의 일환으로, 사람이 직접 매긴 순위를 기반으로 보상 모델을 만들고 이를 최대로 하도록 강화학습하는 기법은?",
+    "choices": [
+      "지도학습",
+      "RLHF",
+      "비지도학습",
+      "로지스틱 회귀"
+    ],
+    "answer": "RLHF",
+    "explanation": "사람이 좋아하는 방식으로 답변하도록 유도하기 위해 순위를 매기고 보상 모델을 기반으로 강화학습하는 것을 RLHF라고 합니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN(합성곱 신경망)에서 데이터의 공간적 크기를 줄이고 중요한 특징(Feature)만 뽑아내는 연산 과정은?",
+    "choices": [
+      "스트라이드(Stride)",
+      "풀링(Pooling)",
+      "시그모이드(Sigmoid)",
+      "어텐션(Attention)"
+    ],
+    "answer": "풀링(Pooling)",
+    "explanation": "CNN의 주요 원리 중 데이터의 크기를 줄여 연산량을 감소시키고 특징을 강조하는 과정을 풀링(Pooling)이라고 합니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "텍스트 데이터뿐만 아니라 이미지나 영상까지 동시에 이해하고 처리할 수 있는 멀티모달(Multimodal) 모델을 통칭하는 용어는?",
+    "choices": [
+      "Vision Language Models",
+      "AI 파운데이션 모델",
+      "순환 신경망(RNN)",
+      "생성적 적대 신경망(GAN)"
+    ],
+    "answer": "Vision Language Models",
+    "explanation": "이미지나 영상까지 텍스트와 함께 동시에 이해하는 멀티모달 모델을 Vision Language Models라고 부릅니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "방대한 데이터를 미리 학습하여 텍스트, 이미지, 음성 등을 모두 포함하는 기반 역할을 하는 거대 모델을 뜻하는 용어는?",
+    "choices": [
+      "로컬 모델",
+      "AI 파운데이션 모델",
+      "데이터셋 모델",
+      "단일 모달"
+    ],
+    "answer": "AI 파운데이션 모델",
+    "explanation": "방대한 데이터를 사전에 학습하여 다양한 작업의 기반이 되며, 이미지와 음성을 모두 포함하는 넓은 개념을 AI 파운데이션 모델이라고 합니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 혼동 행렬의 결과가 주어졌을 때 정밀도(Precision)를 올바르게 계산한 수식은? (실제 Positive=80(TP), FN=20, 가짜 Positive=10(FP), TN=90)",
+    "choices": [
+      "80 / (80+20)",
+      "80 / (80+10)",
+      "(80+90) / (80+20+10+90)",
+      "80 / (80+10+20)"
+    ],
+    "answer": "80 / (80+10)",
+    "explanation": "정밀도는 모델이 Positive로 예측한 것 중 실제 Positive의 비율이므로 TP / (TP + FP), 즉 80 / (80+10)이 되어 약 88.9%가 됩니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LSTM(Long Short-Term Memory) 모델이 장기 기억을 효과적으로 통제하고 보관하기 위해 사용하는 핵심 요소는 무엇인가?",
+    "choices": [
+      "Gate",
+      "Stride",
+      "Pooling",
+      "Temperature"
+    ],
+    "answer": "Gate",
+    "explanation": "LSTM은 Cell state로 장기 기억 통로를 만들고, Gate를 이용하여 데이터의 보관 및 삭제를 컨트롤합니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "자연어 처리 모델이 다음 단어를 예측할 때 느끼는 '헷갈림 정도'를 나타내며, 수치가 낮을수록 예측 성능이 좋음을 의미하는 지표는?",
+    "choices": [
+      "BLEU",
+      "결정계수(R^2)",
+      "Perplexity(PPL)",
+      "ROUGE"
+    ],
+    "answer": "Perplexity(PPL)",
+    "explanation": "PPL(Perplexity)은 모델의 성능평가 지표 중 하나로, 수치가 낮을수록 다음 단어를 덜 헷갈려하며 예측을 잘한다는 것을 의미합니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망에서 데이터와 가중치를 곱하고 합산한 값(가중치합)에 비선형적인 특징을 부여하여 다음 층으로 전달하는 역할을 하는 함수는?",
+    "choices": [
+      "손실 함수",
+      "활성화 함수",
+      "비용 함수",
+      "디코딩 함수"
+    ],
+    "answer": "활성화 함수",
+    "explanation": "신경망의 은닉층 등에서는 데이터의 가중치합을 계산한 뒤, 활성화 함수를 통과시켜 최종적인 출력 형태를 결정합니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "기존의 CLIP 비전 모델을 업그레이드하기 위해 소프트맥스 대신 시그모이드를 활용하여 이미지와 텍스트 쌍을 대조 학습하는 모델은?",
+    "choices": [
+      "BERT",
+      "LSTM",
+      "SigLIP",
+      "Transformer"
+    ],
+    "answer": "SigLIP",
+    "explanation": "SigLIP은 CLIP의 업그레이드 버전으로, 시그모이드 함수를 활용해서 멀티모달 성능을 향상시킨 모델입니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "혼동행렬(Confusion Matrix) 수치를 바탕으로 도출할 수 있는 지표들 중, 정밀도와 재현율을 모두 고려한 조화평균 값을 의미하는 영문 용어는 무엇입니까?",
+    "answer": [
+      "F1-score",
+      "F1 score",
+      "f1스코어",
+      "F1 스코어",
+      "F1"
+    ],
+    "explanation": "혼동행렬을 통해 정확도, 정밀도, 재현율뿐만 아니라 이들의 조화평균인 F1-score를 구할 수 있습니다."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "easy",
+    "question": "회귀 분석에서 모델이 주어진 데이터를 얼마나 잘 설명하고 적합한지를 나타내는 지표로, 보통 R^2 기호로 표시되는 이것의 한글 명칭은 무엇입니까?",
+    "answer": [
+      "결정계수",
+      "결정 계수"
+    ],
+    "explanation": "회귀 모델의 설명력을 나타내는 R^2는 한글로 결정계수라고 부릅니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "이진 분류 신경망에서 Sigmoid 활성화 함수와 Binary Cross Entropy(BCE) 손실을 결합하여 사용할 때, 역전파 과정의 최종 기울기(∂L/∂z) 수식은 매우 직관적으로 변합니다. 모델의 예측값을 y_hat, 실제 정답을 y라고 할 때 도출되는 최종 기울기 공식을 작성하시오.",
+    "answer": [
+      "y_hat - y",
+      "y_hat-y"
+    ],
+    "explanation": "수학적으로 복잡해 보이는 BCE와 Sigmoid의 편미분은 곱해지는 과정에서 소거되어, 최종적으로 예측값(y_hat)에서 실제값(y)을 뺀 단순한 형태(y_hat - y)로 유도됩니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "거대 언어 모델(LLM)의 디코딩 알고리즘 중에서, 무조건 그 순간 확률이 가장 높은 단어 하나만 선택하는 Greedy Search의 단점을 보완하기 위해 여러 개의 유망한 문장 후보 경로를 동시에 탐색하는 방식의 이름은 무엇입니까?",
+    "answer": [
+      "Beam Search",
+      "빔 서치",
+      "beam search",
+      "빔서치"
+    ],
+    "explanation": "디코딩 알고리즘에는 Greedy Search의 한계를 극복하기 위해 다수의 경로를 열어두는 Beam Search 기법이 있습니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "과거 RNN 구조의 단점이었던 '장기 의존성 문제'를 해결하기 위해 'Cell state(셀 상태)'라는 별도의 장기 기억 통로를 도입한 신경망 모델의 영문 약자는 무엇입니까?",
+    "answer": [
+      "LSTM",
+      "lstm"
+    ],
+    "explanation": "LSTM 모델은 Cell state를 만들어서 장기기억 통로를 활용하여 과거 RNN의 정보 유실 문제를 개선했습니다."
+  }
+]

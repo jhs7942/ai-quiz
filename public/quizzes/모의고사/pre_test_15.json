@@ -1,0 +1,407 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 딥러닝에서 모델의 최종 예측값과 실제 정답 사이의 오차를 계산하는 함수는?",
+    "choices": [
+      "활성화 함수",
+      "손실 함수(Loss Function)",
+      "옵티마이저",
+      "정규화 함수"
+    ],
+    "answer": "손실 함수(Loss Function)",
+    "explanation": "손실 함수는 모델이 얼마나 틀렸는지를 수치화하여 학습의 지표로 삼습니다."
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "데이터 분석 시 변수 간의 상관관계를 시각화하여 다중공선성을 확인하기 가장 좋은 도구는?",
+    "choices": [
+      "박스플롯",
+      "히스토그램",
+      "히트맵(Heatmap)",
+      "파이 차트"
+    ],
+    "answer": "히트맵(Heatmap)",
+    "explanation": "히트맵은 변수 간 상관계수를 색상으로 표현하여 관계를 한눈에 파악하게 해줍니다."
+  },
+  {
+    "id": 3,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "CNN에서 이미지의 가로, 세로 크기를 줄여 연산량을 줄이고 주요 특징을 뽑아내는 층은?",
+    "choices": [
+      "입력층",
+      "풀링층(Pooling Layer)",
+      "완전 연결 층",
+      "드롭아웃층"
+    ],
+    "answer": "풀링층(Pooling Layer)",
+    "explanation": "풀링(Max Pooling 등)은 특징맵의 크기를 줄여 효율성을 높입니다."
+  },
+  {
+    "id": 4,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 '데이터의 차원이 증가할수록 분석 공간이 기하급수적으로 커지는 현상'을 무엇이라 하는가?",
+    "choices": [
+      "과적합",
+      "차원의 저주",
+      "기울기 소실",
+      "모드 붕괴"
+    ],
+    "answer": "차원의 저주",
+    "explanation": "차원의 저주는 데이터가 희소해져 모델 성능이 떨어지는 원인이 됩니다."
+  },
+  {
+    "id": 5,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "시퀀스 데이터 처리에 강하며, 과거 정보를 은닉 상태로 넘겨주는 재귀적 구조의 모델은?",
+    "choices": [
+      "CNN",
+      "RNN",
+      "GAN",
+      "MLP"
+    ],
+    "answer": "RNN",
+    "explanation": "RNN은 순서가 있는 데이터를 처리하기 위해 이전 상태를 다음으로 넘기는 구조를 가집니다."
+  },
+  {
+    "id": 6,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "사전 학습된 모델을 가져와 새로운 목적에 맞춰 가중치를 미세하게 조정하는 과정은?",
+    "choices": [
+      "파인 튜닝(Fine-tuning)",
+      "데이터 증강",
+      "차원 축소",
+      "데이터 누수"
+    ],
+    "answer": "파인 튜닝(Fine-tuning)",
+    "explanation": "이미 학습된 모델을 특정 작업에 최적화하는 과정을 파인 튜닝이라 합니다."
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "이미지 생성 시 가짜 이미지를 만드는 생성자와 이를 감별하는 판별자가 대립하며 학습하는 모델은?",
+    "choices": [
+      "Diffusion",
+      "GAN",
+      "BERT",
+      "LSTM"
+    ],
+    "answer": "GAN",
+    "explanation": "GAN은 생성자와 판별자의 적대적 관계를 이용해 이미지를 생성합니다."
+  },
+  {
+    "id": 8,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "다음 중 'AI 분야의 깃허브'로 불리며 다양한 모델과 데이터셋을 제공하는 오픈소스 플랫폼은?",
+    "choices": [
+      "TensorFlow",
+      "PyTorch",
+      "HuggingFace",
+      "Kaggle"
+    ],
+    "answer": "HuggingFace",
+    "explanation": "허깅페이스는 현대 AI 생태계의 중심적인 커뮤니티입니다."
+  },
+  {
+    "id": 9,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "경사하강법에서 가중치를 업데이트할 때 이동하는 간격(보폭)을 의미하는 것은?",
+    "choices": [
+      "에포크",
+      "학습률(Learning Rate)",
+      "스트라이드",
+      "패딩"
+    ],
+    "answer": "학습률(Learning Rate)",
+    "explanation": "학습률은 오차를 줄이기 위해 가중치를 조절하는 폭을 결정합니다."
+  },
+  {
+    "id": 10,
+    "type": "multiple_choice",
+    "difficulty": "easy",
+    "question": "딥러닝 학습 시 검증 오차가 다시 증가하는 시점에 학습을 중단하여 과적합을 막는 기법은?",
+    "choices": [
+      "드롭아웃",
+      "조기 종료(Early Stopping)",
+      "데이터 증강",
+      "L1 규제"
+    ],
+    "answer": "조기 종료(Early Stopping)",
+    "explanation": "조기 종료는 학습 데이터에 과하게 맞춰지기 전 학습을 멈추는 규제 기법입니다."
+  },
+  {
+    "id": 11,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "박스플롯에서 이상치(Outlier)를 판별하는 기준으로 Q1, Q3와 함께 사용하는 값은?",
+    "choices": [
+      "표준편차",
+      "1.5 * IQR",
+      "중앙값",
+      "최빈값"
+    ],
+    "answer": "1.5 * IQR",
+    "explanation": "보통 Q1-1.5*IQR 미만이거나 Q3+1.5*IQR 초과인 값을 이상치로 봅니다."
+  },
+  {
+    "id": 12,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "모델이 데이터를 얼마나 잘 설명하는지 나타내는 지표인 결정계수(R²)의 값은 보통 어떤 범위인가?",
+    "choices": [
+      "-1 ~ 1",
+      "0 ~ 1",
+      "0 ~ 무한대",
+      "-무한대 ~ 1"
+    ],
+    "answer": "0 ~ 1",
+    "explanation": "결정계수는 0에 가까우면 설명력이 낮고, 1에 가까우면 설명력이 높음을 뜻합니다."
+  },
+  {
+    "id": 13,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "분류 모델 평가 시, 실제 양성(Positive) 데이터 100개 중 모델이 양성으로 정확히 맞춘 비율을 나타내는 지표는?",
+    "choices": [
+      "정밀도(Precision)",
+      "재현율(Recall)",
+      "정확도(Accuracy)",
+      "특이도(Specificity)"
+    ],
+    "answer": "재현율(Recall)",
+    "explanation": "재현율은 놓치지 않고 찾아내는 능력을 평가하며 TP / (TP + FN)으로 계산합니다."
+  },
+  {
+    "id": 14,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "CNN 계산 문제입니다. 입력 크기가 5x5, 필터가 3x3, 패딩이 1, 스트라이드가 1일 때 출력 특징맵의 크기는?",
+    "choices": [
+      "3x3",
+      "4x4",
+      "5x5",
+      "7x7"
+    ],
+    "answer": "5x5",
+    "explanation": "공식: (5 - 3 + 2*1) / 1 + 1 = 5. 따라서 5x5입니다."
+  },
+  {
+    "id": 15,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "가중치 규제 기법 중 일부 가중치를 완전히 0으로 만들어 변수 선택의 효과를 내는 방식은?",
+    "choices": [
+      "L1 규제(Lasso)",
+      "L2 규제(Ridge)",
+      "드롭아웃",
+      "배치 정규화"
+    ],
+    "answer": "L1 규제(Lasso)",
+    "explanation": "L1 규제는 절댓값 합을 이용해 불필요한 가중치를 0으로 만듭니다."
+  },
+  {
+    "id": 16,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "신경망 학습에서 관성(Momentum)과 가중치별 적응적 학습률을 모두 활용하는 최적화 알고리즘은?",
+    "choices": [
+      "SGD",
+      "Adam",
+      "Adagrad",
+      "RMSprop"
+    ],
+    "answer": "Adam",
+    "explanation": "Adam은 매우 효율적이고 빠른 수렴 속도를 보여주어 가장 권장되는 알고리즘입니다."
+  },
+  {
+    "id": 17,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "RNN의 발전 모델로, Cell state와 Gate 구조를 통해 긴 문장 처리 시 기울기 소실 문제를 해결한 모델은?",
+    "choices": [
+      "CNN",
+      "LSTM",
+      "Perceptron",
+      "BERT"
+    ],
+    "answer": "LSTM",
+    "explanation": "LSTM은 장기 의존성 문제를 완화하여 시퀀스 데이터를 더 잘 처리합니다."
+  },
+  {
+    "id": 18,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "이미지와 텍스트를 같은 공간에서 비교하는 CLIP 모델이 두 데이터의 거리를 계산할 때 주로 쓰는 방식은?",
+    "choices": [
+      "유클리드 거리",
+      "코사인 유사도",
+      "맨해튼 거리",
+      "L1 거리"
+    ],
+    "answer": "코사인 유사도",
+    "explanation": "CLIP은 벡터 사이의 각도를 이용한 코사인 유사도로 정답 여부를 판단합니다."
+  },
+  {
+    "id": 19,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Diffusion 모델이 GAN보다 이미지 생성 시 붕괴(Mode Collapse) 현상이 적은 주된 이유는?",
+    "choices": [
+      "연산량이 GAN보다 훨씬 적어서",
+      "노이즈를 단계적으로 제거하며 분포를 학습하는 안정적인 방식이라서",
+      "이미지를 패치 단위로 처리하기 때문에",
+      "비지도 학습이 아닌 지도 학습 방식이라서"
+    ],
+    "answer": "노이즈를 단계적으로 제거하며 분포를 학습하는 안정적인 방식이라서",
+    "explanation": "디퓨전 모델은 노이즈 예측기를 통해 확률 분포를 세밀하게 복원하여 안정적입니다."
+  },
+  {
+    "id": 20,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "다음 중 파운데이션 모델(Foundation Model)의 가장 핵심적인 학습 방식은?",
+    "choices": [
+      "라벨링 데이터 기반의 지도 학습",
+      "방대한 데이터를 스스로 학습하는 자기 지도 학습(Self-supervised)",
+      "사람의 개입이 없는 단순 비지도 군집화",
+      "오직 텍스트만 처리하는 순환 신경망 방식"
+    ],
+    "answer": "방대한 데이터를 스스로 학습하는 자기 지도 학습(Self-supervised)",
+    "explanation": "파운데이션 모델은 방대한 무작위 데이터를 통해 범용적인 지식을 사전 학습합니다."
+  },
+  {
+    "id": 21,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "전이 학습에서 특징 추출부의 하위 층 가중치를 고정하고 상위 층만 학습하는 이유는?",
+    "choices": [
+      "하위 층은 이미지의 일반적인 특징(선, 면 등)을 이미 잘 뽑기 때문에",
+      "연산량을 늘려서 정확도를 높이기 위해",
+      "데이터 증강을 대체하기 위해",
+      "출력 데이터를 1차원으로 만들기 위해"
+    ],
+    "answer": "하위 층은 이미지의 일반적인 특징(선, 면 등)을 이미 잘 뽑기 때문에",
+    "explanation": "사전 학습된 범용적 특징을 그대로 활용하여 학습 효율을 높이는 전략입니다."
+  },
+  {
+    "id": 22,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "LLM 평가 방식 중 사람이 아닌 다른 고성능 AI 모델이 품질을 채점하게 하는 방식은?",
+    "choices": [
+      "Human Evaluation",
+      "LLM-as-a-judge",
+      "Cross Validation",
+      "A/B Testing"
+    ],
+    "answer": "LLM-as-a-judge",
+    "explanation": "이는 정성적인 답변을 빠르고 비용 효율적으로 평가하기 위한 대안으로 쓰입니다."
+  },
+  {
+    "id": 23,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "Stable Diffusion 모델의 핵심 구조로, 연산 효율을 위해 잠재 공간에서 작동하는 모델은?",
+    "choices": [
+      "LDM(Latent Diffusion Model)",
+      "RNN",
+      "Decision Tree",
+      "MLP"
+    ],
+    "answer": "LDM(Latent Diffusion Model)",
+    "explanation": "LDM은 픽셀이 아닌 압축된 잠재 공간에서 연산하여 속도와 자원을 절약합니다."
+  },
+  {
+    "id": 24,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "학습 시 데이터의 통계적 특성 자체가 변하여 모델 성능이 하락하는 '분포 변화'에 대응하기 가장 좋은 방법은?",
+    "choices": [
+      "과적합을 더 심하게 유도한다.",
+      "새로운 분포의 데이터를 수집하여 모델을 재학습한다.",
+      "활성화 함수를 시그모이드로 교체한다.",
+      "데이터 증강을 중단한다."
+    ],
+    "answer": "새로운 분포의 데이터를 수집하여 모델을 재학습한다.",
+    "explanation": "분포가 변하면(Distribution Shift) 바뀐 데이터를 학습에 반영해야 합니다."
+  },
+  {
+    "id": 25,
+    "type": "multiple_choice",
+    "difficulty": "medium",
+    "question": "SANA 모델 등에서 사용하는 기법으로, 큰 모델(Teacher)의 핵심 지식만 추출해 작은 모델(Student)에 전달하는 방식은?",
+    "choices": [
+      "Fine-tuning",
+      "Knowledge Distillation(지식 증류)",
+      "Zero-shot Learning",
+      "Few-shot Learning"
+    ],
+    "answer": "Knowledge Distillation(지식 증류)",
+    "explanation": "지식 증류는 모델 경량화와 효율성을 높이는 데 쓰이는 기법입니다."
+  },
+  {
+    "id": 26,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "입력 크기가 6x6이고 3x3 필터를 사용할 때, 패딩 0, 스트라이드 1이라면 출력 특징맵의 크기를 숫자로만 적으시오.",
+    "answer": [
+      "4"
+    ],
+    "explanation": "공식: (6 - 3 + 2*0) / 1 + 1 = 4."
+  },
+  {
+    "id": 27,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "Transformer 구조에서 문장 내 모든 단어 간의 연관성을 한 번에 파악하는 핵심 메커니즘의 이름은?",
+    "answer": [
+      "셀프 어텐션",
+      "Self-Attention",
+      "Self Attention"
+    ],
+    "explanation": "셀프 어텐션은 병렬 처리를 통해 문맥 파악 능력을 획기적으로 올렸습니다."
+  },
+  {
+    "id": 28,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "훈련 데이터의 평균/표준편차를 쓰지 않고 테스트 데이터 자체의 통계량으로 표준화하여 정보가 새나가는 현상을 무엇이라 합니까?",
+    "answer": [
+      "데이터 누수",
+      "Data Leakage"
+    ],
+    "explanation": "데이터 누수는 모델의 성능을 허위로 높여 실제 서비스 시 문제를 일으킵니다."
+  },
+  {
+    "id": 29,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "인간의 피드백을 반영해 모델이 사람의 선호도에 맞는 답변을 하도록 강화학습하는 기법의 약자는?",
+    "answer": [
+      "RLHF"
+    ],
+    "explanation": "RLHF는 챗봇 등이 더 인간적인 답변을 하도록 유도하는 필수 기법입니다."
+  },
+  {
+    "id": 30,
+    "type": "short_answer",
+    "difficulty": "medium",
+    "question": "정밀도(Precision)와 재현율(Recall)의 조화 평균으로 계산되는 모델 성능 평가 지표는?",
+    "answer": [
+      "F1 스코어",
+      "F1-score",
+      "F1 score"
+    ],
+    "explanation": "F1 스코어는 두 지표가 모두 중요할 때 균형 잡힌 평가를 돕습니다."
+  }
+]
