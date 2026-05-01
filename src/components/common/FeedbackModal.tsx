@@ -32,6 +32,9 @@ export default function FeedbackModal({
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
 
+  // [학습] 비동기 제출 흐름의 표준 — try/catch/finally + submitting 플래그.
+  //        try: 정상 완료 시 성공 콜백, catch: 사용자에게 에러 메시지, finally: 어떤 결과든 로딩 플래그 해제.
+  //        saveFeedback 만은 silent fail 하지 않고 throw 한다 (PR #5 학습) — 사용자 명시 액션이라 UI 가 알림 처리.
   async function handleSubmit() {
     if (!reportType) {
       setError('신고 유형을 선택해주세요.')
@@ -45,6 +48,8 @@ export default function FeedbackModal({
         questionId: question.id,
         reportType,
         description,
+        // [학습] suggestedAnswer || undefined — 빈 문자열을 undefined 로 변환. DB 레이어에서 ?? null 로 처리됨.
+        //        || 가 ?? 와 다른 점: 빈 문자열을 falsy 로 보고 undefined 로 만든다. 여기선 의도 정확히 부합.
         suggestedAnswer: suggestedAnswer || undefined,
       })
       onSuccess()
@@ -55,6 +60,8 @@ export default function FeedbackModal({
     }
   }
 
+  // [학습] Modal 을 wrapper 로 사용 — onClose 만 넘기고 본문은 children 으로 작성.
+  //        FeedbackModal 은 "모달의 콘텐츠" 책임만, Modal 은 "외곽(배경+ESC+포지션)" 책임만. 단일 책임 분리.
   return (
     <Modal onClose={onClose}>
       <div className="flex items-center justify-between mb-4">
