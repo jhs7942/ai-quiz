@@ -14,6 +14,8 @@ interface SidebarProps {
   onWrongNoteClick?: () => void
 }
 
+// [학습] 디폴트 값을 구조 분해에서 직접 — `mode = 'category'`. 호출처가 mode 를 안 넘기면 'category'.
+//        타입은 optional('mode?:')이지만 런타임 기본값을 여기서 보장 → 함수 본체에서 mode 가 항상 정의됨.
 export default function Sidebar({
   categories,
   selected,
@@ -25,7 +27,12 @@ export default function Sidebar({
   onMockExamClick,
   onWrongNoteClick,
 }: SidebarProps) {
+  // [학습] derived state — selected.length === categories.length 만 검사하면 둘 다 0일 때도 true 가 되어 잘못된 표시.
+  //        && categories.length > 0 으로 빈 상태 가드.
   const allSelected = selected.length === categories.length && categories.length > 0
+  // [학습] selector 패턴 — useWrongNoteStore((s) => s.wrongNotes.length) 처럼 함수를 넘기면
+  //        그 함수가 반환하는 값이 바뀔 때만 컴포넌트가 리렌더된다. wrongNotes 배열 참조 자체보다 length 변경에만 반응.
+  //        성능 최적화의 핵심 패턴 — store 의 다른 키 변경에 영향 받지 않는다.
   const wrongNoteCount = useWrongNoteStore((s) => s.wrongNotes.length)
 
   const content = (
@@ -106,14 +113,19 @@ export default function Sidebar({
     </div>
   )
 
+  // [학습] Fragment(<>...</>) — 의미 없는 래퍼 div 추가 없이 형제 요소 여러 개를 반환할 때 사용.
+  //        React 컴포넌트는 단일 루트 요소만 반환 가능한데, Fragment 가 그 제약을 우회.
   return (
     <>
-      {/* 데스크톱: 고정 사이드바 */}
+      {/* [학습] 반응형 분기 — 같은 콘텐츠({content})를 데스크톱(고정 사이드바) 과 모바일(드로어 오버레이) 두 형태로 렌더.
+          Tailwind 의 `hidden lg:flex` (lg 이상에서만 보임) 와 `lg:hidden` (lg 미만에서만 보임) 으로 화면 크기에 따라 켜고 끈다. */}
       <aside className="hidden lg:flex w-64 shrink-0 bg-[#F0EDE8] dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-[calc(100vh-56px)] sticky top-14 flex-col">
         {content}
       </aside>
 
       {/* 모바일: 드로어 */}
+      {/* [학습] 드로어 패턴 — fixed inset-0 (전체 화면 덮음) + 반투명 배경(`bg-black/40`) + 슬라이드 사이드 패널.
+          배경 클릭 시 onClose — 사용자 직관적 UX. */}
       {isOpen && (
         <div className="lg:hidden fixed inset-0 z-40 flex">
           <div className="absolute inset-0 bg-black/40" onClick={onClose} />
