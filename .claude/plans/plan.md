@@ -2,6 +2,62 @@
 
 ---
 
+## 학습용 코드 주석 시리즈 — 전체 코드 (2026-05-02)
+
+### 목적
+PR #1(`docs/learn-quiz-flow`)에 이어 **실사용 파일 36개 전체**에 학습용 주석을 추가한다. 각 PR 단위로 머지·리뷰가 가능하도록 의미 단위 그룹으로 분할(13개 PR)하여, 사용자가 PR 한 건씩 읽으며 학습할 수 있게 한다.
+
+### 시리즈 매핑
+
+| # | 브랜치 | 그룹 | 파일 | 주제 |
+|---|---|---|---|---|
+| 2 | `docs/learn-app-bootstrap` | 진입·라우팅 | `src/main.tsx`, `src/App.tsx` | React 18 진입점, `createRoot`, `StrictMode`, `BrowserRouter`/`Routes`/`Navigate` |
+| 3 | `docs/learn-types` | 도메인 모델 | `src/types/index.ts` | discriminated union(`Question`), `Record`, `Partial`, optional 필드, store 인터페이스 |
+| 4 | `docs/learn-data-pipeline` | 데이터 파이프라인 | `src/lib/quiz.ts`, `src/lib/mockExam.ts`, `src/lib/session.ts`, `src/lib/supabase.ts` | `fetch`+JSON, async/await 누적, 균등 배분 알고리즘, env 환경변수 분기 |
+| 5 | `docs/learn-db-layer` | DB 통신 | `src/lib/db.ts` | Supabase 클라이언트, upsert/select, silent-fail 패턴, 세션·답안·피드백 스키마 |
+| 6 | `docs/learn-store-wrong-note` | 보조 스토어 | `src/store/wrongNoteStore.ts` | localStorage persist, 중복 방지(`already`) 패턴, `quizStore`와 storage 분리 이유 |
+| 7 | `docs/learn-hooks` | 커스텀 훅 | `src/hooks/useDarkMode.ts`, `src/hooks/useMeta.ts`, `src/hooks/useSession.ts` | useEffect+document 조작, prefers-color-scheme, 메타태그 동적 갱신, 단발 부수효과 |
+| 8 | `docs/learn-pages-main-result` | 핵심 페이지 | `src/pages/MainPage.tsx`, `src/pages/ResultPage.tsx` | 카테고리 선택 UX, 도넛 차트(SVG), 탭 필터, 오답만 재시험 흐름 |
+| 9 | `docs/learn-pages-static` | 정적 페이지 | `src/pages/AboutPage.tsx`, `src/pages/ContactPage.tsx`, `src/pages/PrivacyPage.tsx`, `src/pages/ReportPage.tsx` | 정적 콘텐츠 + Layout 재사용 |
+| 10 | `docs/learn-layout-components` | 레이아웃 | `src/components/layout/Header.tsx`, `Footer.tsx`, `Sidebar.tsx` | 반응형 드로어 패턴, route active 표시, 외부 클릭 닫기 |
+| 11 | `docs/learn-quiz-components` | 퀴즈 UI | `src/components/quiz/*` (6 파일) | 합성 컴포넌트, 콜백 prop, 키보드 접근성, 진행 상태 시각화 |
+| 12 | `docs/learn-result-components` | 결과 UI | `src/components/result/*` (2 파일) | SVG circle stroke 애니메이션, 리뷰 카드 분기 |
+| 13 | `docs/learn-common-components` | 공통 UI | `src/components/common/*` (5 파일) | Modal portal-less 패턴, Toast 자동 dismiss, AdSense ref 1회 init |
+| 14 | `docs/learn-feature-components` | 기능 컴포넌트 | `src/components/mock-exam/MockExamGrid.tsx`, `src/components/wrong-note/WrongNoteGrid.tsx` | 그리드 빈 상태, 카드 클릭 → 라우팅·스토어 액션 |
+
+> PR 시리즈는 모두 `main`에서 분기한다(상호 독립). 사용자는 임의 순서로 머지 가능. 각 PR은 ① 학습 포인트 목록 ② 리뷰 시 봐야 할 라인 ③ 사전 지식 + ④ 다음 PR 안내를 본문에 포함한다.
+
+### 주석 규칙 (PR #1과 동일)
+- 각 파일에 핵심 학습 포인트 **5~8개만** 추가 (소형 파일은 2~4개).
+- 주석 형식: `// [학습] {왜 이렇게 짰는지}` — 무엇이 아니라 **왜·언제 사용하는 패턴인지**.
+- 기존 주석 유지. 코드 로직은 **단 한 줄도 변경하지 않는다**.
+
+### 워크플로우 (PR 단위 반복)
+1. `main`에서 새 브랜치 분기 (`docs/learn-{group}`)
+2. 그룹 내 모든 파일에 학습용 주석 추가
+3. `npm run lint` + `npm run build` 통과 확인
+4. 한국어 커밋 메시지로 커밋
+5. `git push -u origin <branch>` + `env -u GITHUB_TOKEN gh pr create` 로 PR 생성
+6. PR 본문에 학습 포인트·리뷰 가이드·사전 지식·다음 PR 링크 명시
+7. main 으로 돌아와 다음 그룹 진행
+
+### 검증 지표
+> 측정 인프라 미구축 — 학습 목적 작업이므로 정성 기록만. 각 PR의 빌드 통과 + 사용자 머지가 검증 기준.
+
+### 테스트 케이스
+> 본 작업은 코드 로직 변경 없음(주석만 추가) — 동작 검증 불요, 테스트 케이스 면제. 각 PR마다 `npm run build`로 TS·Vite 빌드 통과 확인.
+
+### 사전 학습 필요 항목
+> 본 작업은 construction.md 미동반 — 사전 학습 면제. 본 작업 자체가 사용자의 사전 학습 자료다. PR 단위 학습 중 막히는 개념은 `.claude/study/YYYY-MM-DD/` 에 별도 노트로 기록한다.
+
+### Anti-scope (각 PR에서 하지 않을 것)
+- 코드 리팩토링·버그 수정·타입 정리(별도 PR)
+- 그룹 외 파일에 주석 추가
+- README·docs 추가(PR 본문이 그 역할)
+- ESLint 설정 변경(`_` prefix 예외 등은 별도 chore PR)
+
+---
+
 ## 학습용 코드 주석 추가 — quiz flow (2026-05-01)
 
 ### 목적
