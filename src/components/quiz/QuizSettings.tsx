@@ -7,6 +7,9 @@ interface QuizSettingsProps {
   onStart: () => void
 }
 
+// [학습] as const — 배열·객체를 readonly + 리터럴 타입으로 동결. value 가 string 이 아니라 'all' | 'easy' | ... 로 좁혀진다.
+//        그 결과 onChange({ difficulty: d.value }) 호출 시 d.value 가 정확히 QuizSettings.difficulty 와 호환되는지 컴파일러가 검증.
+//        as const 없으면 string 으로 넓혀져 매직 문자열 검사가 풀린다.
 const DIFFICULTIES = [
   { value: 'all', label: '전체' },
   { value: 'easy', label: '쉬움' },
@@ -14,8 +17,13 @@ const DIFFICULTIES = [
   { value: 'hard', label: '어려움' },
 ] as const
 
+// [학습] 배열 형태의 as const — 결과 타입은 readonly [5, 10, 15, 20, 'all'] (정확한 튜플).
+//        .map 등에서 c 의 타입이 number | 'all' 로 좁혀진다.
 const COUNTS = [5, 10, 15, 20, 'all'] as const
 
+// [학습] callback prop 패턴 — onChange/onStart 처럼 함수를 prop 으로 받아 부모에 이벤트 알림.
+//        Partial<QuizSettings> 를 받아 부분 갱신만 부모로 보낸다. 부모(MainPage) 의 setSettings 가 store 의 일부 키만 업데이트.
+//        "데이터는 위에서 아래로, 이벤트는 아래에서 위로" 가 React 의 단방향 데이터 흐름.
 export default function QuizSettingsPanel({ settings, maxQuestions, onChange, onStart }: QuizSettingsProps) {
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
