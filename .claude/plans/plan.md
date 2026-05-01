@@ -2,6 +2,45 @@
 
 ---
 
+## 학습용 코드 주석 추가 — quiz flow (2026-05-01)
+
+### 목적
+사용자(리액트 학습자)가 핵심 코드 흐름을 따라가도록 `src/store/quizStore.ts`와 `src/pages/QuizPage.tsx`에 **학습용 주석**을 추가한다. 동작 변경 없음 — PR 워크플로우 연습 + 코드 이해를 동시에 수행하기 위한 작업.
+
+### 작업 범위
+- `src/store/quizStore.ts` — Zustand 스토어 구조, `set/get` 사용, persist 미들웨어, store 간 참조 (`useWrongNoteStore.getState()`), 정답 정규화 로직
+- `src/pages/QuizPage.tsx` — 함수형 컴포넌트의 hook 흐름(`useState/useRef/useEffect`), early return과 hook 규칙, 의존성 배열, 키보드 이벤트 cleanup, 모의고사/일반 모드 분기
+
+### 주석 규칙
+- 각 파일에 핵심 학습 포인트 5~8개만 추가 (과도한 주석으로 코드를 더럽히지 않음).
+- 주석 형식: `// [학습] {왜 이렇게 짰는지}` — 무엇을 하는지가 아니라 **왜·언제 사용하는 패턴인지**만 적는다.
+- 기존 주석은 그대로 유지.
+- 코드 로직은 **단 한 줄도 변경하지 않는다**.
+
+### 워크플로우
+1. `docs/learn-quiz-flow` 브랜치 생성
+2. 두 파일에 학습용 주석 추가
+3. `npm run lint` + `npm run build` 로 빌드/린트 통과 확인
+4. 한국어 커밋 메시지로 커밋
+5. origin push + `gh pr create` 로 PR 생성
+6. PR 본문에 ① 학습 포인트 목록 ② 리뷰 시 봐야 할 라인 ③ 사전 지식(Zustand store 패턴, React hook 규칙) 명시
+
+### 검증 지표
+> 측정 인프라 미구축 — 학습 목적 작업이므로 정성 기록만. 빌드 통과 + 사용자 PR 승인이 검증 기준.
+
+### 테스트 케이스
+> 본 작업은 코드 로직 변경 없음(주석만 추가) — 동작 검증 불요, 테스트 케이스 면제. 단 `npm run build`로 TS 컴파일·Vite 빌드 통과 확인은 진행한다.
+
+### 사전 학습 필요 항목
+> 본 작업은 construction.md 미동반 — 사전 학습 면제. (오히려 본 작업 자체가 사용자의 사전 학습 자료다.)
+
+### Anti-scope (이번 PR에서 하지 않을 것)
+- 코드 리팩토링·버그 수정 (별도 PR로 분리)
+- 다른 파일에 주석 추가 (다음 학습 PR 후보)
+- README/docs 추가 (PR 본문이 그 역할을 대신함)
+
+---
+
 ## Service Worker (PWA) 구현 (2026-04-04)
 
 ### 목표

@@ -15,6 +15,9 @@ import type { Question } from '../types'
 export default function QuizPage() {
   const { userId } = useSession('/quiz')
   const navigate = useNavigate()
+  // [학습] useQuizStore() 호출은 "store의 모든 상태/액션을 통째로" 가져온다.
+  // 디스트럭처링으로 필요한 값만 뽑아 쓰지만, Zustand v5 기본 동작상 "이 컴포넌트가 store 어딘가가 바뀌면 재렌더"된다.
+  // 재렌더 최적화가 필요할 때는 useQuizStore((s) => s.questions) 처럼 selector를 쓴다 (이번 코드는 단순화 우선).
   const {
     questions,
     currentIndex,
@@ -44,11 +47,17 @@ export default function QuizPage() {
   const [showExitConfirm, setShowExitConfirm] = useState(false)
   const [showUnansweredPopup, setShowUnansweredPopup] = useState(false)
 
+  // [학습] useRef — "값은 들고 있되 그 값이 바뀌어도 재렌더는 일으키지 않는" 슬롯.
+  // useState를 쓰면 set할 때마다 컴포넌트가 다시 그려진다. 여기서 우리는 "이미 처리했는지 플래그"만 필요하지
+  // 화면에 표시할 값은 아니므로 useState 대신 useRef를 쓴다. .current 로 읽고 쓴다.
   // DB draft 세션 생성 (중복 방지)
   const creatingSession = useRef(false)
   // 이미 저장된 답안 ID 추적 (중복 INSERT 방지)
   const savedIds = useRef<Set<number>>(new Set())
 
+  // [학습] useEffect — 렌더 결과(JSX)를 만드는 일이 아닌 "외부 시스템과의 상호작용"(여기선 DB 호출)을 담당.
+  // 의존성 배열 [userId, startedAt, questions.length]에 들어간 값이 바뀔 때만 effect가 다시 돈다.
+  // 빈 배열 []이면 mount 시 1회, 배열 생략 시 매 렌더마다 실행된다.
   useEffect(() => {
     if (!userId || !startedAt || questions.length === 0) return
     if (quizSessionId || creatingSession.current) return
@@ -82,12 +91,19 @@ export default function QuizPage() {
     }, pretest)
   }
 
+  // [학습] navigate('/') 같은 사이드 이펙트는 "렌더 도중"에 호출하면 안 된다.
+  // (렌더 함수가 순수해야 한다는 React 규칙. 부르면 "Cannot update during render" 경고가 뜬다.)
+  // 그래서 이렇게 useEffect 안에서 호출 — "렌더가 끝난 뒤" React가 효과를 실행한다.
   useEffect(() => {
     if (questions.length === 0) {
       navigate('/')
     }
   }, [questions.length, navigate])
 
+  // [학습] Rules of Hooks 핵심: 모든 hook은 "조건문/early return 위에서, 항상 같은 순서로" 호출돼야 한다.
+  // 만약 아래의 if (questions.length === 0) return null 이후에 useEffect를 두면,
+  // 렌더 1회차(questions=[])에는 hook이 안 불리고, 2회차엔 불리는 식으로 호출 순서가 깨져 React가 상태 추적 불가.
+  // 그래서 hook(useEffect 등)을 모두 위로 끌어올리고, 거기서 쓰일 값(currentQuestion 등)도 미리 계산한다.
   // early return 전에 미리 계산 (useEffect 의존성으로 사용)
   const currentQuestion = questions[currentIndex]
   const isChecked = currentQuestion ? checkedIds.includes(currentQuestion.id) : false
@@ -95,6 +111,10 @@ export default function QuizPage() {
   const currentId = currentQuestion?.id ?? 0
   const selectedAnswer = currentQuestion ? selectedAnswers[currentQuestion.id] : undefined
 
+  // [학습] window 전역에 이벤트 리스너를 붙이는 패턴.
+  // 핵심은 "return () => window.removeEventListener(...)" — useEffect가 반환하는 cleanup 함수.
+  // 컴포넌트가 unmount되거나 effect가 다시 돌기 직전에 호출돼 리스너를 떼어낸다.
+  // cleanup이 없으면 페이지 이동 후에도 핸들러가 살아남아 "좀비 핸들러 + 메모리 누수"가 발생.
   // 엔터키로 정답 확인 및 다음 문제 이동
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -126,6 +146,9 @@ export default function QuizPage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isMockExam, isLastQuestion, isChecked, currentIndex, goToQuestion, showExitConfirm, showUnansweredPopup, feedbackTarget, selectedAnswer, checkAnswer, currentId])
 
+  // [학습] early return — questions가 없을 땐 아무것도 그리지 않는다.
+  // 위쪽 useEffect에서 navigate('/')가 곧 실행되므로, 그 사이의 한 프레임만 빈 화면을 보여준다는 뜻.
+  // 이 return 아래의 코드는 "questions가 반드시 1개 이상"이라는 가정 위에서 작성된다.
   if (questions.length === 0) {
     return null
   }
@@ -262,6 +285,9 @@ export default function QuizPage() {
               </button>
 
               <div className="flex gap-2 flex-1 sm:flex-none justify-end">
+                {/* [학습] JSX 안의 조건부 렌더링은 보통 두 가지 — `cond ? A : B` (양자택일)와 `cond && A` (있을 때만).
+                    아래는 모의고사/일반 모드 분기에는 삼항을, 모드 안의 단일 버튼 표시는 &&를 쓴다.
+                    if문은 JSX 식 안에서 직접 못 쓰기 때문에 이런 식으로 표현한다. */}
                 {isMockExam ? (
                   // 모의고사 모드: 정답 확인 없이 다음으로 이동, 마지막 문제에서 제출
                   <>
