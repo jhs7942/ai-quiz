@@ -24,6 +24,9 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
   const [loading, setLoading] = useState(true)
   const [starting, setStarting] = useState(false)
 
+  // [학습] Promise.all + 구조 분해 — 두 fetch 를 병렬로 동시 시작 (PR #4 의 직렬 for-of 와 대조).
+  //        .then(([cats, exams]) => ...) 처럼 결과 배열을 분해해서 받는다. 두 요청이 서로 독립적이라 병렬이 더 빠름.
+  //        Promise.allSettled 와의 차이: all 은 하나라도 실패하면 즉시 reject, allSettled 는 모두 끝날 때까지 기다림.
   useEffect(() => {
     Promise.all([fetchCategories(), fetchMockExams()])
       .then(([cats, exams]) => {
@@ -33,6 +36,9 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
       .finally(() => setLoading(false))
   }, [])
 
+  // [학습] 두 번째 effect — wrongNotes(store) + categories/mockExams(local) 가 합쳐져 화면용 그룹 데이터 생성.
+  //        deps 4개를 모두 나열 — 어느 하나라도 변경되면 그룹 재계산. ESLint exhaustive-deps 만족.
+  //        대안: 이 로직을 useMemo 로 빼면 setGroups 없이 derived state 로 만들 수 있다 — 더 깔끔. 하지만 effect 도 정당한 선택.
   useEffect(() => {
     if (loading) return
     const newGroups: WrongNoteGroup[] = []
@@ -55,6 +61,8 @@ export default function WrongNoteGrid({ onStart }: WrongNoteGridProps) {
 
     for (const cat of categories) {
       if (!groupIds.includes(cat.id)) continue
+      // [학습] new Set(...) — 배열을 Set 으로 변환. 이후 .has(id) 는 O(1) 조회. .includes() 는 O(n).
+      //        오답 id 가 많을수록 큰 차이 — N×M 시간을 N+M 으로 줄이는 흔한 최적화 패턴.
       const wrongIdsForCat = new Set(wrongNotes.filter((n) => n.quizId === cat.id).map((n) => n.id))
       const questions = await fetchQuiz(cat.id, cat.file)
       result.push(...questions.filter((q) => wrongIdsForCat.has(q.id)))
