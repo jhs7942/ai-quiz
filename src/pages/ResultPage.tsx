@@ -31,24 +31,35 @@ export default function ResultPage() {
   } = useQuizStore()
   const [tab, setTab] = useState<Tab>('all')
   const [toast, setToast] = useState('')
+  // [학습] saved 플래그 — DB 저장이 한 번만 일어나도록 가드. useRef 도 가능하지만 useState 면 리렌더가 일어나도 값이 보존되며,
+  //        이 컴포넌트에서는 saved 가 UI 에 영향을 주지 않으니 어느 쪽이든 정당. 단순 일관성으로 useState 선택.
   const [saved, setSaved] = useState(false)
 
+  // [학습] guard effect — questions 가 비었으면(직접 URL 로 들어왔거나 store 가 reset 됐으면) 메인으로 보낸다.
+  //        이 effect 는 navigate 부수효과만 일으키고 결과를 반환하지 않는다.
   useEffect(() => {
     if (questions.length === 0) {
       navigate('/')
     }
   }, [questions.length, navigate])
 
+  // [학습] early return — 위 effect 가 navigate 를 트리거해도, 그 사이의 렌더는 빈 화면이어야 한다.
+  //        return null 은 "아무것도 그리지 않는다" 의미. 빈 div 보다 명확.
   if (questions.length === 0) {
     return null
   }
 
+  // [학습] derived data — questions 와 scoredAnswers 를 결합해 화면용 구조로 변환. 매 렌더마다 새로 만들지만 가벼워서 OK.
+  //        scored?.answer (옵셔널 체이닝) — scoredAnswers[q.id] 가 undefined 일 때 안전하게 undefined 반환.
   const results = questions.map((q) => {
     const scored = scoredAnswers[q.id]
+    // [학습] isSkipped 정의 — "건너뜀 + 채점 안 됨". 사용자가 건너뛰고 다시 풀어 채점됐다면 isSkipped 가 false.
     const isSkipped = skippedIds.includes(q.id) && !scored
     return {
       question: q,
       userAnswer: scored?.answer,
+      // [학습] scored?.isCorrect ?? false — 옵셔널 체이닝 결과(undefined)를 nullish 로 받아 false 로 강제.
+      //        이 줄에서 ?? 와 ? 가 같이 쓰이는 이유: ? 는 access 안전, ?? 는 결과의 빈값 처리.
       isCorrect: scored?.isCorrect ?? false,
       isSkipped,
     }
@@ -115,15 +126,21 @@ export default function ResultPage() {
   }
 
   function handleCopyResult() {
+    // [학습] template literal — 백틱(`)으로 감싸 ${} 안에 표현식 삽입. 여러 줄도 그대로 작성 가능 (\n).
+    //        .join('\n') — 배열 → 문자열 변환. 줄바꿈 구분자.
     const text = `AI Quiz 결과: ${correctCount}/${results.length} (${scorePercent}%)\n${results
       .map((r, i) => {
         const status = r.isSkipped ? '↷' : r.isCorrect ? '✓' : '✗'
         return `${i + 1}. ${status} ${r.question.question.slice(0, 30)}...`
       })
       .join('\n')}`
+    // [학습] navigator.clipboard.writeText — Clipboard API. Promise 반환. HTTPS/localhost 에서만 동작.
+    //        구버전 대비로 document.execCommand('copy') fallback 도 있으나 모던 브라우저는 이걸로 충분.
     navigator.clipboard.writeText(text).then(() => setToast('결과가 클립보드에 복사되었습니다.'))
   }
 
+  // [학습] Record<Tab, string> — Tab 의 모든 가능값('all'|'correct'|...)을 키로 갖는 객체 강제.
+  //        Tab 에 새 값('partial')을 추가하면 TAB_LABELS 에 partial 키가 빠졌다고 컴파일러가 즉시 알린다 (exhaustiveness check).
   const TAB_LABELS: Record<Tab, string> = {
     all: `전체 (${results.length})`,
     correct: `맞은 (${correctCount})`,

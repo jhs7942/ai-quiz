@@ -12,12 +12,21 @@ import { useQuizStore } from '../store/quizStore'
 import { useSession } from '../hooks/useSession'
 import type { MockExam, QuizCategory } from '../types'
 
+// [학습] 로컬 타입 별칭. 이 페이지에서만 쓰는 좁은 union 이라 types/index.ts 까지 안 가도 충분.
+//        리터럴 union 으로 mode 가 가질 수 있는 값을 컴파일러가 강제(=오타 방지).
 type Mode = 'category' | 'mock-exam' | 'wrong-note'
 
 export default function MainPage() {
+  // [학습] useSession('/')  — 페이지 진입 시 익명 사용자 등록 + 접속 로그. 반환값(userId)이 필요 없으면 호출만.
   useSession('/')
+  // [학습] useNavigate — 프로그래매틱 라우팅. 사용자가 클릭해서 이동하는 <Link> 와 달리, 코드 흐름(예: 퀴즈 시작 후) 으로 이동할 때.
   const navigate = useNavigate()
+  // [학습] store 상태와 액션을 한 번에 구조 분해. 이 안의 어느 키든 바뀌면 컴포넌트 전체가 리렌더된다.
+  //        성능이 중요하면 selector 패턴(`useQuizStore((s) => s.selectedCategories)`)으로 좁히지만, 여기서는 단순함이 우선.
   const { selectedCategories, questionCount, difficulty, shuffle, setCategories, setSettings, startQuiz, startMockExam } = useQuizStore()
+  // [학습] local state vs store state — 화면 한 곳에서만 쓰는 임시 데이터(categories 목록, loading flag 등)는 useState.
+  //        다른 페이지/컴포넌트에서도 공유해야 하는 데이터(selectedCategories 등)만 store 에 둔다. 책임 경계가 명확해진다.
+  // [학습] setCategories_ (이름 충돌 회피) — store 의 setCategories 와 같은 이름이어서 _ 로 구분. 변수명만의 패턴.
   const [categories, setCategories_] = useState<QuizCategory[]>([])
   const [mockExams, setMockExams] = useState<MockExam[]>([])
   const [loading, setLoading] = useState(true)
@@ -26,13 +35,16 @@ export default function MainPage() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [mode, setMode] = useState<Mode>('category')
 
+  // [학습] mount-once effect — deps [] 빈 배열이면 첫 렌더에만 실행. 카테고리 목록은 페이지 진입 시 한 번만 fetch.
   useEffect(() => {
     fetchCategories()
       .then(setCategories_)
+      // [학습] .finally() — 성공/실패와 무관하게 실행. 로딩 플래그를 끄는 것 같은 "정리 작업" 에 적합.
       .finally(() => setLoading(false))
   }, [])
 
   // 모의고사 모드 진입 시 목록 로드
+  // [학습] deps [mode] — mode 가 바뀔 때마다 effect 재실행. mock-exam 외엔 early return → 다른 모드 전환에선 빈 호출만.
   useEffect(() => {
     if (mode !== 'mock-exam') return
     setMockExamsLoading(true)
@@ -41,7 +53,10 @@ export default function MainPage() {
       .finally(() => setMockExamsLoading(false))
   }, [mode])
 
+  // [학습] derived state — store 의 id 배열 + 페이지의 categories 를 매 렌더마다 결합해 새 배열 생성.
+  //        useMemo 가 아닌 직접 계산 — 배열이 작고 .filter 가 가벼워서 메모이제이션이 오히려 오버헤드.
   const selectedCats = categories.filter((c) => selectedCategories.includes(c.id))
+  // [학습] reduce 로 합계 계산. (sum, cat) => sum + cat.questionCount 가 누적기 패턴.
   const estimatedMax = selectedCats.reduce((sum, cat) => sum + cat.questionCount, 0)
 
   async function handleStart() {
@@ -132,6 +147,8 @@ export default function MainPage() {
             <p className="text-sm text-blue-600 mb-4 text-center">문제를 불러오는 중...</p>
           )}
 
+          {/* [학습] 다중 분기 삼항 — 4단계 nested ternary. 가독성 한계에 가깝다.
+              깊이가 더 깊어지면 함수로 추출하거나 if/else 로 컴포넌트를 미리 결정한 뒤 변수에 담는다 (predicate switch). */}
           {mode === 'wrong-note' ? (
             <WrongNoteGrid onStart={handleWrongNoteStart} />
           ) : mode === 'mock-exam' ? (
