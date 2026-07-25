@@ -1,18 +1,28 @@
 # AI Quiz — 싸피 AI 시험 대비 학습 퀴즈 플랫폼
 
-> **4시간 MVP** 제약 안에서 LLM 동적 생성 대신 **싸피 교재 기반 정적 JSON**을 택해, 1 캠퍼스 기획이 전국으로 유기적 확산. **총 92,329건 퀴즈 풀이 · 6,343 세션** 도달.
+> **4시간 MVP** 제약 안에서 LLM 동적 생성 대신 **싸피 교재 기반 정적 JSON**을 택해, 1 캠퍼스 기획이 전국으로 유기적 확산. **총 92,329건 퀴즈 풀이 · 6,343 세션 · 활성 학습자 826명** 도달.
 
 <p align="center">
   <a href="https://ai-quiz-xi-livid.vercel.app"><img src="https://img.shields.io/badge/Live-ai--quiz.vercel.app-000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live"></a>
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React 19">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Zustand-433E38?style=for-the-badge" alt="Zustand">
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
   <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
 </p>
 
 **Live** · <https://ai-quiz-xi-livid.vercel.app>
-**기간** · MVP 4시간 + 1·2차 시험 대비 개선
-**역할** · 코드 개발 1인 / 콘텐츠 팀 2명
+**기간** · 2026.03 · MVP 4시간 + 1·2차 시험 대비 개선
+**역할** · 개발 1인 / 퀴즈 제작 2인
+**기술 스택** · React 19 · TypeScript · Zustand · Vite · Supabase(PostgreSQL) · Claude Code
+
+---
+
+## 프로젝트 배경
+
+싸피 AI 시험 2일 전, 교육생들은 각자 LLM으로 기출 문제를 만들고 있었다. 그러나 **실제 배운 범위가 아닌 문제까지 생성**되고, **매번 제작에 약 10분**이 들었으며, 이동 중 같은 **자투리 시간에는 활용할 수 없었다.**
+
+그래서 미리 검수한 문제 은행을 한 번 만들어 함께 쓰기로 했다. 시험까지 남은 시간은 2일 — **기획·배포를 포함한 개발 기간을 4시간으로 못박고** 시작했다.
 
 ---
 
@@ -23,6 +33,12 @@
 | 퀴즈 풀이 | 73,848 | 18,481 | **92,329** |
 | 세션 | 4,795 | 1,548 | **6,343** |
 | 콘텐츠 | 930문제 | +180문제 | **1,160문제 · 12 카테고리** |
+
+**운영 성과**
+
+- **활성 학습자 826명** — 싸피 약 1,000명 중 약 83%가 실제 학습에 사용
+- **재시도 정답률 67% → 75%** — 오답 재시험을 반복하며 개선
+- **문제 신고 반영 120 / 134건 (약 90%)** — 사용자 신고 기반 상시 교정
 
 > 1 캠퍼스(서울 15기) 기획 → 부산·광주 등 지역 캠퍼스로 유기적 확산.
 
@@ -50,9 +66,13 @@
 
 **왜 LLM 동적 생성이 아닌 정적 JSON인가** — 시험 범위가 싸피 내부 교재로 고정되어 있어 LLM은 범위 적합도를 구조적으로 보장할 수 없다. *"교재 기반 + AI 초안 + 인간 검수"* 하이브리드로 즉시 응답·0원·범위 100% 일치를 모두 확보.
 
+**문제 생성·검수 파이프라인** — 강의를 실시간 전사 앱으로 받아쓰고 → NotebookLM으로 초안을 뽑은 뒤 → 팀원 2명이 교재와 대조해 검수. LLM의 속도와 사람 검수의 정확도를 결합해 4시간 안에 검증된 문제 은행을 채웠다.
+
 **가용성 원칙 — "DB가 죽어도 퀴즈는 돈다"** — 분석·로깅용 Supabase 호출은 모두 silent fail. 정적 JSON이 단일 진실 소스라 핵심 플로우는 무중단.
 
-**의도적으로 빼낸 것** — 정답률 표시(UX 오버헤드), 로그인(복잡도), PWA(peer dep 실패 후 반응형으로 대체).
+**의도적으로 빼낸 것** — *"4시간 안에 배포하려면 평소 절차를 다 밟을 수 없다"* 는 전제에서, 무엇을 버릴지부터 정했다.
+- *개발 절차* — 디자인 시안(토큰 절감) · 코드 리뷰(기능 우선) · 자동 테스트(로컬 직접 검증)
+- *제품 기능* — 정답률 표시(UX 오버헤드) · 로그인(복잡도) · PWA(peer dep 실패 → 반응형 대체)
 
 ---
 
