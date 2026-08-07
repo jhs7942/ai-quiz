@@ -1,0 +1,993 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><body style="margin:0;background:#FBFBF7"><style>
+  .ab{font-family:'Noto Sans KR',sans-serif;color:#2F3A39}
+  .ab *{box-sizing:border-box}
+  .ab a{color:inherit}
+  .ab-hero{position:relative;background:linear-gradient(135deg,#83CFC9 0%,#9AD8D2 100%);border:1.5px solid rgba(47,58,57,0.3);border-radius:22px 24px 20px 23px;padding:34px 36px;display:grid;grid-template-columns:1fr;align-items:center;box-shadow:0 16px 40px -22px rgba(47,58,57,0.5);overflow:hidden;margin-bottom:52px}
+  .ab-cloud{position:absolute;background:rgba(251,251,247,0.4);border-radius:999px;filter:blur(3px);pointer-events:none}
+  .ab-cloud.a{width:280px;height:90px;right:-40px;top:20px}
+  .ab-hero-txt{position:relative;z-index:1}
+  .ab-eyebrow{font-family:'Noto Sans KR',sans-serif;font-size:12px;letter-spacing:2.5px;color:#C8443C;background:#FBFBF7;display:inline-block;padding:6px 13px;border-radius:10px 11px 9px 11px;border:1.5px solid rgba(47,58,57,0.35);margin-bottom:12px}
+  .ab-name{font-family:'Noto Sans KR',sans-serif;font-size:42px;line-height:1.15;letter-spacing:-1px;color:#243130;margin:0 0 6px}
+  .ab-role{font-size:17.5px;font-weight:700;color:#2F3A39;margin:0 0 14px;line-height:1.6}
+  .ab-role .hl{color:#C8443C}
+  .ab-links{display:flex;gap:12px;flex-wrap:wrap}
+  .ab-lnk{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:15px;padding:10px 18px;border-radius:12px 13px 11px 13px;box-shadow:0 6px 14px -7px rgba(47,58,57,0.5)}
+  .ab-lnk .ab-ico{width:16px;height:16px;flex-shrink:0}
+  .ab-lnk.dark{background:#243130;color:#FBFBF7;border:1.5px solid rgba(47,58,57,0.4)}
+  .ab-lnk.ghost{background:#FBFBF7;color:#2F3A39;border:1.5px solid rgba(47,58,57,0.45)}
+  /* 클릭하면 주소를 클립보드로 복사한다 — 버튼 모양은 그대로 두고 토스트로 알린다 */
+  .ab-lnk.ab-copy{cursor:pointer}
+  .ab-toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,10px);z-index:9999;pointer-events:none;opacity:0;background:#243130;color:#FBFBF7;font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:-0.1px;padding:11px 20px;border-radius:12px 13px 11px 13px;box-shadow:0 12px 26px -12px rgba(47,58,57,0.8);transition:opacity .18s ease,transform .18s ease}
+  .ab-toast.show{opacity:1;transform:translate(-50%,0)}
+  .ab-toast.warn{background:#C8443C}
+  @media (prefers-reduced-motion:reduce){.ab-toast{transition:none}}
+  .ab-lnk.sm{font-size:13px;padding:7px 14px;border-radius:10px 11px 9px 11px;box-shadow:0 5px 12px -8px rgba(47,58,57,0.55)}
+  .ab-lnk.sm .ab-ico{width:14px;height:14px}
+  .ab-linkrow{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0}
+
+  .ab-section{margin-bottom:50px}
+  .ab-section:last-child{margin-bottom:0}
+  /* 소개문(.ab-secdesc)을 걷어냈으므로 제목~본문 여백을 여기서 확보한다. */
+  .ab-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px}
+  .ab-section h2{font-family:'Noto Sans KR',sans-serif;font-size:28px;letter-spacing:-0.5px;color:#243130;margin:0}
+  .ab-sectag{font-family:'Noto Sans KR',sans-serif;font-size:11px;letter-spacing:1.5px;color:#93A97F}
+
+  /* 메인 프로젝트 */
+  .ab-main{background:#fff;border:1.5px solid rgba(47,58,57,0.3);border-radius:18px 20px 16px 19px;padding:28px 30px;box-shadow:0 14px 32px -18px rgba(47,58,57,0.5)}
+  .ab-mtop{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-bottom:6px}
+  .ab-mtop h3{font-family:'Noto Sans KR',sans-serif;font-size:23px;color:#243130;margin:0}
+  .ab-badge{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;letter-spacing:1px;background:#C8443C;color:#FBFBF7;padding:4px 10px;border-radius:8px}
+  /* 배지 안 카테고리 라벨 — 값 앞에 흐리게 붙인다 */
+  .ab-badge b{font-weight:400;margin-right:6px}
+  /* 개발 1인이 본인임을 노란 별로 표시 */
+  .ab-badge .me{font-weight:700}
+  .ab-badge .me .st{color:#FFD54A;margin-right:3px}
+  /* 진행 중 상태 — 빨강 대신 초록으로 구분한다 */
+  .ab-badge.dev{background:#35804C}
+  /* 제목 줄 오른쪽 끝의 사이트 이동 버튼 */
+  .ab a.ab-visit{margin-left:auto;flex-shrink:0;font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;color:#C8443C;background:#FBFBF7;border:1.3px solid rgba(200,68,60,0.4);border-radius:14px;padding:5px 13px;text-decoration:none;white-space:nowrap}
+  .ab a.ab-visit:hover{background:#C8443C;color:#FBFBF7;border-color:#C8443C}
+  /* GitHub 변형 — 붉은 아웃라인 대신 깃허브 다크 + 옥토캣 로고 */
+  .ab a.ab-visit.gh{display:inline-flex;align-items:center;gap:6px;align-self:center;color:#FBFBF7;background:#24292F;border-color:#24292F}
+  .ab a.ab-visit.gh:hover{background:#1B1F24;border-color:#1B1F24;color:#FBFBF7}
+  .ab-mlead{font-size:14.5px;line-height:1.85;opacity:.9;margin:12px 0 20px}
+  /* 소개 글을 상황 &#183; 판단 &#183; 결과 세 덩어리로 끊어 읽는다 */
+  .ab-mlead.grp{margin-bottom:0}
+  .ab-mlead + .ab-mlead{margin-top:24px}
+  /* 3막 접기 — 접힌 상태에서도 각 막의 결과가 보이도록 요약줄에 성과를 노출 */
+  .ab-acts{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+  .ab-act{background:#FBFBF7;border:1.4px solid rgba(47,58,57,0.24);border-radius:14px 15px 13px 15px;overflow:hidden}
+  .ab-act[open]{background:#fff;box-shadow:0 8px 20px -16px rgba(47,58,57,0.5)}
+  .ab-actsum{display:flex;align-items:center;gap:11px;flex-wrap:wrap;padding:15px 18px;cursor:pointer;list-style:none;user-select:none}
+  .ab-actsum::-webkit-details-marker{display:none}
+  .ab-actsum::marker{content:''}
+  .ab-actsum:hover{background:rgba(200,68,60,0.05)}
+  .ab-actnum{flex-shrink:0;background:#243130;color:#FBFBF7;font-weight:700;font-size:12.5px;padding:4px 10px;border-radius:8px 9px 7px 9px}
+  .ab-acttitle{font-weight:700;font-size:15.5px;color:#243130;line-height:1.5}
+  .ab-actkey{margin-left:auto;flex-shrink:0;font-size:12.5px;font-weight:700;color:#C8443C;background:#FBFBF7;border:1.2px solid rgba(200,68,60,0.35);border-radius:14px;padding:3px 10px}
+  .ab-act[open] .ab-actkey{background:#C8443C;color:#FBFBF7;border-color:#C8443C}
+  .ab-actarrow{flex-shrink:0;font-size:11px;color:#2F3A39;opacity:.5}
+  /* 라벨 없는 토글 — 화살표만 남으므로 오른쪽 끝에 붙이고 줄 높이를 줄인다 */
+  .ab-actsum.bare{justify-content:flex-end;padding-top:9px;padding-bottom:9px}
+  .ab-act[open] .ab-actarrow{opacity:.8}
+  .ab-actbody{padding:14px 18px 18px;border-top:1.3px solid rgba(47,58,57,0.14)}
+  .ab-act h4{font-family:'Noto Sans KR',sans-serif;font-size:17px;color:#243130;margin:8px 0 9px}
+  .ab-act p{font-size:14px;line-height:1.85;opacity:.9;margin:0 0 10px}
+  .ab-actbody p:last-child{margin-bottom:0}
+  .ab-actbody ul{margin:0 0 10px;padding-left:18px}
+  .ab-actbody li{font-size:14px;line-height:1.85;opacity:.9;margin-bottom:5px}
+  .ab-actbody b{color:#243130}
+  /* 문제 → 해결 → 결과 3단 — 라벨을 왼쪽에 고정해 생각의 흐름이 한눈에 보이게 */
+  .ab-step{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:14px 0;border-top:1.2px solid rgba(47,58,57,0.30)}
+  .ab-step:first-of-type{border-top:0;padding-top:4px}
+  .ab-steplabel{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.5px;padding-top:3px}
+  .ab-step.q .ab-steplabel{color:#C8443C}
+  .ab-step.a .ab-steplabel{color:#243130}
+  .ab-step.r .ab-steplabel{color:#93A97F}
+  .ab-step ul{margin:0;padding-left:16px}
+  .ab-step li{font-size:13.5px;line-height:1.8;opacity:.9;margin-bottom:4px}
+  .ab-step li:last-child{margin-bottom:0}
+  /* 해결 단락 소제목 — 그룹 경계가 한눈에 보이도록 */
+  p.ab-subhead{font-weight:700;font-size:13.5px;color:#243130;margin:18px 0 5px}
+  p.ab-subhead:first-child{margin-top:0}
+  /* 섹션 본문의 소제목 — 아래 본문(14.5px)보다 커야 제목으로 읽힌다 */
+  .ab-main > p.ab-subhead{font-size:15px}
+  /* 소제목 사이 여백(18px)과 대비되도록 블록 전체를 촘촘하게 */
+  .ab-act.tight .ab-step li{line-height:1.62;margin-bottom:1px}
+  .ab-actbody code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:0.88em;background:#EAF3EE;border:1px solid rgba(47,58,57,0.18);border-radius:5px;padding:1px 5px;color:#243130}
+  .ab-act .num{color:#C8443C;font-weight:700}
+  /* 지표 표 — 결과 단락에서 라벨과 값을 나란히 읽히게 한다 */
+  .ab-rtable{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.7;margin:2px 0 0}
+  .ab-rtable tr{border-bottom:1px dashed rgba(47,58,57,0.10)}
+  .ab-rtable tr:last-child{border-bottom:0}
+  .ab-rtable th{text-align:left;padding:7px 14px 7px 0;font-weight:600;color:#2F3A39;opacity:.72;white-space:nowrap;vertical-align:top}
+  .ab-rtable td{padding:7px 0;color:#243130;vertical-align:top}
+  /* 업무 항목 — 한 칸에 여러 줄이 들어가므로 글머리 기호로 끊는다 */
+  .ab-rtable td ul{margin:0;padding-left:17px}
+  .ab-rtable td li{margin-bottom:3px}
+  .ab-rtable td li:last-child{margin-bottom:0}
+  /* 3열 변형 — 값과 설명을 갈라 값만 세로로 줄맞춤한다 */
+  .ab-rtable.metric th,.ab-rtable.metric td.v{width:1px;white-space:nowrap}
+  .ab-rtable.metric td.v{padding-right:18px}
+  .ab-rtable.metric td.n{color:#2F3A39;opacity:.74;font-size:12.5px}
+  .ab-aibox{background:#EAF3EE;border:1.4px dashed rgba(47,58,57,0.35);border-radius:13px 14px 12px 14px;padding:18px 22px}
+  .ab-aibox h4{font-family:'Noto Sans KR',sans-serif;font-size:15.5px;color:#243130;margin:0 0 10px}
+  .ab-aibox ul{margin:0;padding-left:18px}
+  .ab-aibox li{font-size:13.5px;line-height:1.9;opacity:.9}
+
+  /* AI 파이프라인 */
+  .ab-ailist{display:flex;flex-direction:column;gap:16px}
+  .ab-ai{background:#fff;border:1.5px solid rgba(47,58,57,0.28);border-radius:16px 17px 15px 17px;padding:22px 24px;box-shadow:0 10px 24px -14px rgba(47,58,57,0.45);display:flex;gap:18px;align-items:flex-start}
+  .ab-aiico{width:46px;height:46px;flex-shrink:0;border-radius:13px 14px 12px 13px;display:grid;place-items:center;font-size:24px;border:1.4px solid rgba(47,58,57,0.3);background:#C8E9E4}
+  .ab-ai h3{font-family:'Noto Sans KR',sans-serif;font-size:18px;color:#243130;margin:0 0 8px}
+  .ab-ai p{font-size:14px;line-height:1.85;opacity:.9;margin:0 0 10px}
+  .ab-ai .award{color:#C8443C;font-weight:700}
+
+  .ab-ptags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .ab-ptag{font-family:'Noto Sans KR',sans-serif;font-size:10.5px;letter-spacing:.5px;background:#EAF3EE;color:#243130;padding:4px 9px;border-radius:7px;border:1px solid rgba(47,58,57,0.22)}
+  .ab-plink{font-weight:700;font-size:13.5px;color:#C8443C;text-decoration:none}
+  /* 구조 다이어그램 — 코드에서 그대로 뽑은 그림이라 본문보다 위에 둔다 */
+  .ab-figs{display:grid;gap:18px;margin:4px 0 20px}
+  .ab-fig{background:#FBFBF7;border:1.4px solid rgba(47,58,57,0.28);border-radius:14px 16px 12px 15px;padding:12px 12px 10px;min-width:0}
+  /* 제목은 두고 그림만 가로로 민다 */
+  .ab-figbody{overflow-x:auto}
+  .ab-figbody svg{min-width:640px}
+  /* 도표 제목 — 그림 위로 올려 소제목처럼 읽는다 */
+  .ab-figcap{display:block;margin:0 0 10px;font-weight:700;font-size:13.5px;line-height:1.5;letter-spacing:-0.1px;color:#243130}
+  .ab-metrics{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .ab-metric{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:14px;background:#FBFBF7;border:1.3px solid rgba(47,58,57,0.28);border-radius:18px;padding:4px 12px;color:#243130}
+  .ab-metric b{color:#C8443C}
+  /* 카드 핵심 한 줄 — 클릭 전에도 "왜 볼 만한지"가 보이도록 */
+
+  /* 상세 팝업 — CSS 체크박스 방식(JS 없이 동작), JS는 Esc·스크롤잠금만 보강 */
+  .ab-mnote{background:#EAF3EE;border:1.3px dashed rgba(47,58,57,0.32);border-radius:11px;padding:13px 16px;font-size:13.5px;line-height:1.8;margin:14px 0 0}
+  .ab-blist{margin:0;padding:0;list-style:none;display:grid;gap:5px}
+  .ab-blist li{position:relative;padding-left:13px;font-size:13.5px;line-height:1.7;opacity:.88}
+  /* Blogger가 style 블록의 비ASCII 문자를 HTML 엔티티로 바꿔버려 CSS content 에
+     '·' 를 직접 넣으면 "&#183;" 여섯 글자가 그대로 찍힌다. 유니코드 이스케이프로 우회. */
+  .ab-blist li::before{content:"\00B7";position:absolute;left:3px;top:-1px;color:#C8443C;font-weight:700}
+  .ab-blist li b{color:#243130;opacity:1}
+  /* 한 줄로 강등한 항목: 제목·요약·링크를 한 행에 */
+  .ab-minor{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:11px 15px;background:rgba(251,251,247,0.55);border:1.3px dashed rgba(47,58,57,0.3);border-radius:12px 13px 11px 13px}
+  .ab-minor + .ab-minor{margin-top:8px}
+  /* 항목이 길면 제목 아래로 필드를 쌓아 읽기 쉽게 한다 */
+  .ab-minor.stack{display:block}
+  .ab-minor.stack h4{margin:0 0 6px;white-space:normal}
+  .ab-minor h4{margin:0;font-size:14px;color:#243130;white-space:nowrap}
+  .ab-minor span.d{font-size:13px;line-height:1.6;opacity:.85;flex:1 1 200px;min-width:0}
+  .ab-minor a{font-size:12.5px;font-weight:700;color:#C8443C;text-decoration:none;white-space:nowrap}
+
+  @media (max-width:760px){
+    .ab-hero{grid-template-columns:1fr;text-align:center}
+    .ab-links{justify-content:center}
+    .ab-ai{flex-direction:column;gap:12px}
+    .ab-main{padding:22px 20px}
+    /* 좁은 화면에서는 성과 배지를 제목 아래 줄로 내린다 */
+    .ab-actsum{padding:14px 15px;gap:9px}
+    .ab-acttitle{font-size:15px}
+    .ab-actkey{margin-left:0;order:3}
+    .ab-actarrow{margin-left:auto;order:2}
+    .ab-actbody{padding:13px 15px 16px}
+    /* 좁은 화면에서는 값 칸이 100px 남짓으로 눌려 줄바꿈이 과해진다. 라벨을 위로 쌓는다 */
+    .ab-rtable th,.ab-rtable td{display:block;white-space:normal}
+    .ab-rtable th{padding:8px 0 0;font-size:12px}
+    .ab-rtable td{padding:2px 0 8px}
+    /* 데스크톱의 폭 축소·nowrap을 푼다 — 선택자 우선순위를 맞춰야 덮인다 */
+    .ab-rtable.metric th,.ab-rtable.metric td.v,.ab-rtable.metric td.n{width:auto;white-space:normal}
+    .ab-rtable.metric td.v{padding:2px 0 0}
+    .ab-rtable.metric td.n{padding:1px 0 8px}
+    .ab-rtable.metric td.n:empty{display:none}
+    /* 좁은 화면에서는 팝업이 화면을 더 넓게 쓰도록 여백을 줄인다 */
+  }
+</style>
+
+<div class="ab">
+
+  <div class="ab-hero">
+    <div class="ab-cloud a"></div>
+    <div class="ab-hero-txt">
+      <div class="ab-eyebrow">PORTFOLIO</div>
+      <h1 class="ab-name">정현승</h1>
+      <p class="ab-role">AI와 함께 <span class="hl">빠르게 만들고</span>, 결과는 <span class="hl">수치로 검증하는</span> 풀스택 개발자</p>
+      <div class="ab-links">
+        <a class="ab-lnk dark" href="https://github.com/jhs7942" target="_blank" rel="noopener"><svg class="ab-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>GitHub</a>
+        <a class="ab-lnk ghost ab-copy" href="mailto:saver7942@gmail.com" data-copy="saver7942@gmail.com" aria-label="saver7942@gmail.com 복사" title="클릭하면 주소가 복사됩니다"><svg class="ab-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.3" y="3.3" width="13.4" height="9.4" rx="1.6"></rect><path d="M2 4.3l6 4.6 6-4.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="ab-copytxt">saver7942@gmail.com</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ab-section">
+    <div class="ab-sechead">
+      <h2>메인 프로젝트</h2>
+      <span class="ab-sectag">MAIN PROJECTS</span>
+    </div>
+
+    <div class="ab-main">
+      <div class="ab-mtop">
+        <h3>AI 퀴즈</h3>
+        <span class="ab-badge"><b>기간</b>2026.03</span>
+        <span class="ab-badge"><span class="me"><span class="st">&#9733;</span>본인 개발 1인</span> · 퀴즈 제작 2인</span>
+        <a class="ab-visit" href="https://ai-quiz-xi-livid.vercel.app/" target="_blank" rel="noopener">사이트 이동하기 &#8599;</a>
+      </div>
+      <div class="ab-ptags">
+        <span class="ab-ptag">React 19</span>
+        <span class="ab-ptag">TypeScript</span>
+        <span class="ab-ptag">Zustand</span>
+        <span class="ab-ptag">Vite</span>
+        <span class="ab-ptag">Supabase / PostgreSQL</span>
+        <span class="ab-ptag">Claude Code</span>
+      </div>
+      <p class="ab-mlead grp">싸피에서 AI 시험 이틀 전, 교육생들은 시험 대비를 위해 각자 생성형 LLM으로 기출 문제를 만들어 풀고 있었습니다.<br>
+기출 문제를 만들기 위해 각자 시험 범위를 지정해야 했고, <b>실제 배웠던 내용이 아닌 부분도 생성될 수 있었으며</b>, 제작에만 <b>약 10분</b>이 소요되었습니다.<br>
+그마저도 환경상 PC에서만 가능해, <b>이동 중과 같은 자투리 시간을 활용할 수 없었습니다.</b></p>
+      <p class="ab-mlead grp">이에 비효율성을 느껴, 미리 검수한 문제로 문제은행 사이트를 만들어 공유하면 모든 교육생에게 도움이 될 것이라고 생각했습니다.<br>
+시험까지 이틀이 남았기에 실사용 기간을 고려하여, 기획과 배포를 포함한 개발 기간을 <b>4시간</b>으로 잡고 Claude Code로 개발했습니다.</p>
+      <p class="ab-mlead">이 프로젝트는 서울에서 시작해 부산 &#183; 광주 등 전국 캠퍼스에서도 활용되었으며, <b>2주간 신고와 지표를 보며 개선했습니다.</b></p>
+
+<div class="ab-acts">
+        <details class="ab-act tight" open>
+          <summary class="ab-actsum bare">
+            <span class="ab-actarrow">&#9660;</span>
+          </summary>
+          <div class="ab-actbody">
+            <div class="ab-step q">
+              <span class="ab-steplabel">문제</span>
+              <ul>
+                <li><b>4시간</b> 안에 배포하려면 평소 쓰던 절차를 전부 밟을 수 없어, <b>무엇을 버릴지 먼저 정해야</b> 했습니다.</li>
+                <li>Claude Code <b>Pro 요금제</b>라 토큰 한도도 있었습니다. 시간뿐 아니라 <b>어디에 토큰을 쓸지</b>도 함께 정해야 했습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step a">
+              <span class="ab-steplabel">해결</span>
+              <div>
+                <p class="ab-subhead">문제 생성 및 검수 (팀원 2명 운영)</p>
+                <table class="ab-rtable" style="margin:0">
+                  <tbody>
+                    <tr>
+                      <th>전사</th>
+                      <td>강의를 재생하며 <b>실시간 전사 앱으로 텍스트를 확보</b>합니다. 녹화 · 분할 · 사후 변환 단계가 사라집니다.</td>
+                    </tr>
+                    <tr>
+                      <th>초안</th>
+                      <td>전사 텍스트를 <b>NotebookLM 소스로 넣어</b> 퀴즈 초안을 자동 생성합니다.</td>
+                    </tr>
+                    <tr>
+                      <th>검수</th>
+                      <td>정답 &#183; 해설과 <b>시험 범위를 교재와 대조</b>해 확정하고, 앱 JSON 스키마로 변환합니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p class="ab-subhead">절차 생략</p>
+                <ul>
+                  <li>디자인 시안, 코드 리뷰 에이전트, 자동 테스트 세 가지를 <b>의도적으로 생략</b>했습니다.</li>
+                </ul>
+                <table class="ab-rtable" style="margin:8px 0 0">
+                  <tbody>
+                    <tr>
+                      <th>디자인 시안</th>
+                      <td>토큰 소모가 가장 큰 구간이라 생략했습니다. <b>문제를 읽고 푸는 데 지장이 없으면 충분하다</b>고 기준을 정하고, 시안 없이 바로 구현했습니다.</td>
+                    </tr>
+                    <tr>
+                      <th>코드 리뷰</th>
+                      <td>가독성과 확장성보단 <b>당장의 기능 구현이 더욱 중요했기에</b> 생략했습니다. 다만 이후 리뷰 에이전트를 돌리자 <b>배치 저장에서 동시성 버그가 나왔습니다.</b></td>
+                    </tr>
+                    <tr>
+                      <th>자동 테스트</th>
+                      <td>토큰 한도가 빠듯해 <b>테스트는 로컬 환경에서 직접</b> 진행했습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="ab-step r">
+              <span class="ab-steplabel">결과</span>
+              <div>
+                <table class="ab-rtable metric">
+                  <tbody>
+                    <tr>
+                      <th>개발 기간</th>
+                      <td class="v"><span class="num">4시간</span></td>
+                      <td class="n">기획부터 배포까지</td>
+                    </tr>
+                    <tr>
+                      <th>문제은행</th>
+                      <td class="v"><span class="num">12개의 카테고리에 총 1,160문제 발행</span></td>
+                      <td class="n">AI 초안 &#43; 팀원 2명이 정답 &#183; 해설 &#183; 범위 검수</td>
+                    </tr>
+                    <tr>
+                      <th>문제 풀이</th>
+                      <td class="v"><span class="num">92,329회</span></td>
+                      <td class="n"></td>
+                    </tr>
+                    <tr>
+                      <th>활성 학습자</th>
+                      <td class="v"><span class="num">826명</span></td>
+                      <td class="n">싸피 교육생 약 1,000명 중</td>
+                    </tr>
+                    <tr>
+                      <th>재시도 정답률</th>
+                      <td class="v"><span class="num">67% &#8594; 75%</span></td>
+                      <td class="n">같은 사용자가 같은 문항을 다시 풀 때</td>
+                    </tr>
+                    <tr>
+                      <th>신고 반영</th>
+                      <td class="v"><span class="num">134건 중 120건 반영 (약 90%)</span></td>
+                      <td class="n"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="ab-main" style="margin-top:22px">
+      <div class="ab-mtop">
+        <h3>텔레파시</h3>
+        <span class="ab-badge"><b>기간</b>2026.07 ~</span>
+        <span class="ab-badge"><span class="me"><span class="st">&#9733;</span>본인 개발 1인</span> · 기획 1인</span>
+        <span class="ab-badge dev">개발 중</span>
+        <a class="ab-visit" href="https://telepathy.my/" target="_blank" rel="noopener">사이트 이동하기 &#8599;</a>
+      </div>
+      <div class="ab-ptags">
+        <span class="ab-ptag">Express 5</span>
+        <span class="ab-ptag">Socket.IO 4</span>
+        <span class="ab-ptag">TypeScript</span>
+        <span class="ab-ptag">Supabase / PostgreSQL</span>
+        <span class="ab-ptag">JWT</span>
+        <span class="ab-ptag">결제 · SMS 인증</span>
+      </div>
+      <p class="ab-mlead">실시간 매칭과 채팅, 환불 계좌 암호화, SMS 인증까지 갖춘 백엔드를 만들고 개선을 이어가고 있습니다.</p>
+
+      <div class="ab-figs">
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">시스템 아키텍처</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 446" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="텔레파시 시스템 아키텍처" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+<rect width="1000" height="446" rx="14" fill="#FBFBF7"/>
+<rect x="28" y="150" width="170" height="210" rx="11" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="113" y="176" text-anchor="middle" font-size="14" font-weight="700" fill="#243130" opacity="1">브라우저</text>
+<text x="113" y="196" text-anchor="middle" font-size="10.5" font-weight="500" fill="#2F3A39" opacity="0.75">React 19 + Vite</text>
+<rect x="44" y="216" width="138" height="27" rx="8" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.1"/>
+<text x="113" y="234" text-anchor="middle" font-size="11" font-weight="600" fill="#243130" opacity="1">HTTPS /api/*</text>
+<rect x="44" y="256" width="138" height="27" rx="8" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.1"/>
+<text x="113" y="274" text-anchor="middle" font-size="11" font-weight="600" fill="#243130" opacity="1">정적 / (SPA)</text>
+<rect x="44" y="296" width="138" height="27" rx="8" fill="#83CFC9" stroke="#2F3A39" stroke-width="1.1"/>
+<text x="113" y="314" text-anchor="middle" font-size="11" font-weight="600" fill="#243130" opacity="1">WebSocket</text>
+<rect x="268" y="96" width="424" height="330" rx="14" fill="#fff" stroke="#2F3A39" stroke-width="1.6" stroke-dasharray="7 5"/>
+<text x="480" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#2F3A39" opacity="0.85">Render · 단일 인스턴스 (PORT 5000)</text>
+<rect x="292" y="140" width="376" height="96" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="480" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="#243130" opacity="1">Express 5  ·  server/app.ts</text>
+<text x="480" y="186" text-anchor="middle" font-size="10.5" font-weight="500" fill="#2F3A39" opacity="0.8">cors → json → cookieParser → 라우터 17개</text>
+<text x="480" y="204" text-anchor="middle" font-size="10.5" font-weight="500" fill="#2F3A39" opacity="0.8">→ static(telepathy-front/dist) → SPA fallback</text>
+<text x="480" y="224" text-anchor="middle" font-size="10.5" font-weight="700" fill="#C8443C" opacity="1">API와 웹이 같은 오리진</text>
+<rect x="292" y="250" width="376" height="74" rx="10" fill="#243130" stroke="#243130" stroke-width="1.5"/>
+<text x="480" y="274" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FBFBF7" opacity="1">Socket.IO 4  ·  server/index.ts</text>
+<text x="480" y="294" text-anchor="middle" font-size="10.5" font-weight="500" fill="#FBFBF7" opacity="0.8">같은 http.Server에 부착 · websocket 전용</text>
+<text x="480" y="312" text-anchor="middle" font-size="10.5" font-weight="700" fill="#83CFC9" opacity="1">io.use → decodeToken() 단일 검증 지점</text>
+<rect x="292" y="338" width="376" height="40" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.2"/>
+<text x="480" y="363" text-anchor="middle" font-size="11" font-weight="600" fill="#243130" opacity="1">node-cron 30초 → flushRound() 큐 정리</text>
+<rect x="762" y="96" width="210" height="58" rx="10" fill="#93A97F" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="867" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="#FBFBF7" opacity="1">Supabase PostgreSQL</text>
+<text x="867" y="140" text-anchor="middle" font-size="10" font-weight="500" fill="#FBFBF7" opacity="0.78">테이블 13 · RPC 2</text>
+<rect x="762" y="176" width="210" height="58" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="867" y="202" text-anchor="middle" font-size="12" font-weight="700" fill="#243130" opacity="1">PortOne</text>
+<text x="867" y="220" text-anchor="middle" font-size="10" font-weight="500" fill="#243130" opacity="0.78">결제 · 본인인증</text>
+<rect x="762" y="244" width="210" height="58" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="867" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="#243130" opacity="1">Solapi</text>
+<text x="867" y="288" text-anchor="middle" font-size="10" font-weight="500" fill="#243130" opacity="0.78">SMS OTP</text>
+<rect x="762" y="312" width="210" height="58" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="867" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="#243130" opacity="1">MacroDroid 웹훅</text>
+<text x="867" y="356" text-anchor="middle" font-size="10" font-weight="500" fill="#243130" opacity="0.78">무통장입금 자동확인</text>
+<line x1="198" y1="232" x2="284.12469361824026" y2="184.35655246650538" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 292 180 L 286.0609391589093 187.8566886361764 L 282.1884480775712 180.85641629683437 Z" fill="#2F3A39"/>
+<line x1="198" y1="272" x2="284.67113445553434" y2="210.22376586679997" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 292 205 L 286.9928081741121 213.48103944211803 L 282.3494607369566 206.9664922914819 Z" fill="#2F3A39"/>
+<line x1="198" y1="312" x2="283.3497656015007" y2="287.4846417953136" stroke="#243130" stroke-width="1.7"/>
+<path d="M 292 285 L 284.4540508438623 291.32919041686887 L 282.24548035913904 283.6400931737584 Z" fill="#243130"/>
+<line x1="668" y1="188" x2="754.2680861048212" y2="136.6062465758512" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 762 132 L 756.3153068051995 140.04265275148623 L 752.220865404443 133.16984040021617 Z" fill="#2F3A39"/>
+<text x="735" y="150" text-anchor="middle" font-size="11" font-weight="600" fill="#2F3A39" opacity="1">쿼리</text>
+<line x1="668" y1="285" x2="757.1042617609673" y2="147.5519366453164" stroke="#243130" stroke-width="1.7"/>
+<path d="M 762 140 L 760.4606780477746 149.72782030710871 L 753.74784547416 145.3760529835241 Z" fill="#243130"/>
+<line x1="668" y1="196" x2="753.0409702298803" y2="204.14222055392472" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 762 205 L 752.6597349205134 208.1240115628668 L 753.4222055392471 200.16042954498263 Z" fill="#2F3A39"/>
+<text x="726" y="188" text-anchor="middle" font-size="11" font-weight="600" fill="#2F3A39" opacity="1">REST 검증</text>
+<line x1="668" y1="205" x2="754.7079803028927" y2="267.7249219212415" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 762 273 L 752.3635011567778 270.9658195644003 L 757.0524594490075 264.4840242780827 Z" fill="#2F3A39"/>
+<line x1="762" y1="355" x2="700.991746062359" y2="357.6146394544703" stroke="#C8443C" stroke-width="1.7"/>
+<path d="M 692 358 L 700.8204747087902 353.61830787119965 L 701.1630174159277 361.61097103774097 Z" fill="#C8443C"/>
+<text x="700" y="348" text-anchor="end" font-size="10" font-weight="600" fill="#C8443C" opacity="1">POST /api/webhook?key=…</text>
+</svg></div>
+        </figure>
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">매칭 시퀀스</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="텔레파시 매칭 시퀀스 다이어그램" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+<rect width="1000" height="660" rx="14" fill="#FBFBF7"/>
+<text x="28" y="34" text-anchor="start" font-size="13.5" font-weight="700" fill="#243130" opacity="1">15초 라운드</text>
+<text x="28" y="53" text-anchor="start" font-size="11" font-weight="500" fill="#2F3A39" opacity="0.8">round = Math.floor(now / 15000)</text>
+<rect x="30" y="72" width="150" height="46" rx="11" fill="#FBFBF7" stroke="#2F3A39" stroke-opacity=".45" stroke-width="1.4"/>
+<text x="105" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130" opacity="1">사용자 A</text>
+<text x="105" y="108" text-anchor="middle" font-size="10.5" font-weight="500" fill="#243130" opacity="0.72">먼저 선택</text>
+<line x1="105" y1="120" x2="105" y2="640" stroke="#2F3A39" stroke-opacity=".3" stroke-width="1.3" stroke-dasharray="4 5"/>
+<rect x="225" y="72" width="150" height="46" rx="11" fill="#FBFBF7" stroke="#2F3A39" stroke-opacity=".45" stroke-width="1.4"/>
+<text x="300" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130" opacity="1">사용자 B</text>
+<text x="300" y="108" text-anchor="middle" font-size="10.5" font-weight="500" fill="#243130" opacity="0.72">나중에 선택</text>
+<line x1="300" y1="120" x2="300" y2="640" stroke="#2F3A39" stroke-opacity=".3" stroke-width="1.3" stroke-dasharray="4 5"/>
+<rect x="485" y="72" width="196" height="46" rx="11" fill="#243130" stroke="#2F3A39" stroke-opacity=".45" stroke-width="1.4"/>
+<text x="583" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#FBFBF7" opacity="1">Express + Socket.IO</text>
+<text x="583" y="108" text-anchor="middle" font-size="10.5" font-weight="500" fill="#FBFBF7" opacity="0.72">server/index.ts</text>
+<line x1="583" y1="120" x2="583" y2="640" stroke="#2F3A39" stroke-opacity=".3" stroke-width="1.3" stroke-dasharray="4 5"/>
+<rect x="791" y="72" width="150" height="46" rx="11" fill="#93A97F" stroke="#2F3A39" stroke-opacity=".45" stroke-width="1.4"/>
+<text x="866" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#FBFBF7" opacity="1">Supabase</text>
+<text x="866" y="108" text-anchor="middle" font-size="10.5" font-weight="500" fill="#FBFBF7" opacity="0.72">PostgreSQL</text>
+<line x1="866" y1="120" x2="866" y2="640" stroke="#2F3A39" stroke-opacity=".3" stroke-width="1.3" stroke-dasharray="4 5"/>
+<line x1="24" y1="142" x2="976" y2="142" stroke="#83CFC9" stroke-width="1.2"/>
+<rect x="24" y="131" width="46" height="22" rx="7" fill="#83CFC9"/>
+<text x="47.0" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="#243130" opacity="1">연결</text>
+<line x1="105" y1="174" x2="574" y2="174" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 583 174 L 573 169 L 573 179 Z" fill="#2F3A39"/>
+<text x="344.0" y="166" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">socket.connect() · 쿠키 token</text>
+<rect x="433" y="188" width="300" height="34" rx="9" fill="#fff" stroke="#C8443C" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="583" y="204" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C8443C" opacity="1">io.use — decodeToken() 1회 검증</text>
+<text x="583" y="219" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C8443C" opacity="1">실패 시 연결 거부 · 이후 신원은 socket.data.user</text>
+<line x1="24" y1="250" x2="976" y2="250" stroke="#83CFC9" stroke-width="1.2"/>
+<rect x="24" y="239" width="70" height="22" rx="7" fill="#83CFC9"/>
+<text x="59.0" y="254" text-anchor="middle" font-size="11" font-weight="700" fill="#243130" opacity="1">A 대기</text>
+<line x1="105" y1="280" x2="574" y2="280" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 583 280 L 573 275 L 573 285 Z" fill="#2F3A39"/>
+<text x="344.0" y="272" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">join_match { word, round }</text>
+<line x1="583" y1="312" x2="857" y2="312" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 866 312 L 856 307 L 856 317 Z" fill="#2F3A39"/>
+<text x="724.5" y="304" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">INSERT queue status=waiting</text>
+<line x1="583" y1="342" x2="857" y2="342" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 866 342 L 856 337 L 856 347 Z" fill="#2F3A39"/>
+<text x="724.5" y="334" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">SELECT 같은 word + round waiting</text>
+<line x1="866" y1="370" x2="592" y2="370" stroke="#2F3A39" stroke-width="1.6" stroke-dasharray="6 4"/>
+<path d="M 583 370 L 593 365 L 593 375 Z" fill="#2F3A39"/>
+<text x="724.5" y="362" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">0건 → 응답 없이 대기</text>
+<line x1="24" y1="406" x2="976" y2="406" stroke="#83CFC9" stroke-width="1.2"/>
+<rect x="24" y="395" width="166" height="22" rx="7" fill="#83CFC9"/>
+<text x="107.0" y="410" text-anchor="middle" font-size="11" font-weight="700" fill="#243130" opacity="1">B 진입 · 매칭 성사</text>
+<line x1="300" y1="436" x2="574" y2="436" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 583 436 L 573 431 L 573 441 Z" fill="#2F3A39"/>
+<text x="441.5" y="428" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">join_match { 같은 word, 같은 round }</text>
+<line x1="583" y1="466" x2="857" y2="466" stroke="#2F3A39" stroke-width="1.6"/>
+<path d="M 866 466 L 856 461 L 856 471 Z" fill="#2F3A39"/>
+<text x="724.5" y="458" text-anchor="middle" font-size="12" font-weight="600" fill="#2F3A39" opacity="1">INSERT queue → SELECT</text>
+<line x1="866" y1="494" x2="592" y2="494" stroke="#C8443C" stroke-width="1.6" stroke-dasharray="6 4"/>
+<path d="M 583 494 L 593 489 L 593 499 Z" fill="#C8443C"/>
+<text x="724.5" y="486" text-anchor="middle" font-size="12" font-weight="600" fill="#C8443C" opacity="1">A 발견</text>
+<rect x="394" y="508" width="378" height="40" rx="9" fill="#fff" stroke="#C8443C" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="583" y="524" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C8443C" opacity="1">매칭 블록은 나중에 들어온 B의 핸들러에서만 1회 실행</text>
+<text x="583" y="539" text-anchor="middle" font-size="11.5" font-weight="600" fill="#C8443C" opacity="1">roomId = uuidv4() · 양쪽 status=matched · log 2행 INSERT</text>
+<line x1="583" y1="578" x2="309" y2="578" stroke="#C8443C" stroke-width="1.6"/>
+<path d="M 300 578 L 310 573 L 310 583 Z" fill="#C8443C"/>
+<text x="441.5" y="570" text-anchor="middle" font-size="12" font-weight="600" fill="#C8443C" opacity="1">matched</text>
+<line x1="583" y1="610" x2="114" y2="610" stroke="#C8443C" stroke-width="1.6"/>
+<path d="M 105 610 L 115 605 L 115 615 Z" fill="#C8443C"/>
+<text x="344.0" y="602" text-anchor="middle" font-size="12" font-weight="600" fill="#C8443C" opacity="1">matched</text>
+<rect x="100" y="624" width="400" height="30" rx="9" fill="#fff" stroke="#243130" stroke-width="1.4" stroke-dasharray="5 4"/>
+<text x="300" y="645" text-anchor="middle" font-size="11.5" font-weight="600" fill="#243130" opacity="1">양쪽 socket.join(roomId) → /chatpage</text>
+</svg></div>
+        </figure>
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">채팅 데이터 흐름</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 316" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="텔레파시 채팅 메시지 데이터 흐름" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+<rect width="1000" height="316" rx="14" fill="#FBFBF7"/>
+<text x="28" y="38" text-anchor="start" font-size="15" font-weight="700" fill="#243130" opacity="1">메시지 1건이 지나는 길 — 3중 방어선</text>
+<rect x="28" y="88" width="214" height="132" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="135" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="#243130" opacity="1">① 발신자 입력</text>
+<rect x="44" y="124" width="182" height="40" rx="8" fill="#EAF3EE" stroke="#C8443C" stroke-width="1.3"/>
+<text x="135" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#C8443C" opacity="1">IME 가드</text>
+<text x="135" y="156" text-anchor="middle" font-size="9.5" font-weight="600" fill="#C8443C" opacity="1">isComposing · keyCode 229</text>
+<rect x="44" y="170" width="182" height="38" rx="8" fill="#EAF3EE" stroke="#C8443C" stroke-width="1.3"/>
+<text x="135" y="186" text-anchor="middle" font-size="10.5" font-weight="700" fill="#C8443C" opacity="1">sendingRef 인플라이트 락</text>
+<text x="135" y="201" text-anchor="middle" font-size="9.5" font-weight="600" fill="#C8443C" opacity="1">emit 전에 입력값 선캡처</text>
+<rect x="300" y="88" width="250" height="208" rx="10" fill="#243130" stroke="#243130" stroke-width="1.5"/>
+<text x="425" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FBFBF7" opacity="1">② 서버 핸들러</text>
+<text x="425" y="130" text-anchor="middle" font-size="10" font-weight="600" fill="#83CFC9" opacity="1">chat.socket.ts</text>
+<rect x="316" y="142" width="218" height="52" rx="8" fill="#33423f" stroke="#83CFC9" stroke-width="1.3"/>
+<text x="425" y="160" text-anchor="middle" font-size="10.5" font-weight="700" fill="#83CFC9" opacity="1">신원 덮어쓰기</text>
+<text x="425" y="176" text-anchor="middle" font-size="9.5" font-weight="500" fill="#FBFBF7" opacity="0.85">payload 무시 · socket.data.user</text>
+<text x="425" y="189" text-anchor="middle" font-size="9.5" font-weight="600" fill="#83CFC9" opacity="1">위조된 senderId를 무력화</text>
+<rect x="316" y="202" width="218" height="48" rx="8" fill="#33423f" stroke="#C8443C" stroke-width="1.4"/>
+<text x="425" y="220" text-anchor="middle" font-size="10.5" font-weight="700" fill="#C8443C" opacity="1">5초 중복 차단</text>
+<text x="425" y="236" text-anchor="middle" font-size="9.5" font-weight="500" fill="#FBFBF7" opacity="0.85">key = room::sender::timestamp</text>
+<rect x="316" y="258" width="218" height="26" rx="8" fill="#33423f" stroke="#83CFC9" stroke-width="1.1"/>
+<text x="425" y="275" text-anchor="middle" font-size="10" font-weight="600" fill="#FBFBF7" opacity="1">chat_logs INSERT</text>
+<rect x="608" y="88" width="214" height="96" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="715" y="112" text-anchor="middle" font-size="12.5" font-weight="700" fill="#243130" opacity="1">③ 브로드캐스트</text>
+<rect x="624" y="124" width="182" height="46" rx="8" fill="#83CFC9" stroke="#2F3A39" stroke-width="1.2"/>
+<text x="715" y="143" text-anchor="middle" font-size="11" font-weight="700" fill="#243130" opacity="1">io.to(roomId)</text>
+<text x="715" y="159" text-anchor="middle" font-size="9.5" font-weight="600" fill="#243130" opacity="1">발신자 본인에게도 되돌아감</text>
+<rect x="866" y="200" width="106" height="62" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="919" y="226" text-anchor="middle" font-size="11.5" font-weight="700" fill="#243130" opacity="1">수신자</text>
+<text x="919" y="244" text-anchor="middle" font-size="10" font-weight="500" fill="#2F3A39" opacity="0.8">화면 반영</text>
+<rect x="608" y="200" width="214" height="62" rx="10" fill="#fff" stroke="#2F3A39" stroke-width="1.5"/>
+<text x="715" y="226" text-anchor="middle" font-size="11.5" font-weight="700" fill="#243130" opacity="1">발신자 화면</text>
+<text x="715" y="244" text-anchor="middle" font-size="10" font-weight="600" fill="#C8443C" opacity="1">echo를 받아야 비로소 표시</text>
+<line x1="242" y1="154" x2="291.0" y2="154.0" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 300 154 L 291.0 158.0 L 291.0 150.0 Z" fill="#2F3A39"/>
+<line x1="550" y1="160" x2="599.217893806856" y2="148.96840311225642" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 608 147 L 600.0927396345255 152.87156142032046 L 598.3430479791864 145.0652448041924 Z" fill="#2F3A39"/>
+<line x1="715" y1="184" x2="715.0" y2="191.0" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 715 200 L 711.0 191.0 L 719.0 191.0 Z" fill="#2F3A39"/>
+<line x1="822" y1="147" x2="911.1020535769258" y2="195.68462721213467" stroke="#2F3A39" stroke-width="1.7"/>
+<path d="M 919 200 L 909.1841101156523 199.19482562238989 L 913.0199970381992 192.17442880187946 Z" fill="#2F3A39"/>
+</svg></div>
+        </figure>
+      </div>
+
+      <div class="ab-acts">
+        <details class="ab-act" open>
+          <summary class="ab-actsum">
+            <span class="ab-actnum">설계</span>
+            <span class="ab-acttitle">게스트에게는 FK를 걸 수 없다</span>
+            <span class="ab-actkey">부채와 상환 계획</span>
+            <span class="ab-actarrow">▼</span>
+          </summary>
+          <div class="ab-actbody">
+            <div class="ab-step q">
+              <span class="ab-steplabel">문제</span>
+              <ul>
+                <li>익명이 핵심 가치라 가입을 세울 수 없었는데, 매칭 · 채팅 · 신고 · 재선택이 <b>전부 식별자를 전제</b>하고 있었습니다.</li>
+                <li>"익명"은 다른 사용자에게 익명이라는 뜻이지, <b>시스템에게까지 익명이라는 뜻은 아니었습니다.</b></li>
+                <li>교과서적 해법인 <code>users</code> 게스트 행은 회원을 전제로 만든 스키마에 <b>가짜 유니크 값과 빈 비밀번호를 밀어넣는</b> 일이었습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step a">
+              <span class="ab-steplabel">해결</span>
+              <ul>
+                <li>게스트를 DB에 저장하지 않고 <b>신원 전체를 JWT에 담았습니다.</b> 진입 시 DB 쓰기 0회, 이탈 게스트를 지우는 배치도 필요 없습니다.</li>
+                <li>닉네임 변경까지 DB가 아니라 <b>토큰 재서명</b>으로 처리해, 토큰을 신원의 단일 출처로 유지했습니다.</li>
+                <li>HTTP와 소켓이 같은 <code>decodeToken</code>을 쓰는 <b>단일 검증 지점</b>을 두고, 그 위에 <code>requireMember</code> · <code>requireSession</code> 두 단계만 얇게 쌓았습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step r">
+              <span class="ab-steplabel">대가</span>
+              <ul>
+                <li>게스트는 <code>users</code>에 행이 없어 <b>어떤 테이블도 FK로 참조할 수 없습니다.</b> 게스트 본인은 단어장을 가질 수 없고, 상대가 게스트면 <code>partner_id</code>는 null입니다.</li>
+                <li>큐에 role 컬럼이 없어 <code>username === user_id</code>로 <b>게스트를 간접 추론</b>합니다. 데이터 형태로 판별하는 것이라 취약하고, 알고 있어 문서에 남겼습니다.</li>
+                <li>갚을 계획을 세워뒀습니다 — <code>actors</code> · <code>users</code> · <code>user_credentials</code> 분리로 <b>세 파장이 한꺼번에 해소</b>됩니다.</li>
+              </ul>
+            </div>
+            <p><a class="ab-plink" href="https://saver7942.blogspot.com/2026/07/fk.html">게스트에게는 FK를 걸 수 없다 — 가입 없는 사용자를 어디에 저장할 것인가 →</a></p>
+          </div>
+        </details>
+        <details class="ab-act" open>
+          <summary class="ab-actsum">
+            <span class="ab-actnum">측정</span>
+            <span class="ab-acttitle">재보니 느리지 않았다</span>
+            <span class="ab-actkey">느림 아닌 구조</span>
+            <span class="ab-actarrow">▼</span>
+          </summary>
+          <div class="ab-actbody">
+            <div class="ab-step q">
+              <span class="ab-steplabel">문제</span>
+              <ul>
+                <li>폼이 느리다고 짐작하고 바꾸려다 <b>먼저 재봤습니다.</b> Profiler로 측정하니 <b>글자당 정확히 1회</b> 리렌더, <span class="num">12글자</span>에 커밋 <span class="num">12회</span>가 두 번 다 재현됐습니다.</li>
+                <li>그런데 한 커밋이 <span class="num">1.6~3.8ms</span>로 60fps 예산(16.7ms) 안이었습니다. <b>지금 버벅이지 않는다</b>는 뜻이라, "느려서 고친다"는 근거가 사라졌습니다.</li>
+                <li>대신 코드를 열어보니 검증이 전부 <b>제출 핸들러에 뭉쳐</b> 있었고, <code>form</code> 태그는 0개, 중복 제출을 막는 장치도 없었습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step a">
+              <span class="ab-steplabel">해결</span>
+              <ul>
+                <li>도입 근거를 "느린 것을 고친다"가 아니라 <b>"폼이 커져도 리렌더가 늘지 않는 구조"</b>로 다시 세우고 React Hook Form으로 옮겼습니다.</li>
+                <li><code>zod</code> 같은 스키마 라이브러리는 <b>배제</b>했습니다. 내장 <code>rules</code>로 충분한데 gzip 미적용 상태라 번들 증가에 민감했습니다.</li>
+                <li>오류 출처는 셋으로 늘었지만(검증 규칙 · 필드 특정 가능한 서버 응답 · 특정 불가) <b>표시 경로는 입력창 하단 인라인 하나로</b> 통일했습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step r">
+              <span class="ab-steplabel">결과</span>
+              <ul>
+                <li><code>useState</code> <span class="num">17개 → 4개</span>, <code>form</code> <span class="num">0개 → 5개</span>, <code>autoComplete</code> <span class="num">0개 → 10개</span>. 오류는 모달 하나씩에서 <b>필드별 인라인 동시 표시</b>로 바뀌었습니다.</li>
+                <li>옮기다 <b>결함 둘</b>이 드러났습니다 — 중복검사 통과 뒤 아이디를 바꿔도 결과가 유효한 채 남는 문제, 페이지마다 다른 비밀번호 정책(8자 계정이 6자로 약화 가능).</li>
+                <li>다만 <b>전환 후 리렌더는 아직 재지 않았습니다.</b> Before를 재놓고 After를 안 잰 채 개선했다고 쓰면 재본 의미가 없어서, 측정 조건만 미리 적어뒀습니다.</li>
+              </ul>
+            </div>
+            <p><a class="ab-plink" href="https://saver7942.blogspot.com/2026/07/react-hook-form_0963471274.html">측정해보니 느리지 않았다 — 그런데도 React Hook Form으로 옮긴 이유 →</a></p>
+          </div>
+        </details>
+        <details class="ab-act" open>
+          <summary class="ab-actsum">
+            <span class="ab-actnum">확장</span>
+            <span class="ab-acttitle">인스턴스를 늘리면 매칭 큐가 갈라진다</span>
+            <span class="ab-actkey">한계와 확장 경로</span>
+            <span class="ab-actarrow">&#9660;</span>
+          </summary>
+          <div class="ab-actbody">
+            <div class="ab-step q">
+              <span class="ab-steplabel">한계</span>
+              <ul>
+                <li>매칭은 15초 라운드에 같은 단어를 고른 두 사람을 짝짓는데, 대기 풀을 <b>단일 인스턴스 메모리</b>에 들고 있습니다. 인스턴스를 늘리면 같은 단어를 고른 두 사람이 <b>다른 인스턴스에 붙어 못 만납니다</b> — 풀도 소켓 이벤트도 인스턴스별로 갈라지기 때문입니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step a">
+              <span class="ab-steplabel">지금</span>
+              <ul>
+                <li>아직 본격 운영 전이라 <b>우선 단일 인스턴스로 둡니다.</b> 없는 부하를 겨냥해 인프라부터 늘리기보다, 필요해지는 시점에 확장하는 쪽이 낫다고 봤습니다.</li>
+              </ul>
+            </div>
+            <div class="ab-step r">
+              <span class="ab-steplabel">확장</span>
+              <ul>
+                <li>고도화 단계에서 수평 확장이 필요해지면 세트로 갑니다 — Socket.IO <b>Redis adapter</b>로 인스턴스 간 이벤트를 잇고, 매칭 풀을 <b>공유 저장소로 옮겨</b> 짝짓기를 전역화합니다. 알고 있어 미리 적어뒀습니다.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="ab-section" id="flow">
+    <div class="ab-sechead">
+      <h2>AI 플로우</h2>
+      <span class="ab-sectag">AI WORKFLOW</span>
+    </div>
+
+    <div class="ab-main">
+      <div class="ab-figs" style="margin:0">
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">개발 플로우</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 142" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="개발 파이프라인 — 사람 승인 지점과 실패 회귀" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+  <defs>
+    <marker id="p1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F3A39" opacity="0.55"/>
+    </marker>
+    <marker id="p1r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8443C"/>
+    </marker>
+  </defs>
+  <text x="970" y="20" text-anchor="end" font-size="11.5" font-weight="700" fill="#C8443C">&#9733; &#61; 사람 승인</text>
+  <text x="86"  y="34" text-anchor="middle" font-size="14" fill="#C8443C">&#9733;</text>
+  <text x="224" y="34" text-anchor="middle" font-size="14" fill="#C8443C">&#9733;</text>
+  <g>
+    <rect x="30"  y="42" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#C8443C" stroke-width="1.6"/>
+    <text x="86"  y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">기획</text>
+    <text x="86"  y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">plan.md</text>
+    <rect x="168" y="42" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#C8443C" stroke-width="1.6"/>
+    <text x="224" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">설계</text>
+    <text x="224" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">design.md</text>
+    <rect x="306" y="42" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="362" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">구현</text>
+    <text x="362" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">implement</text>
+    <rect x="444" y="42" width="112" height="52" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="500" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">리뷰</text>
+    <text x="500" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">보안&#183;품질&#183;성능</text>
+    <rect x="582" y="42" width="112" height="52" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="638" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">빌드</text>
+    <text x="638" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">에러 시</text>
+    <rect x="720" y="42" width="112" height="52" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="776" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">테스트</text>
+    <text x="776" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">E2E</text>
+    <rect x="858" y="42" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="914" y="67" text-anchor="middle" font-size="13.5" font-weight="700" fill="#243130">문서화</text>
+    <text x="914" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">docs</text>
+  </g>
+  <g stroke="#2F3A39" stroke-width="1.5" opacity="0.55" marker-end="url(#p1a)">
+    <path d="M144,68 L164,68"/><path d="M282,68 L302,68"/><path d="M420,68 L440,68"/>
+    <path d="M558,68 L578,68"/><path d="M696,68 L716,68"/><path d="M834,68 L854,68"/>
+  </g>
+  <path d="M776,96 L776,124 L362,124 L362,98" fill="none" stroke="#C8443C" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#p1r)"/>
+  <text x="569" y="118" text-anchor="middle" font-size="11.5" font-weight="700" fill="#C8443C">실패 &#8594; 원인 그룹화 &#8594; 일괄 수정</text>
+</svg></div>
+        </figure>
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">리니어 플로우</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Linear 협업 루프 — 기획자와 개발의 핸드오프" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+  <defs>
+    <marker id="p2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F3A39" opacity="0.55"/>
+    </marker>
+    <marker id="p2r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8443C"/>
+    </marker>
+  </defs>
+  <text x="970" y="20" text-anchor="end" font-size="11.5" font-weight="700" fill="#C8443C">&#9733; &#61; 기획자</text>
+  <text x="105" y="34" text-anchor="middle" font-size="14" fill="#C8443C">&#9733;</text>
+  <text x="729" y="34" text-anchor="middle" font-size="14" fill="#C8443C">&#9733;</text>
+  <g>
+    <rect x="30"  y="42" width="150" height="52" rx="10" fill="#FBFBF7" stroke="#C8443C" stroke-width="1.6"/>
+    <text x="105" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">이슈 등록</text>
+    <text x="105" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">증상&#183;위치</text>
+    <rect x="206" y="42" width="170" height="52" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="291" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">/linear:todo</text>
+    <text x="291" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">코드 교차 검증</text>
+    <rect x="402" y="42" width="120" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="462" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">구현</text>
+    <text x="462" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">implement</text>
+    <rect x="548" y="42" width="170" height="52" rx="10" fill="#EAF3EE" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+    <text x="633" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">/linear:review</text>
+    <text x="633" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">3섹션 인계 코멘트</text>
+    <rect x="744" y="42" width="120" height="52" rx="10" fill="#FBFBF7" stroke="#C8443C" stroke-width="1.6"/>
+    <text x="804" y="67" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">재현 검증</text>
+    <text x="804" y="84" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">In Review</text>
+    <rect x="890" y="42" width="80" height="52" rx="10" fill="#FBFBF7" stroke="#93A97F" stroke-width="1.6"/>
+    <text x="930" y="73" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">Done</text>
+  </g>
+  <g stroke="#2F3A39" stroke-width="1.5" opacity="0.55" marker-end="url(#p2a)">
+    <path d="M182,68 L202,68"/><path d="M378,68 L398,68"/><path d="M524,68 L544,68"/>
+    <path d="M720,68 L740,68"/><path d="M866,68 L886,68"/>
+  </g>
+  <path d="M804,96 L804,132 L462,132 L462,98" fill="none" stroke="#C8443C" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#p2r)"/>
+  <text x="633" y="126" text-anchor="middle" font-size="11.5" font-weight="700" fill="#C8443C">재현되면 &#8594; 되돌려 보냄</text>
+</svg></div>
+        </figure>
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">기획 플로우</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 186" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="기획안 파이프라인 — 작성과 평가 역할 분리" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+  <defs>
+    <marker id="p3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2F3A39" opacity="0.55"/>
+    </marker>
+    <marker id="p3r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C8443C"/>
+    </marker>
+  </defs>
+  <text x="970" y="20" text-anchor="end" font-size="11.5" font-weight="700" fill="#93A97F">병렬 &#183; 서로 안 보고 조사</text>
+  <rect x="30" y="66" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+  <text x="86" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">요구사항</text>
+  <text x="86" y="108" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">판단 기준</text>
+  <path d="M144,92 L163,92" stroke="#2F3A39" stroke-width="1.4" opacity="0.5" marker-end="url(#p3a)"/>
+  <g>
+    <rect x="167" y="34" width="156" height="30" rx="8" fill="#EAF3EE" stroke="#93A97F" stroke-width="1.4"/>
+    <text x="245" y="54" text-anchor="middle" font-size="11.5" font-weight="600" fill="#243130">경쟁 서비스</text>
+    <rect x="167" y="70" width="156" height="30" rx="8" fill="#EAF3EE" stroke="#93A97F" stroke-width="1.4"/>
+    <text x="245" y="90" text-anchor="middle" font-size="11.5" font-weight="600" fill="#243130">LLM 기술</text>
+    <rect x="167" y="106" width="156" height="30" rx="8" fill="#EAF3EE" stroke="#93A97F" stroke-width="1.4"/>
+    <text x="245" y="126" text-anchor="middle" font-size="11.5" font-weight="600" fill="#243130">사용자 페르소나</text>
+  </g>
+  <path d="M325,92 L344,92" stroke="#2F3A39" stroke-width="1.4" opacity="0.5" marker-end="url(#p3a)"/>
+  <rect x="348" y="66" width="112" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+  <text x="404" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">초안</text>
+  <text x="404" y="108" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">주장마다 출처</text>
+  <path d="M462,92 L481,92" stroke="#2F3A39" stroke-width="1.4" opacity="0.5" marker-end="url(#p3a)"/>
+  <rect x="485" y="66" width="150" height="52" rx="10" fill="#fff" stroke="#C8443C" stroke-width="1.6"/>
+  <text x="560" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#C8443C">평가 &#183; 검토</text>
+  <text x="560" y="108" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.8">작성자와 분리</text>
+  <path d="M637,92 L656,92" stroke="#2F3A39" stroke-width="1.4" opacity="0.5" marker-end="url(#p3a)"/>
+  <rect x="660" y="66" width="140" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+  <text x="730" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">제출 검수</text>
+  <text x="730" y="108" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">심사 기준 8항목</text>
+  <path d="M802,92 L821,92" stroke="#2F3A39" stroke-width="1.4" opacity="0.5" marker-end="url(#p3a)"/>
+  <rect x="825" y="66" width="145" height="52" rx="10" fill="#FBFBF7" stroke="#2F3A39" stroke-width="1.4" stroke-opacity="0.3"/>
+  <text x="897" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#243130">발표자료</text>
+  <text x="897" y="108" text-anchor="middle" font-size="10" fill="#2F3A39" opacity="0.75">32장</text>
+  <path d="M560,120 L560,158 L404,158 L404,120" fill="none" stroke="#C8443C" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#p3r)"/>
+  <text x="482" y="152" text-anchor="middle" font-size="11.5" font-weight="700" fill="#C8443C">보완 필요 &#8594; v2 재작성</text>
+</svg></div>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+      <div class="ab-section" id="record">
+    <div class="ab-sechead">
+      <h2>기록</h2>
+      <span class="ab-sectag">RECORD</span>
+    </div>
+
+    <div class="ab-main">
+      <p class="ab-subhead">AI 활용은 모두 기록</p>
+      <p class="ab-mlead" style="margin:0 0 18px">프롬프트&#183;도구 호출&#183;파일 변경&#183;실패까지 세션 전체를 남겨, 나중에 &#8220;왜 그렇게 고쳤는지&#8221;를 되짚을 수 있게 한다.</p>
+
+      <div class="ab-figs" style="margin:0">
+        <figure class="ab-fig" style="margin:0">
+          <figcaption class="ab-figcap">기록 산출물 예시</figcaption>
+          <div class="ab-figbody"><svg viewBox="0 0 1000 298" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="세션 리포트 산출물 예시 — 작업 흐름 로그" style="width:100%;height:auto;display:block;font-family:'Noto Sans KR',sans-serif">
+  <rect x="30" y="14" width="940" height="268" rx="12" fill="#fff" stroke="#2F3A39" stroke-width="1.5" stroke-opacity="0.3"/>
+  <text x="52" y="42" font-size="13.5" font-weight="700" fill="#243130">세션 리포트 &#8212; 2026-07-21</text>
+  <path d="M30,56 L970,56" stroke="#2F3A39" stroke-width="1.1" opacity="0.18"/>
+  <text x="52" y="80" font-size="11.5" font-weight="700" fill="#93A97F">작업 흐름</text>
+  <g font-size="11">
+    <text x="52" y="104" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">3</text>
+    <text x="78" y="104" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">00:21:23</text>
+    <text x="152" y="104" fill="#243130">저장소 문서 개수를 30개로 맞춰줘</text>
+    <text x="452" y="104" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Edit&#215;9, Bash&#215;7</text>
+    <text x="672" y="104" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; AGENTS.md, README.md</text>
+    <text x="52" y="128" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">10</text>
+    <text x="78" y="128" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">00:49:54</text>
+    <text x="152" y="128" fill="#243130">전부 푸시해줘</text>
+    <text x="452" y="128" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;13, Ask&#215;1</text>
+    <text x="672" y="128" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; &#8212;</text>
+    <text x="52" y="152" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">17</text>
+    <text x="78" y="152" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">01:30:52</text>
+    <text x="152" y="152" fill="#243130">기획 플로우도 이미지로 추가해줘</text>
+    <text x="452" y="152" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;7, Write&#215;1</text>
+    <text x="672" y="152" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; portfolio-proposal-figure.html</text>
+    <text x="52" y="176" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">19</text>
+    <text x="78" y="176" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">01:46:24</text>
+    <text x="152" y="176" fill="#243130">리니어 관련 에이전트를 전부 조사해봐</text>
+    <text x="452" y="176" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;12, Read&#215;2, Write&#215;2</text>
+    <text x="672" y="176" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; portfolio-figs-v2.html</text>
+    <text x="52" y="200" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">25</text>
+    <text x="78" y="200" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">02:11:45</text>
+    <text x="152" y="200" fill="#243130">블로그 정리를 위해 2부터 진행할거야</text>
+    <text x="452" y="200" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;5, Write&#215;2</text>
+    <text x="672" y="200" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; probe.py, session-report.py</text>
+    <text x="52" y="224" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">29</text>
+    <text x="78" y="224" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">02:40:12</text>
+    <text x="152" y="224" fill="#243130">도표 소스는 삭제하고 나머지는 커밋</text>
+    <text x="452" y="224" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;10</text>
+    <text x="672" y="224" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; &#8212;</text>
+    <text x="52" y="248" font-weight="700" fill="#243130" font-family="ui-monospace,Consolas,monospace">30</text>
+    <text x="78" y="248" fill="#2F3A39" opacity="0.7" font-family="ui-monospace,Consolas,monospace">02:43:56</text>
+    <text x="152" y="248" fill="#243130">공공 SI에 K-city 경상북도 추가</text>
+    <text x="452" y="248" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">Bash&#215;25, js&#215;7</text>
+    <text x="672" y="248" fill="#2F3A39" opacity="0.85" font-family="ui-monospace,Consolas,monospace">&#8594; &#8212;</text>
+  </g>
+</svg></div>
+        </figure>
+      </div>
+    </div>
+  </div>
+<div class="ab-section" id="ai">
+    <div class="ab-sechead">
+      <h2>운영 도구 · AI 파이프라인</h2>
+      <span class="ab-sectag">INTERNAL TOOLS</span>
+    </div>
+
+    <div class="ab-ailist">
+      <div class="ab-minor">
+        <h4>📝 블로그 발행 파이프라인</h4>
+        <span class="d">에러·학습 기록 → AI 초안 → 원본 대조 검수 → 자동 검증 → 라벨 분류 파이프라인 구축</span>
+      </div>
+
+      <div class="ab-minor">
+        <h4>🍱 싸피 점심 식사 알리미(ssadan)</h4>
+        <span class="d">API 미제공 식단표 이미지를 Gemini API로 파싱해 매일 아침 Mattermost·Discord 자동 발송.</span>
+        <a class="ab-visit gh" href="https://github.com/jhs7942/ssadan" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ab-section">
+    <div class="ab-sechead">
+      <h2>SI 경력</h2>
+      <span class="ab-sectag">2022 – 2024</span>
+    </div>
+
+    <div class="ab-minor stack">
+      <h4>🎫 공주·부여 스마트시티 챌린지</h4>
+      <table class="ab-rtable">
+        <tbody>
+          <tr>
+            <th>기간</th>
+            <td>2023.04–2023.12</td>
+          </tr>
+          <tr>
+            <th>인원</th>
+            <td>2인</td>
+          </tr>
+          <tr>
+            <th>업무</th>
+            <td>
+              <ul>
+                <li>주차 현황을 집계하는 <b>PostgreSQL 쿼리 설계·작성</b></li>
+                <li><b>관리자 페이지 화면·테이블 신규 생성</b> (대시보드 · 이용 현황 · 장애 집계)</li>
+                <li>공주시청 · 부여군청 <b>내부망 현장 배포</b> (Tomcat WAR)</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ab-minor stack">
+      <h4>📹 태국 K-City 관제 플랫폼</h4>
+      <table class="ab-rtable">
+        <tbody>
+          <tr>
+            <th>기간</th>
+            <td>2022.08–2023.07</td>
+          </tr>
+          <tr>
+            <th>인원</th>
+            <td>3인</td>
+          </tr>
+          <tr>
+            <th>업무</th>
+            <td>
+              <ul>
+                <li><b>태국 묵다한 현지 서버 배포</b> (Nginx 프록시 · 네트워크 설정)</li>
+                <li><b>관제 화면 구현</b> (다수 카메라 · 드론 영상 패널 동시 표출, 이벤트 로그)</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ab-minor stack">
+      <h4>🗺️ 경상북도 인구·산업 통합 플랫폼</h4>
+      <table class="ab-rtable">
+        <tbody>
+          <tr>
+            <th>기간</th>
+            <td>2022.12–2023.08</td>
+          </tr>
+          <tr>
+            <th>인원</th>
+            <td>8인</td>
+          </tr>
+          <tr>
+            <th>업무</th>
+            <td>
+              <ul>
+                <li><b>지도 모듈(OpenLayers) 전담</b> · 차트 모듈(ECharts) 일부 구현</li>
+                <li><b>QGIS 좌표계 변환</b> (SHP 파일 EPSG:4326 → EPSG:5186 및 속성 가공)</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<script>
+(function(){
+  var a = document.querySelector('.ab a.ab-copy');
+  if (!a) return;
+  var label = a.querySelector('.ab-copytxt');
+
+  var toast = document.createElement('div');
+  toast.className = 'ab-toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
+  document.body.appendChild(toast);
+
+  var timer = null;
+  function say(message, warn){
+    toast.textContent = message;
+    toast.classList.toggle('warn', !!warn);
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function(){ toast.classList.remove('show'); }, 1900);
+  }
+  function ok(){ say('\uba54\uc77c \uc8fc\uc18c\ub97c \ubcf5\uc0ac\ud588\uc2b5\ub2c8\ub2e4.'); }
+
+  // clipboard blocked: select the address so the user can press Ctrl+C
+  function manual(){
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(label);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(r);
+    } catch (e) {}
+    say('\ubcf5\uc0ac\uac00 \ub9c9\ud614\uc2b5\ub2c8\ub2e4. Ctrl+C\ub97c \ub20c\ub7ec \uc8fc\uc138\uc694', true);
+  }
+  function legacy(value){
+    var ta = document.createElement('textarea');
+    ta.value = value;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '-999px';
+    document.body.appendChild(ta);
+    ta.select();
+    var done = false;
+    try { done = document.execCommand('copy'); } catch (e) { done = false; }
+    document.body.removeChild(ta);
+    return done;
+  }
+
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var value = a.getAttribute('data-copy');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(ok, function(){
+        if (legacy(value)) ok(); else manual();
+      });
+    } else if (legacy(value)) {
+      ok();
+    } else {
+      manual();
+    }
+  });
+})();
+</script>
