@@ -35,6 +35,8 @@ export default function ReportPage() {
         <section className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">서비스 이용 현황</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">실제 사용자 데이터를 기반으로 분석한 AI Quiz 서비스 지표입니다.</p>
+          {/* [학습] src="/report-stats.png" — public/ 디렉토리 절대 경로. 빌드 시 dist/ 로 그대로 복사된다.
+              alt 속성은 접근성(스크린리더) + SEO(이미지 설명) 양쪽에 필수. 의미 있는 설명 작성. */}
           <img
             src="/report-stats.png"
             alt="AI Quiz 서비스 이용 현황 통계 - 평균 방문 횟수, 문제 풀이 수, 정답률, 모바일 유입률"
@@ -83,6 +85,8 @@ export default function ReportPage() {
         <section className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-5 shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">3. 서비스 성장 지표</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">서비스 초기 대비 현재까지의 성장을 확인하세요.</p>
+          {/* [학습] overflow-x-auto — 좁은 화면에서 표가 넘치면 가로 스크롤. 모바일 대응의 흔한 패턴.
+              table > thead > tbody 시맨틱 — div 격자보다 검색엔진·스크린리더 친화적. */}
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

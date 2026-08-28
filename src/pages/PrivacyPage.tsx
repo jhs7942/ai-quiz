@@ -2,6 +2,9 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { useMeta } from '../hooks/useMeta'
 
+// [학습] 법적 페이지(개인정보처리방침/약관)는 거의 정적이고 변경 빈도가 낮다. 이런 페이지는
+//        ① 컴포넌트 내부 JSX 로 직접 작성, ② markdown 파일을 import 해 렌더, ③ CMS 기반 셋 중 선택.
+//        이 프로젝트는 ① 를 택했다 — 의존성 적고 빌드 단순. 분량이 많아지면 ② 로 전환 검토.
 export default function PrivacyPage() {
   useMeta(
     '개인정보처리방침 - AI Quiz',

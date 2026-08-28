@@ -2,15 +2,20 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { useMeta } from '../hooks/useMeta'
 
+// [학습] 정적 페이지 컴포넌트의 표준 형태 — 데이터 fetch 없음, 상태 없음, JSX 만 반환.
+//        Layout(Header/Footer) 재사용 + useMeta 훅으로 SEO 갱신만. 정적 페이지가 여러 개여도 패턴은 동일.
 export default function AboutPage() {
+  // [학습] useMeta(title, description) — useEffect 안에서 document.title 과 meta 태그를 갱신. SPA 라우트별 SEO.
   useMeta(
     'About us - AI Quiz',
     'AI Quiz 팀 소개. SSAFY 서울 18반이 만든 AI 핵심 개념 퀴즈 플랫폼의 개발 배경과 팀을 만나보세요.',
   )
   return (
+    // [학습] min-h-screen + flex flex-col — Footer 를 항상 화면 하단에 붙이는 패턴. main 이 flex-1 로 남은 공간을 차지.
     <div className="min-h-screen bg-[#F8F6F1] dark:bg-gray-900 flex flex-col">
       <Header />
       <main className="flex-1 max-w-2xl mx-auto px-5 py-10 w-full">
+        {/* [학습] 시맨틱 HTML — h1 (페이지 1개), section, h2 (섹션 안). 검색엔진과 스크린리더가 구조 파악에 사용. */}
         <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-8">About us</h1>
 
         <section className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-5 shadow-sm">

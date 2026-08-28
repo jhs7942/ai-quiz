@@ -26,12 +26,17 @@ export default function ContactPage() {
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <span className="text-gray-500 dark:text-gray-400 w-20 shrink-0">이메일</span>
+              {/* [학습] mailto: scheme — 사용자 OS의 기본 메일 클라이언트(Gmail 웹/Outlook 앱 등)를 연다.
+                  쿼리스트링으로 ?subject=...&body=... 도 미리 채울 수 있다. */}
               <a href="mailto:qe092783@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">
                 qe092783@gmail.com
               </a>
             </div>
             <div className="flex items-start gap-3 text-sm">
               <span className="text-gray-500 dark:text-gray-400 w-20 shrink-0">설문조사</span>
+              {/* [학습] 외부 링크의 안전 관용구 — target="_blank" 만 쓰면 새 탭의 페이지가 window.opener 로 부모 창을 조작할 수 있다(tabnabbing 공격).
+                  rel="noopener" 가 그 참조를 끊고, "noreferrer" 는 Referer 헤더도 차단해 추적 방지.
+                  외부 도메인으로 새 탭을 열 때는 이 두 rel 값을 항상 같이 쓴다. */}
               <a
                 href="https://forms.gle/VRzC3myk3DBRPeE68"
                 target="_blank"
