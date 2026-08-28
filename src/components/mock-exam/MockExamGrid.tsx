@@ -7,6 +7,9 @@ interface MockExamGridProps {
 }
 
 export default function MockExamGrid({ exams, onSelect, loading }: MockExamGridProps) {
+  // [학습] 3가지 상태 분기 — loading / empty / data. 각각 early return 으로 처리.
+  //        UX 의 핵심 — "데이터가 없을 때" 와 "로딩 중일 때" 를 구분해 사용자에게 다른 메시지 노출.
+  //        한 return 안에서 ternary 로 묶어도 되지만, 분기가 3개 이상이면 early return 이 가독성 ↑.
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64 text-gray-400">
@@ -32,7 +35,8 @@ export default function MockExamGrid({ exams, onSelect, loading }: MockExamGridP
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">총 {exams.length}회 · 회차당 {exams[0]?.questionCount}문제</p>
       </div>
 
-      {/* 카드 그리드 */}
+      {/* [학습] 반응형 그리드 — sm/lg/xl 브레이크포인트마다 컬럼 수가 다르다. 모바일 2열, 태블릿/데스크톱 3열, 큰 화면 4열.
+          Tailwind 의 grid-cols-N 클래스가 화면 크기별로 누적 적용되는 mobile-first 방식. */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {exams.map((exam, index) => {
           const round = exam.title.replace('실전 모의고사 ', '')
@@ -42,7 +46,8 @@ export default function MockExamGrid({ exams, onSelect, loading }: MockExamGridP
               onClick={() => onSelect(exam)}
               className="group relative flex flex-col bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:border-blue-400 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200 text-left cursor-pointer"
             >
-              {/* 상단 컬러 배너 */}
+              {/* [학습] group + group-hover — 부모 요소(group 클래스)에 hover 가 일어날 때 자식에 스타일 적용.
+                  버튼 전체에 마우스 올리면 상단 배너 색이 진해지는 식의 인터랙션. CSS 의 :has() 없이 Tailwind 가 제공하는 기능. */}
               <div className="h-2 w-full bg-gradient-to-r from-blue-500 to-blue-400 group-hover:from-blue-600 group-hover:to-blue-500 transition-colors" />
 
               <div className="p-4 flex flex-col gap-2">
