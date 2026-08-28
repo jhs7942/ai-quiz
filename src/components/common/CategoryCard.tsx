@@ -8,6 +8,9 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ category, selected, onToggle }: CategoryCardProps) {
   return (
+    // [학습] div 에 onClick — 의미적으로는 button 이 더 정확하다 (키보드/스크린리더 접근).
+    //        cursor-pointer 클래스만 추가하면 외형은 비슷하지만, 키보드 사용자에겐 안 보인다.
+    //        제대로 하려면 <button> + reset CSS, 또는 div + role="button" + tabIndex={0} + onKeyDown 처리.
     <div
       className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl cursor-pointer transition-all duration-200 ${
         selected
