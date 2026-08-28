@@ -21,6 +21,8 @@ export default function FeedbackPanel({ isCorrect, correctAnswer, explanation }:
           {isCorrect ? '정답입니다!' : '오답입니다'}
         </span>
       </div>
+      {/* [학습] Array.isArray + 삼항 — string | string[] 유니온 타입을 화면용 문자열로 평탄화.
+          .join(' / ') 로 복수 정답을 슬래시 구분 표시. 타입가드로 안전하게 분기 — TS 가 isArray 후 string[] 로 narrowing. */}
       {!isCorrect && (
         <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
           <span className="font-semibold">정답: </span>{Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : correctAnswer}

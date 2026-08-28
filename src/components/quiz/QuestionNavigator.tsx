@@ -21,6 +21,8 @@ export default function QuestionNavigator({
   correctIds,
   wrongIds,
 }: QuestionNavigatorProps) {
+  // [학습] Array.from({length}, (_, i) => ...) — 길이만 정해진 배열을 매핑하며 만든다.
+  //        new Array(total).fill(0).map(...) 보다 깔끔. _ 는 unused 첫 인자(undefined) 의 관용 이름.
   const buttons = Array.from({ length: total }, (_, i) => {
     const qid = questionIds[i]
     const isAnswered = answeredIds.includes(qid)
@@ -50,6 +52,8 @@ export default function QuestionNavigator({
     )
   })
 
+  // [학습] compact prop 분기 — 한 컴포넌트가 두 가지 레이아웃을 지원. 작은 컴포넌트라 분리보다 prop 분기가 단순.
+  //        커지면 Compact/Full 두 컴포넌트로 쪼개고 공통 로직만 훅(useNavigatorButtons)으로 추출.
   if (compact) {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 px-4 py-3">
